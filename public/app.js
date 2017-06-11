@@ -5,28 +5,25 @@ var app = angular.module('store',[]);
 
 app.controller('StoreController', function(){
 
-    this.product = gem;
+    this.products = gems;
 
 
 });
 
-var gem = {
+var gems = [{
 	"name": "Dodecahedron",
 	"price": 2.95,
-	"description": "This is the shape of the universe... shh"
+	"description": "This is the shape of the universe... shh",
+	"canPurchase": true
 
 
-	/*"images": [{
+},
+{
+	"name": "Dodecahedron",
+	"price": 2.95,
+	"description": "This is the shape of the universe... shh",
+	"canPurchase": true
 
-			"full": "2.jpg",
-			"thumb": "IMG_31121.JPG"
 
-		},
-		{
-			"full": "IMG_030811.JPG",
-			"thumb": "IMG_030811.JPG"
-		}
-
-*/
-}
+}]
 }());

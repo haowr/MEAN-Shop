@@ -9,9 +9,15 @@
 
 <body>
     <div ng-controller = "StoreController as store">
-        <h1> {{store.product.name}}</h1>
-        <h2> {{store.product.price}}</h2>
-        <p> {{store.product.description}}</p>
+        <ul ng-repeat= "product in store.products">
+            <li>
+                <h1> {{product.name}}</h1>
+                <h2> ${{product.price}}</h2>
+                <p> {{product.description}}</p>
+                <button ng-show="product.canPurchase">Add To Cart</button>
+            </li>
+        </ul>
+
     </div>
 </body>
 
