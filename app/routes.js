@@ -6,7 +6,7 @@ var Gem = require('./app/models/gem');
 
 //expose the routes to our app with module.exports
 
-module.exports = function(app){
+module.exports = function(app){// passed when we required the routes.js file in server.js
     
     //use mongoose to get all the 
     //api ------------------------------------------
