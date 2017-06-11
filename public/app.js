@@ -14,13 +14,23 @@ var gems = [{
 	"name": "Dodecahedron",
 	"price": 2.95,
 	"description": "This is the shape of the universe... shh",
-	"canPurchase": true
+	"canPurchase": true,
+	"images": [
+
+		{
+			
+		}
+
+
+
+
+	]
 
 
 },
 {
 	"name": "Dodecahedron",
-	"price": 2.95,
+	"price": 3.95,
 	"description": "This is the shape of the universe... shh",
 	"canPurchase": true
 
