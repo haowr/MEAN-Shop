@@ -2,7 +2,7 @@
 
 //load the gem model.
 
-var Gem = require('./app/models/gem');
+var Gem = require('./models/gem');
 
 //expose the routes to our app with module.exports
 
