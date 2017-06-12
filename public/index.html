@@ -13,8 +13,8 @@
 
         <ul class ="list-group" ng-repeat= "product in store.products |orderBy:'-price'">
             <li class = "list-group-item">
-                <h3> {{product.name}}
-                <em class= "pull-right"> {{product.price  | currency}}</em>
+                <h3 ng-include="'/product-title.html'"> 
+               
                 </h3>
           
                 <div ng-show= "product.images.length">
