@@ -29,7 +29,7 @@ var gems = [{
 	"canPurchase": true,
 	"images": [{
 
-		 "full": "./img/mercury.png",
+		 "full": "./img/mercury.jpg",
 		 "thumb":"./img/mercurythumb.jpg"
 			
 				}

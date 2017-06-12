@@ -11,13 +11,23 @@
     <div ng-controller = "StoreController as store">
         <ul class ="list-group" ng-repeat= "product in store.products |orderBy:'-price'">
             <li class = "list-group-item">
-                <h3> {{product.name}}</h3>
+                <h3> {{product.name}}
                 <em class= "pull-right"> {{product.price  | currency}}</em>
-                <img ng-src="{{product.images[0].full}}"/>
+                </h3>
+                <img ng-src="{{product.images[0].thumb}}"/>
                 <p> {{product.description}}</p>
                 <button ng-show="product.canPurchase">Add To Cart</button>
             </li>
         </ul>
+        
+        <section>
+            <ul class ="nav nav-pills">
+                <li> <a href ng-click="tab = 1">Description</a></li>
+                <li> <a href ng-click="tab = 2">Specifications</a></li>
+                <li> <a href ng-click="tab = 3">Reviews</a></li>
+            </ul>
+            {{tab}}
+        </section>
 
     </div>
 </body>
