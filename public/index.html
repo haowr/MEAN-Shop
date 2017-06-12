@@ -14,7 +14,16 @@
                 <h3> {{product.name}}
                 <em class= "pull-right"> {{product.price  | currency}}</em>
                 </h3>
+          
+                <div ng-show= "product.images.length">
                 <img ng-src="{{product.images[0].thumb}}"/>
+                <ul class="nav nav-pills">
+                    <li><a href ng-click="tab=1" ng-model>1</a></li>
+                    <li><a href ng-click="tab=2">2</a></li>
+                    <li><a href ng-click="tab=3">3</a></li>
+                </ul>
+                </div>
+            
                 <button ng-show="product.canPurchase">Add To Cart</button>
         <section ng-controller="PanelController as panel"> 
             <ul class ="nav nav-pills">
@@ -43,7 +52,11 @@
                  <cite> by: {{review.author}}</cite>
             </blockquote>
             <form name = "reviewForm">
-                
+            <blockquote>
+                <b>Stars: {{review.stars}}</b>
+                 {{review.body}}
+                 <cite> by: {{review.author}}</cite>
+            </blockquote>
                 <select ng-model="review.stars">
                     <option value="1">1 star</option>
                     <option value="2">2 star</option>
