@@ -35,8 +35,23 @@ var gems = [{
 		 "full": "./img/jupiter.png",
 		 "thumb":"./img/jupiterthumb.jpg"
 			
-			  }]
-},
+			  }],
+	"reviews": [
+		{
+	     "stars": 5,
+		 "body":"Oak Evolution!!!",
+		 "author": "Zeus@Romans.com"
+
+		},
+		{
+		 "stars": 4,
+		 "body":"Docked one cause favorite number",
+		 "author":"MoonlightKnight@CrystalPalace.com"	
+
+
+		}]
+
+		},
 {
 	"name": "Dodecahedron",
 	"price": 3.95,
@@ -48,7 +63,21 @@ var gems = [{
 		 "thumb":"./img/mercurythumb.jpg"
 			
 				}
-			]
+			],
+	"reviews": [
+		{
+	     "stars": 5,
+		 "body":"She's always by my side!!!",
+		 "author": "Sun@one.com"
+
+		},
+		{
+		 "stars": 5,
+		 "body":"Love that tone..",
+		 "author":"Sun@one.com"	
+
+
+		}]
 
 
 }]
