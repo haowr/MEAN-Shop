@@ -15,24 +15,25 @@ var gems = [{
 	"price": 2.95,
 	"description": "This is the shape of the universe... shh",
 	"canPurchase": true,
-	"images": [
+	"images": [{
 
-		{
+		 "full": "./img/jupiter.png",
+		 "thumb":"./img/jupiterthumb.jpg"
 			
-		}
-
-
-
-
-	]
-
-
+			  }]
 },
 {
 	"name": "Dodecahedron",
 	"price": 3.95,
 	"description": "This is the shape of the universe... shh",
-	"canPurchase": true
+	"canPurchase": true,
+	"images": [{
+
+		 "full": "./img/mercury.png",
+		 "thumb":"./img/mercurythumb.jpg"
+			
+				}
+			]
 
 
 }]
