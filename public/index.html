@@ -2,6 +2,7 @@
 <html ng-app = "store">
     <head>
         <link rel="stylesheet" href = "bootstrap.min.css" type = "text/css">
+        <link rel="stylesheet" href = "/style.css" type ="text/css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
         <script type ="text/javascript" src="/angular.min.js"></script>
         <script type ="text/javascript" src="/app.js"></script>
@@ -9,6 +10,7 @@
 
 <body>
     <div ng-controller = "StoreController as store">
+
         <ul class ="list-group" ng-repeat= "product in store.products |orderBy:'-price'">
             <li class = "list-group-item">
                 <h3> {{product.name}}
@@ -18,7 +20,9 @@
                 <div ng-show= "product.images.length">
                 <img ng-src="{{product.images[0].thumb}}"/>
                 <ul class="nav nav-pills">
-                    <li><a href ng-click="tab=1" ng-model>1</a></li>
+
+                    <img ng-src = "{{store.products.images[0].thumb}}"/>
+                    <li><a href ng-click="tab=1" >1</a></li>
                     <li><a href ng-click="tab=2">2</a></li>
                     <li><a href ng-click="tab=3">3</a></li>
                 </ul>
@@ -51,22 +55,24 @@
                  {{review.body}}
                  <cite> by: {{review.author}}</cite>
             </blockquote>
-            <form name = "reviewForm">
+            <form name = "reviewForm" ng-controller ="ReviewController as reviewCtrl"
+                                       ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
             <blockquote>
-                <b>Stars: {{review.stars}}</b>
-                 {{review.body}}
-                 <cite> by: {{review.author}}</cite>
+                <b>Stars: {{reviewCtrl.review.stars}}</b>
+                 {{reviewCtrl.review.body}}
+                 <cite> by: {{reviewCtrl.review.author}}</cite>
             </blockquote>
-                <select ng-model="review.stars">
+                <select ng-model="reviewCtrl.review.stars"required>
                     <option value="1">1 star</option>
                     <option value="2">2 star</option>
                     <option value="3">3 star</option>
                     <option value="4">4 star</option>
                     <option value="5">5 star</option>
                 </select>
-                <textarea ng-model="review.body"></textarea>
+                <textarea ng-model="reviewCtrl.review.body"required></textarea>
                 <label>by:</label>
-                <input ng-model="review.author"type="email"/>
+                <input ng-model="reviewCtrl.review.author"type="email" required/>
+                <div> reviewForm is {{reviewForm.$valid}} </div>
                 <input type="submit" value="Submit"/>
             </form>
         </div>
