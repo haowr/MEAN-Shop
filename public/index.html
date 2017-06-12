@@ -2,6 +2,7 @@
 <html ng-app = "store">
     <head>
         <link rel="stylesheet" href = "bootstrap.min.css" type = "text/css">
+        <link data-require="semantic-ui@*" data-semver="0.9.6" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.9.6/css/semantic.min.css" />
         <link rel="stylesheet" href = "/style.css" type ="text/css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
         <script type ="text/javascript" src="/angular.min.js"></script>
@@ -12,22 +13,29 @@
     <div ng-controller = "StoreController as store">
 
         <ul class ="list-group" ng-repeat= "product in store.products |orderBy:'-price'">
+            
             <li class = "list-group-item">
      
                 <product-title></product-title>
           
-                <div ng-show= "product.images.length">
-                <img ng-src="{{product.images[0].thumb}}"/>
-                <ul class="nav nav-pills">
+           <div ng-show= "product.images.length" ng-controller="GalleryController as gallery">
 
-                    <img ng-src = "{{store.products.images[0].thumb}}"/>
-                    <li><a href ng-click="tab=1" >1</a></li>
-                    <li><a href ng-click="tab=2">2</a></li>
-                    <li><a href ng-click="tab=3">3</a></li>
-                </ul>
-                </div>
+                    <div class ="img-wrap">
+                        
+                        <img ng-src="{{product.images[gallery.imageIndex]}}" class="img-thumbnail left-block"/>
+                    
+                    </div>
+
+                    <ul class="img-thumbnails clearfix">
+
+                        <li class = "small-image pull-left thumbnail" ng-repeat="image in product.images" ng-click="gallery.currentImageChange($index)">
+                        <img ng-src="{{image}}"/>
+                        </li>
+                    </ul>
+            </div>   
+               
             
-                <button ng-show="product.canPurchase">Add To Cart</button>
+                <!--<button ng-show="product.canPurchase">Add To Cart</button>-->
                 <!-- product-panels custom element directive -->
                 <product-panels> </product-panels>
        
@@ -38,7 +46,6 @@
 
     </div>
 </body>
-
 
 
 

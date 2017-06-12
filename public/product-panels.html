@@ -12,12 +12,12 @@
         </div>
         <div class = "panel"ng-show = "panel.isSelected(2)">
             <h4>Specifications</h4>
-            <blockquote>None Yet</blockquote>>
+            <blockquote>None Yet</blockquote>
         </div>
         <div class = "panel"ng-show = "panel.isSelected(3)">
             <h4>Reviews</h4>
              <blockquote ng-repeat = "review in product.reviews">
-                <b>Stars: {{review.stars}}</b>
+                <p>Stars: {{review.stars}}</p>
                  {{review.body}}
                  <cite> by: {{review.author}}</cite>
             </blockquote>
@@ -28,7 +28,7 @@
                  {{reviewCtrl.review.body}}
                  <cite> by: {{reviewCtrl.review.author}}</cite>
             </blockquote>
-                <select ng-model="reviewCtrl.review.stars"required>
+                <select class="custom-select" ng-model="reviewCtrl.review.stars"required>
                     <option value="1">1 star</option>
                     <option value="2">2 star</option>
                     <option value="3">3 star</option>

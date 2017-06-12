@@ -9,6 +9,14 @@ app.controller('StoreController', function(){
 
 
 });
+
+  app.controller('GalleryController', function() {
+    this.imageIndex = 0;
+    this.currentImageChange = function(imageNumber) {
+      console.log(imageNumber);
+      this.imageIndex = imageNumber || 0;
+    };
+  });
 /*
 app.controller('PanelController', function(){
 	this.tab = 1;
@@ -37,7 +45,7 @@ app.controller("ReviewController",function(){
 	};
 
 });
-
+//Custom element directive w/no controller.
 app.directive('productTitle',function(){
 
 	return{
@@ -49,7 +57,7 @@ app.directive('productTitle',function(){
 	};
 
 });
-
+//Custom controller directive w/PanelController controller
 app.directive('productPanels',function(){
 
 	return{
@@ -110,12 +118,11 @@ var gems = [{
 	"price": 2.95,
 	"description": "This is the shape of the universe... shh",
 	"canPurchase": true,
-	"images": [{
-
-		 "full": "./img/jupiter.png",
-		 "thumb":"./img/jupiterthumb.jpg"
-			
-			  }],
+	"images": [
+      "./img/gem-02.gif",
+      "./img/gem-05.gif",
+      "./img/gem-09.gif"
+    ],
 	"reviews": [
 		{
 	     "stars": 5,
@@ -137,13 +144,11 @@ var gems = [{
 	"price": 3.95,
 	"description": "This is the shape of the universe... shh",
 	"canPurchase": true,
-	"images": [{
-
-		 "full": "./img/mercury.jpg",
-		 "thumb":"./img/mercurythumb.jpg"
-			
-				}
-			],
+    "images": [
+      "./img/gem-01.gif",
+      "./img/gem-03.gif",
+      "./img/gem-04.gif",
+    ],
 	"reviews": [
 		{
 	     "stars": 5,
