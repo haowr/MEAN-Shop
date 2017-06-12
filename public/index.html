@@ -13,9 +13,7 @@
 
         <ul class ="list-group" ng-repeat= "product in store.products |orderBy:'-price'">
             <li class = "list-group-item">
-                <h3 ng-include="'/product-title.html'"> 
-               
-                </h3>
+     
                 <product-title></product-title>
           
                 <div ng-show= "product.images.length">
@@ -30,55 +28,10 @@
                 </div>
             
                 <button ng-show="product.canPurchase">Add To Cart</button>
-        <section ng-controller="PanelController as panel"> 
-            <ul class ="nav nav-pills">
-                
-                <li ng-class ="{ active: panel.isSelected(1)}"> <a href ng-click="panel.selectTab(1)">Description</a></li>
-                <li ng-class ="{ active: panel.isSelected(2)}"> <a href ng-click="panel.selectTab(2)">Specifications</a></li>
-                <li ng-class ="{ active: panel.isSelected(3) }"> <a href ng-click="panel.selectTab(3)">Reviews</a></li>
-            </ul>
-              
-        <div class ="panel" ng-show ="panel.isSelected(1)">
-            <h4>Description</h4>
-            <p>{{product.description}}</p>
-        </div>
-        <div class = "panel"ng-show = "panel.isSelected(2)">
-            <h4>Specifications</h4>
-            <blockquote>None Yet</blockquote>>
-        </div>
-        <div class = "panel"ng-show = "panel.isSelected(3)">
-            <h4>Reviews</h4>
-
-
-            
-            <blockquote ng-repeat = "review in product.reviews">
-                <b>Stars: {{review.stars}}</b>
-                 {{review.body}}
-                 <cite> by: {{review.author}}</cite>
-            </blockquote>
-            <form name = "reviewForm" ng-controller ="ReviewController as reviewCtrl"
-                                       ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-            <blockquote>
-                <b>Stars: {{reviewCtrl.review.stars}}</b>
-                 {{reviewCtrl.review.body}}
-                 <cite> by: {{reviewCtrl.review.author}}</cite>
-            </blockquote>
-                <select ng-model="reviewCtrl.review.stars"required>
-                    <option value="1">1 star</option>
-                    <option value="2">2 star</option>
-                    <option value="3">3 star</option>
-                    <option value="4">4 star</option>
-                    <option value="5">5 star</option>
-                </select>
-                <textarea ng-model="reviewCtrl.review.body"required></textarea>
-                <label>by:</label>
-                <input ng-model="reviewCtrl.review.author"type="email" required/>
-                <div> reviewForm is {{reviewForm.$valid}} </div>
-                <input type="submit" value="Submit"/>
-            </form>
-        </div>
-
-        </section>
+                <!-- product-panels custom element directive -->
+                <product-panels> </product-panels>
+       
+        
             </li>
         </ul>
         
@@ -86,6 +39,6 @@
     </div>
 </body>
 
-<!--<p>{{"hello"+"you"}}</p>-->
 
-</body>
+
+
