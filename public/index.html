@@ -9,20 +9,24 @@
         <script type ="text/javascript" src="/app.js"></script>
     </head>
 
-<body>
-    <div ng-controller = "StoreController as store">
+<body ng-controller ="StoreController as store">
 
-        <ul class ="list-group" ng-repeat= "product in store.products |orderBy:'-price'">
-            
-            <li class = "list-group-item">
-     
+        <!--  Store Header  -->
+    <header>
+      <h1 class="text-center">House Of Jewels</h1>
+      <h2 class="text-center">– an Angular store –</h2>
+    </header>
+   
+        <div class = "list-group">
+
+        <div class ="list-group-item" ng-repeat= "product in store.products | orderBy:'-price'">
                 <product-title></product-title>
           
            <div ng-show= "product.images.length" ng-controller="GalleryController as gallery">
 
                     <div class ="img-wrap">
                         
-                        <img ng-src="{{product.images[gallery.imageIndex]}}" class="img-thumbnail left-block"/>
+                        <img ng-src="{{product.images[gallery.imageIndex]}}" class="img-thumbnail center-block"/>
                     
                     </div>
 
@@ -37,15 +41,8 @@
             
                 <!--<button ng-show="product.canPurchase">Add To Cart</button>-->
                 <!-- product-panels custom element directive -->
-                <product-panels> </product-panels>
-       
-        
-            </li>
-        </ul>
-        
-
-    </div>
-</body>
-
-
-
+                <product-panels> </product-panels>      
+        </div>
+        </div>
+    </body>
+</html>
