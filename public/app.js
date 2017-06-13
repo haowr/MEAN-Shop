@@ -10,41 +10,8 @@ app.controller('StoreController', function(){
 
 });
 
-  app.controller('GalleryController', function() {
-    this.imageIndex = 0;
-    this.currentImageChange = function(imageNumber) {
-      console.log(imageNumber);
-      this.imageIndex = imageNumber || 0;
-    };
-  });
-/*
-app.controller('PanelController', function(){
-	this.tab = 1;
 
 
-    this.selectTab = function(setTab){
-
-      this.tab = setTab;
-
-	};
-	this.isSelected = function(checkTab){
-
-		return this.tab === checkTab;
-	};
-
-});
-*/
-app.controller("ReviewController",function(){
-
-	this.review ={};
-
-	this.addReview= function(product){
-
-		product.reviews.push(this.review);
-		this.review={};
-	};
-
-});
 //Custom element directive w/no controller.
 app.directive('productTitle',function(){
 
@@ -86,32 +53,25 @@ app.directive('productPanels',function(){
 
 
 });
-app.directive('reviewsSection', function(){
+app.directive('productGallery', function(){
 
 	return{
 
 		restrict: 'E',
-		templateUrl: 'reviews-section.html',
-		controller: function(){
-
-				this.review ={};
-
-	this.addReview= function(product){
-
-		product.reviews.push(this.review);
-		this.review={};
-	};
-
-
-		},
-		controllerAs: 'reviewCtrl'
-
-
-	};
-
-
-
+		templateUrl: 'product-gallery.html',
+		controller: function() {
+    	this.imageIndex = 0;
+    	this.currentImageChange = function(imageNumber) {
+      	console.log(imageNumber);
+      	this.imageIndex = imageNumber || 0;
+    	};},
+		controllerAs: 'gallery'
+		};
 });
+
+
+
+//});
 
 var gems = [{
 	"name": "Dodecahedron",
