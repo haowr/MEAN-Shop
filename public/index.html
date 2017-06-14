@@ -2,11 +2,13 @@
 <html ng-app = "store">
     <head>
         <link rel="stylesheet" href = "bootstrap.min.css" type = "text/css">
-        <link data-require="semantic-ui@*" data-semver="0.9.6" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.9.6/css/semantic.min.css" />
+        
         <link rel="stylesheet" href = "/style.css" type ="text/css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-        <script type ="text/javascript" src="/angular.min.js"></script>
-        <script type ="text/javascript" src="/app.js"></script>
+        <script type ="text/javascript" src="angular.min.js"></script>
+        <script type ="text/javascript" src="app.js"></script>
+        <script type ="text/javascript" src="products.js"></script>
+        
     </head>
 
 <body ng-controller ="StoreController as store">
@@ -19,16 +21,18 @@
    
         <div class = "list-group">
 
-        <div class ="list-group-item" ng-repeat= "product in store.products | orderBy:'-price'">
+            <div class ="list-group-item" ng-repeat= "product in store.products "> <!-- orderBy filter removed not wrk on arrayjson -->
                 <product-title></product-title>
           
                 <product-gallery></product-gallery>
-               
-            
-                <!--<button ng-show="product.canPurchase">Add To Cart</button>-->
+
+
+               <!--<button ng-show="product.canPurchase">Add To Cart</button>-->
                 <!-- product-panels custom element directive -->
                 <product-panels> </product-panels>      
+            </div>
         </div>
-        </div>
+
     </body>
+
 </html>
