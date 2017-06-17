@@ -3,6 +3,7 @@
 // load mongoose since we need it to define a model
 var mongoose = require('mongoose');
 
+//Define Gems model w mongoose schema.
 module.exports = mongoose.model('Gem', {
     name : String,
     price: Number,
@@ -12,3 +13,4 @@ module.exports = mongoose.model('Gem', {
     reviews: Array,
     done : Boolean
 });
+
