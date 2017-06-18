@@ -35,6 +35,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
         Gem.create({
 
             text : req.body.text,
+            //review : 
            
             done: false
         }, function(err,todo){
