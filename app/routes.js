@@ -34,21 +34,21 @@ module.exports = function(app){// passed when we required the routes.js file in 
         //create a todo, information comes from AJAX request from Angular
         Gem.create({
 
-            text : req.body.text,
+            name :req.body.text,
             //review : 
            
             done: false
-        }, function(err,todo){
+        }, function(err,gem){
 
             if(err)
               res.send(err);
 
               // get and return all the todos after you create another
-              Todo.find(function(err,todos){
+              Gem.find(function(err,gems){
 
                 if (err)
                    res.send(err)
-                   res.json(todos);
+                   res.json(gems);
 
               });
         });
