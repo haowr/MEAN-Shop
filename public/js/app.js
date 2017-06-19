@@ -31,6 +31,8 @@ app.controller("ReviewController",function(){
 });
 
 
+//$scope.createGem
+
 
 //var gems = 
 }());
