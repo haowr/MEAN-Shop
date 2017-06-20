@@ -10,9 +10,18 @@
             <h4>Description</h4>
             <p>{{product.description}}</p>
         </div>
-        <div class = "panel"ng-show = "panel.isSelected(2)">
+        <div class = "panel" ng-show = "panel.isSelected(2)">
             <h4>Specifications</h4>
-            <blockquote>None Yet</blockquote>
+            <blockquote ng-repeat "specification in product.specifications">
+            <p>{{specification}}</p>
+            </blockquote>
+            <form ng-controller = "SpecificationsController as specCtrl">
+                <div class="form-group">
+                    
+                    <input type="text" ng-model="product.specifications">
+                </div>
+                <button type="submit"ng-click="addSpec(product)">Add</button>
+            </form>
         </div>
         <div class = "panel"ng-show = "panel.isSelected(3)">
             <h4>Reviews</h4>

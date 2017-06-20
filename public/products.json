@@ -3,6 +3,7 @@
 	"name": "Dodecahedron",
 	"price": 2.95,
 	"description": "This is the shape of the universe... shh",
+	"specifications":["NA"],
 	"canPurchase": true,
 	"images": [
       "./img/gem-02.gif",
@@ -29,6 +30,7 @@
 	"name": "Pentagonal",
 	"price": 3.95,
 	"description": "This is the shape of the universe... shh",
+	"specifications": ["NA"],
 	"canPurchase": true,
     "images": [
       "./img/gem-01.gif",

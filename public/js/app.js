@@ -18,6 +18,8 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 
 	};
 
+	//$http.get('/api/gems').then(success);
+
 	$scope.createGem = function(){
 
 		console.log($scope.formData.text);
@@ -45,6 +47,17 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 };
 
 }]);
+app.controller("SpecificationsController", function(){
+
+	this.specifications ="";
+	this.addSpec = function(product){
+		product.specifications.push(this.specifications);
+	this.specifications ="";
+
+	};
+
+
+});
 
 app.controller("ReviewController",function(){
 
