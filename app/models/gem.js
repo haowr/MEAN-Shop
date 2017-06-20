@@ -14,3 +14,16 @@ module.exports = mongoose.model('Gem', {
     done : Boolean
 });
 
+module.exports = mongoose.model('Product',{
+
+    name : String,
+    price: Number,
+    description: String,
+    canPurchase:Boolean,
+    images:Array,
+    reviews: Array,
+    done: Boolean
+
+
+});
+

@@ -12,16 +12,19 @@
         </div>
         <div class = "panel" ng-show = "panel.isSelected(2)">
             <h4>Specifications</h4>
-            <blockquote ng-repeat "specification in product.specifications">
-            <p>{{specification}}</p>
+            <blockquote ng-repeat="specs in product.specifications">
+            <p>{{specs}}</p>
             </blockquote>
-            <form ng-controller = "SpecificationsController as specCtrl">
+            <form name ="submitForm" ng-controller = "SpecificationsController as specCtrl"
+                        ng-submit="specCtrl.addSpec(product)">
+
                 <div class="form-group">
-                    
-                    <input type="text" ng-model="product.specifications">
+                    <blockquote>
+                        <p>{{specCtrl.specifications}}</p>
+                    <input type="text" ng-model="specCtrl.specifications">
                 </div>
-                <button type="submit"ng-click="addSpec(product)">Add</button>
-            </form>
+                <input type="submit" value"Submit" >            
+                </form>
         </div>
         <div class = "panel"ng-show = "panel.isSelected(3)">
             <h4>Reviews</h4>

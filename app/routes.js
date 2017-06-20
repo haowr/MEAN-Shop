@@ -11,7 +11,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
     //use mongoose to get all the 
     //api ------------------------------------------
     //get all gemes
-    app.get('/api/gems', function(req,res){
+    app.get('/api/products', function(req,res){
 
         Gem.find(function(err,gems){
 
@@ -29,7 +29,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
     });
 
         // create todo and send back all todos after creation
-    app.post('/api/gems', function(req,res){
+    app.post('/api/products', function(req,res){
 
  console.log(req.body.text);
         //create a todo, information comes from AJAX request from Angular

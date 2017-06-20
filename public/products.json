@@ -3,7 +3,7 @@
 	"name": "Dodecahedron",
 	"price": 2.95,
 	"description": "This is the shape of the universe... shh",
-	"specifications":["NA"],
+	"specifications":["NA","ON"],
 	"canPurchase": true,
 	"images": [
       "./img/gem-02.gif",

@@ -24,7 +24,7 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 
 		console.log($scope.formData.text);
 
-	$http.post('/api/gems', $scope.formData)
+	$http.post('/api/products', $scope.formData)
 		 .then(success);
 
 	function success(response){
