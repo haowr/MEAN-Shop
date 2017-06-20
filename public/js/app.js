@@ -3,7 +3,7 @@
 var app = angular.module('store',['store-products']);
 
 
-app.controller('StoreController', ['$http', function($http) {
+app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 
     var  store = this;
 	store.products = [];
@@ -31,7 +31,23 @@ app.controller("ReviewController",function(){
 });
 
 
-//$scope.createGem
+$scope.createGem = function(){
+
+	$http.post('/api/todos', $scope.formData)
+		 .success(function(data){
+
+			$scope.formData ={};
+			$scope.gems = data;
+			console.log(data);
+
+
+		 })
+		 .error(function(data){
+
+			console.log('Error: '+data);
+
+		 });
+};
 
 
 //var gems = 
