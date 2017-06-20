@@ -15,6 +15,25 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 
 	};
 
+	$scope.createGem = function(){
+
+	$http.post('/api/gems', $scope.formData).then(success);
+
+	function success(response){
+
+			$scope.formData ={};
+			$scope.gems = response;
+			console.log(response);
+
+
+		 };
+		 //.error(function(data){
+
+		//	console.log('Error: '+data);
+
+		 //});
+};
+
 }]);
 
 app.controller("ReviewController",function(){
@@ -31,23 +50,7 @@ app.controller("ReviewController",function(){
 });
 
 
-$scope.createGem = function(){
 
-	$http.post('/api/todos', $scope.formData)
-		 .success(function(data){
-
-			$scope.formData ={};
-			$scope.gems = data;
-			console.log(data);
-
-
-		 })
-		 .error(function(data){
-
-			console.log('Error: '+data);
-
-		 });
-};
 
 
 //var gems = 

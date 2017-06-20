@@ -34,10 +34,11 @@ module.exports = function(app){// passed when we required the routes.js file in 
         //create a todo, information comes from AJAX request from Angular
         Gem.create({
 
-            name :req.body.text,
+            //name :req.body.text,
+            name:"Test",
             //review : 
            
-            done: false
+            done: true
         }, function(err,gem){
 
             if(err)

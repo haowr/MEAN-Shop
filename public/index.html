@@ -30,9 +30,13 @@
                <!--<button ng-show="product.canPurchase">Add To Cart</button>-->
                 <!-- product-panels custom element directive -->
                 <product-panels> </product-panels>   
+                
                 <form>
-                <textarea required></textarea>
-                <button ng-click="createGem()">Add</button> 
+                    <div class ="form-group">
+                <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.text" required>
+                 
+                    </div>  
+                    <button ng-click="createGem()">Add</button>
                 </form>  
             </div>
         </div>
