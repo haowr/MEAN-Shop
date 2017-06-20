@@ -7,6 +7,9 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 
     var  store = this;
 	store.products = [];
+	$scope.formData ={};
+	console.log($scope.formData);
+
 	$http.get('/products.json').then(success);
 	function success(response){
 		console.log(response);
@@ -17,13 +20,20 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 
 	$scope.createGem = function(){
 
-	$http.post('/api/gems', $scope.formData).then(success);
+		console.log($scope.formData.text);
+
+	$http.post('/api/gems', $scope.formData)
+		 .then(success);
 
 	function success(response){
-
+			
+			console.log($scope.formData);
 			$scope.formData ={};
 			$scope.gems = response;
+			console.log($scope.formData);
+			
 			console.log(response);
+			//console.log(response.data.name);
 
 
 		 };

@@ -31,14 +31,19 @@ module.exports = function(app){// passed when we required the routes.js file in 
         // create todo and send back all todos after creation
     app.post('/api/gems', function(req,res){
 
+ console.log(req.body.text);
         //create a todo, information comes from AJAX request from Angular
         Gem.create({
-
-            //name :req.body.text,
-            name:"Test",
+           
+            name : req.body.text,
+            price: req.body.price,
+            description: req.body.description,
+            canPurchase: true,
+            //name:"Test",
+           // name: formData.text,
             //review : 
            
-            done: true
+            done: false
         }, function(err,gem){
 
             if(err)
