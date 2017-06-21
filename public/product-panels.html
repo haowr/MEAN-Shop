@@ -12,8 +12,9 @@
         </div>
         <div class = "panel" ng-show = "panel.isSelected(2)">
             <h4>Specifications</h4>
-            <blockquote ng-repeat="specs in product.specifications">
-            <p>{{specs}}</p>
+            <blockquote ng-repeat="i in products">
+            <p>{{i}}</p>
+            <button type="submit" ng-click="deleteGem(i._id)">Add</button>
             </blockquote>
             <form name ="submitForm" ng-controller = "SpecificationsController as specCtrl"
                         ng-submit="specCtrl.addSpec(product)">

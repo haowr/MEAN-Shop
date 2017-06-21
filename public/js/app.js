@@ -17,15 +17,24 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 		console.log(response.data);
 		//$scope.products = response.data;
 		store.products = response.data;
-		console.log($scope.products);
+		//console.log($scope.products);
 
 	};
 
 	$http.get('/api/products/').then(success1);
 
 	function success1(response){
-		console.log(response.data);
+		//console.log(response.data);
 		$scope.products = response.data;
+		console.log($scope.products);
+
+		
+
+	};
+		function success2(response){
+		//console.log(response.data);
+		//$scope.products = response.data;
+		console.log(response.data);
 
 		
 
@@ -34,11 +43,11 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 	//$http.get('/api/gems').then(success);
 
 	$scope.deleteGem = function(id){
-		$http.delete('/api/products/'+id).success(function(data){
+		$http.delete('/api/products/'+id).then(success2);
 			
-		console.log(data);
+		
 
-	})};
+	};
 
 	$scope.createGem = function(){
 
