@@ -11,14 +11,34 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 	console.log($scope.formData);
 
 	$http.get('/products.json').then(success);
+//$http.get('/api/products/').then(success);
 	function success(response){
 		console.log(response);
+		console.log(response.data);
+		//$scope.products = response.data;
 		store.products = response.data;
-		console.log(store.products);
+		console.log($scope.products);
+
+	};
+
+	$http.get('/api/products/').then(success1);
+
+	function success1(response){
+		console.log(response.data);
+		$scope.products = response.data;
+
+		
 
 	};
 
 	//$http.get('/api/gems').then(success);
+
+	$scope.deleteGem = function(id){
+		$http.delete('/api/products/'+id).success(function(data){
+			
+		console.log(data);
+
+	})};
 
 	$scope.createGem = function(){
 
@@ -47,6 +67,8 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 };
 
 }]);
+
+
 app.controller("SpecificationsController", function(){
 
 	this.specifications ="";

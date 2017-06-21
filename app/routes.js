@@ -2,7 +2,8 @@
 
 //load the gem model.
 
-var Gem = require('./models/gem');
+//var Gem = require('./models/gem');
+var Product = require('./models/gem');
 
 //expose the routes to our app with module.exports
 
@@ -31,13 +32,14 @@ module.exports = function(app){// passed when we required the routes.js file in 
         // create todo and send back all todos after creation
     app.post('/api/products', function(req,res){
 
- console.log(req.body.text);
+ //console.log(req.body.text);
         //create a todo, information comes from AJAX request from Angular
-        Gem.create({
+        Product.create({
            
             name : req.body.text,
             price: req.body.price,
-            description: req.body.description,
+            description: "ddd",
+            statistics: req.body.statistics,
             canPurchase: true,
             //name:"Test",
            // name: formData.text,
@@ -50,7 +52,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
               res.send(err);
 
               // get and return all the todos after you create another
-              Gem.find(function(err,gems){
+              Product.find(function(err,gems){
 
                 if (err)
                    res.send(err)
@@ -62,4 +64,22 @@ module.exports = function(app){// passed when we required the routes.js file in 
     });
 
 
+    app.delete('/api/products/:product_id', function(req, res){
+
+        Product.remove({
+             _id: req.params.product_id
+            }, function(err,product){
+
+            if(err)
+                res.send(err);
+
+            // get and return all the todos after you delete
+            Todo.find(function(err,product){
+
+                if(err)
+                    res.send(err)
+                    res.json(product);
+            });
+        });
+    });
 };
