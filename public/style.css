@@ -4,7 +4,7 @@ body{
 }
 
 a {
-  color: #ac005f;
+  color: #00000f;
 }
 a:hover,
 a:focus {
@@ -69,19 +69,19 @@ img{
 
 .nav-pills > li > a:hover,
 .nav-pills > li > a:focus{
-  color: #ac005f;
+  color: rgba(0,0,0,1);
 }
 
 .nav-pills > li.active > a,
 .btn-primary,
 .btn-primary:focus {
-  background: #ac005f;
+  background: rgba(0,0,0,.2);
   border: 0;
 }
 
 .nav-pills > li.active > a:hover,
 .btn-primary:hover {
-  background: #ac005f;
+  background: rgba(0,0,0,.5);
 }
 .ng-invalid.ng-dirty{
  border-color: #FA787E;
@@ -91,4 +91,26 @@ img{
 
 border-color: #78FA89;
 
+}
+p{
+
+font-family:'Muli';
+
+}
+h4{
+
+
+font-family:'Muli';
+
+}
+h3{
+
+  
+font-family:'Muli';
+}
+
+em{
+
+  
+font-family:'Muli';
 }
