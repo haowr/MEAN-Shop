@@ -54,6 +54,20 @@ app.directive('productPanels',function(){
 		controllerAs: 'panel'};
 });
 
+app.directive('specificationPanel',function(){
+
+		return{
+
+			restrict: 'E',
+			templateUrl: 'specification-panel.html'
+
+
+		};
+
+
+
+
+});
 
 
 

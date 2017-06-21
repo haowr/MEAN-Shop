@@ -35,6 +35,7 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 		//console.log(response.data);
 		//$scope.products = response.data;
 		console.log(response.data);
+		$http.get('/api/products/').then(success1);
 
 		
 
@@ -102,6 +103,8 @@ app.controller("ReviewController",function(){
 };
 
 });
+
+
 
 
 

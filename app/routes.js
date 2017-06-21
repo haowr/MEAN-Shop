@@ -73,8 +73,8 @@ module.exports = function(app){// passed when we required the routes.js file in 
             if(err)
                 res.send(err);
 
-            // get and return all the todos after you delete
-            Todo.find(function(err,product){
+            // get and return all the products after you delete
+            Product.find(function(err,product){
 
                 if(err)
                     res.send(err)
