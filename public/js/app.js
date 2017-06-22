@@ -3,11 +3,13 @@
 var app = angular.module('store',['store-products']);
 
 
-app.controller('StoreController', ['$http','$scope', function($http,$scope) {
+app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
 
     var  store = this;
 	store.products = [];
 	$scope.formData ={};
+	$scope.reverse = false;
+	$scope.propertyName = 'age';
 	console.log($scope.formData);
 
 	$http.get('/products.json').then(success);
@@ -22,7 +24,7 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 	};
 
 	$http.get('/api/products/').then(success1);
-
+    
 	function success1(response){
 		//console.log(response.data);
 		$scope.products = response.data;
@@ -42,6 +44,12 @@ app.controller('StoreController', ['$http','$scope', function($http,$scope) {
 	};
 
 	//$http.get('/api/gems').then(success);
+
+	$scope.highToLow = function(){
+
+
+		
+	}
 
 	$scope.deleteGem = function(id){
 		$http.delete('/api/products/'+id).then(success2);

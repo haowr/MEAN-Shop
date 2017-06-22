@@ -88,8 +88,12 @@ Logic
    
         <div class = "list-group">
 
-            <div class ="list-group-item" ng-repeat= "product in store.products "> <!-- orderBy filter removed not wrk on arrayjson -->
+            <div class ="list-group-item" ng-repeat= "product in store.products | orderBy:price:reverse "  > 
+
+            
                 <product-title></product-title>
+                    {{reverse}}{{product.price}}
+                    <button ng-click ="reverse = true">hello</button>
           
                 <product-gallery></product-gallery>
 
