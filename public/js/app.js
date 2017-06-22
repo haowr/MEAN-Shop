@@ -9,7 +9,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	store.products = [];
 	$scope.formData ={};
 	$scope.reverse = false;
-	$scope.propertyName = 'age';
+	$scope.propertyName = 'price';
 	console.log($scope.formData);
 
 	$http.get('/products.json').then(success);
@@ -47,6 +47,14 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	$scope.highToLow = function(){
 
+		if($scope.reverse){
+
+			$scope.reverse = false;
+
+		}else{
+
+			$scope.reverse = true;
+		}
 
 		
 	}
