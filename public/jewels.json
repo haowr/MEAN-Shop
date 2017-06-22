@@ -1,0 +1,17 @@
+[
+
+ {
+     "name": "Roi",
+     "price": 42,
+     "colors":
+     ["./img/black.jpg","./img/white.jpg","./img/maroon.jpg"],
+     "stars": 5,
+     "hearts":5
+
+}
+
+
+
+
+
+]

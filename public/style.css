@@ -162,3 +162,8 @@ font-family:'Muli';
     -o-transform:scale(2.5); /* Opera */
      transform:scale(2.5);
 }
+nav{
+
+position:fixed;
+
+}
