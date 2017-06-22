@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app = "store">
     <head>
@@ -81,10 +82,25 @@ Logic
 <div id = "storeWidth" ng-controller ="StoreController as store">
         <!--  Store Header  -->
     <header>
-      <h1 class="text-center">@>--</h1>
-      <h2 class="text-center"></h2>
+      <h1 class="text-center">House Of Jewels</h1>
+      <h2 class="text-center">– an Angular store –</h2>
     </header>
    
+        <div class = "list-group">
+
+            <div class ="list-group-item" ng-repeat= "product in store.products "> <!-- orderBy filter removed not wrk on arrayjson -->
+                <product-title></product-title>
+          
+                <product-gallery></product-gallery>
+
+
+               <!--<button ng-show="product.canPurchase">Add To Cart</button>-->
+                <!-- product-panels custom element directive -->
+                <product-panels> </product-panels>   
+            
+            </div>
+        </div>
+
     </div>
 
 </html>
