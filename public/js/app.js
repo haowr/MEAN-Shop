@@ -80,20 +80,20 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	$scope.createGem = function(){
+	$scope.createShoe= function(){
 
-		console.log($scope.formData.text);
+		//console.log($scope.formData.text);
 
-	$http.post('/api/products', $scope.formData)
+	$http.post('/api/shoes', $scope.formData)
 		 .then(success);
 
 	function success(response){
 			
-			console.log($scope.formData);
+			/*console.log($scope.formData);
 			$scope.formData ={};
 			$scope.gems = response;
 			console.log($scope.formData);
-			
+			*/
 			console.log(response);
 			//console.log(response.data.name);
 

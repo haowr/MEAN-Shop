@@ -4,7 +4,7 @@
 
 var Gem = require('./models/gem');
 var Product = require('./models/gem');
-var Shoe = require('./models/shoes');
+var Shoe = require('./models/shoe');
 
 //expose the routes to our app with module.exports
 
@@ -13,15 +13,15 @@ module.exports = function(app){// passed when we required the routes.js file in 
     //use mongoose to get all the 
     //api ------------------------------------------
     //get all gemes
-    app.get('/api/products', function(req,res){
+    app.get('/api/shoes', function(req,res){
 
-        Product.find(function(err,gems){
+        Shoe.find(function(err,shoes){
 
               // if there is an error in receiving. send the error. nothing after res.send(err);
         if(err)
             res.send(err)
         
-        res.json(gems) // return all gems in JSON format
+        res.json(shoes) // return all gems in JSON format
 
 
         });
@@ -41,23 +41,23 @@ module.exports = function(app){// passed when we required the routes.js file in 
             price: req.body.price,
             shoecolor: req.body.shoecolor,
             colors: req.body.colors,
-            stars: true,
-            hearts:"Test",
+            stars: req.body.stars,
+            hearts:req.body.hearts,
            // name: formData.text,
             //review : 
            
             done: false
-        }, function(err,gem){
+        }, function(err,shoes){
 
             if(err)
               res.send(err);
 
               // get and return all the todos after you create another
-              Product.find(function(err,gems){
+              Shoe.find(function(err,shoes){
 
                 if (err)
                    res.send(err)
-                   res.json(gems);
+                   res.json(shoes);
 
               });
         });
