@@ -36,6 +36,13 @@ li.small-image img{
 img{
   max-width: 230px;
   max-height: 230px;
+  
+}
+.list-group-item{
+
+  display:inline-block;
+  padding-right: 30px;
+
 }
 
 .img-wrap {
@@ -165,5 +172,25 @@ font-family:'Muli';
 nav{
 
 position:fixed;
+
+}
+
+.title{
+
+border: 1px solid black;
+
+}
+
+#hearts{
+
+display:absolute;
+margin-top:20px;
+float:right;
+
+
+}
+
+#titles{
+display:inline-block;
 
 }

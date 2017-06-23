@@ -7,6 +7,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
     var  store = this;
 	store.products = [];
+	store.jewels =[];
 	$scope.formData ={};
 	$scope.reverse = false;
 	$scope.propertyName = 'price';
@@ -16,12 +17,25 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 //$http.get('/api/products/').then(success);
 	function success(response){
 		console.log(response);
+		console.log("hello");
 		console.log(response.data);
 		//$scope.products = response.data;
 		store.products = response.data;
 		//console.log($scope.products);
 
 	};
+	$http.get('/jewels.json').then(success3);
+
+	function success3(response){
+		console.log("hello");
+		console.log(response.data);
+		console.log(response);
+		store.jewels = response.data;
+		console.log("hello");
+		console.log(store.jewels.length);
+
+
+	}
 
 	$http.get('/api/products/').then(success1);
     
