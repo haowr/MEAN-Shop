@@ -24,6 +24,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		//console.log($scope.products);
 
 	};
+
+	
 	$http.get('/jewels.json').then(success3);
 
 	function success3(response){
@@ -36,8 +38,17 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 
 	}
+	
+	$http.get('/api/shoes').then(success4);
 
-	$http.get('/api/products/').then(success1);
+	function success4(response){
+		console.log('hello');
+		console.log(response.data);
+		store.shoes = response.data;
+
+	}
+
+	//$http.get('/api/products/').then(success1);
     
 	function success1(response){
 		//console.log(response.data);
@@ -51,7 +62,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		//console.log(response.data);
 		//$scope.products = response.data;
 		console.log(response.data);
-		$http.get('/api/products/').then(success1);
+		$http.get('/api/shoes/').then(success1);
 
 		
 
@@ -73,8 +84,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		
 	}
 
-	$scope.deleteGem = function(id){
-		$http.delete('/api/products/'+id).then(success2);
+	$scope.deleteShoe = function(id){
+		$http.delete('/api/shoes/'+id).then(success2);
 			
 		
 

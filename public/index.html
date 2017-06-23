@@ -85,10 +85,47 @@ Logic
       <!--<h1 class="text-center">@>--</h1>-->
       <h2 class="text-center"></h2>
     </header>
-    
+    <div class ="list-group-item" ng-repeat ="shoe in store.shoes">
+        <h1>{{shoe._id}}</h1>
+        <form>
+                    <div class ="form-group">
+                
+                        <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.name" required>
+                 
+                    </div>  
+                    <div class ="form-group">
+                
+                        <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.price" required>
+                 
+                    </div>
+                    <div class ="form-group">
+                
+                        <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.shoecolor" required>
+                 
+                    </div>  
+                    <div class ="form-group">
+                
+                        <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.colors" required>
+                 
+                    </div>     
+                    <div class ="form-group">
+                
+                        <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.stars" required>
+                 
+                    </div>
+                    <div class ="form-group">
+                
+                        <input type="text" class="form-control input-lg text-center" placeholder="I am dark matter" ng-model="formData.hearts" required>
+                 
+                    </div>      
+                    <button type="submit" ng-click="createShoe()">Add</button>
+                    <button  ng-click="deleteShoe(shoe._id)">Delete</button>
+                </form>  
+    </div>
    <div class ="list-group-item" ng-repeat="jewel in store.jewels">
+      
      <div class = "title">
-     <h1 id ="titles">{{jewel.name}}</h1>
+     <h1 id ="titles">{{jewel.name}}{{jewel._id}}</h1>
      <a id = "heartlink"href="#"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
      </div>
 
