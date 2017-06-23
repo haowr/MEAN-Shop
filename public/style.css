@@ -174,19 +174,34 @@ nav{
 position:fixed;
 
 }
-
+/*
 .title{
 
 border: 1px solid black;
 
 }
-
+*/
 #hearts{
 
 display:absolute;
 margin-top:20px;
 float:right;
 
+opacity:0.5;
+transition:1s;
+
+
+}
+#hearts:hover{
+
+opacity: 1;
+
+
+}
+#heartlink{
+
+
+color:rgba(0,0,0,0);
 
 }
 
