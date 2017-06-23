@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('store',['store-products','infinite-scroll']);
+var app = angular.module('store',['store-products']);
 
 
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
