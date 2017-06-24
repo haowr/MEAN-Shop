@@ -68,18 +68,18 @@ module.exports = function(app){// passed when we required the routes.js file in 
     app.delete('/api/shoes/:shoe_id', function(req, res){
 
         Shoe.remove({
-             _id: req.params.product_id
+             _id: req.params.shoe_id
             }, function(err,shoe){
 
             if(err)
                 res.send(err);
 
             // get and return all the products after you delete
-            Shoe.find(function(err,shoe){
+            Shoe.find(function(err,shoes){
 
                 if(err)
                     res.send(err)
-                    res.json(shoe);
+                    res.json(shoes);
             });
         });
     });
