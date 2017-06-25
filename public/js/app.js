@@ -79,6 +79,13 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		
 
 	};
+	function clradd(response){
+
+
+			
+
+
+	};
 	
 
 	//$http.get('/api/gems').then(success);
@@ -104,6 +111,15 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
+	$scope.addColor = function(id){
+
+      $http.post('/api/shoes'+id).then(success2);
+
+
+
+	  };
+
+	
 	$scope.createShoe= function(){
 
 		//console.log($scope.formData.text);

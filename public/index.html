@@ -120,20 +120,23 @@ Logic
                     <button type="submit" ng-click="createShoe()">Add</button>
                     
                 </form>  
+
+
     <div class ="list-group-item" ng-repeat ="shoe in store.shoes">
+
+
         <h1>{{shoe.name}}</h1>
         <h2>{{shoe._id}}</h1>
         <p>{{shoe.price | currency}}</p>
-
         <img ng-src="{{shoe.shoecolor[0]}}"/>
         
-        <ul ng-repeat="s in store.shoes">
-          <p>{{s.colors}}</p>
-          <li ng-repeat"color in s.colors">
-           <img ng-src ="{{color}}"/>
-           <p>{{color}}</p>
-           </li>
-       </ul>  
+            <ul ng-repeat="s in shoe.colors">
+                <p>{{s}}</p>
+                <!--<li ng-repeat="color in s.colors">
+                    <img ng-src ="{{color}}"/>
+                    <p>{{color}}</p>
+                </li>-->
+            </ul>  
         
         
         
