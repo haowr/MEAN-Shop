@@ -7,7 +7,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
     var  store = this;
 	store.products = [];
-	store.colors = [];
+	store.shango = [];
 	store.jewels =[];
 	$scope.formData ={};
 	$scope.reverse = false;
@@ -48,8 +48,16 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		store.shoes = response.data;
 		//store.colors = response.data.colors;
 		console.log('hello1');
-		console.log(response.data[0]);
+		console.log(store.shoes);
+		//store.shango.push(store.shoes);
+		/*for(var i =0; i < store.shoes.length; i++){
 
+          store.shango.push(store.shoes[i].colors);
+
+		}
+		*/
+		//console.log(store.shango);
+		
 	}
 
 	//$http.get('/api/products/').then(success1);
