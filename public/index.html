@@ -124,19 +124,23 @@ Logic
 
     <div class ="list-group-item" ng-repeat ="shoe in store.shoes">
 
-
-        <h1>{{shoe.name}}</h1>
+          <h1>{{shoe.name}}</h1>
         <h2>{{shoe._id}}</h1>
         <p>{{shoe.price | currency}}</p>
-        <img ng-src="{{shoe.shoecolor[0]}}"/>
+        <a id = "heartlink"href="#"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
+<ul class="img-thumbnails clearfix">
+                        <li>
+                          <img ng-src="{{shoe.shoecolor[0]}}"/>
+                        </li>
+                        <li class = "small-image pull-left thumbnail" ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
+                        <img ng-src="{{s}}"/>
+                        </li>
+                    </ul>
+
+    
         
-            <ul ng-repeat="s in shoe.colors">
-                <p>{{s}}</p>
-                <!--<li ng-repeat="color in s.colors">
-                    <img ng-src ="{{color}}"/>
-                    <p>{{color}}</p>
-                </li>-->
-            </ul>  
+        
+           
         
         
         

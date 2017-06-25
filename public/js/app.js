@@ -82,7 +82,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	function clradd(response){
 
 
-			
+
 
 
 	};
@@ -111,13 +111,13 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	$scope.addColor = function(id){
+	//$scope.addColor = function(id){
 
-      $http.post('/api/shoes'+id).then(success2);
+//      $http.post('/api/shoes'+id).then(success2);
 
 
 
-	  };
+	 // };
 
 	
 	$scope.createShoe= function(){
