@@ -7,6 +7,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
     var  store = this;
 	store.products = [];
+	store.colors = [];
 	store.jewels =[];
 	$scope.formData ={};
 	$scope.reverse = false;
@@ -45,6 +46,9 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		console.log('hello');
 		console.log(response.data);
 		store.shoes = response.data;
+		//store.colors = response.data.colors;
+		console.log('hello1');
+		console.log(response.data[0]);
 
 	}
 

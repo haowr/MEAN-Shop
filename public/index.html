@@ -126,13 +126,13 @@ Logic
         <p>{{shoe.price | currency}}</p>
 
         <img ng-src="{{shoe.shoecolor[0]}}">
-        <div class="list-group-item" ng-repeat="color in shoe.colors[0]">
+        <ul ng-repeat="color in shoe.colors[0]">
            
 
-          <img ng-src="{{color}}"/>
+          <li><img ng-src="{{color}}"/></li>
           <p>{{color}}</p>
          
-           
+         </ul>  
         </div>
         
         
