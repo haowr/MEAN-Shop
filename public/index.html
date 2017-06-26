@@ -6,7 +6,7 @@
         <link rel="stylesheet" href = "bootstrap.min.css" type = "text/css">
         
         <link rel="stylesheet" href  ="./css/main.css" type ="text/css">
-        <link rel="stylesheet" href = "/style.css" type ="text/css">
+        <link rel="stylesheet" href = "./css/styleindex.css" type ="text/css">
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
         <script src ="https://code.jquery.com/jquery-3.1.0.js"></script><!-- load jquery -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -86,7 +86,7 @@ Logic
       <h2 class="text-center"></h2>
     </header>
 
-      <form>
+     <!-- <form>
                     <div class ="form-group">
                 
                         <input type="text" class="form-control input-lg text-center" placeholder="name" ng-model="formData.name" required>
@@ -119,15 +119,17 @@ Logic
                     </div>      
                     <button type="submit" ng-click="createShoe()">Add</button>
                     
-                </form>  
+                </form>  -->
 
 
-    <div class ="list-group-item" ng-repeat ="shoe in store.shoes">
+    <div class= "landing center" ng-repeat ="shoe in store.shoes">
 
-          <h1>{{shoe.name}}</h1>
-        <h2>{{shoe._id}}</h1>
-        <p>{{shoe.price | currency}}</p>
-        <a id = "heartlink"ng-click="addHeart(shoe._id)"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
+          <h1>{{shoe.name}}
+       <!-- <h2>{{shoe._id}}</h1>-->
+        <em class= "pull-right">{{shoe.price | currency}}</em>
+        <br>
+        <a class = "pull-right" id = "heartlink" ng-click="addHeart(shoe._id)"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
+        </h1>
 <ul class="img-thumbnails clearfix">
                         <li>
                           <img ng-src="{{shoe.shoecolor[0]}}"/>
@@ -135,7 +137,7 @@ Logic
                         <li class = "small-image pull-left thumbnail" ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
                         <img ng-src="{{s}}"/>
                         </li>
-                    </ul>
+</ul>
 
     
         
@@ -147,7 +149,7 @@ Logic
         <button  ng-click="deleteShoe(shoe._id)">Delete</button>
       
       </div>
-
+<!--
    <div class ="list-group-item" ng-repeat="jewel in store.jewels">
       
      <div class = "title">
@@ -163,7 +165,7 @@ Logic
                         <img ng-src="{{color}}"/>
                         </li>
                     </ul>
-   </div>
+   </div>-->
 
 
   </div>
