@@ -3,7 +3,16 @@
     var app = angular.module('store-products',[]);
 
 
+    app.directive("landingPage",function(){
 
+
+		return{
+
+			restrict: 'E',
+			templateUrl:'./landing-page.html'
+		}
+
+	});
 
     app.directive('productGallery', function(){
 

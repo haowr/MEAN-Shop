@@ -1,0 +1,25 @@
+<center><div class= "landing" ng-repeat ="shoe in store.shoes">
+
+      <div class ="each">
+
+        <h1 class = "pull-left">{{shoe.name}}</h1>
+       <!-- <h2>{{shoe._id}}</h1>-->
+        <em class= "pull-right">{{shoe.price | currency}}</em>
+        <br>
+        <a class = "pull-right" id = "heartlink" ng-click="addHeart(shoe._id)"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
+        
+
+
+        <ul class="img-thumbnails clearfix">
+              <li>
+                  <img ng-src="{{shoe.shoecolor[0]}}"/>
+              </li>
+              <li class = "small-image pull-left thumbnail" ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
+                   <img ng-src="{{s}}"/>
+              </li>
+        </ul>
+        <br>
+        <button  ng-click="deleteShoe(shoe._id)">Delete</button>
+      </div>
+   </div>
+    </center>

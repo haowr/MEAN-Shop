@@ -212,12 +212,11 @@ color:rgba(0,0,0,0);
 display:inline-block;
 
 }
+
+/*LANDING PAGE */
 .landing{
 
- width:500px; 
-display: inline-block;
-
-
-
+ width:250px; 
+ display: inline-block;
 
 }
