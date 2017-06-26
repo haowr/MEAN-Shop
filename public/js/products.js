@@ -3,13 +3,13 @@
     var app = angular.module('store-products',[]);
 
 
-    app.directive("landingGallery",function(){
+    app.directive('landingGallery',function(){
 
 
 		return{
 
 			restrict: 'E',
-			templateUrl:'./landing-gallery.html',
+			templateUrl:'landing-gallery.html',
 					controller: function() {
     	this.imageIndex = 0;
     	this.currentImageChange = function(imageNumber) {
@@ -20,7 +20,20 @@
 		}
 
 	});
-	app.directive('')
+	app.directive('landingPage',function(){
+
+		return{
+
+				restrict:'E',
+				templateUrl:'landing-page.html'
+
+
+		}
+
+
+
+
+	});
 
     app.directive('productGallery', function(){
 

@@ -6,7 +6,8 @@ var app = angular.module('store',['store-products']);
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
 
     var  store = this;
-	var hearto= 0;
+	var status=0;
+	store.hearto= 0;
 	store.products = [];
 	store.shango = [];
 	store.jewels =[];
@@ -113,10 +114,21 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	};
 
 	$scope.addHeart = function(id){
+         
 
-		hearto++
-		console.log(hearto);
-			$http.post('/api/shoes/'+id).then(success2);
+		 if(status===0){
+				
+				store.hearto++;
+				status= 1;
+		}else{
+
+			//this.status=1;
+			store.hearto--;
+			status=0;
+		}
+		//store.hearto++
+		console.log(status);
+			//$http.post('/api/shoes/'+id).then(success2);
 
 
 
@@ -140,7 +152,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 
 		 };
-		 
+
 };
 
 }]);

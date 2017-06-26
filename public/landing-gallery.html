@@ -1,13 +1,3 @@
-<center><div class= "landing" ng-repeat ="shoe in store.shoes">
-
-      <div class ="each">
-
-        <h1 class = "pull-left">{{shoe.name}}</h1>
-       <!-- <h2>{{shoe._id}}</h1>-->
-        <em class= "pull-right">{{shoe.price | currency}}</em>
-        <br>
-        <a class = "pull-right" id = "heartlink" ng-click="addHeart(shoe._id)"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
-        
 
 
         <ul class="img-thumbnails clearfix">
@@ -19,7 +9,3 @@
               </li>
         </ul>
         <br>
-        <button  ng-click="deleteShoe(shoe._id)">Delete</button>
-      </div>
-   </div>
-    </center>
