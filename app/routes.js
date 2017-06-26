@@ -33,7 +33,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
         // create todo and send back all todos after creation
     app.post('/api/shoes', function(req,res){
 
- //console.log(req.body.text);
+ console.log("LLO");
         //create a todo, information comes from AJAX request from Angular
         Shoe.create({
            
