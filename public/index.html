@@ -122,7 +122,7 @@ Logic
                 </form>  -->
 
 
-    <div class= "landing center" ng-repeat ="shoe in store.shoes">
+    <div class= "landing" ng-repeat ="shoe in store.shoes">
 
           <h1>{{shoe.name}}
        <!-- <h2>{{shoe._id}}</h1>-->
@@ -130,25 +130,19 @@ Logic
         <br>
         <a class = "pull-right" id = "heartlink" ng-click="addHeart(shoe._id)"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
         </h1>
-<ul class="img-thumbnails clearfix">
-                        <li>
-                          <img ng-src="{{shoe.shoecolor[0]}}"/>
-                        </li>
-                        <li class = "small-image pull-left thumbnail" ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
-                        <img ng-src="{{s}}"/>
-                        </li>
-</ul>
 
-    
-        
-        
-           
-        
-        
-        
+
+        <ul class="img-thumbnails clearfix">
+              <li>
+                  <img ng-src="{{shoe.shoecolor[0]}}"/>
+              </li>
+              <li class = "small-image pull-left thumbnail" ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
+                   <img ng-src="{{s}}"/>
+              </li>
+        </ul>
+        <br>
         <button  ng-click="deleteShoe(shoe._id)">Delete</button>
-      
-      </div>
+   </div>
 <!--
    <div class ="list-group-item" ng-repeat="jewel in store.jewels">
       
