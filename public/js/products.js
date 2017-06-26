@@ -9,7 +9,14 @@
 		return{
 
 			restrict: 'E',
-			templateUrl:'./landing-page.html'
+			templateUrl:'./landing-page.html',
+					controller: function() {
+    	this.imageIndex = 0;
+    	this.currentImageChange = function(imageNumber) {
+      	console.log(imageNumber);
+      	this.imageIndex = imageNumber || 0;
+    	};},
+		controllerAs: 'gallery'
 		}
 
 	});

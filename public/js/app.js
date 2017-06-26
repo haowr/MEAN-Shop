@@ -140,11 +140,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 
 		 };
-		 //.error(function(data){
-
-		//	console.log('Error: '+data);
-
-		 //});
+		 
 };
 
 }]);
