@@ -112,6 +112,16 @@ color: rgba(0,0,0,.5);
 border-color: #78FA89;
 
 }
+.hearted{
+
+
+display:none;
+
+}
+#hearted{
+
+  position:fixed;
+}
 p{
 
 font-family:'Muli';
@@ -190,7 +200,7 @@ display:absolute;
 margin-top:20px;
 float:right;
 
-opacity:0.5;
+opacity:0;
 transition:1s;
 
 

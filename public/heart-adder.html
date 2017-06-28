@@ -1,1 +1,3 @@
-<a class = "pull-right" id = "heartlink" ng-click="store.addHeart(shoe._id,shoe.hearts)"><img id = "hearts" ng-src= "{{store.heartlink}}"/></a>
+<a class = "pull-right" id = "heartlink" ng-click="store.addHeart(shoe._id,shoe.hearts)"><img id ="hearted"ng-class="{hearted: shoe.hearts===1}"  ng-src= "{{store.heartlink}}"/></a>
+
+<a class = "pull-right" id = "heartlink" ng-click="store.addHeart(shoe._id,shoe.hearts)"><img  ng-src= "{{store.heartlink}}"/></a>
