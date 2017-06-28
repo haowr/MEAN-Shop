@@ -31,27 +31,25 @@ module.exports = function(app){// passed when we required the routes.js file in 
     });
 
         // create todo and send back all todos after creation
-    app.post('/api/shoes', function(req,res){
+    app.put('/api/shoes/:shoe_id', function(req,res){
 
  console.log("LLO");
         //create a todo, information comes from AJAX request from Angular
-        Shoe.create({
+const doc ={
            
-            name : req.body.name,
-            price: req.body.price,
-            shoecolor: req.body.shoecolor,
-            colors: req.body.colors,
-            stars: req.body.stars,
-            hearts:req.body.hearts,
+           
+            hearts:req.params.shoe_id
            // name: formData.text,
             //review : 
            
-            done: false
-        }, function(err,shoes){
+           // done: false
+        };
 
-            if(err)
+        Shoe.update({_id: req.params.id},doc, function(err,shoes){
+
+            if(err){
               res.send(err);
-
+            }
               // get and return all the todos after you create another
               Shoe.find(function(err,shoes){
 

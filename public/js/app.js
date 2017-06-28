@@ -7,7 +7,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
     var  store = this;
 	var status=0;
-	store.hearto= 0;
+	store.heartlink= "./img/heartsmall.jpg";
+	store.hearto= 5;
 	store.products = [];
 	store.shango = [];
 	store.jewels =[];
@@ -75,7 +76,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		function success2(response){
 		//console.log(response.data);
 		//$scope.products = response.data;
-		console.log(response.data);
+		//console.log(response.data);
 		$http.get('/api/shoes/').then(success4);
 
 		
@@ -113,7 +114,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	$scope.addHeart = function(id){
+	store.addHeart = function(id){
          
 
 		 if(status===0){
@@ -128,11 +129,14 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		}
 		//store.hearto++
 		console.log(status);
-			//$http.post('/api/shoes/'+id).then(success2);
+		console.log(id);
+		//console.log(params.id);
+			$http.put('/api/shoes/'+id).then(success2);
 
 
 
 	}
+	
 	$scope.createShoe= function(){
 
 		//console.log($scope.formData.text);
@@ -170,6 +174,7 @@ app.controller("SpecificationsController", function(){
 
 });
 
+
 app.controller("ReviewController",function(){
 
 	this.review ={};
@@ -182,8 +187,37 @@ app.controller("ReviewController",function(){
 };
 
 });
+/*
+app.controller('HeartController',function(){
 
 
+  this.addHeart = function(id){
+         
+
+		 if(status===0){
+				
+				store.hearto++;
+				status= 1;
+		}else{
+
+			//this.status=1;
+			store.hearto--;
+			status=0;
+		}
+		//store.hearto++
+		console.log(status);
+		console.log(id);
+		console.log("OH");
+			//$http.post('/api/shoes/'+id).then(success2);
+
+
+
+	}
+
+
+});
+
+*/
 
 
 

@@ -2,6 +2,40 @@
 
     var app = angular.module('store-products',[]);
 
+//var hearto = 0;
+//var status =0;
+app.directive("heartAdder",function(){
+
+return{
+
+	restrict: 'E',
+	templateUrl: 'heart-adder.html',
+	controller: function(){ 
+		
+		
+		this.addHeart = function(id){
+
+		 if(status===0){
+				
+				hearto++;
+				status= 1;
+		}else{
+
+			//this.status=1;
+		hearto--;
+			status=0;
+		}
+console.log(hearto);
+		}
+     
+	},
+	controllerAs:'heartCtrl'
+
+
+}
+
+
+});
 
     app.directive('landingGallery',function(){
 
