@@ -5,6 +5,7 @@
 var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
+var heart = 8;
 
 //expose the routes to our app with module.exports
 
@@ -33,19 +34,16 @@ module.exports = function(app){// passed when we required the routes.js file in 
         // create todo and send back all todos after creation
     app.put('/api/shoes/:shoe_id', function(req,res){
 
- console.log("LLO");
+ console.log(req.params.shoe_id);
+ heart++
         //create a todo, information comes from AJAX request from Angular
 const doc ={
            
            
-            hearts:req.params.shoe_id
-           // name: formData.text,
-            //review : 
-           
-           // done: false
-        };
+            hearts: heart
+};
 
-        Shoe.update({_id: req.params.id},doc, function(err,shoes){
+        Shoe.update({_id: req.params.shoe_id},doc, function(err,shoes){
 
             if(err){
               res.send(err);

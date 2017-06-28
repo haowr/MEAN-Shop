@@ -74,7 +74,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 		function success2(response){
-		//console.log(response.data);
+		console.log(response.data);
 		//$scope.products = response.data;
 		//console.log(response.data);
 		$http.get('/api/shoes/').then(success4);
