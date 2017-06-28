@@ -50,6 +50,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
     });
 
+
         // create todo and send back all todos after creation
     app.put('/api/shoes/:shoe_id', function(req,res){
 
@@ -57,7 +58,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
  heart++
   id = req.params.shoe_id;
         //create a todo, information comes from AJAX request from Angular
-const doc ={
+/*const doc ={
            
            
             hearts: heart
@@ -77,20 +78,64 @@ const doc ={
 
               });
         });
+*/
+    });
+
+    app.get('/api/shoes/:shoe_id/:shoe_heart',function(req,res){
+     var  data = {
+        "info": {
+            "id": req.params.shoe_id,
+            "hearts": req.params.shoe_heart
+        }
+    };
+    console.log(data);
+
+
 
     });
-    app.put('/api/heartscounts/', function(req,res){
+       app.put('/api/shoes/:shoe_id/:shoe_heart', function(req,res){
 
  console.log(req.params);
+ console.log(req.params.shoe_id);
+ console.log(req.params.shoe_heart);
+ heart++
+  id = req.params.shoe_id;
+        //create a todo, information comes from AJAX request from Angular
+const doc ={
+           
+           
+            hearts: req.params.shoe_heart
+};
+
+        Shoe.update({_id: req.params.shoe_id},doc, function(err,shoes){
+
+            if(err){
+              res.send(err);
+            }
+              // get and return all the todos after you create another
+              Shoe.find(function(err,shoes){
+
+                if (err)
+                   res.send(err)
+                   res.json(shoes);
+
+              });
+        });
+
+    });
+    app.put('/api/heartscounts/:heartNum', function(req,res){
+
+ console.log(req.params);
+ console.log(id);
  //heart++
         //create a todo, information comes from AJAX request from Angular
 const doc ={
            
            
-            hearts: req.params.shoe_id
+            hearts: req.params.heartNum
 };
 
-        Shoe.update({_id: req.params.id},doc, function(err,shoes){
+        Shoe.update({_id: id},doc, function(err,shoes){
 
             if(err){
               res.send(err);

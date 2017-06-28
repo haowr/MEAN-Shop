@@ -82,8 +82,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		
 
 	};
-	function clradd(response){
-
+	function success5(response){
+console.log(response.data);
 
 
 
@@ -114,7 +114,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	store.addHeart = function(id,heartNum){
+	/*store.addHeart = function(id,heartNum){
          console.log(heartNum);
 
 		 if(status===0){
@@ -132,12 +132,41 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		console.log(id);
 		//console.log(params.id);
 			$http.put('/api/shoes/'+id).then(success2);
-			$http.put('/api/shoes/heartNum/'+heartNum).then(success2);
+			$http.put('/api/heartscounts/'+heartNum).then(success2);
+			//$http.put('/api/heartscounts/'+id).then(success2);
+
+
+
+	}
+	*/
+	store.addHeart = function(id,heartNum){
+         console.log(heartNum);
+
+		 if(status===0){
+				
+				//store.hearto++;
+				heartNum = heartNum + 1;
+				status= 1;
+		}else{
+
+			//this.status=1;
+			//store.hearto--;
+			heartNum = heartNum - 1;
+			status=0;
+		}
+		//store.hearto++
+		console.log(status);
+		console.log(id);
+		//console.log(params.id);
+			//$http.put('/api/shoes/'+id).then(success5);
+			$http.put('/api/shoes/'+id+'/'+heartNum).then(success2);
+			//$http.put('/api/heartscounts/'+id).then(success2);
 
 
 
 	}
 	
+
 	$scope.createShoe= function(){
 
 		//console.log($scope.formData.text);
