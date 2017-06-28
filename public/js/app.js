@@ -53,12 +53,6 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		console.log('hello1');
 		console.log(store.shoes);
 		//store.shango.push(store.shoes);
-		/*for(var i =0; i < store.shoes.length; i++){
-
-          store.shango.push(store.shoes[i].colors);
-
-		}
-		*/
 		//console.log(store.shango);
 		
 	}
@@ -82,11 +76,22 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		
 
 	};
+	function success6(response){
+
+		console.log(response.data);
+		console.log("joy");
+		console.log(store.shoes);
+		for(var i=0; i<response.data.length; i++){
+
+		store.shoes[i].hearts= response.data[i].hearts;
+
+	}
+	console.log(store.shoes[0].hearts);
+	console.log(response.data[0].hearts);
+	}
 	function success5(response){
-console.log(response.data);
 
-
-
+		$http.get('/api/shoes').then(success6);
 
 	};
 	
@@ -159,12 +164,9 @@ console.log(response.data);
 		console.log(id);
 		//console.log(params.id);
 			//$http.put('/api/shoes/'+id).then(success5);
-			$http.put('/api/shoes/'+id+'/'+heartNum).then(success2);
+			$http.put('/api/shoes/'+id+'/'+heartNum).then(success5);
 			//$http.put('/api/heartscounts/'+id).then(success2);
-
-
-
-	}
+}
 	
 
 	$scope.createShoe= function(){
@@ -217,44 +219,5 @@ app.controller("ReviewController",function(){
 };
 
 });
-/*
-app.controller('HeartController',function(){
 
-
-  this.addHeart = function(id){
-         
-
-		 if(status===0){
-				
-				store.hearto++;
-				status= 1;
-		}else{
-
-			//this.status=1;
-			store.hearto--;
-			status=0;
-		}
-		//store.hearto++
-		console.log(status);
-		console.log(id);
-		console.log("OH");
-			//$http.post('/api/shoes/'+id).then(success2);
-
-
-
-	}
-
-
-});
-
-*/
-
-
-
-
-
-
-
-
-//var gems = 
 }());
