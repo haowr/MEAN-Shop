@@ -74,7 +74,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 		function success2(response){
-		console.log(response.data);
+		console.log(response);
 		//$scope.products = response.data;
 		//console.log(response.data);
 		$http.get('/api/shoes/').then(success4);
@@ -114,8 +114,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	store.addHeart = function(id){
-         
+	store.addHeart = function(id,heartNum){
+         console.log(heartNum);
 
 		 if(status===0){
 				
@@ -132,6 +132,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		console.log(id);
 		//console.log(params.id);
 			$http.put('/api/shoes/'+id).then(success2);
+			$http.put('/api/shoes/heartNum/'+heartNum).then(success2);
 
 
 
