@@ -112,15 +112,40 @@ color: rgba(0,0,0,.5);
 border-color: #78FA89;
 
 }
-.hearted{
+#emptyheart{
 
-
-display:none;
+position:absolute;
 
 }
+.hearted{
+
+opacity:0;
+
+
+}
+.fa-heart{
+position:absolute;
+margin-left:195px;
+ opacity:0;
+}
+
 #hearted{
 
-  position:fixed;
+  opacity:0;
+}
+.heartbutton{
+
+opacity:1;
+
+}
+#heartbutton{
+
+position: absolute;
+margin-right:30px;
+
+}
+.heartcount{
+ opacity:0;
 }
 p{
 
@@ -225,8 +250,8 @@ display:inline-block;
 
 /*LANDING PAGE */
 .landing{
-
+ border-top:1px solid black;
  width:250px; 
  display: inline-block;
-
+padding-right: 20px;
 }
