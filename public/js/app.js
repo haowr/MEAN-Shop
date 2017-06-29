@@ -7,6 +7,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
     var  store = this;
 	var status=0;
+	var in_progress = true;
 	store.heartlink= "./img/heartsmall.jpg";
 	store.hearto= 5;
 	store.products = [];
@@ -15,10 +16,12 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$scope.formData ={};
 	$scope.reverse = false;
 	$scope.propertyName = 'price';
-	console.log($scope.formData);
+	$scope.busy = true;
+	$scope.allData =[];
+	
 
-	$http.get('/products.json').then(success);
-//$http.get('/api/products/').then(success);
+	
+
 	function success(response){
 		console.log(response);
 		console.log("hello");
@@ -28,9 +31,25 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		//console.log($scope.products);
 
 	};
+		
+	function success1(response){
+		//console.log(response.data);
+		$scope.products = response.data;
+		console.log($scope.products);
 
-	
-	$http.get('/jewels.json').then(success3);
+		
+
+	};
+
+	function success2(response){
+		console.log(response);
+		//$scope.products = response.data;
+		//console.log(response.data);
+		$http.get('/api/shoes/').then(success4);
+
+		
+
+	};
 
 	function success3(response){
 		console.log("hello");
@@ -41,9 +60,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		console.log(store.jewels.length);
 
 
-	}
-	
-	$http.get('/api/shoes').then(success4);
+	};
 
 	function success4(response){
 		console.log('hello');
@@ -55,25 +72,10 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		//store.shango.push(store.shoes);
 		//console.log(store.shango);
 		
-	}
-
-	//$http.get('/api/products/').then(success1);
-    
-	function success1(response){
-		//console.log(response.data);
-		$scope.products = response.data;
-		console.log($scope.products);
-
-		
-
 	};
-		function success2(response){
-		console.log(response);
-		//$scope.products = response.data;
-		//console.log(response.data);
-		$http.get('/api/shoes/').then(success4);
+	function success5(response){
 
-		
+		$http.get('/api/shoes').then(success6);
 
 	};
 	function success6(response){
@@ -86,17 +88,21 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		store.shoes[i].hearts= response.data[i].hearts;
 
 	}
-	console.log(store.shoes[0].hearts);
-	console.log(response.data[0].hearts);
-	}
-	function success5(response){
-
-		$http.get('/api/shoes').then(success6);
-
+		console.log(store.shoes[0].hearts);
+		console.log(response.data[0].hearts);
 	};
 	
 
-	//$http.get('/api/gems').then(success);
+	$http.get('/products.json').then(success);
+	$http.get('/jewels.json').then(success3);
+	$http.get('/api/shoes').then(success4);
+
+
+	$scope.loadImages = function(){
+
+
+
+	}
 
 	$scope.highToLow = function(){
 
@@ -119,31 +125,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	/*store.addHeart = function(id,heartNum){
-         console.log(heartNum);
 
-		 if(status===0){
-				
-				store.hearto++;
-				status= 1;
-		}else{
-
-			//this.status=1;
-			store.hearto--;
-			status=0;
-		}
-		//store.hearto++
-		console.log(status);
-		console.log(id);
-		//console.log(params.id);
-			$http.put('/api/shoes/'+id).then(success2);
-			$http.put('/api/heartscounts/'+heartNum).then(success2);
-			//$http.put('/api/heartscounts/'+id).then(success2);
-
-
-
-	}
-	*/
 	store.addHeart = function(id,heartNum){
 		console.log("hello");
          console.log(heartNum);
@@ -177,7 +159,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 			//$http.put('/api/shoes/'+id).then(success5);
 			$http.put('/api/shoes/'+id+'/'+heartNum).then(success5);
 			//$http.put('/api/heartscounts/'+id).then(success2);
-}
+	};
 	
 
 	$scope.createShoe= function(){

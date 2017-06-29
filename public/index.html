@@ -11,11 +11,10 @@
         <script src ="https://code.jquery.com/jquery-3.1.0.js"></script><!-- load jquery -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script type ="text/javascript" src="angular.min.js"></script>
-       <!-- <script type='text/javascript' src='./js/ng-infinite-scroll.min.js'></script>-->
+        <script type='text/javascript' src='./js/ng-infinite-scroll.min.js'></script>
         <script type ="text/javascript" src="./js/app.js"></script>
         <script type ="text/javascript" src="./js/products.js"></script>
-        
-<script src="https://use.fontawesome.com/b397913843.js"></script>
+        <script src="https://use.fontawesome.com/b397913843.js"></script>
 
       <!--  <script type ="text/javascript" src="./js/main.js"></script>-->
         
@@ -88,26 +87,13 @@ Logic
       <!--<h1 class="text-center">@>--</h1>-->
       <h2 class="text-center"></h2>
     </header>
+    
+    <div class = "container" when-scrolled="loadShoes()" > 
       <landing-page></landing-page>
-<!--
-   <div class ="list-group-item" ng-repeat="jewel in store.jewels">
       
-     <div class = "title">
-     <h1 id ="titles">{{jewel.name}}{{jewel._id}}</h1>
-     <a id = "heartlink"href="#"><img id = "hearts" src= "./img/heartsmall.jpg"/></a>
-     </div>
+    </div>
 
-                    <ul class="img-thumbnails clearfix">
-                        <li ng-repeat="shoe in jewel.shoecolor">
-                          <img ng-src="{{shoe}}"/>
-                          </li>
-                        <li class = "small-image pull-left thumbnail" ng-repeat="color in jewel.colors" ng-click="gallery.currentImageChange($index)">
-                        <img ng-src="{{color}}"/>
-                        </li>
-                    </ul>
-   </div>-->
-
-
+<div ng-show='busy'><p>loading data</p></div>
   </div>
 </div>
 
