@@ -255,3 +255,9 @@ display:inline-block;
  display: inline-block;
 padding-right: 20px;
 }
+/*.navbar{
+
+  position:fixed;
+  width:100%;
+  z-index:10000;
+}*/

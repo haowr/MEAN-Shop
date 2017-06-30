@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('store',['store-products']);
+var app = angular.module('store',['store-products','infinite-scroll']);
 
 
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
@@ -8,6 +8,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
     var  store = this;
 	var status=0;
 	var in_progress = true;
+	var _page =1;
 	store.heartlink= "./img/heartsmall.jpg";
 	store.hearto= 5;
 	store.products = [];
@@ -18,6 +19,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$scope.propertyName = 'price';
 	$scope.busy = true;
 	$scope.allData =[];
+	store.shoes=[];
+	$scope.ids=[];
 	
 
 	
@@ -62,17 +65,24 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-	function success4(response){
+/*	function success4(response){
 		console.log('hello');
 		console.log(response.data);
+		
 		store.shoes = response.data;
+		store.shoes=[];
 		//store.colors = response.data.colors;
 		console.log('hello1');
+		console.log(store.shoes[0]);
 		console.log(store.shoes);
+		for(var i =0; i < store.shoes.length; i++){
+
+			$scope.ids.push(store.shoes[i]._id)
+		}
 		//store.shango.push(store.shoes);
-		//console.log(store.shango);
+		console.log($scope.ids);
 		
-	};
+	};*/
 	function success5(response){
 
 		$http.get('/api/shoes').then(success6);
@@ -91,11 +101,31 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		console.log(store.shoes[0].hearts);
 		console.log(response.data[0].hearts);
 	};
+	function success7(response){
+
+		$scope.allData = response.data;
+		console.log('toy');
+		console.log($scope.allData);
+
+	};
+	$scope.loadMore= function(){
+		_page++;
+	console.log($scope.allData);
+	store.shoes = store.shoes.concat($scope.allData);
+	console.log("oy");
+	console.log(store.shoes);
+
+		
 	
+			
+	
+
+	};
 
 	$http.get('/products.json').then(success);
 	$http.get('/jewels.json').then(success3);
-	$http.get('/api/shoes').then(success4);
+	//$http.get('/api/shoes').then(success4);
+	$http.get('/api/shoes').then(success7);
 
 
 	$scope.loadImages = function(){

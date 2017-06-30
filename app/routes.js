@@ -92,7 +92,9 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
 
 
-    });
+});
+
+   
        app.put('/api/shoes/:shoe_id/:shoe_heart', function(req,res){
 
  console.log(req.params);
