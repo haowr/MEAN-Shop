@@ -65,7 +65,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	};
 
-/*	function success4(response){
+	function success4(response){
 		console.log('hello');
 		console.log(response.data);
 		
@@ -82,7 +82,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		//store.shango.push(store.shoes);
 		console.log($scope.ids);
 		
-	};*/
+	};
 	function success5(response){
 
 		$http.get('/api/shoes').then(success6);
