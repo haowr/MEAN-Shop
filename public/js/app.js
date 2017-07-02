@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('store',['store-products','infinite-scroll']);
+var app = angular.module('store',['store-products','infinite-scroll','ngRoute']);
 
 
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
@@ -118,7 +118,9 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		_page++;
 		console.log("Page#"+_page);
 	console.log($scope.allData);
+	if ($scope.allData[0].page[_page]){
 	store.shoes = store.shoes.concat($scope.allData[0].page[_page]);
+	}
 	console.log("oy");
 	console.log(store.shoes);
 
@@ -249,5 +251,7 @@ app.controller("ReviewController",function(){
 };
 
 });
+
+
 
 }());
