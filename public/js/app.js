@@ -8,7 +8,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
     var  store = this;
 	var status=0;
 	var in_progress = true;
-	var _page =1;
+	var _page =-1;
 	store.heartlink= "./img/heartsmall.jpg";
 	store.hearto= 5;
 	store.products = [];
@@ -18,6 +18,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$scope.reverse = false;
 	$scope.propertyName = 'price';
 	$scope.busy = true;
+	$scope.allData =[];
 	$scope.allData =[];
 	store.shoes=[];
 	$scope.ids=[];
@@ -104,14 +105,20 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	function success7(response){
 
 		$scope.allData = response.data;
+	store.shoes= $scope.allData[0].page[0];
 		console.log('toy');
 		console.log($scope.allData);
+		console.log($scope.allData[0].page[0]);
+		console.log($scope.allData[0].page[1]);
+		console.log($scope.allData[0].page[2]);
+		console.log($scope.allData[0].page[3]);
 
 	};
 	$scope.loadMore= function(){
 		_page++;
+		console.log("Page#"+_page);
 	console.log($scope.allData);
-	store.shoes = store.shoes.concat($scope.allData);
+	store.shoes = store.shoes.concat($scope.allData[0].page[_page]);
 	console.log("oy");
 	console.log(store.shoes);
 
