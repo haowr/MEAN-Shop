@@ -11,8 +11,8 @@
     var database = require('./config/database');
     var port    = process.env.PORT || 8888;
     var passport = require('passport');
-    var LocalStrategy = require('passport-local').Stragety;
-
+    var LocalStrategy = require('passport-local').Strategy;
+    var UserModel = require('./app/models/user');
     // configuration ===============================================================
     mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
 
@@ -27,30 +27,77 @@
 
             function(username,password,done){
 
-                for(var u in users){
+              
+                UserModel.findOne({username: username, password: password},function(err,user){
 
-                    if(username == users[u].username && password == users[u].password){
+                        if(user){
 
-                        return done(null,users[u]);
+                            return done(null,user);
 
-                    }
-
-                }
-
+                        }
                         return done(null,false,{message: 'Unable to login'});
+
+                });
+
             }
     ));
+
+    passport.serializeUser(function(user,done){
+
+        done(null,user);
+    });
+
+    passport.deserializeUser(function(user, done){
+
+        done(null,user);
+    });
     //app.use() Binds a middleware function with a specific path.
     //bodyParse pulls posted information
     // routes ======================================================================
     require('./app/routes.js')(app);
-    app.post("/views/login/login.html",passport.authenticate('local'),function(request,response){// add passport as preprocessor
+   // var admin = new UserModel({username: 'Leon', password: "Leon", firstName:'Leon',lastName:"De Leon", role:["admin"]});
+    //var student = new UserModel({username: 'bob', password: "bob", firstName:'Bob',lastName:"Marley", role:["student"]});
+    //admin.save();
+    //student.save();
+    app.post("/views/login/login.html",passport.authenticate('local'),function(req,res){// add passport as preprocessor
 
         console.log("/views/login/login.html");
-        console.log(request.body); //works because of bodyParser.
+       // console.log(request.body); //works because of bodyParser.
+        console.log(req.user);
+        res.json(req.user); //send it back to the promise as json.
 
     });
 
+    app.post("/views/register.html",function(req,res){
+
+        UserModel.findOne({usernme: req.body.username},function(err,user){
+
+            if(user){
+
+                res.json(null);
+                return;
+
+
+            }else{
+
+                var newUser = new UserModel(req.body);
+                newUser.save(function(err,user){
+
+                    req.login(user,function(err){//currently logged in user (passport method)
+
+                        if(err){ return next(err); }
+                        res.json(user);
+
+                    });
+                    
+                });
+
+            }
+        });
+        var newUser = req.body;
+        console.log(newUser);
+
+    })
     // listen (start app with node server.js) ======================================
     app.listen(port);
     console.log("App listening on port : " + port);

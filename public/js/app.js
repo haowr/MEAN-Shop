@@ -304,4 +304,25 @@ app.controller("LoginController", function($scope,$http){
 
 });
 
+app.controller("RegisterController", function($scope,$http){
+
+
+
+	$scope.register = function(user){
+
+		console.log(user);
+		// TODO: verify passwords are the same and notify user.
+		if (user.password == user.password2){
+
+		
+		$http.post('/views/register.html',user).then(function(response){
+
+			console.log(response);
+
+		}); //must let server know about this url in server.js.
+		}
+	}
+
+});
+
 }());

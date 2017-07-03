@@ -6,6 +6,7 @@ var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
 var Heart = require('./models/heartscount');
+//var admin 
 var heart = 8;
 var id ="";
 
