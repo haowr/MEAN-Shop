@@ -1,8 +1,41 @@
 (function(){
 
-var app = angular.module('store',['store-products','infinite-scroll','ngRoute']);
+var app = angular.module('store',['store-products','infinite-scroll']);
+/*
+app.config(function($routeProvider){
+  $routeProvider
+  .when('/login',{
+   templateUrl: 'views/login/login.html'
 
 
+  })
+    .when('/register',{
+   templateUrl: 'views/register.html'
+
+
+  })
+    .when('/profile',{
+   templateUrl: 'views/profile.html'
+
+
+  })
+      .when('/shop',{
+   templateUrl: 'views/shop.html'
+
+
+  })
+        .when('/shop',{
+   templateUrl: 'views/shop.html'
+
+
+  })
+
+
+
+
+});
+
+*/
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
 
     var  store = this;
@@ -23,6 +56,8 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	store.shoes=[];
 	$scope.ids=[];
 	
+// ngRoute configuration
+
 
 	
 
@@ -252,6 +287,21 @@ app.controller("ReviewController",function(){
 
 });
 
+app.controller("LoginController", function($scope,$http){
 
+
+
+	$scope.login = function(user){
+
+		console.log(user);
+		$http.post('/views/login/login.html',user).then(function(response){
+
+			console.log(response);
+
+		}); //must let server know about this url in server.js.
+
+	}
+
+});
 
 }());

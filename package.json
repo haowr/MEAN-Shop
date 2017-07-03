@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "dependencies":{
+  "dependencies": {
+    "body-parser": "~1.14.1",
     "express": "~4.13.2",
-    "mongoose":"~3.6.2",
+    "method-override": "~2.3.5",
+    "mongoose": "~3.6.2",
     "morgan": "~1.6.1",
-    "body-parser":"~1.14.1",
-    "method-override":"~2.3.5"
-
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "license": "ISC"
 }
