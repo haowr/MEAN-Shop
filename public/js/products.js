@@ -9,7 +9,7 @@ app.directive("heartAdder",function(){
 return{
 
 	restrict: 'E',
-	templateUrl: 'heart-adder.html',
+	templateUrl: '../views/heart-adder.html',
 	controller: function(){ 
 		
 		
@@ -43,7 +43,7 @@ console.log(hearto);
 		return{
 
 			restrict: 'E',
-			templateUrl:'landing-gallery.html',
+			templateUrl:'../views/landing-gallery.html',
 					controller: function() {
     	this.imageIndex = 0;
     	this.currentImageChange = function(imageNumber) {
@@ -59,7 +59,7 @@ console.log(hearto);
 		return{
 
 				restrict:'E',
-				templateUrl:'landing-page.html'
+				templateUrl:'../views/landing-page.html'
 
 
 		}
@@ -74,7 +74,7 @@ console.log(hearto);
 	return{
 
 		restrict: 'E',
-		templateUrl: 'product-gallery.html',
+		templateUrl: '../views/product-gallery.html',
 		controller: function() {
     	this.imageIndex = 0;
     	this.currentImageChange = function(imageNumber) {
@@ -90,7 +90,7 @@ app.directive('productTitle', function() {
 	return{
 
 		restrict: 'E',
-		templateUrl: 'product-title.html'
+		templateUrl: '../views/product-title.html'
 		
 
 	};
@@ -102,7 +102,7 @@ app.directive('productPanels',function(){
 	return{
 
 		restrict: 'E',
-		templateUrl:'product-panels.html',
+		templateUrl:'../views/product-panels.html',
 		//move controller functionality into directive.
 		controller: function(){
        this.tab = 1;
@@ -123,7 +123,7 @@ app.directive('specificationPanel',function(){
 		return{
 
 			restrict: 'E',
-			templateUrl: 'specification-panel.html'
+			templateUrl: '../views/specification-panel.html'
 
 
 		};

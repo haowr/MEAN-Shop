@@ -6,14 +6,136 @@ var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
 var Heart = require('./models/heartscount');
+var User = require('./models/user');
+var jwt  = require('jsonwebtoken');
+
 //var admin 
 var heart = 8;
 var id ="";
+var secret= "haileselassie";
 
 //expose the routes to our app with module.exports
 
 module.exports = function(app){// passed when we required the routes.js file in server.js
     
+  app.get('/api/users',function(req,res){
+
+        console.log(res);
+        User.find(function(err,users){
+
+            res.json(users);
+
+        });
+
+    });
+
+    app.post('/api/users', function(req,res){
+
+        var user = new User();
+        user.username = req.body.username;
+        user.password = req.body.password;
+        user.email = req.body.email;
+       // console.log(err);
+        //console.log(req);
+        console.log(user);
+
+        if (req.body.username == null || req.body.username == "" || req.body.password == null || req.body.password == ""|| req.body.email == null || req.body.email == ""){
+            res.json({success: false, message:"Ensure username, email and password are provided"});
+            
+
+        }else{
+
+        user.save(function(err){
+            //console.log(err);
+            if(err){
+                res.json({success:false,message:"Username Or Email Already Exists"});
+            }else{
+                res.json({success:true,message:"Successful Save!"});
+            }
+        });
+        }
+      
+
+        //
+   
+         });
+
+        //USER LOGIN ROUTE
+        // HTTP://LOCALHOST:PORT/API/AUTHENTICATE
+        app.post('/api/authenticate',function(req,res){
+            // res.send("Testing new route");
+            User.findOne({ username: req.body.username}).select('email username password').exec(function(err,user){
+
+                if(err) throw err;
+
+                if(!user){
+                    res.json({success:false, message:"Could not authenticate user"});
+                } else if (user){
+                    if(req.body.password){
+                            var validPassword =  user.comparePassword(req.body.password);
+                    }else{
+                        res.json({success:false, message:"No password provided"});
+                    }
+//create password validation
+                   
+                   if(!validPassword){
+                       res.json({ success: false, message:'Could  not authenticate password'});
+                   }else{
+                       
+                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '24h'});
+                       res.json({success: true, message:'User authenticated', token: token});
+                   }
+
+                }
+
+            })
+
+
+        });
+
+
+
+        //EXPRESS MIDDLEWARE
+        app.use(function(req,res,next){
+
+           var token = req.body.token || req.body.query || req.headers['x-access-token'];
+           //from jwt documentation
+           if(token){
+               // verify token
+               jwt.verify(token, secret, function(err, decoded){
+
+                    if(err) {
+                    res.json({success: false, message:"Token invalid"})
+                    }else{
+                    req.decoded = decoded;
+                    next(); //continue to post method...
+                    }
+
+               })
+
+           }else{
+               res.json({succes: false, message:"No token provided"});
+           }
+
+
+        });
+
+                //GET CURRENT USER
+        //HTTPS://LOCALHOST:8888/API/ME
+        app.post('/api/me',function(req,res){
+
+            res.send(req.decoded);
+            
+
+
+        });
+        jwt.sign({
+            data: 'foobar'
+        }, 'secret', { expiresIn: '1h'});
+
+
+        //res.send('testing users rout'); test
+
     //use mongoose to get all the 
     //api ------------------------------------------
     //get all gemes

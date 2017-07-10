@@ -1,41 +1,15 @@
 (function(){
 
-var app = angular.module('store',['store-products','infinite-scroll']);
-/*
-app.config(function($routeProvider){
-  $routeProvider
-  .when('/login',{
-   templateUrl: 'views/login/login.html'
+console.log("app.js loaded");
 
+var app = angular.module('store',['store-products','infinite-scroll','appRoutes',"userControllers","userServices",'ngAnimate',"mainController","authServices"]);
 
-  })
-    .when('/register',{
-   templateUrl: 'views/register.html'
+app.config(function($httpProvider){
 
-
-  })
-    .when('/profile',{
-   templateUrl: 'views/profile.html'
-
-
-  })
-      .when('/shop',{
-   templateUrl: 'views/shop.html'
-
-
-  })
-        .when('/shop',{
-   templateUrl: 'views/shop.html'
-
-
-  })
-
-
-
+	$httpProvider.interceptors.push('AuthInterceptors');
 
 });
 
-*/
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter) {
 
     var  store = this;
