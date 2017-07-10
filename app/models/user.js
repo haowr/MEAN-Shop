@@ -35,7 +35,7 @@ var passwordValidator = [
 var emailValidator = [
     validate({
         validator: 'isEmail',
-        arguments: /^(([a-zA-Z]{3,20})+[ ]+([a-zA-Z]{3,20})+)+$/,
+        
         message: 'Is not a valid e-mail'
     }),
     validate({

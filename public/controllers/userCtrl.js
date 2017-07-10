@@ -7,13 +7,15 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
 
     
 
-    this.regUser = function(regData){
+    this.regUser = function(regData, valid){
 
         console.log("form submitted");
         var scope= this;
         scope.errorMsg=false;
         scope.loading= true;
-        User.create(scope.regData).then(function(data){
+
+        if(valid){
+                    User.create(scope.regData).then(function(data){
 
             console.log(data.data.success);
             console.log(data.data.message);
@@ -40,6 +42,11 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
             }
 
         });
+
+        }else{
+            scope.loading = false;
+            scope.errorMsg = "Please ensure form is filled out properly";
+        }
 
     }
     //console.log("testing registration controller");
