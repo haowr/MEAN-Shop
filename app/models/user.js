@@ -1,16 +1,68 @@
-var mongoose = require('mongoose');
+var mongoose        = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
-
+var Schema          = mongoose.Schema;
+var bcrypt          = require('bcrypt-nodejs');
+var  titlize        = require('mongoose-title-case');
+var validate        = require('mongoose-validator');
 //keep validations on the backend...frontend they can be bypassed by a hacker
 
+var nameValidator = [
+    validate({
+        validator: 'matches',
+        arguments: /^(([a-zA-Z]{3,20})+[ ]+([a-zA-Z]{3,20})+)+$/,
+        message: 'Name must be at least 3 characters, max 40, no special characters or numbers, must have space in between name...'
+    }),
+    validate({
+        validator: 'isLength',
+        arguments: [3,40],
+        message: 'Name must be between, {ARGS[0]} and {ARGS[1]} characters...'
+    })
+];
+var passwordValidator = [
+    validate({
+        validator: 'matches',
+        arguments: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d]).{8,35}$/,
+        message: 'Password needs to have at least one lower case, one uppercase, one number,  and must be at least 8 characters but no more than 35.'
+    }),
+    validate({
+        validator: 'isLength',
+        arguments: [8,35],
+        message: 'Password must be between, {ARGS[0]} and {ARGS[1]} characters...'
+    })
+];
+///^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/, regex requireing symbols
+
+var emailValidator = [
+    validate({
+        validator: 'isEmail',
+        arguments: /^(([a-zA-Z]{3,20})+[ ]+([a-zA-Z]{3,20})+)+$/,
+        message: 'Is not a valid e-mail'
+    }),
+    validate({
+        validator: 'isLength',
+        arguments: [3,25],
+        message: 'Email must be between, {ARGS[0]} and {ARGS[1]} characters...'
+    })
+    
+];
+var usernameValidator = [
+        validate({
+        validator: 'isLength',
+        arguments: [3,25],
+        message: 'Name must be between, {ARGS[0]} and {ARGS[1]} characters.'
+    }),
+        validate({
+        validator: 'isAlphanumeric',
+        
+        message: 'Username must contains letters or numbers only...'
+    })
+];
 
 var UserSchema = new Schema({
-
+    name: {type: String, required: true, validate: nameValidator},
     username: { type: String, lowercase: true, required: true, unique: true, dropDups: true },
-    password: { type: String, required: true},
-    email: { type: String, required: true, lowercase: true, unique: true, dropDups: true}
+    password: { type: String, required: true,validate:passwordValidator},
+    email: { type: String, required: true, lowercase: true, unique: true, dropDups: true, validate:emailValidator}
 
 
 });
@@ -27,6 +79,12 @@ UserSchema.pre('save',function(next){
     });
 });
 
+// Attach some mongoose hooks 
+UserSchema.plugin(titlize, {
+  paths: [ 'name' ] // Array of paths 
+ 
+});
+ 
 UserSchema.methods.comparePassword = function(password){
 
     return bcrypt.compareSync(password,this.password);
@@ -40,3 +98,4 @@ var User = mongoose.model('User', UserSchema);
 //User.on('index', function(err) { 
   //  console.log(err); 
 //});
+

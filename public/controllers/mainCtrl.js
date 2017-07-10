@@ -29,7 +29,7 @@
         }else{
                 console.log('Failure: User is not logged in.')
                 scope.username = "";
-                scope.isLoggedin= false;
+                scope.isLoggedIn= false;
                 scope.loadme= true;
         }
 

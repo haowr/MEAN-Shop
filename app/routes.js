@@ -35,30 +35,54 @@ module.exports = function(app){// passed when we required the routes.js file in 
         user.username = req.body.username;
         user.password = req.body.password;
         user.email = req.body.email;
+        user.name = req.body.name;
        // console.log(err);
+
         //console.log(req);
         console.log(user);
 
-        if (req.body.username == null || req.body.username == "" || req.body.password == null || req.body.password == ""|| req.body.email == null || req.body.email == ""){
-            res.json({success: false, message:"Ensure username, email and password are provided"});
+        if (req.body.username == null || req.body.username == "" || req.body.password == null || req.body.password == ""||
+         req.body.email == null || req.body.email == ""|| req.body.name== null || req.body.name == ''){
+            res.json({success: false, message:"Ensure username, email, name and password are provided"});
             
 
         }else{
 
         user.save(function(err){
-            //console.log(err);
+            console.log(err);
             if(err){
-                res.json({success:false,message:"Username Or Email Already Exists"});
+                
+               if(err.errors != null){
+
+                    if(err.errors.name){
+                        res.json({success:false,message:err.errors.name.message});
+                    }else if(err.errors.email){
+                        res.json({success:false,message:err.errors.email.message});
+                    }else if(err.errors.username){
+                        res.json({success:false, message: err.errors.username.message})
+                    }else if(err.errors.password){
+                        res.json({success: false, message: err.errors.password.message});
+                    }else{
+                    res.json({ success:false, message: err});
+                    }
+               } else if (err) {
+
+                   if(err.code == 11000){
+                       if(err.errmsg[61]=='u'){
+                        res.json({success: false, message: "That username is already taken..."});
+                       }else if(err.errmsg[61]=="e"){
+                        res.json({success:false, message: "That email is already taken..."});j
+                       }
+                    }else{
+                        res.json({success:false, message: err});
+                    }
+               }
             }else{
                 res.json({success:true,message:"Successful Save!"});
             }
         });
         }
-      
-
-        //
-   
-         });
+ });
 
         //USER LOGIN ROUTE
         // HTTP://LOCALHOST:PORT/API/AUTHENTICATE

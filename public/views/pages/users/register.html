@@ -2,12 +2,15 @@
     <h1>User Registration</h1>
 </div>
 <form ng-submit="register.regUser(regData);">
+    
+    <label>Name</label>
+    <input class="form-control"type="text" name="name" placeholder="name" ng-model="register.regData.name"/>
     <label>Username</label>
-    <input class="form-control"type="text" placeholder="username" ng-model="register.regData.username"/>
+    <input class="form-control"type="text" name ="username"placeholder="username" ng-model="register.regData.username"/>
     <label>Email</label>
-    <input class="form-control"type="email" placeholder="email" ng-model="register.regData.email"/>
+    <input class="form-control"type="email"name="email" placeholder="email" ng-model="register.regData.email"/>
     <label>Password</label>
-    <input class="form-control"type="password" placeholder="password" ng-model="register.regData.password"/>
+    <input class="form-control"type="password" name="password" placeholder="password" ng-model="register.regData.password"/>
     <button class="btn btn-primary"type="submit">Register</button>
 </form>
 <br>
