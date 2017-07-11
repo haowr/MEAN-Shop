@@ -83,7 +83,39 @@ module.exports = function(app){// passed when we required the routes.js file in 
         });
         }
  });
+  
+        app.post('/api/checkusername',function(req,res){
+            // res.send("Testing new route");
+            User.findOne({ username: req.body.username}).select('username').exec(function(err,user){
 
+                if(user){
+
+                    res.json({success: false, message: 'That username is already taken' });
+
+                }else{
+
+                    res.json({success: true, message: 'Valid username'});
+
+                }
+
+            });
+        });
+                app.post('/api/checkemail',function(req,res){
+            // res.send("Testing new route");
+            User.findOne({ email: req.body.email}).select('email').exec(function(err,user){
+
+                if(user){
+
+                    res.json({success: false, message: 'That e-mail is already taken' });
+
+                }else{
+
+                    res.json({success: true, message: 'Valid e-mail'});
+
+                }
+
+            });
+        });
         //USER LOGIN ROUTE
         // HTTP://LOCALHOST:PORT/API/AUTHENTICATE
         app.post('/api/authenticate',function(req,res){
