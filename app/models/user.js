@@ -2,8 +2,15 @@ var mongoose        = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var Schema          = mongoose.Schema;
 var bcrypt          = require('bcrypt-nodejs');
-var  titlize        = require('mongoose-title-case');
+var titlize        = require('mongoose-title-case');
 var validate        = require('mongoose-validator');
+var nodemailer      = require('nodemailer');
+var stTransport     = require('nodemailer-sendgrid-transport');
+
+
+
+
+
 //keep validations on the backend...frontend they can be bypassed by a hacker
 
 var nameValidator = [
@@ -61,8 +68,10 @@ var usernameValidator = [
 var UserSchema = new Schema({
     name: {type: String, required: true, validate: nameValidator},
     username: { type: String, lowercase: true, required: true, unique: true, dropDups: true },
-    password: { type: String, required: true,validate:passwordValidator},
-    email: { type: String, required: true, lowercase: true, unique: true, dropDups: true, validate:emailValidator}
+    password: { type: String, required: true,validate:passwordValidator, select:false},
+    email: { type: String, required: true, lowercase: true, unique: true, dropDups: true, validate:emailValidator},
+    active: { type: Boolean, required: true, default: false },
+    temporarytoken: {type: String, required: true}
 
 
 });
@@ -71,6 +80,9 @@ UserSchema.plugin(uniqueValidator);
 UserSchema.pre('save',function(next){
 
     var user = this;
+
+    if(!user.isModified('password')) return next();
+
     bcrypt.hash(user.password,null,null,function(err,hash){
         if(err) return next(err);
         user.password = hash;

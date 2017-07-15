@@ -46,6 +46,27 @@ app.config(function($routeProvider,$locationProvider){
 
 
     })
+         .when('/mensshoes',{
+
+        templateUrl: '../views/pages/Mens/shoes.html',
+        controller:'shoesCtrl',
+        controllerAs: 'shoes',
+        authenticated: false
+
+
+    })
+    .when('/activate/:token', {
+        templateUrl: '../views/pages/users/activation/activate.html',
+        controller: 'emailCtrl',
+        controllerAs: 'email',
+        authenticated: false
+    })
+        .when('/resend', {
+        templateUrl: '../views/pages/users/activation/resend.html',
+        controller: 'resendCtrl',
+        controllerAs: 'resend',
+        authenticated: false
+    })
     .otherwise({redirectTo: '/'});
 
 

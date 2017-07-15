@@ -3,12 +3,12 @@
 </div>
 <form ng-submit="main.doLogin(loginData);">
     <label>Username</label>
-    <input class="form-control"type="text" placeholder="username" ng-model="main.loginData.username"/>
+    <input ng-disabled="main.disabled"class="form-control"type="text" placeholder="username" ng-model="main.loginData.username"/>
     <label>Email</label>
-    <input class="form-control"type="email" placeholder="email" ng-model="main.loginData.email"/>
+    <input ng-disabled="main.disabled"class="form-control"type="email" placeholder="email" ng-model="main.loginData.email"/>
     <label>Password</label>
-    <input class="form-control"type="password" placeholder="password" ng-model="main.loginData.password"/>
-    <button class="btn btn-primary"type="submit">Login</button>
+    <input  ng-disabled="main.disabled"class="form-control"type="password" placeholder="password" ng-model="main.loginData.password"/>
+    <button ng-disabled="main.disabled"class="btn btn-primary"type="submit">Login</button>
 </form>
 <br>
 
@@ -21,8 +21,9 @@
 <br>
 <div class="row show-hide-message"ng-show="main.successMsg">
     <div class="alert alert-success">{{main.successMsg}}</div>
+    
 </div>
 <br>
 <div class="row show-hide-message"ng-show="main.errorMsg">
-    <div class="alert alert-danger">{{main.errorMsg}}</div>
+    <div class="alert alert-danger">{{main.errorMsg}}&nbsp <a href="/resend" ng-show="main.expired"><button class="btn btn-primary">Resend activation link...</button> </a></div>
 </div>

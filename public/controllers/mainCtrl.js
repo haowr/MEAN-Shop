@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module("mainController",['authServices']);
+    var app = angular.module("mainController",['authServices','mainServices']);
 
     app.config(function(){
 
@@ -9,7 +9,7 @@
     });
 
 
-  app.controller('mainCtrl',function($http,$location,$timeout,Auth,$rootScope){
+  app.controller('mainCtrl',function($http,$location,$timeout,Auth,$rootScope,Main){
 
 
      var scope= this;
@@ -38,12 +38,24 @@
 
     
 
+  
+
+      $http.get('/api/shoes').then(function(response){
+
+        console.log("hello");
+        console.log(response);
+
+      });
+   
+
     this.doLogin = function(loginData){
 
         console.log("form submitted");
        
         scope.errorMsg=false;
-        scope.loading= true;
+        scope.loading = true;
+        scope.expired = false;
+        scope.disabled = true;
         Auth.login(scope.loginData).then(function(data){
 
             console.log(data.data.success);
@@ -66,13 +78,24 @@
                 
 
             }else{
-                //CREATE ERROR MESSAGE
+                if(data.data.expired){
+                scope.expired=true;
                 scope.loading=false;
                 scope.errorMsg=  data.data.message + '...Redirecting';
-                $timeout(function(){
+
+                }else{
+                
+                scope.loading = false;
+                scope.disabled = true;
+                scope.errorMsg=  data.data.message + '...Redirecting';
+               /* $timeout(function(){
                     $location.path('/about');
 
                 },3000);
+*/
+                }
+                //CREATE ERROR MESSAGE
+
                     
             }
 

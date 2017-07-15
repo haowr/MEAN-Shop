@@ -5,9 +5,36 @@
 var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
+var Page = require('./models/pagesschema');
 var Heart = require('./models/heartscount');
 var User = require('./models/user');
 var jwt  = require('jsonwebtoken');
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+
+var options = {
+  auth: {
+    api_user: 'ohrha',
+    api_key: 'tchuva2ed'
+  }
+}
+
+var client = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+        user: "t.brixton@gmail.com",
+        pass: "5613111111"
+    }
+});
+  /* var client = nodemailer.createTransport({
+        service: 'Zoho',
+        auth: {
+            user: 'cruiserweights@zoho.com', // Your email address
+            pass: 'PAssword123!@#' // Your password
+        },
+        tls: { rejectUnauthorized: false }
+    });
+*/
 
 //var admin 
 var heart = 8;
@@ -36,6 +63,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
         user.password = req.body.password;
         user.email = req.body.email;
         user.name = req.body.name;
+        user.temporarytoken = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '24h'});
        // console.log(err);
 
         //console.log(req);
@@ -78,12 +106,68 @@ module.exports = function(app){// passed when we required the routes.js file in 
                     }
                }
             }else{
-                res.json({success:true,message:"Successful Save!"});
+                        var email = {
+                            from: 'A House Of Jewels, admin@hoj.com',
+                            to: user.email,
+                            subject: 'Activation Link Request',
+                            text: 'Hello ' + user.name + ', You recently requested a new account activation link. Please click on the following link to complete your activation: https://immense-dusk-71112.herokuapp.com/activate/' + user.temporarytoken,
+                            html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a new account activation link. Please click on the link below to complete your activation:<br><br><a href="http://localhost:8888/activate/' + user.temporarytoken + '">http://localhost:8888/activate/</a>'
+                        };
+
+                    // Function to send e-mail to user
+                    client.sendMail(email, function(err, info) {
+                        if (err) {
+                            console.log(err); // If error in sending e-mail, log to console/terminal
+                        } else {
+                            console.log(info); // Log confirmation to console
+                        }
+                    });
+
+
+                res.json({success:true,message:"Account registerd, please check your email for activation"});
             }
         });
         }
  });
-  
+
+ app.post('/api/shoes',function(req,res){
+
+     var shoe = new Shoe();
+     shoe.name = req.body.name;
+     shoe.page = req.body.page;
+     console.log(req.body.name);
+     
+    // shoe.
+
+    shoe.save(function(err){
+
+            if (err){
+                    
+                    res.send(err.message);
+                
+            }else{
+
+                res.json({success: true, message: "Saved Mofo!"});
+                
+            }
+
+        });
+
+    });
+                
+      
+app.get('/api/shoes',function(req,res){
+
+    console.log(res);
+
+            Shoe.find(function(err,shoes){
+
+                res.json(shoes);
+
+            });
+
+        });
+
         app.post('/api/checkusername',function(req,res){
             // res.send("Testing new route");
             User.findOne({ username: req.body.username}).select('username').exec(function(err,user){
@@ -100,7 +184,8 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
             });
         });
-                app.post('/api/checkemail',function(req,res){
+
+        app.post('/api/checkemail',function(req,res){
             // res.send("Testing new route");
             User.findOne({ email: req.body.email}).select('email').exec(function(err,user){
 
@@ -116,11 +201,13 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
             });
         });
+
+
         //USER LOGIN ROUTE
         // HTTP://LOCALHOST:PORT/API/AUTHENTICATE
         app.post('/api/authenticate',function(req,res){
             // res.send("Testing new route");
-            User.findOne({ username: req.body.username}).select('email username password').exec(function(err,user){
+            User.findOne({ username: req.body.username}).select('email username password active').exec(function(err,user){
 
                 if(err) throw err;
 
@@ -136,6 +223,9 @@ module.exports = function(app){// passed when we required the routes.js file in 
                    
                    if(!validPassword){
                        res.json({ success: false, message:'Could  not authenticate password'});
+                   }else if (!user.active){
+                       res.json({success: false, message:'Account not yet activated, please check your email for activation link...', expired:true});
+
                    }else{
                        
                       var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '24h'});
@@ -148,8 +238,130 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
 
         });
+        app.post('/api/resend',function(req,res){
+            // res.send("Testing new route");
+            User.findOne({ username: req.body.username}).select('username password active').exec(function(err,user){
+
+                if(err) throw err;
+
+                if(!user){
+                    res.json({success:false, message:"Could not authenticate user"});
+                } else if (user){
+                    if(req.body.password){
+                            var validPassword =  user.comparePassword(req.body.password);
+                    }else{
+                        res.json({success:false, message:"No password provided"});
+                    }
+//create password validation
+                   
+                   if(!validPassword){
+                       res.json({ success: false, message:'Could  not authenticate password'});
+                   }else if (user.active){
+                       res.json({success: false, message:'Account is already activated...'});
+
+                   }else{
+                                           
+                       res.json({success:true,user:user});
+                   }
+
+                }
+
+            });
 
 
+        });
+
+        app.put('/api/resend',function(req,res){
+
+            User.findOne({username: req.body.username}).select('username name email temporarytoken').exec(function(err,user){
+                if(err) throw err;
+                var temporarytoken = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '24h'});
+                user.save(function(err){
+                    if(err){
+                        console.log(err);
+                    }else{
+                    var email = {
+                            from: 'A House Of Jewels, admin@hoj.com',
+                            to: user.email,
+                            subject: 'Activation Link Request',
+                            text: 'Hello ' + user.name + ', You recently requested a new account activation link. Please click on the following link to complete your activation: https://immense-dusk-71112.herokuapp.com/activate/' + user.temporarytoken,
+                            html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a new account activation link. Please click on the link below to complete your activation:<br><br><a href="http://localhost:8888/activate/' + user.temporarytoken + '">http://localhost:8888/activate/</a>'
+                        };
+
+                    // Function to send e-mail to user
+                    client.sendMail(email, function(err, info) {
+                        if (err) {
+                            console.log(err); // If error in sending e-mail, log to console/terminal
+                        } else {
+                            console.log(info); // Log confirmation to console
+                        }
+                    });
+
+                    res.json({success:true, message: "Activation link has been sent to "+user.email+"!"});
+                    }
+                    
+
+
+
+                })
+
+            })
+
+
+        });
+
+        app.put('/api/activate/:token',function(req,res){
+            console.log("OY");
+            User.findOne({temporarytoken: req.params.token}, function(err, user){
+
+                if(err) throw err;
+                var token = req.params.token;
+                jwt.verify(token, secret, function(err, decoded){
+
+                    if(err) {
+                    res.json({success: false, message:"Activation link has expired..."});
+                }else if(!user){ // token is true but doesn't match
+                    res.json({success: false, message: "Activation link has expired..."});
+
+                }else{
+
+                    user.temporarytoken = false;
+                    user.active = true;
+                    user.save(function(err){
+
+                        if(err){
+                            console.log(err);
+
+                        }else{
+                        var email = {
+                            from: 'A House of Jewels, admin@hoj.com',
+                            to: user.email,
+                            subject: 'Localhost Account Activated',
+                            text: 'Hello ' + user.name + ', Your account has ben successfully activated!',
+                            html: 'Hello<strong> ' + user.name + '</strong>,<br><br>Your account has been successfully activated!'
+                        };
+
+                    // Function to send e-mail to user
+                    client.sendMail(email, function(err, info) {
+                        if (err) {
+                            console.log(err); // If error in sending e-mail, log to console/terminal
+                        } else {
+                            console.log(info); // Log confirmation to console
+                        }
+                    });
+
+                        }
+
+                    });
+
+                    res.json({success: true, message:"Account Activated"});
+
+               }
+
+            });
+
+        });
+        });
 
         //EXPRESS MIDDLEWARE
         app.use(function(req,res,next){

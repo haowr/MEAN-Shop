@@ -2,8 +2,8 @@
 
 console.log("app.js loaded");
 
-var app = angular.module('store',['store-products','infinite-scroll','appRoutes',"userControllers","userServices",'ngAnimate',"mainController","authServices"]);
-
+var app = angular.module('store',['appRoutes','store-products',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController"]);
+																																																  
 app.config(function($httpProvider){
 
 	$httpProvider.interceptors.push('AuthInterceptors');
@@ -133,17 +133,17 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	console.log("oy");
 	console.log(store.shoes);
 
-		
-	
-			
-	
-
 	};
 
 	$http.get('/products.json').then(success);
 	$http.get('/jewels.json').then(success3);
 	//$http.get('/api/shoes').then(success4);
 	$http.get('/api/shoes').then(success7);
+	$http.get('/api/shoes').then(function(response){
+
+		console.log(response.data);
+
+	});
 
 
 	$scope.loadImages = function(){
