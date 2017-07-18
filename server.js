@@ -34,7 +34,7 @@
     //app.use(passport.initialize());
     app.get('*',function(req,res){
 
-        res.sendFile(path.join(__dirname +'/public/views/index.html'));
+        res.sendFile(path.join(__dirname +'/public/views/index.html')); // this might need to be lower than the routes..
     });
   
     //app.use() Binds a middleware function with a specific path.

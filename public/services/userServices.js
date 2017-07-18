@@ -43,7 +43,70 @@ app.factory('User', function($http){  //a way to organize the code..
 
     return $http.put('/api/resend',username);
 
+
  }
+   //User.sendUsername(username);
+  userFactory.sendUsername = function(userData){
+
+    return $http.put('/api/resetusername/'+userData);
+
+ }
+    //User.sendPassword(resetData);
+  userFactory.sendPassword = function(resetData){
+
+    return $http.put('/api/resetpassword',resetData);
+
+ }
+     //User.sendPassword(resetData);
+  userFactory.resetUser = function(token){
+
+    return $http.put('/api/resetpassword/'+token);
+
+ }
+      //User.savePassword(regData);
+  userFactory.savePassword = function(regData){
+
+    return $http.put('/api/savepassword/',regData);
+
+ }
+    //User.renewSession(username);
+  userFactory.renewSession= function(username){
+
+    return $http.put('/api/renewtoken/'+username);
+
+ }
+   //User.getPermission();
+ userFactory.getPermission= function(){
+
+    return $http.put('/api/permission');
+
+ }
+ //User.getUsers();
+  userFactory.getUsers= function(){
+
+    return $http.put('/api/management');
+
+ }
+  //User.delete();
+  userFactory.deleteUser= function(username){
+
+    return $http.delete('/api/management/'+username);
+
+ }
+   //User.getUser(id);
+  userFactory.getUser= function(id){
+
+    return $http.put('/api/edit/'+id);
+
+ }
+    //User.editUser(id);
+  userFactory.editUser= function(id){
+
+    return $http.put('/api/edit/',id);
+
+ }
+
+ 
 
  return  userFactory;
 

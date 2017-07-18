@@ -9,6 +9,10 @@
     <label>Password</label>
     <input  ng-disabled="main.disabled"class="form-control"type="password" placeholder="password" ng-model="main.loginData.password"/>
     <button ng-disabled="main.disabled"class="btn btn-primary"type="submit">Login</button>
+    <div class = "reset">
+    <a href ="/resetusername"><button ng-disabled="main.disabled"class="btn btn-info" type="button">Forgot Username</button></a>
+    <a href ="/resetpassword"><button ng-disabled="main.disabled"class="btn btn-danger" type="button">Forot Password</button></a> 
+    </div>            
 </form>
 <br>
 

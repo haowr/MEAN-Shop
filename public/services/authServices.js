@@ -53,6 +53,7 @@ var authFactory = {};
 
 });
 
+//AuthToken.setToken(data.data.token);
 app.factory('AuthToken',function($window){
     var authTokenFactory = {};
 

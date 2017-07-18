@@ -2,7 +2,7 @@ console.log("routes.js loaded");
 
 (function(){
 
-var app = angular.module('appRoutes', ['ngRoute']);
+var app = angular.module('appRoutes', ['ngRoute','userServices']);
 
 app.config(function($routeProvider,$locationProvider){
 
@@ -67,6 +67,38 @@ app.config(function($routeProvider,$locationProvider){
         controllerAs: 'resend',
         authenticated: false
     })
+    .when('/resetusername', {
+        templateUrl: '../views/pages/users/reset/username.html',
+        controller: 'usernameCtrl',
+        controllerAs: 'username',
+        authenticated: false
+    })
+    .when('/resetpassword', {
+        templateUrl: '../views/pages/users/reset/password.html',
+        controller: 'passwordCtrl',
+        controllerAs: 'password',
+        authenticated: false
+    })
+    .when('/reset/:token', {
+        templateUrl: '../views/pages/users/reset/newpassword.html',
+        controller: 'resetCtrl',
+        controllerAs: 'reset',
+        authenticated: false
+    })
+    .when('/management', {
+        templateUrl: '../views/pages/management/management.html',
+        controller: 'managementCtrl',
+        controllerAs:'management',
+        authenticated: true,
+        permission: ["admin", "moderator"]
+    })
+    .when('/edit/:id', {
+        templateUrl: '../views/pages/management/edit.html',
+        controller: 'editCtrl',
+        controllerAs:'edit',
+        authenticated: true,
+        permission: ["admin", "moderator"]
+    })
     .otherwise({redirectTo: '/'});
 
 
@@ -78,16 +110,29 @@ $locationProvider.html5Mode({
 
 
 });
-app.run(['$rootScope','Auth','$location',function($rootScope,Auth,$location){
+app.run(['$rootScope','Auth','$location','User',function($rootScope,Auth,$location,User){
 
     $rootScope.$on('$routeChangeStart', function(event,next,current){
         console.log(Auth.isLoggedIn());
+
+        if(next.$$route !== undefined){
 
         if(next.$$route.authenticated == true){
             console.log("Requires authentication!")
             if(!Auth.isLoggedIn()){
                 event.preventDefault();
                 $location.path('/');
+            }else if (next.$$route.permission){
+                User.getPermission().then(function(data){
+                    //console.log(data);
+                    if(next.$$route.permission[0]!= data.data.permission){
+                        if(next.$$route.permission[1]!= data.data.permission){
+
+                            $location.path('/');
+                        }
+                    }
+                });
+
             }
 
         }else if (next.$$route.authenticated== false){
@@ -101,6 +146,7 @@ app.run(['$rootScope','Auth','$location',function($rootScope,Auth,$location){
             console.log("Authenticated does not matter");
         }
         console.log(next.$$route.authenticated);
+        }
 
     });
     

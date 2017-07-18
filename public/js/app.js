@@ -2,7 +2,7 @@
 
 console.log("app.js loaded");
 
-var app = angular.module('store',['appRoutes','store-products',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController"]);
+var app = angular.module('store',['appRoutes','store-products',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController"]);
 																																																  
 app.config(function($httpProvider){
 
