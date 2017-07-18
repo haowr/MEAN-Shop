@@ -818,7 +818,7 @@ app.get('/api/shoes',function(req,res){
                                     }
                                     if(newPermission === 'moderator'){
                                         if(user.permission === 'admin'){
-                                            if(!mainUser.permission !== 'admin'){
+                                            if(mainUser.permission !== 'admin'){
                                                 res.json({success: false, message: 'Insufficient permissions...You must be an admin to downgrade another admin...'});
                                             }else{
 

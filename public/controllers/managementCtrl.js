@@ -138,6 +138,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
         scope.phase2 = false;
         scope.phase3 = false;
         scope.phase4 = false;
+        scope.errorMsg =false;
 
     };
 
@@ -150,7 +151,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
         scope.phase2 = true;
         scope.phase3 = false;
         scope.phase4 = false;
-
+        scope.errorMsg =false;
 
 
 
@@ -165,6 +166,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
         scope.phase2 = false;
         scope.phase3 = true;
         scope.phase4 = false;
+        scope.errorMsg = false;
 
     };
 
@@ -177,6 +179,17 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
         scope.phase2 = false;
         scope.phase3 = false;
         scope.phase4 = true;
+        scope.disableUser = false;
+        scope.disableModerator = false;
+        scope.disableAdmin = false;
+        scope.errorMsg = false;
+        if($scope.newPermission === 'user'){
+            scope.disableUser = true;
+        }else if($scope.newPermission === 'moderator'){
+            scope.disableModerator = true;
+        }else{
+            scope.disableAdmin = true;
+        }
 
     };
     scope.updateName= function(newName, valid){
@@ -294,25 +307,44 @@ scope.updateUsername= function(newUsername, valid){
         }
 
     };
-    scope.updatePermission= function(newPermission, valid){
+    scope.updatePermissions= function(newPermission){
         scope.errorMsg = false;
         scope.successMsg = false;
         scope.disabled = false;
+        scope.disableUser = true;
+        scope.disableAdmin = true;
+        scope.disableModerator = true;
         var userObject = {};
         
 
-    if(valid){
+    //if(valid){
             userObject._id = scope.currentUser;
-            userObject.permission = $scope.newPermission;
+            userObject.permission = newPermission;
             User.editUser(userObject).then(function(data){
                 console.log(data);
                 if(data.data.success){
+                    
                     scope.successMsg = data.data.message;
+
                     $timeout(function(){
-                        scope.permissionForm.name.$setPristine();
-                        scope.permissionForm.name.$setUntouched();
                         scope.successMsg = false;
-                        scope.disabled = false;
+                                if(newPermission === 'user'){
+                                        $scope.newPermission = 'user';
+                                        scope.disableUser = true;
+                                        scope.disableModerator = false;
+                                        scope.disableAdmin = false;
+                                 }else if(newPermission === 'moderator'){
+                                        $scope.newPermission = 'moderator';
+                                        scope.disableModerator = true;
+                                        scope.disableUser = false;
+                                        scope.disableAdmin = false;
+                                 }else if(newPermission === 'admin'){
+                                        $scope.newPermission = 'admin';
+                                        scope.disableAdmin = true;
+                                        scope.disableUser = false;
+                                        scope.disableModerator = false;
+                                 }
+
 
                     },2000)
 
@@ -325,11 +357,11 @@ scope.updateUsername= function(newUsername, valid){
             });
 
 
-        }else{
+        //}else{
 
-            scope.errorMsg = "Please ensure form is completely filled in..";
-            scope.disabled = false;
-        }
+           // scope.errorMsg = "Please ensure form is completely filled in..";
+           // scope.disabled = false;
+      //  }
 
     };
 
