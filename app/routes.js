@@ -45,7 +45,7 @@ var secret= "haileselassie";
 
 module.exports = function(app){// passed when we required the routes.js file in server.js
     
-  app.get('/api/users',function(req,res){
+  app.get('https://fathomless-caverns-94991.herokuapp.com/api/users',function(req,res){  //was '/api/users
 
         console.log(res);
         User.find(function(err,users){
@@ -56,7 +56,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
     });
 
-    app.post('/api/users', function(req,res){
+    app.post('https://fathomless-caverns-94991.herokuapp.com/api/users', function(req,res){
 
         var user = new User();
         user.username = req.body.username;
@@ -130,7 +130,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
         }
  });
 
- app.post('/api/shoes',function(req,res){
+ app.post('https://fathomless-caverns-94991.herokuapp.com/api/shoes',function(req,res){
 
      var shoe = new Shoe();
      shoe.name = req.body.name;
@@ -156,7 +156,7 @@ module.exports = function(app){// passed when we required the routes.js file in 
     });
                 
       
-app.get('/api/shoes',function(req,res){
+app.get('https://fathomless-caverns-94991.herokuapp.com/api/shoes',function(req,res){
 
     console.log(res);
 
@@ -168,7 +168,7 @@ app.get('/api/shoes',function(req,res){
 
         });
 
-        app.post('/api/checkusername',function(req,res){
+        app.post('https://fathomless-caverns-94991.herokuapp.com/api/checkusername',function(req,res){
             // res.send("Testing new route");
             User.findOne({ username: req.body.username}).select('username').exec(function(err,user){
 
@@ -185,7 +185,7 @@ app.get('/api/shoes',function(req,res){
             });
         });
 
-        app.post('/api/checkemail',function(req,res){
+        app.post('https://fathomless-caverns-94991.herokuapp.com/api/checkemail',function(req,res){
             // res.send("Testing new route");
             User.findOne({ email: req.body.email}).select('email').exec(function(err,user){
 
@@ -205,7 +205,7 @@ app.get('/api/shoes',function(req,res){
 
         //USER LOGIN ROUTE
         // HTTP://LOCALHOST:PORT/API/AUTHENTICATE
-        app.post('/api/authenticate',function(req,res){
+        app.post('https://fathomless-caverns-94991.herokuapp.com/api/authenticate',function(req,res){
             // res.send("Testing new route");
             User.findOne({ username: req.body.username}).select('email username password active').exec(function(err,user){
 
@@ -238,7 +238,7 @@ app.get('/api/shoes',function(req,res){
 
 
         });
-        app.post('/api/resend',function(req,res){
+        app.post('https://fathomless-caverns-94991.herokuapp.com/api/resend',function(req,res){
             // res.send("Testing new route");
             User.findOne({ username: req.body.username}).select('username password active').exec(function(err,user){
 
@@ -271,7 +271,7 @@ app.get('/api/shoes',function(req,res){
 
         });
 
-        app.put('/api/resend',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/resend',function(req,res){
 
             User.findOne({username: req.body.username}).select('username name email temporarytoken').exec(function(err,user){
                 if(err) throw err;
@@ -310,7 +310,7 @@ app.get('/api/shoes',function(req,res){
 
         });
 
-        app.put('/api/activate/:token',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/activate/:token',function(req,res){
             console.log("OY");
             User.findOne({temporarytoken: req.params.token}, function(err, user){
 
@@ -364,7 +364,7 @@ app.get('/api/shoes',function(req,res){
     });
     
            // Route to send user's username to e-mail
-    app.put('/api/resetusername/:email', function(req, res) {
+    app.put('https://fathomless-caverns-94991.herokuapp.com/api/resetusername/:email', function(req, res) {
         User.findOne({ email: req.params.email }).select('email name username').exec(function(err, user) {
             if (err) {
                 res.json({ success: false, message: err }); // Error if cannot connect
@@ -401,7 +401,7 @@ app.get('/api/shoes',function(req,res){
             }
         });
     });
-        app.put('/api/resetpassword', function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/resetpassword', function(req,res){
             console.log(req.params.username);
             User.findOne({username: req.body.username}).select('username active email name resettoken').exec(function(err,user){
 
@@ -449,7 +449,7 @@ app.get('/api/shoes',function(req,res){
             })
     });
 
-        app.put('/api/resetpassword/:token',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/resetpassword/:token',function(req,res){
 
             User.findOne({resettoken: req.params.token}).select().exec(function(err,user){
                 if(err) throw err;
@@ -477,7 +477,7 @@ app.get('/api/shoes',function(req,res){
 
         });
 
-        app.put('/api/savepassword',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/savepassword',function(req,res){
 
             User.findOne({username: req.body.username}).select('username name password resettoken email').exec(function(err,user){
 
@@ -546,7 +546,7 @@ app.get('/api/shoes',function(req,res){
 
                 //GET CURRENT USER
         //HTTPS://LOCALHOST:8888/API/ME
-        app.post('/api/me',function(req,res){
+        app.post('https://fathomless-caverns-94991.herokuapp.com/api/me',function(req,res){
 
             res.send(req.decoded);
             
@@ -560,7 +560,7 @@ app.get('/api/shoes',function(req,res){
 
 
         //After middleware because it is a route that requires a user to be logged in...
-        app.put('/api/renewtoken/:username',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/renewtoken/:username',function(req,res){
 
             User.findOne({username: req.params.username}).select().exec(function(err,user){
                 if(err) throw err;
@@ -576,7 +576,7 @@ app.get('/api/shoes',function(req,res){
 
         })
         //After MIDDLEWARE/LOGGEDIN, SO ALREADY HAVE USER OBJECT AT THIS POINT?
-        app.put('/api/permission',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/permission',function(req,res){
             User.findOne({username: req.decoded.username},function(err,user){
 
                 if(err)throw err;
@@ -590,7 +590,7 @@ app.get('/api/shoes',function(req,res){
 
 
         });
-        app.put('/api/management',function(req,res){
+        app.put('https://fathomless-caverns-94991.herokuapp.com/api/management',function(req,res){
 
             User.find({},function(err,users){
                 if(err) throw err;
@@ -618,7 +618,7 @@ app.get('/api/shoes',function(req,res){
             });
          });
 
-         app.delete('/api/management/:username',function(req,res){
+         app.delete('https://fathomless-caverns-94991.herokuapp.com/api/management/:username',function(req,res){
 
             var deletedUser = req.params.username;
             User.findOne({username: req.decoded.username },function(err,mainUser){
@@ -645,7 +645,7 @@ app.get('/api/shoes',function(req,res){
             });
 
          });
-         app.put('/api/edit/:id',function(req,res){
+         app.put('https://fathomless-caverns-94991.herokuapp.com/api/edit/:id',function(req,res){
 
             var editUser = req.params.id;
             User.findOne({username: req.decoded.username},function(err,mainUser){
@@ -679,7 +679,7 @@ app.get('/api/shoes',function(req,res){
 
          });
          //EDITING EVERYTHING
-         app.put('/api/edit',function(req,res){
+         app.put('https://fathomless-caverns-94991.herokuapp.com/api/edit',function(req,res){
 
              var editUser= req.body._id;
              if(req.body.name) var newName = req.body.name;
@@ -886,7 +886,7 @@ app.get('/api/shoes',function(req,res){
     //use mongoose to get all the 
     //api ------------------------------------------
     //get all gemes
-    app.get('/api/shoes', function(req,res){
+    app.get('https://fathomless-caverns-94991.herokuapp.com/api/shoes', function(req,res){
 
         Shoe.find(function(err,shoes){
 
@@ -903,7 +903,7 @@ app.get('/api/shoes',function(req,res){
 
     });
 
-    app.get('/api/heartscounts',function(req,res){
+    app.get('https://fathomless-caverns-94991.herokuapp.com/api/heartscounts',function(req,res){
 
         Heart.find(function(err,hearts){
 
@@ -922,7 +922,7 @@ app.get('/api/shoes',function(req,res){
 
 
         // create todo and send back all todos after creation
-    app.put('/api/shoes/:shoe_id', function(req,res){
+    app.put('https://fathomless-caverns-94991.herokuapp.com/api/shoes/:shoe_id', function(req,res){
 
  console.log(req.params);
  heart++
@@ -951,7 +951,7 @@ app.get('/api/shoes',function(req,res){
 */
     });
 
-    app.get('/api/shoes/:shoe_id/:shoe_heart',function(req,res){
+    app.get('https://fathomless-caverns-94991.herokuapp.com/api/shoes/:shoe_id/:shoe_heart',function(req,res){
      var  data = {
         "info": {
             "id": req.params.shoe_id,
@@ -965,7 +965,7 @@ app.get('/api/shoes',function(req,res){
 });
 
    
-       app.put('/api/shoes/:shoe_id/:shoe_heart', function(req,res){
+       app.put('https://fathomless-caverns-94991.herokuapp.com/api/shoes/:shoe_id/:shoe_heart', function(req,res){
 
  console.log(req.params);
  console.log(req.params.shoe_id);
@@ -995,7 +995,7 @@ const doc ={
         });
 
     });
-    app.put('/api/heartscounts/:heartNum', function(req,res){
+    app.put('https://fathomless-caverns-94991.herokuapp.com/api/heartscounts/:heartNum', function(req,res){
 
  console.log(req.params);
  console.log(id);
@@ -1024,7 +1024,7 @@ const doc ={
 
     });
 
-    app.delete('/api/shoes/:shoe_id', function(req, res){
+    app.delete('https://fathomless-caverns-94991.herokuapp.com/api/shoes/:shoe_id', function(req, res){
 
         Shoe.remove({
              _id: req.params.shoe_id
