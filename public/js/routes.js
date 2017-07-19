@@ -99,6 +99,13 @@ app.config(function($routeProvider,$locationProvider){
         authenticated: true,
         permission: ["admin", "moderator"]
     })
+    .when('/search', {
+        templateUrl: '../views/pages/management/search.html',
+        controller: 'managementCtrl',
+        controllerAs:'management',
+        authenticated: true,
+        permission: ["admin", "moderator"]
+    })
     .otherwise({redirectTo: '/'});
 
 

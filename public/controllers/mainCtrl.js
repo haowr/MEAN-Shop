@@ -184,13 +184,13 @@
                 }else{
                 
                 scope.loading = false;
-                scope.disabled = true;
-                scope.errorMsg=  data.data.message + '...Redirecting';
-               /* $timeout(function(){
-                    $location.path('/about');
+                scope.disabled = false;
+                scope.errorMsg=  data.data.message;
+                //$timeout(function(){
+                   // $location.path('/login');
 
-                },3000);
-*/
+                //},2000);
+
                 }
                 //CREATE ERROR MESSAGE
 

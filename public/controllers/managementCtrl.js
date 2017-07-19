@@ -8,7 +8,7 @@
 
     });
 
-    app.controller('managementCtrl',function(User){
+    app.controller('managementCtrl',function(User,$scope){
 
         scope = this;
         scope.loading = false;
@@ -19,6 +19,7 @@
         scope.limit= 5;
         scope.successMsg = "";
         scope.errorMsg = false;
+        scope.searchLimit = 0;
 
 function getUsers(){
 
@@ -90,6 +91,68 @@ getUsers();
         });
 
     };
+        scope.search = function(searchKeyword, number){
+        
+        if(searchKeyword){
+
+            if(searchKeyword.length > 0){
+                scope.limit = 0;
+                $scope.searchFilter = searchKeyword;
+                scope.limit = number;
+
+                
+            }else{
+                $scope.searchFilter = undefined;
+                scope.limit = 0;
+
+            }
+
+        }else{
+            console.log("test");
+            $scope.searchFilter = undefined;
+            scope.limit = 0;
+        }
+
+    };
+
+    scope.clear = function(){
+        $scope.number = 'Clear';
+        scope.limit = 0;
+        $scope.searchKeyword = undefined;
+        $scope.searchFilter = undefined;
+        scope.showMoreError = false;
+        
+
+    };
+
+    scope.advancedSearch = function(searchByUsername, searchByEmail, searchByName){
+        $scope.searchByUsername = searchByUsername;
+        $scope.searchByEmail = searchByEmail;
+        $scope.searchByName = searchByName;
+        if(searchByUsername || searchByEmail || searchByName){
+            $scope.advancedSearchFilter = {};
+            if(searchByUsername){
+                $scope.advancedSearchFilter.username = searchByUsername; //field that we append has to match the property in the database..
+            }
+            if(searchByEmail){
+                $scope.advancedSearchFilter.email = searchByEmail;
+            }
+            if(searchByName){
+                $scope.advancedSearchFilter.name = searchByName;
+            }
+            scope.searchLimit = undefined;
+        }else{
+            scope.searchLimit = 0;
+        }
+
+
+
+    };
+    scope.sortOrder = function(order){
+        scope.sort = order;
+
+    };
+
 
     });
 
@@ -109,7 +172,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
     scope.phase3 = false;
     scope.phase4 = false;
 
-           User.getUser($routeParams.id).then(function(data){
+    User.getUser($routeParams.id).then(function(data){
 
             console.log(data);
             if(data.data.success){
@@ -269,7 +332,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
         }
 
     };
-scope.updateUsername= function(newUsername, valid){
+    scope.updateUsername= function(newUsername, valid){
         scope.errorMsg = false;
         scope.successMsg = false;
         scope.disabled = false;
@@ -317,7 +380,7 @@ scope.updateUsername= function(newUsername, valid){
         var userObject = {};
         
 
-    //if(valid){
+    
             userObject._id = scope.currentUser;
             userObject.permission = newPermission;
             User.editUser(userObject).then(function(data){
@@ -364,6 +427,7 @@ scope.updateUsername= function(newUsername, valid){
       //  }
 
     };
+    
 
 
 
