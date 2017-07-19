@@ -9,7 +9,7 @@
     var bodyParser = require('body-parser'); // pull information from html POST
     var methodOverride = require('method-override');// Simulate delete and put
     var database = require('./config/database');
-    var port    = process.env.PORT || 8888;
+    var port    = process.env.PORT || 8080;
     var path    = require('path');
     //var passport = require('passport');
     //var LocalStrategy = require('passport-local').Strategy;
