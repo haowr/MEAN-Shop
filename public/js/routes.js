@@ -46,15 +46,17 @@ app.config(function($routeProvider,$locationProvider){
 
 
     })
-         .when('/mensshoes',{
+        .when('/shop',{
 
-        templateUrl: '../views/pages/Mens/shoes.html',
-        controller:'shoesCtrl',
-        controllerAs: 'shoes',
-        authenticated: false
+        templateUrl: '../views/pages/shop.html',
+        controller: 'shoesCtrl',
+        controllerAs:'shoes'
+
+        
 
 
     })
+
     .when('/activate/:token', {
         templateUrl: '../views/pages/users/activation/activate.html',
         controller: 'emailCtrl',

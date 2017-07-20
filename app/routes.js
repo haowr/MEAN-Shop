@@ -5,8 +5,8 @@
 var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
-var Page = require('./models/pagesschema');
-var Heart = require('./models/heartscount');
+//var Page = require('./models/pagesschema');
+//var Heart = require('./models/heartscount');
 var User = require('./models/user');
 var jwt  = require('jsonwebtoken');
 var nodemailer = require('nodemailer');
@@ -132,41 +132,47 @@ module.exports = function(app){// passed when we required the routes.js file in 
 
  app.post('/api/shoes',function(req,res){
 
+     console.log(req.body);
      var shoe = new Shoe();
      shoe.name = req.body.name;
-     shoe.page = req.body.page;
-     console.log(req.body.name);
+     shoe.price = req.body.price;
+     shoe.shoecolor = req.body.shoecolor;
+     //shoe.page = req.body.page;
      
-    // shoe.
+     console.log(shoe.shoecolor);
+     shoe.save(function(err){
 
-    shoe.save(function(err){
+        if(err){
+            res.json({success: false, message: "Save Failed...", err: err});
+        }else{
+            res.json({success: true, message:"Save succeeded"});
+        }
+     });
+ });
 
-            if (err){
-                    
-                    res.send(err.message);
-                
-            }else{
 
-                res.json({success: true, message: "Saved Mofo!"});
-                
-            }
+     /*Shoe.findOne({name: req.body.name},function(err,shoe){
 
-        });
+        if(err) throw err;
+        if(shoe){
+            res.json({success:false, message: "Shoe already exists..."});
+        }else{
 
-    });
-                
-      
-app.get('/api/shoes',function(req,res){
-
-    console.log(res);
-
-            Shoe.find(function(err,shoes){
-
-                res.json(shoes);
-
+            shoe.save(function(err){
+                if(err){
+                    res.json({success: false, message: "Save failed..."});
+                }else{
+                    res.json({success: true,  message: "Save successful..."});
+                }
             });
 
-        });
+        }
+     }); */
+   
+                
+      
+
+
 
         app.post('/api/checkusername',function(req,res){
             // res.send("Testing new route");
@@ -519,6 +525,26 @@ app.get('/api/shoes',function(req,res){
                 }
             })
         });
+               app.put('/api/shoes', function(req,res){
+
+            Shoe.find({},function(err,shoes){
+                if(err) throw err;
+                if(shoes){
+                    res.json({ success: true, message: "You want shoes?? You got shoes!>:(", shoes: shoes});
+
+                }else{
+
+                    res.json({success: false, message: "No shoe for you!"});
+                }
+                
+
+
+            });
+
+        });
+
+
+
         //EXPRESS MIDDLEWARE
         app.use(function(req,res,next){
 
@@ -590,6 +616,7 @@ app.get('/api/shoes',function(req,res){
 
 
         });
+ 
         app.put('/api/management',function(req,res){
 
             User.find({},function(err,users){
@@ -886,22 +913,6 @@ app.get('/api/shoes',function(req,res){
     //use mongoose to get all the 
     //api ------------------------------------------
     //get all gemes
-    app.get('/api/shoes', function(req,res){
-
-        Shoe.find(function(err,shoes){
-
-              // if there is an error in receiving. send the error. nothing after res.send(err);
-        if(err)
-            res.send(err)
-        
-        res.json(shoes) // return all gems in JSON format
-
-
-        });
-      
-
-
-    });
 
     app.get('/api/heartscounts',function(req,res){
 
@@ -922,35 +933,8 @@ app.get('/api/shoes',function(req,res){
 
 
         // create todo and send back all todos after creation
-    app.put('/api/shoes/:shoe_id', function(req,res){
-
- console.log(req.params);
- heart++
-  id = req.params.shoe_id;
-        //create a todo, information comes from AJAX request from Angular
-/*const doc ={
-           
-           
-            hearts: heart
-};
-
-        Shoe.update({_id: req.params.shoe_id},doc, function(err,shoes){
-
-            if(err){
-              res.send(err);
-            }
-              // get and return all the todos after you create another
-              Shoe.find(function(err,shoes){
-
-                if (err)
-                   res.send(err)
-                   res.json(shoes);
-
-              });
-        });
-*/
-    });
-
+ 
+/*
     app.get('/api/shoes/:shoe_id/:shoe_heart',function(req,res){
      var  data = {
         "info": {
@@ -995,6 +979,7 @@ const doc ={
         });
 
     });
+    */
     app.put('/api/heartscounts/:heartNum', function(req,res){
 
  console.log(req.params);

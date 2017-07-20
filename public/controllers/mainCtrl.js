@@ -9,11 +9,14 @@
     });
 
 
-  app.controller('mainCtrl',function($http,$location,$timeout,Auth,$rootScope,$interval,$window,Main,$route,User,AuthToken){
+  app.controller('mainCtrl',function($http,$location,$timeout,Auth,$rootScope,$interval,$window,Main,$route,$scope,User,AuthToken){
 
 
      var scope= this;
      scope.loadme =false;//dont load html until true;
+
+
+
      scope.checkSession = function(){
 
         if(Auth.isLoggedIn()){
@@ -132,7 +135,7 @@
 
     
 
-  
+  /*
 
       $http.get('/api/shoes').then(function(response){
 
@@ -140,7 +143,7 @@
         console.log(response);
 
       });
-   
+   */
 
     this.doLogin = function(loginData){
 
@@ -233,6 +236,8 @@
         $("#myModal").modal('hide');
 
      }
+
+
 
 });
 

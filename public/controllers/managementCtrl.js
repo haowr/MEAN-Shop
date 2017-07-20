@@ -20,6 +20,7 @@
         scope.successMsg = "";
         scope.errorMsg = false;
         scope.searchLimit = 0;
+        //$scope.shoes;
 
 function getUsers(){
 
@@ -53,6 +54,7 @@ function getUsers(){
         });
 };
 getUsers();
+
 
         scope.showMore = function(number){
             scope.showMoreError = false;

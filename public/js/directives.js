@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module('store-products',[]);
+    var app = angular.module('storeDirectives',[]);
 
 //var hearto = 0;
 //var status =0;
@@ -9,7 +9,7 @@ app.directive("heartAdder",function(){
 return{
 
 	restrict: 'E',
-	templateUrl: '../views/heart-adder.html',
+	templateUrl: '../views/directives/heart-adder.html',
 	controller: function(){ 
 		
 		

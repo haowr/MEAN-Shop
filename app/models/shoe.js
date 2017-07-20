@@ -6,10 +6,10 @@ var ShoeSchema = new Schema({
         name: String,
         price: Number,
         shoecolor: Array,
-        page:{type: Array, unique: true, dropDups: true},
+       // page: Array,
         colors:Array,
-        hearts: Number,
-        done: Boolean
+        hearts: Number
+       // done: Boolean
 });
 
 module.exports = mongoose.model('Shoe',ShoeSchema );

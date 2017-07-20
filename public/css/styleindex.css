@@ -265,6 +265,14 @@ padding-right: 20px;
 
   float: right;
 }
+.landing{
+
+border: 1px solid black;
+width: 250px;
+display: inline-block;
+padding-right: 20px;
+
+}
 /*Modal Loader */
 $c1: #114357;
 $c2: #826C75;
