@@ -8,14 +8,22 @@ app.config(function(){
 
 });
 
-app.controller('shoesCtrl',function(Shop,$scope){
+app.controller('shoesCtrl',function(Shop,$scope,$rootScope){
 
     var scope = this;
     var name = "Z!";
     scope.imageIndex=0;
-    $scope.shoes;
+    scope.loading= true;
+    
+    scope.sort;
+    $scope.shoes=[];
+    $scope.shoesPaginated;
     $scope.hearts = 1;
     $scope.loadme = false;
+
+    var _page= -3;
+
+ 
 
     function getShoes(){
 
@@ -24,18 +32,44 @@ app.controller('shoesCtrl',function(Shop,$scope){
                      console.log(data);
                      if(data.data.success){
                          $scope.shoes = data.data.shoes;
+                         //$scope.shoesPaginated = data.data.shoes[0].pages;
+                         //console.log($scope.shoesPaginated);
                          $scope.loadme = true;
                      }else{
                         console.log("Something went wrong getting shoe filepaths...");
                         console.log(data.data.message);
-
                     }
-        
-
-            });
-
+                });
     };
             getShoes();
+
+
+ function getPages() {
+
+            Shop.getPages().then(function(data){
+                console.log(data.data.page);
+                $scope.shoesPaginated = data.data.page;
+
+
+            });
+ };
+        getPages();
+
+
+   $scope.loadMoreo = function(){
+            _page++;
+            scope.loading = true;
+            console.log(_page);
+            if($scope.shoesPaginated[0].pages[_page] !== undefined){
+                console.log($scope.shoesPaginated[0].pages[_page]);
+                $scope.shoes = $scope.shoes.concat($scope.shoesPaginated[0].pages[_page]);
+               // scope.loading = false;
+            }else{
+                console.log("No more pages");
+            }
+            
+            
+    };
 
       //      function() {
     //	this.imageIndex = 0;
@@ -45,6 +79,12 @@ app.controller('shoesCtrl',function(Shop,$scope){
          $scope.imageIndex = imageNumber || 0;
     	};
 
+        $scope.sortOrder= function(order){
+            
+            $scope.order = order;
+            console.log($scope.order);
+        };
+        
 });
 app.controller('galleryCtrl',function(){
         this.imageIndex=0;

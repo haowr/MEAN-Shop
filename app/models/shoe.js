@@ -6,7 +6,7 @@ var ShoeSchema = new Schema({
         name: String,
         price: Number,
         shoecolor: Array,
-       // page: Array,
+        pages: Array,
         colors:Array,
         hearts: Number
        // done: Boolean

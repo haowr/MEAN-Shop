@@ -21,6 +21,12 @@ app.factory('Shop', function($http){
 
     };
 
+    //Shop.getPages();
+    shopFactory.getPages = function(){
+
+        return $http.put('api/pages');
+    };
+
 return shopFactory;
 
 

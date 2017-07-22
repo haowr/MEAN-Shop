@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module("mainController",['authServices','mainServices','userServices']);
+    var app = angular.module("mainController",['authServices','mainServices','userServices','infinite-scroll']);
 
     app.config(function(){
 
@@ -23,7 +23,7 @@
 
             scope.checkingSession = true;
             var interval = $interval(function(){
-                console.log("test");
+                //console.log("test");
                 var token = $window.localStorage.getItem('token');
                 if(token === null){
                     $interval.cancel(interval);
@@ -35,18 +35,18 @@
                     }
                     var expireTime = self.parseJwt(token);
                     var timeStamp = Math.floor(Date.now()/1000);// convert javascript date object into a timestamp
-                    console.log(expireTime.exp);
-                    console.log(timeStamp);
+                    //console.log(expireTime.exp);
+                    //console.log(timeStamp);
 
                     //console.log(expireTime.exp - timeStamp);
                     var timeCheck = expireTime.exp - timeStamp;
-                    console.log(timeCheck);
+                    //console.log(timeCheck);
                     if(timeCheck <= 350){
                         console.log("Token has expired...");
                         showModal(1);
                         $interval.cancel(interval);
                     }else{
-                        console.log("Token is not yet expired...")
+                        //console.log("Token is not yet expired...")
                     }
                 }
             },2000);

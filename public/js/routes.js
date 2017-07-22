@@ -2,7 +2,7 @@ console.log("routes.js loaded");
 
 (function(){
 
-var app = angular.module('appRoutes', ['ngRoute','userServices']);
+var app = angular.module('appRoutes', ['ngRoute','userServices','infinite-scroll']);
 
 app.config(function($routeProvider,$locationProvider){
 
@@ -51,9 +51,6 @@ app.config(function($routeProvider,$locationProvider){
         templateUrl: '../views/pages/shop.html',
         controller: 'shoesCtrl',
         controllerAs:'shoes'
-
-        
-
 
     })
 

@@ -1,18 +1,69 @@
+
+
 <div ng-show= "loadme">
     <div class = "page-header" >
     <h1>Welcome to the shop</h1>
 </div>
 
+<p>{{order}}</p>
+<div ng-show = "shoes.loading" class = "jumbotron text-center">
+
+    <span class = "glyphicon glyphicon-spin repeat"></span>
+    <p>Loading...</p>
+
+</div>
+<center>
+<div class= "container">
+    <div class = "navbar-form">
+        
+            <button type="button" class = 'btn btn-default'>Search</button>
+            <div class = "btn-group">
+                <button type ="button" class = "btn btn-default">Sort by</button>
+                <button type ="button" class = "btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <!-- <span class = "caret"></span>-->
+                    <span class = "sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class = "dropdown-menu">
+                    <li><a href="#" ng-click = "sortOrder('price');">Price-Highest</a></li>
+                    <li><a href="#" ng-click = "sortOrder('price': 'reverse');">Popularity</a></li>
+                    <li><a href="#" ng-click = "sortOrder('name');">Name</a></li>
+           
+                </ul>
+            </div>
+        </div>
+</div>
+
+</center>
+<div infinite-scroll = "loadMoreo()"  infinite-scroll-distance ="0.1" class = "container container-fluid">
 
 <center>
-        <div class = "landing" ng-repeat="shoe in shoes">
-            <h1> {{shoe.name}}</h1>
-            <heart-adder></heart-adder>
-           <landing-gallery></landing-gallery>
+        <div class = "landing" ng-repeat="shoe in shoes | orderBy: order track by $index ">
+            <h1 class = "pull-left"> {{shoe.name}}</h1>
+            <h3 class = "pull-right"> {{shoe.price}}</h3>
+            <br>
+            <br>
+            <h3 class = "pull-right"> {{shoe.hearts}}</h3>
+            <!--<heart-adder></heart-adder>-->
+            <landing-gallery></landing-gallery>
+           <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
         </div>
 </center>
+
 </div>
-       
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+</div>
         
 
    

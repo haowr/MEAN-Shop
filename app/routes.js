@@ -5,7 +5,7 @@
 var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
-//var Page = require('./models/pagesschema');
+var Page = require('./models/page');
 //var Heart = require('./models/heartscount');
 var User = require('./models/user');
 var jwt  = require('jsonwebtoken');
@@ -130,6 +130,45 @@ module.exports = function(app){// passed when we required the routes.js file in 
         }
  });
 
+app.put('/api/pages',function(req,res){
+
+    Page.find({},function(err,page){
+
+        if(err) throw err;
+        if(!page){
+            res.json({success: false, message: "No pages found..."});
+
+        }else{
+            res.json({success: true, message: "OY. Here's yo pages!", page: page});
+        }
+        
+
+
+    });
+
+
+});
+
+
+app.post('/api/pages', function(req,res){
+
+    console.log(req.body);
+    var page = new Page();
+    page.pages = req.body.pages;
+    page.save(function(err){
+
+        if (err) {
+            res.json({success: false , message: err});
+        }else{
+            res.json({sucess: true, message: "Save successful..."});
+        }
+        
+
+
+    });
+
+
+});
  app.post('/api/shoes',function(req,res){
 
      console.log(req.body);
@@ -137,7 +176,8 @@ module.exports = function(app){// passed when we required the routes.js file in 
      shoe.name = req.body.name;
      shoe.price = req.body.price;
      shoe.shoecolor = req.body.shoecolor;
-     //shoe.page = req.body.page;
+     shoe.pages = req.body.pages;
+     shoe.colors = req.body.colors;
      
      console.log(shoe.shoecolor);
      shoe.save(function(err){

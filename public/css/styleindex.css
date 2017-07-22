@@ -1,7 +1,4 @@
-body{
 
-  
-}
 /*#storeWidth{
 
   max-width: 10px;
@@ -124,8 +121,8 @@ opacity:0;
 
 }
 .fa-heart{
-position:absolute;
-margin-left:195px;
+/*position:absolute;*/
+
  opacity:0;
 }
 
@@ -253,7 +250,7 @@ display:inline-block;
  border-top:1px solid black;
  width:250px; 
  display: inline-block;
-padding-right: 20px;
+/*padding-right: 20px;*/
 }
 .showmore{
 
@@ -331,6 +328,13 @@ body {
 @keyframes spin {
   0% {transform: rotate(0deg)}
   100% {transform: rotate(-360deg)}
+}
+#list-wrapper{
+max-height: 800px;
+overflow-y: scroll;
+margin-top: 20px;
+border: solid 1px black;
+  
 }
 /*.navbar{
 
