@@ -5,7 +5,9 @@
 var Gem = require('./models/gem');
 var Product = require('./models/gem');
 var Shoe = require('./models/shoe');
+var AllShoe = require('./models/allshoe');
 var Page = require('./models/page');
+var Heart = require('./models/heart');
 //var Heart = require('./models/heartscount');
 var User = require('./models/user');
 var jwt  = require('jsonwebtoken');
@@ -148,27 +150,188 @@ app.put('/api/pages',function(req,res){
 
 
 });
+app.put('/api/allshoes', function(req,res){
 
+     AllShoe.find({}, function(err,allshoes){
+
+        if(err) throw err;
+        if(!allshoes){
+            res.json({success: false, message:"No Shoes Found :("});
+
+        }else{
+            res.json({success: true, message: "YOOSH! :3)", allshoes: allshoes});
+        }
+
+
+     });
+
+});
+
+app.post('/api/allshoes', function(req,res){
+
+
+var allshoe = new AllShoe();
+
+    allshoe.name = req.body.name;
+    allshoe.price = req.body.price;
+    allshoe.shoecolor = req.body.shoecolor;
+    allshoe.colors = req.body.colors;
+    allshoe.hearts = req.body.hearts;
+
+    allshoe.save(function(err){
+
+        if(err){
+
+            res.json({success: false, message: err});
+        }else{
+            res.json({success: true, message: "Save Successful..." });
+        }
+
+
+    });
+
+});
+app.post('/api/hearts',function(req,res){
+
+    var heart = new Heart();
+    heart.hearts = req.body.hearts;
+    heart.save(function(err){
+        if (err){
+            res.json({success: false, message:"Save failed..."});
+        }else{
+            res.json({success: true, message:"Save Successful..."});
+        }
+
+
+    });
+
+
+
+});
+app.put('/api/findhearts',function(req,res){
+
+    Heart.find({},function(err, hearts){
+        if(err) throw err;
+        if(!hearts){
+            res.json({success: false, message:"No hearts found-o"});
+
+        }else{
+            res.json({success: true, message: "Here is the love!", hearts: hearts});
+        }
+        
+    });
+
+
+});
+app.put('/api/remhearts', function(req,res){
+
+    Heart.findOne({name:"hearto"}, function(err,heart){
+
+        if(err) throw err;
+        if(!heart){
+            res.json({success: false, message:"noo hhearto"});
+        }else{
+            Heart.findOneAndUpdate({name:"hearto"},{$inc:{hearts: -1}},function(err,hearts){
+                if(err) throw err;
+                if(!heart){
+                    res.json({success:false, message: "no hearts to remove"});
+                }else{
+                    res.json({success: true, message: "heart declinated..."});
+                }
+            });
+        }
+    });
+
+});
+app.put('/api/hearts',function(req,res){
+
+   
+   //var nhv = req.params.newheartValue++;
+   //console.log(nhv);
+   ///res.json({value:nhv});
+   Heart.findOne({name:"hearto"},function(err, heart){
+       if(err) throw err;
+       if(!heart){
+            res.json({success: false, message:"noo hhearto"});
+       }else{
+            // res.json({success: true, message:"noo hhearto"});
+            heart.hearts++;
+        Heart.findOneAndUpdate({name:"hearto"},{$inc:{hearts: 1}},function(err,hearts){
+
+        if(err) throw err;
+        if(!hearts){
+            res.json({success: false, message:"No hearts found"} );
+        }else{
+
+            res.json({success: true, message:"updated..."});
+        }
+
+    })
+
+       }
+   })
+ 
+});
+app.put('/api/activatedby', function(req,res){
+    console.log(req.body.name);
+
+    Heart.findOneAndUpdate({name:"hearto"},{$push:{activatedby: req.body.name}},{new:true},function(err,activatedby){
+
+        if(err)  throw err;
+        if(!activatedby){
+            res.json({success:false, message:"Parameter not found"});
+
+        }else{
+            res.json({success:true,message:"Parameter found..",activatedby:activatedby});
+        }
+
+    });
+
+});
+app.put('/api/whoactivated',function(req,res){
+
+    Heart.findOne({name:"hearto"}).select('activatedby').exec(function(err,activatedby){
+
+        if (err) throw err;
+        if(!activatedby){
+            res.json({success:false, message: "Coud not parameter"});
+        }else{
+            res.json({success: true, message:"Found it!...", activatedby: activatedby});
+        }
+
+    });
+
+});
 
 app.post('/api/pages', function(req,res){
 
     console.log(req.body);
     var page = new Page();
     page.pages = req.body.pages;
+        
     page.save(function(err){
 
         if (err) {
             res.json({success: false , message: err});
         }else{
-            res.json({sucess: true, message: "Save successful..."});
+            res.json({success: true, message: "Save successful..."});
         }
-        
+    });
+});
+app.put('/api/shoes/mensshoes/:name',function(req,res){
 
+    console.log(req.params.name);
+    AllShoe.find({name: req.params.name},function(err,allshoe){
+        if (err) throw err;
+        if(!allshoe){
+            res.json({success: false, message:"No Mens Shoe Found..."});
+        }else{
+            res.json({success: true, message: "Mens Shoe Found...", allshoe: allshoe});
+        }
 
     });
-
-
 });
+
  app.post('/api/shoes',function(req,res){
 
      console.log(req.body);
@@ -189,30 +352,6 @@ app.post('/api/pages', function(req,res){
         }
      });
  });
-
-
-     /*Shoe.findOne({name: req.body.name},function(err,shoe){
-
-        if(err) throw err;
-        if(shoe){
-            res.json({success:false, message: "Shoe already exists..."});
-        }else{
-
-            shoe.save(function(err){
-                if(err){
-                    res.json({success: false, message: "Save failed..."});
-                }else{
-                    res.json({success: true,  message: "Save successful..."});
-                }
-            });
-
-        }
-     }); */
-   
-                
-      
-
-
 
         app.post('/api/checkusername',function(req,res){
             // res.send("Testing new route");
@@ -654,6 +793,48 @@ app.post('/api/pages', function(req,res){
 
             });
 
+
+        });
+        app.put('/api/activateheart',function(req,res){
+                        
+            console.log(req.body.name);//check why this var is name instead of shoename...
+            AllShoe.findOneAndUpdate({name: req.body.name},{$set:{heartactivated: true}},{new:true},function(err,shoe){
+                if(err) throw err;
+                if (!shoe){
+                    res.json({success: false, message: "Shoe to be updated not found.."});
+                }else{
+                    res.json({success: true, message: "Shoe parameter updated...", shoe: shoe});
+                }
+
+            });
+
+        });
+                app.put('/api/deactivateheart',function(req,res){
+                        
+            console.log(req.body.name);//check why this var is name instead of shoename...
+            AllShoe.findOneAndUpdate({name: req.body.name},{$set:{heartactivated: false}},{new:true},function(err,shoe){
+                if(err) throw err;
+                if (!shoe){
+                    res.json({success: false, message: "Shoe to be updated not found.."});
+                }else{
+                    res.json({success: true, message: "Shoe parameter updated...", shoe: shoe});
+                }
+
+            });
+
+        });
+        app.put('/api/isactivated',function(req,res){
+            AllShoe.findOne({name: req.body.name}).select('heartactivated').exec(function(err,active){
+
+                if(err) throw err;
+                if(!active){
+                    res.json({success: false});
+                }else{
+                    res.json({success: true,active: active});
+                }
+
+
+            });
 
         });
  

@@ -24,11 +24,16 @@
         <script type ="text/javascript" src ="../controllers/usernameeCtrl.js"></script>
         <script type ="text/javascript" src ="../controllers/passwordCtrl.js"></script>
         <script type ="text/javascript" src ="../controllers/managementCtrl.js"></script>
+        <script type ="text/javascript" src ="../controllers/profileCtrl.js"></script>
         <!--<script type ="text/javascript" src ="../controllers/editCtrl.js"></script>-->
         <script type ="text/javascript" src ="../services/userServices.js"></script>
         <script type ="text/javascript" src ="../services/authServices.js"></script>
         <script type ="text/javascript" src="../services/mainServices.js"></script>
         <script type ="text/javascript" src="../services/shopServices.js"></script>
+        <script type ="text/javascript" src="../controllers/mensCtrl.js"></script>
+        <script type ="text/javascript" src="../services/cookieServices.js"></script>
+        
+        <script type ="text/javascript" src="../services/heartServices.js"></script>
         
         
         
@@ -37,7 +42,7 @@
         <script src="https://use.fontawesome.com/b397913843.js"></script>
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-       <link rel="stylesheet" href = "../css/bootstrap.min.css" type = "text/css">
+        <link rel="stylesheet" href = "../css/bootstrap.min.css" type = "text/css">
         <link rel="stylesheet" href = "../fonts/glyphicons-halflings-regular.ttf" type = "text/css">
         <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
         <link rel ="stylesheet" href= "../css/animate.css" type="text/css">
@@ -78,6 +83,7 @@
           <a class="dropdown-item" href ="/about">About</a>
            </li>
            <li><a ng-show="main.isLoggedIn" class="nav-link" href="/profile"> Hello {{ main.username }} </a></li>
+           <li class ="nav-item"><a href = "/profile">Heartos:{{heartss}}</a></li>
       </ul>
        
         </div>

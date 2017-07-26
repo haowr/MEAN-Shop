@@ -2,7 +2,7 @@
 
 console.log("app.js loaded");
 
-var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","infinite-scroll"]);
+var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","infinite-scroll","heartServices","profileController","mensController","cookieServices"]);
 																																																  
 app.config(function($httpProvider){
 
@@ -32,6 +32,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$scope.allData =[];
 	store.shoes=[];
 	$scope.ids=[];
+
 	
 // ngRoute configuration
 

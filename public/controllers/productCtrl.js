@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('productsController',['shopServices']);
+var app = angular.module('productsController',['shopServices','heartServices','authServices',"userServices",'shopServices','cookieServices']);
 
 app.config(function(){
 
@@ -8,17 +8,18 @@ app.config(function(){
 
 });
 
-app.controller('shoesCtrl',function(Shop,$scope,$rootScope){
+app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
 
     var scope = this;
     var name = "Z!";
     scope.imageIndex=0;
     scope.loading= true;
-    
+    $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
     scope.sort;
     $scope.shoes=[];
     $scope.shoesPaginated;
     $scope.hearts = 1;
+    scope.hearts=false;
     $scope.loadme = false;
 
     var _page= -3;
@@ -44,16 +45,25 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope){
             getShoes();
 
 
- function getPages() {
+function getPages() {
 
             Shop.getPages().then(function(data){
                 console.log(data.data.page);
                 $scope.shoesPaginated = data.data.page;
-
-
             });
  };
         getPages();
+
+function getAllShoes() {
+        Shop.getAllShoes().then(function(data){
+            console.log(data.data.allshoes);
+            console.log(data.data.message);
+            $scope.allShoes = data.data.allshoes;
+            console.log($scope.allShoes);
+        });
+
+};
+        getAllShoes();
 
 
    $scope.loadMoreo = function(){
@@ -86,6 +96,7 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope){
         };
         
 });
+
 app.controller('galleryCtrl',function(){
         this.imageIndex=0;
 

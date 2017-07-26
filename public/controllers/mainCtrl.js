@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module("mainController",['authServices','mainServices','userServices','infinite-scroll']);
+    var app = angular.module("mainController",['authServices','mainServices','userServices','infinite-scroll','heartServices']);
 
     app.config(function(){
 
@@ -9,12 +9,22 @@
     });
 
 
-  app.controller('mainCtrl',function($http,$location,$timeout,Auth,$rootScope,$interval,$window,Main,$route,$scope,User,AuthToken){
+  app.controller('mainCtrl',function($http,$location,$timeout,Auth,$rootScope,$interval,$window,Main,$route,$scope,User,AuthToken,Heart){
 
 
      var scope= this;
-     scope.loadme =false;//dont load html until true;
+     scope.loadme =false;
+    // $scope.heartss = $rootScope.heartss;
+     //dont load html until true;
 
+	//$scope.heartss;
+	//console.log($scope.heartss);
+    //scope.$watch('heartss',function(newVal,oldVal){
+      //  if(newVal!==oldVal){
+        //    scope.heartss = newVal;
+        //}
+
+    //});
 
 
      scope.checkSession = function(){

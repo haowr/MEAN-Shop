@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var PageSchema = new Schema({
 
-    pages: Array
+    pages:{type: Array, unique: true}
 
 });
 

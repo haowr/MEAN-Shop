@@ -42,15 +42,22 @@ app.config(function($routeProvider,$locationProvider){
         .when('/profile',{
 
         templateUrl: '../views/pages/users/profile.html',
+        controller: 'profileCtrl',
+        controllerAs: 'profile',
         authenticated: true
 
 
     })
-        .when('/shop',{
+    .when('/shop',{
 
         templateUrl: '../views/pages/shop.html',
         controller: 'shoesCtrl',
         controllerAs:'shoes'
+    })
+    .when('/shop/mens/:name',{
+        templateUrl: '../views/mensshoes.html',
+        controller: 'mensCtrl',
+        controllerAs: 'mens'
 
     })
 
@@ -60,7 +67,7 @@ app.config(function($routeProvider,$locationProvider){
         controllerAs: 'email',
         authenticated: false
     })
-        .when('/resend', {
+    .when('/resend', {
         templateUrl: '../views/pages/users/activation/resend.html',
         controller: 'resendCtrl',
         controllerAs: 'resend',
@@ -98,6 +105,7 @@ app.config(function($routeProvider,$locationProvider){
         authenticated: true,
         permission: ["admin", "moderator"]
     })
+    
     .when('/search', {
         templateUrl: '../views/pages/management/search.html',
         controller: 'managementCtrl',

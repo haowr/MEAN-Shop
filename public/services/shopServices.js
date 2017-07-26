@@ -27,6 +27,18 @@ app.factory('Shop', function($http){
         return $http.put('api/pages');
     };
 
+    //Shop.getAllSHoes();
+    shopFactory.getAllShoes = function(){
+
+        return $http.put('/api/allshoes');
+
+    };
+    //Shop.getMensShoe();
+    shopFactory.getMensShoe = function(name){
+        return $http.put('/api/shoes/mensshoes/'+name);
+
+    };
+
 return shopFactory;
 
 

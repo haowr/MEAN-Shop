@@ -2,5 +2,6 @@
 
 <a class = "pull-right" id = "heartlink" ng-click="store.addHeart(shoe._id,shoe.hearts)"><img id="heartbutton" ng-class="{heartbutton: shoe.hearts===1}" ng-src= "{{store.heartlink}}"/></a>
 -->
-<i  ng-controller = "heartCtrl as hearts"ng-show="loadme" class="fa fa-heart-o pull-right" ng-click="main.addHeart(shoe._id,shoe.hearts)" ng-class="{hearted: hearts.hearts===1}"aria-hidden="true"></i>
-<i ng-controller = "heartCtrl as hearts" ng-show="loadme" class="fa fa-heart " ng-click="main.addHeart(shoe._id,shoe.hearts)"ng-class="{heartbutton: hearts.hearts===1}"aria-hidden="true"></i>
+<i ng-controller = "mensCtrl as shoes" class="fa fa-heart-o" ng-click="heartAdder()" ng-class="{hearted: hearts.hearts===1}"aria-hidden="true"></i>
+<!--<i  ng-show = "loading"ng-controller = "mensCtrl as shoes" class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
+<i ng-controller = "mensCtrl as shoes" ng-show= "loadme" class="fa fa-heart " ng-click="heartAdder()"ng-class="{heartbutton: hearts.hearts===1}"aria-hidden="true"></i>

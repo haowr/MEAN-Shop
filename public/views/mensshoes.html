@@ -1,0 +1,140 @@
+<div ng-show = "loadme">
+<div class = "page-header">
+    <h1> {{mensShoe.name}}</h1>
+</div>
+<div class = "container container-fluid">
+<div class = "row">
+    <div class = "col-sm-2 shoesidepanel">
+        <ul class = "img-thumbnails clearfix" ng-repeat ="perspective in mensShoe.perspectives">
+            <li ng-click = "imageChange($index);"><img ng-src="{{perspective}}"></li>
+        </ul>
+
+        <!--<landing-gallery></landing-gallery>-->
+    </div>
+    <div class = "col-sm-7 mainshoeview">
+      <center>  <img ng-src = "{{mensShoe.fullsize[imageIndex]}}"></center>
+    </div>
+    <div class = "col-sm-3 shoespecs">
+        <div class ="header">
+            <h2>Description</h2>
+            <p>{{mensShoe.description}}</p>
+            <h3>Price</h3>
+            <p>{{mensShoe.price | currency}}</p>
+            <div class ="sizer">
+               <p>Size: {{size}}</p>
+            </div>
+            <div class ="sizer">
+               <p>Qty: {{amt}} </p>
+               <p>{{heartss}}</p>
+            </div>
+                            <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
+            
+            <heart-adder></heart-adder>
+            <div class = "navbar-form pull-left sizeselector">
+        
+            
+            <div class = "btn-group">
+                <button type ="button" class = "btn btn-default">Size</button>
+                <button type ="button" class = "btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <!-- <span class = "caret"></span>-->
+                    <span class = "sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class = "dropdown-menu">
+                    <li><a href="#" ng-click = "changeSize('S');">S</a></li>
+                    <li><a href="#" ng-click = "changeSize('M');">M</a></li>
+                    <li><a href="#" ng-click = "changeSize('L');">L</a></li>
+           
+                </ul>
+            </div>
+            &nbsp
+            <div class = "btn-group">
+                <button type ="button" class = "btn btn-default">Qty</button>
+                <button type ="button" class = "btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <!-- <span class = "caret"></span>-->
+                    <span class = "sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class = "dropdown-menu">
+                    <li><a href="#" ng-click = "changeQty('1');">1</a></li>
+                    <li><a href="#" ng-click = "changeQty('2');">2</a></li>
+                    <li><a href="#" ng-click = "changeQty('3');">3</a></li>
+                    <li><a href="#" ng-click = "changeQty('4');">4</a></li>
+                    <li><a href="#" ng-click = "changeQty('5');">5</a></li>
+                    <li><a href="#" ng-click = "changeQty('6');">6</a></li>
+                    <li><a href="#" ng-click = "changeQty('7');">7</a></li>
+                    <li><a href="#" ng-click = "changeQty('8');">8</a></li>
+                    <li><a href="#" ng-click = "changeQty('9');">9</a></li>
+           
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+<br>
+<div class = "row">
+    <div class = "col-sm-6 details">
+        <div class ="pull-right ">
+            <i class="fa fa-plus" ng-click = "openDetails();" ng-class= "{deselected: selection === 1}"aria-hidden="true"></i>
+            <i class="fa fa-minus" ng-click = "openDetails();" ng-class= "{deselected: selection === 0}"aria-hidden="true"></i>
+            <br>
+            
+        </div>
+        <br>
+        
+        <div ng-show="selection === 1"class= "container-fluid detailo">
+            <h2>Details</h2>
+            <p>{{mensShoe.description}}</p>
+        </div>
+        <div class ="pull-right ">
+            <i class="fa fa-plus" ng-click = "openFit();" ng-class= "{deselected: fit === 1}"aria-hidden="true"></i>
+            <i class="fa fa-minus" ng-click = "openFit();" ng-class= "{deselected: fit === 0}"aria-hidden="true"></i>
+            <br>
+        </div>
+        <br>
+        <div ng-show="fit=== 1"class= "container-fluid detailo">
+            <h2>Details</h2>
+            <p>{{mensShoe.description}}</p>
+        </div>
+            
+        
+    </div>
+   <!-- <img id="sale"src="./img/sale.jpg">-->
+  <!--  <div class= "col-sm-6 adspace">
+            
+                    
+           
+        
+        
+        
+    </div>-->
+    <div class = "col-sm-12 details">
+
+    </div>
+
+    <div class = "col-sm-3 sitemap">
+        
+        <ul>
+            <li><a href = "#"><p>Faq</p></a></li>
+            <li><a href = "#"><p>Order Tracking</p></a></li>
+            <li><a href = "#"><p>Return Policy</p></a></li>
+            <li><a href = "#"><p>Shoe Chart Size</p></a></li>
+            <li><a href = "#"><p>Contact Us</p></a></li>
+        </ul>
+        
+    </div>
+    <div class = "col-sm-6">
+    </div>
+    <div class  = "col-sm-3 emailsignup pull-right">
+        <br>
+        <br>
+        <br>
+        <br>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+    </div>
+    <div class = "col-sm-1">
+    </div>
+
+</div>
+</div>
