@@ -105,8 +105,21 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/edit/',id);
 
  }
+ //User.addLove(love,name);
+  userFactory.addLove = function(love, name){
+  return $http.put('/api/addlove/'+love+'/'+name);
+  }
+ //User.removeLove(love,name);
+  userFactory.removeLove = function(love, name){
+  return $http.put('/api/removelove/'+love+'/'+name);
+  }
 
- 
+  //User.getLoves(username);
+  userFactory.getLoves = function(username){
+
+    return $http.put('/api/getloves/'+username);
+
+  }
 
  return  userFactory;
 

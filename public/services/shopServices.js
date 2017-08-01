@@ -33,11 +33,21 @@ app.factory('Shop', function($http){
         return $http.put('/api/allshoes');
 
     };
+    //Shop.getMyLoveThumbnails(name)
     //Shop.getMensShoe();
     shopFactory.getMensShoe = function(name){
         return $http.put('/api/shoes/mensshoes/'+name);
 
     };
+    //Shop.getMultipleShoes();
+    shopFactory.getMultipleShoes =function(shoes){
+        return $http.put('/api/shoes/multiplemensshoes/'+shoes);
+    };
+    //Shop.getThumbnails();
+    shopFactory.getThumbnails = function(){
+
+        return $http.put('/api/thumbnails');
+    }
 
 return shopFactory;
 

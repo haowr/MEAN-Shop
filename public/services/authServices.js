@@ -8,7 +8,7 @@ console.log("Testing Auth Services");
 
 });
 
-app.factory('Auth', function($http, AuthToken){  //a way to organize the code..
+app.factory('Auth', function($http, AuthToken,$window){  //a way to organize the code..
 //Auth.create(regData);
 var authFactory = {};
  authFactory.login = function(loginData){
@@ -48,6 +48,8 @@ var authFactory = {};
  //Auth.Logout();
  authFactory.logout = function(){
     AuthToken.setToken();
+    $window.localStorage.removeItem('myLoves');
+    $window.localStorage.removeItem('cookieHearts');
  };
  return authFactory;
 

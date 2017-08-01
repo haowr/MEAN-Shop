@@ -1,10 +1,13 @@
-<div ng-show = "loadme">
+<div >
+    <br>
+    <br>
 <div class = "page-header">
     <h1> {{mensShoe.name}}</h1>
 </div>
 <div class = "container container-fluid">
 <div class = "row">
     <div class = "col-sm-2 shoesidepanel">
+
         <ul class = "img-thumbnails clearfix" ng-repeat ="perspective in mensShoe.perspectives">
             <li ng-click = "imageChange($index);"><img ng-src="{{perspective}}"></li>
         </ul>
@@ -12,11 +15,19 @@
         <!--<landing-gallery></landing-gallery>-->
     </div>
     <div class = "col-sm-7 mainshoeview">
-      <center>  <img ng-src = "{{mensShoe.fullsize[imageIndex]}}"></center>
+    <div class = "zoomers pull-right">  
+            <i class="fa fa-plus" ng-click = "zoom();" aria-hidden="true"></i>
+            <i class="fa fa-minus" ng-click = "shippingDetails();"aria-hidden="true"></i>
+            <br>
     </div>
+  
+       <img ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3}" ng-src = "{{mensShoe.fullsize[imageIndex]}}">
+    </div>
+    
     <div class = "col-sm-3 shoespecs">
         <div class ="header">
-            <h2>Description</h2>
+            
+            <h3 style="word-wrap:break-word">Description</h3>
             <p>{{mensShoe.description}}</p>
             <h3>Price</h3>
             <p>{{mensShoe.price | currency}}</p>
@@ -25,11 +36,11 @@
             </div>
             <div class ="sizer">
                <p>Qty: {{amt}} </p>
-               <p>{{heartss}}</p>
+              <heart-adder></heart-adder>
             </div>
                             <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
             
-            <heart-adder></heart-adder>
+            
             <div class = "navbar-form pull-left sizeselector">
         
             
@@ -75,15 +86,15 @@
 <div class = "row">
     <div class = "col-sm-6 details">
         <div class ="pull-right ">
-            <i class="fa fa-plus" ng-click = "openDetails();" ng-class= "{deselected: selection === 1}"aria-hidden="true"></i>
-            <i class="fa fa-minus" ng-click = "openDetails();" ng-class= "{deselected: selection === 0}"aria-hidden="true"></i>
+            <i class="fa fa-plus" ng-click = "openDetails();" ng-class= "{deselected: shippingSelection === 1}"aria-hidden="true"></i>
+            <i class="fa fa-minus" ng-click = "openDetails();" ng-class= "{deselected: shippingSelection === 0}"aria-hidden="true"></i>
             <br>
             
         </div>
         <br>
         
         <div ng-show="selection === 1"class= "container-fluid detailo">
-            <h2>Details</h2>
+            <h3>Details</h3>
             <p>{{mensShoe.description}}</p>
         </div>
         <div class ="pull-right ">
@@ -93,25 +104,28 @@
         </div>
         <br>
         <div ng-show="fit=== 1"class= "container-fluid detailo">
-            <h2>Details</h2>
-            <p>{{mensShoe.description}}</p>
+            <h3>Shipping & Returns</h3>
+            <p>{{shipping}}</p>
+            <br>
+            <p>{{returns}}</p>
         </div>
             
-        
+        <br>
+    <br>
     </div>
-   <!-- <img id="sale"src="./img/sale.jpg">-->
-  <!--  <div class= "col-sm-6 adspace">
-            
+    
+
                     
-           
+   </div>        
         
+    <div class = "row">   
         
-        
-    </div>-->
+ 
     <div class = "col-sm-12 details">
 
     </div>
-
+    </div>
+    <div class = "row">
     <div class = "col-sm-3 sitemap">
         
         <ul>
@@ -137,4 +151,4 @@
     </div>
 
 </div>
-</div>
+

@@ -1,5 +1,5 @@
 <div class = "page-header">
-    <h1>Hello {{ main.username }} from Your Profile!</h1>
+    <h1>Hello ({{ main.username }})</h1>
 </div>
 <div class = "panel panel-info">
     <div class="panel-heading" style="text-align: center;"><strong>User Profile</strong></div>
@@ -15,15 +15,49 @@
         <td>****************</td>
     </tr>
 </table>
-<table class= "table">
+<table class= "table" >
     <tr>
-        <td><strong>Username</strong></td>
-        <td><strong>Email</strong></td>
+        <td><strong>Loves</strong></td>
     </tr>
     <tr>
-        <td>{{main.username}}</td>
-        <td>{{main.useremail}}</td>
-        <td>****************</td>
+        <td ng-repeat="love in personalMyLoves">
+            <a  href="http://localhost:8080/shop/mens/{{love}}">{{love}}</a>
+            </td>
     </tr>
+        
+    
+
 </table>
+</div>
+    <div class = "page-header">
+        <center><h4>My Loves</h4></center>
+    </div>
+ <div class ="row" ng-repeat="shoe in shoeThumbs track by $index">
+
+  <center> <div class="thumbnailholder">
+    <div class = "col-sm-3">
+    </div>
+    <div class="col-sm-6">
+      <a  href="http://localhost:8080/shop/mens/{{personalMyLoves[$index]}}"> <img ng-src="{{shoe}}"></a>
+      <a  href="http://localhost:8080/shop/mens/{{personalMyLoves[$index]}}"> <p>{{personalMyLoves[$index]}}</p></a>
+       
+    </div>
+        <div class = "col-sm-3">
+    </div>
+    <br>
+    </div></center>
+    <br>
+
+</div>
+
+<br>
+<div class ="row" ng-repeat="loop in looper">
+
+    <div class="thumbnailholder">
+    <div class="col-sm-1">
+      <img ng-src="{{looper.shoe}}"> 
+       
+    </div>
+    </div>
+    
 </div>

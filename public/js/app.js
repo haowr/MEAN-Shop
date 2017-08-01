@@ -2,7 +2,7 @@
 
 console.log("app.js loaded");
 
-var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","infinite-scroll","heartServices","profileController","mensController","cookieServices"]);
+var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","infinite-scroll","heartServices","profileController","mensController","cookieServices","emailServices"]);
 																																																  
 app.config(function($httpProvider){
 
@@ -10,9 +10,30 @@ app.config(function($httpProvider){
 
 });
 
-     
+   /* app.animation('.slide-animation', function () {
+        return {
+            addClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    TweenMax.to(element, 0.5, {left: -element.parent().width(), onComplete: done });
+                }
+                else {
+                    done();
+                }
+            },
+            removeClass: function (element, className, done) {
+                if (className == 'ng-hide') {
+                    // ANIMATION CODE GOES HERE
+					TweenMax.set(element, { left: element.parent().width() });
+                	TweenMax.to(element, 0.5, {left: 0, onComplete: done });
+                }
+                else {
+                    done();
+                }
+            }
+        };
+    });
 
-
+*/
 app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter,$rootScope) {
 
     var  store = this;
@@ -32,6 +53,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$scope.allData =[];
 	store.shoes=[];
 	$scope.ids=[];
+	
 
 	
 // ngRoute configuration

@@ -124,7 +124,7 @@ $locationProvider.html5Mode({
 
 
 });
-app.run(['$rootScope','Auth','$location','User',function($rootScope,Auth,$location,User){
+app.run(['$rootScope','Auth','$location','User',function($rootScope,Auth,$location,User,$routeUpdate){
 
     $rootScope.$on('$routeChangeStart', function(event,next,current){
         console.log(Auth.isLoggedIn());
@@ -134,8 +134,9 @@ app.run(['$rootScope','Auth','$location','User',function($rootScope,Auth,$locati
         if(next.$$route.authenticated == true){
             console.log("Requires authentication!")
             if(!Auth.isLoggedIn()){
+                console.log("You're not logged in dude!");
                 event.preventDefault();
-                $location.path('/');
+                $location.path('/login');
             }else if (next.$$route.permission){
                 User.getPermission().then(function(data){
                     //console.log(data);
@@ -158,6 +159,7 @@ app.run(['$rootScope','Auth','$location','User',function($rootScope,Auth,$locati
             }
         } else{
             console.log("Authenticated does not matter");
+            //$route.reload();
         }
         console.log(next.$$route.authenticated);
         }

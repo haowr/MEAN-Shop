@@ -8,6 +8,8 @@ var Shoe = require('./models/shoe');
 var AllShoe = require('./models/allshoe');
 var Page = require('./models/page');
 var Heart = require('./models/heart');
+var Thumbnail = require('./models/thumbnail');
+var Email = require('./models/emaillist');
 //var Heart = require('./models/heartscount');
 var User = require('./models/user');
 var jwt  = require('jsonwebtoken');
@@ -302,6 +304,124 @@ app.put('/api/whoactivated',function(req,res){
     });
 
 });
+app.post('/api/thumbnails',function(req,res){
+
+    console.log(req.body.thumbnail);
+    var thumbnail = new Thumbnail();
+    thumbnail.thumbnail = req.body.thumbnail;
+    thumbnail.save(function(err){
+        if(err){
+            res.json({success: false,message: "Save Failed..."});
+        }else{
+            res.json({success: true, message: "Save Successful..."});
+        }
+
+    });
+
+
+});
+app.put('/api/thumbnails', function(req,res){
+
+    Thumbnail.find({}, function(err,thumbs){
+        if(err) throw err;
+        if(!thumbs){
+            res.json({success: false, message: "No thumbnails found.."});
+        }else{
+            res.json({success: true, message: "Thumbnails found!", thumbnails: thumbs});
+        }
+
+
+
+    });
+
+});
+app.put('/api/addlove/:love/:name', function(req,res){
+    console.log(req.params.love);
+    console.log(req.params.name);
+    
+        User.findOneAndUpdate({username:req.params.name},{$push:{loves:req.params.love}},{new:true},function(err,user){
+
+            if (err) throw err;
+            if(!user){
+                res.json({success: false, message: "User not found"});
+            }else{
+                res.json({success: true, message:"Document updated? Lets see",user:user });
+            }
+
+        });
+
+});
+app.put('/api/removelove/:love/:name',function(req,res){
+
+        User.findOneAndUpdate({username:req.params.name}, {$pull:{ loves: req.params.love}}, {new:true},function(err,user){
+
+            if(err) throw err;
+            if(!user){
+                res.json({success: false, message: "User not found.."});
+            }else{
+                res.json({success: true, message: "Document updated? Lets see..", user:user});
+            }
+
+        });
+
+
+});
+app.put('/api/getloves/:name',function(req,res){
+
+        User.findOne({username: req.params.name}).select('loves').exec(function(err, loves){
+
+            if (err) throw err;
+            if (!loves){
+                res.json({success: false, message: "Loves not found..."});
+            }else{
+                res.json({success: true, message: "Here is the loveee...", loves: loves});
+            }
+
+        });
+});
+app.put('/api/addtoemaillist/:email',function(req,res){
+
+   
+                var emailentry = new Email();
+                emailentry.emaillist = req.params.email;
+                emailentry.save(function(err,newemail){
+                    if(err){
+                        res.json({success:false, message:"Email Entry Save failed.."});
+                    }else{
+                        
+                        var email = {
+                            from: 'A House Of Jewels, admin@hoj.com',
+                            to: newemail.emaillist[0],
+                            subject: 'Welcome to The House Of Jewels Email List',
+                            text: "",
+                            html: '<br><br><div class = "row"><div class = "col-sm-12 "><center><h2 id ="maintitle">THE HOUSE OF JEWELS</h2></center><center><img src="../img/logosm.jpg"></center></div></div>\
+                                  <div class = "row"><div class = "col-sm-12 details"></div></div><div class = "row"><div class = "col-sm-2"></div><div class = "col-sm-8"><!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->\
+                                    <center> <img src ="https://image.ibb.co/ncyf5Q/ADS.jpg"></center></div><div class = "col-sm-2"></div></div><div class = "row"><div class = "col-sm-12"><center><h3 id ="whatsnewtitle">Whats New?</h3></center>\
+                                    </div></div><div class = "row"><div class = "col-sm-1"></div><div class = "col-sm-10  whatsnewoverflow" ><img src ="http://imgur.com/a/YL6gn"></div><div class = "col-sm-1"></div></div>\
+                                    <div class = "row"><div class = "col-sm-12 details"></div></div><div class = "row"><div class = "col-sm-3 sitemap"><ul><li><a href = "#"><p>Faq</p></a></li><li><a href = "#"><p>Order Tracking</p></a></li><li><a href = "#"><p>Return Policy</p></a></li><li><a href = "#"><p>Shoe Chart Size</p></a></li><li><a href = "#"><p>Contact Us</p></a></li></ul>\
+                                    </div><div class = "col-sm-6"> </div><div class = "col-sm-1"></div></div><div class = "row"><div class = "col-sm-9 bottompadding"><br><br><br>\
+                                    <a href ="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:30px"class="fa fa-instagram" aria-hidden="true"></i></a>\
+                                    </div>div class = "col-sm-3"></div></div>'
+                            
+                        };
+
+                    // Function to send e-mail to user
+                    client.sendMail(email, function(err, info) {
+                        if (err) {
+                            console.log(err); // If error in sending e-mail, log to console/terminal
+                        } else {
+                            console.log(info); // Log confirmation to console
+                        }
+                    });
+                    res.json({success: true, message: "Email entry Save Success...",newemail:newemail});
+
+                    }
+
+                });
+                //res.json({success:true, message:"User found..."})
+});
+
+
 
 app.post('/api/pages', function(req,res){
 

@@ -9,7 +9,15 @@ app.config(function(){
 });
 
 app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
-
+/*
+    var pink =$window.localStorage.getItem('myLoves');
+    console.log(pink);
+    console.log($rootScope.myLoves[0]);
+    if($rootScope.myLoves !== null || $rootScope.myLoves[0] != undefined){
+        $window.localStorage.setItem('myLoves',$rootScope.myLoves);
+    }
+     */
+     console.log($rootScope.myLoves);
     var scope = this;
     var name = "Z!";
     scope.imageIndex=0;

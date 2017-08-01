@@ -1,9 +1,7 @@
 
 /*#storeWidth{
-
   max-width: 10px;
   margin: 0 auto;
-
 }
 */
 a {
@@ -124,7 +122,7 @@ opacity:0;
 .fa-heart{
 /*position:absolute;*/
 
- opacity:0;
+ 
 }
 
 #hearted{
@@ -144,6 +142,17 @@ margin-right:30px;
 }
 .heartcount{
  opacity:0;
+}
+.heartoff{
+  opacity:0;
+}
+.hearton{
+  opacity:100;
+}
+.thumbnailholder{
+  
+ 
+ display:inline-block;
 }
 p{
 
@@ -212,9 +221,7 @@ position:fixed;
 }
 /*
 .title{
-
 border: 1px solid black;
-
 }
 */
 #hearts{
@@ -271,12 +278,23 @@ display: inline-block;
 padding-right: 20px;
 
 }
-
+.zoomers{
+  z-index:99999;
+}
 /*mens shoe styling*/
 .mainshoeview{
+  height:500px;
+  width:600px;
+  overflow:scroll;
+  transform-origin: 0 0;
+
 
 border: 1px solid black;
 
+}
+
+.bottompadding{
+  height: 20px;
 }
 .shoesidepanel{
 border: 1px solid black;
@@ -284,7 +302,7 @@ border: 1px solid black;
 .shoespecs{
 
 border: 1px solid black;
-display:block;
+
 
 }
 .sizeselector{
@@ -297,6 +315,7 @@ display:block;
   display:block;
 }
 .detailo{
+border-top:2px solid black;
 border:1px solid black;
 
 
@@ -406,8 +425,199 @@ margin-top: 20px;
 border: solid 1px black;
   
 }
-/*.navbar{
+.onepointfive{
+  transform: scale(1.5);
+  transform-origin: 0 0;
+ 
+}
+.twotimes{
+  transform: scale(2);
+  transform-origin: 0 0;
 
+}
+.threetimes{
+  transform: scale(3);
+  transform-origin: 0 0;
+  
+}
+#whatsnew{
+  height: 350px;
+  width: 1000px;
+  display:inline-block;
+ 
+  overflow:hidden;
+  
+  transform-origin: 0 0;
+}
+.translate5004{
+  transition:1s;
+  transform:translateX(1650px);
+}
+.translate5003{
+  transition:1s;
+  transform:translateX(1000px);
+}
+.translate5002{
+  transition:1s;
+  transform:translateX(400px);
+}
+.translate500{
+  transition:1s;
+  transform:translateX(200px);
+}
+.translate5004Y{
+  transition:1s;
+  transform:translateX(-400px);
+}
+.translate5003Y{
+  transition:1s;
+  transform:translateX(-1650px);
+}
+.translate5002Y{
+  transition:1s;
+  transform:translateX(0px);
+}
+.translate500Y{
+  transition:1s;
+  transform:translateX(-400px);
+}
+.whatsnewoverflow{
+  height: 100%;
+  width:100%;
+  overflow:hidden;
+  position: relative;
+  
+
+}
+.homeimageover{
+  overflow:hidden;
+}
+.homeimageover2{
+  overflow:auto;
+}
+
+/* The starting CSS styles for the enter animation */
+.slide.ng-enter {
+  transition:1s linear all;
+  opacity:0;
+}
+.slide.ng-enter.ng-enter-active {
+ 
+  opacity:1;
+}
+/*
+.slide.ng-leave{
+  transition:1s linear all;
+  opacity:1;
+}
+.slide.ng-leave.ng-enter-active{
+  
+  opacity:0;
+}*/
+.nbrand{
+  font-family:'Muli';
+  font-size: 20px;
+}
+.adnext{
+  margin-top: 200px;
+}
+#adnextleft{
+  margin-top:180px;
+}
+#maintitle{
+ /* font-family: 'Spectral';*/
+  font-family: 'Bellefair';
+}
+#whatsnewtitle{
+  font-family: 'Bellefair';
+}
+.arrowFade{
+  opacity:0.4;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ffbbbc !important;
+}
+/*
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+    transition: all linear 0.5s;
+    display: block !important;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
+    opacity: 0;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+}
+*/
+/*navbar*/
+.navbar {
+  background-color: #fff1ef;
+}
+.navbar .navbar-brand {
+  color: black;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #ffbbbc;
+}
+.navbar .navbar-text {
+  color: #ecf0f1;
+}
+.navbar .navbar-nav .nav-link {
+  color: #ecf0f1;
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #ffbbbc;
+}
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+  color: #ffbbbc;
+  background-color: #ffffff;
+}
+.navbar .navbar-toggle {
+  border-color: #ffffff;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #ffffff;
+}
+.navbar .navbar-toggle .navbar-toggler-icon {
+  color: #ecf0f1;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar .navbar-link {
+  color: #ecf0f1;
+}
+.navbar .navbar-link:hover {
+  color: #ffbbbc;
+}
+
+@media (max-width: 767px) {
+  .navbar .navbar-nav .open .dropdown-menu .dropdown-item {
+    color: #ecf0f1;
+  }
+  .navbar .navbar-nav .open .dropdown-menu .dropdown-item:hover,
+  .navbar .navbar-nav .open .dropdown-menu .dropdown-item:focus {
+    color: #ffbbbc;
+  }
+  .navbar .navbar-nav .open .dropdown-menu .dropdown-item.active {
+    color: #ffbbbc;
+    background-color: #ffffff;
+  }
+}
+/*.navbar{
   position:fixed;
   width:100%;
   z-index:10000;
