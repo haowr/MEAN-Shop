@@ -60,6 +60,20 @@ app.config(function($routeProvider,$locationProvider){
         controllerAs: 'mens'
 
     })
+    .when('/shop/checkout',{
+        templateUrl: '../views/pages/checkout.html',
+        controller: 'checkoutCtrl',
+        controllerAs:'checkout'
+
+    })
+    .when('/shop/shoppingbag',{
+
+        templateUrl: '../views/pages/shoppingbag.html',
+        controller: 'shoppingBagCtrl',
+        controllerAs: 'shoppingBag'
+
+
+    })
 
     .when('/activate/:token', {
         templateUrl: '../views/pages/users/activation/activate.html',

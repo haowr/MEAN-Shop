@@ -41,22 +41,23 @@
                             <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
             
             
-            <div class = "navbar-form pull-left sizeselector">
+            <div class = " pull-left sizeselector">
         
             
-            <div class = "btn-group">
-                <button type ="button" class = "btn btn-default">Size</button>
-                <button type ="button" class = "btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <form name= "checkoutForm" ng-submit="checkoutFunc(checkout);" class = "btn-group">
+                <button type ="button" class = "btn btn-primary">Size</button>
+                <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class = "dropdown-menu">
-                    <li><a href="#" ng-click = "changeSize('S');">S</a></li>
-                    <li><a href="#" ng-click = "changeSize('M');">M</a></li>
-                    <li><a href="#" ng-click = "changeSize('L');">L</a></li>
+                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('S');">S</a></li>
+                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('M');">M</a></li>
+                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('L');">L</a></li>
            
                 </ul>
-            </div>
+                 <button type ="submit" class = "btn btn-submit" >Submit</button>
+            </form>
             &nbsp
             <div class = "btn-group">
                 <button type ="button" class = "btn btn-default">Qty</button>

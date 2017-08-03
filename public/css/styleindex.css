@@ -283,7 +283,7 @@ padding-right: 20px;
 }
 /*mens shoe styling*/
 .mainshoeview{
-  height:500px;
+  height:550px;
   width:600px;
   overflow:scroll;
   transform-origin: 0 0;
@@ -305,11 +305,13 @@ border: 1px solid black;
 
 
 }
+
 .sizeselector{
-  margin-left:-26px;
+  margin-left:-12px;
 
 
 }
+
 .details{
   border-top: 3px solid black;
   display:block;
@@ -537,20 +539,71 @@ border: solid 1px black;
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #ffbbbc !important;
 }
+.btn-submit, .btn-submit:hover, .btn-submit:active, .btn-psubmit:visited {
+    background-color: #ffbbbc !important;
+    border-radius:0px;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: white !important;
+    border: 1px solid black;
+    color:black;
+}
+.shoppingbagtitle{
+
+  border-right:1px solid black;
+  height: 200px;
+
+}
+.formstyling{
+
+  border-right: 1px dotted black;
+}
+.countryselectsizing{
+  width:200px;
+}
+.iterator{
+  border-top: 1px solid black;
+  border-bottom: 1px dashed black;
+  height: 100px;
+}
+/*.landing-enter 
+{ 
+	-webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	-moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	-ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	-o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+	position: relative;
+	display: block;
+	overflow: hidden;
+	text-overflow: clip;
+	white-space:nowrap;
+} 
+*/
+.ng-enter{
+transition :0.72s;
+opacity:0
+}
+.ng-enter-active{ 
+opacity:1;
+}
 /*
-.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
-    transition: all linear 0.5s;
-    display: block !important;
-}
-
-.animate-show.ng-hide-add.ng-hide-add-active, .animate-show.ng-hide-remove {
-    opacity: 0;
-}
-
-.animate-show.ng-hide-add, .animate-show.ng-hide-remove.ng-hide-remove-active {
-    opacity: 1;
+.ng-enter-stagger{
+  transition-delay:0.1s;
 }
 */
+.landing-enter {
+	opacity: 0;
+	width: 0px;
+	height: 0px;
+}
+
+.landing-enter.landing-enter-active {
+	opacity: 1;
+	width: 150px;
+	height: 30px;
+}
+	
 /*navbar*/
 .navbar {
   background-color: #fff1ef;
@@ -560,7 +613,7 @@ border: solid 1px black;
 }
 .navbar .navbar-brand:hover,
 .navbar .navbar-brand:focus {
-  color: #ffbbbc;
+  color: #ecf0f1;
 }
 .navbar .navbar-text {
   color: #ecf0f1;
@@ -598,7 +651,7 @@ border: solid 1px black;
   border-color: #ecf0f1;
 }
 .navbar .navbar-link {
-  color: #ecf0f1;
+  color: black;
 }
 .navbar .navbar-link:hover {
   color: #ffbbbc;
@@ -606,17 +659,19 @@ border: solid 1px black;
 
 @media (max-width: 767px) {
   .navbar .navbar-nav .open .dropdown-menu .dropdown-item {
-    color: #ecf0f1;
+    color: black;
   }
   .navbar .navbar-nav .open .dropdown-menu .dropdown-item:hover,
   .navbar .navbar-nav .open .dropdown-menu .dropdown-item:focus {
-    color: #ffbbbc;
+    color: black;
   }
   .navbar .navbar-nav .open .dropdown-menu .dropdown-item.active {
     color: #ffbbbc;
-    background-color: #ffffff;
+    background-color: #fff1ef;
   }
 }
+
+
 /*.navbar{
   position:fixed;
   width:100%;

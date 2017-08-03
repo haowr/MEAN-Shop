@@ -11,6 +11,7 @@
     app.controller('mensCtrl',function($routeParams,$route,Shop,$scope, $rootScope,Heart,Auth,$timeout,$location,User,$window,Cookie){
     console.log('"'+$routeParams.name+'"');
     
+    $scope.shoppingCartNumber=0;
     $scope.imageIndex = 0;
     $scope.size = "S";
     $scope.selection = 1;
@@ -41,7 +42,10 @@
     $scope.addCookieHeart = 1;
     $scope.removeCookieHeart = 0;
     $scope.myLovesEach=[];
-
+    $scope.checkout={};
+    $scope.checkoutArray=[];
+    $scope.happy=[{name: "Ras", size: "M", amt: "1", price: "322.00", description: "The head of our creations. The perfection of the way"}];
+    console.log(JSON.stringify($scope.happy));
      if($window.localStorage.getItem($routeParams.name) == 1){
          $rootScope.heartactivated = true;
          console.log($rootScope.heartactivated);
@@ -66,6 +70,53 @@
         console.log("SCOPEHEARTACTIVATED");
         console.log($scope.mensShoe.heartactivated);
     });
+    $scope.checkoutFunc= function(){
+        $scope.checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
+        for(var i =0; i< $scope.checkoutArray.length; i++){
+            console.log($scope.checkoutArray[i].name );
+           // console.log($routeParams.name);
+            if($scope.checkoutArray[i].name == $routeParams.name){
+               $scope.checkoutArray.splice($scope.checkoutArray.indexOf($scope.checkoutArray[i]),1);
+               console.log("hello");
+            }
+
+        }
+        console.log($scope.checkoutArray);
+        $scope.shoppingCartNumber++
+        $scope.checkout.name = $routeParams.name;
+        $scope.checkout.size =  $scope.size;
+        $scope.checkout.amt = $scope.amt;
+        $scope.checkout.price = $scope.mensShoe.price+".00";
+        $scope.checkout.description = $scope.mensShoe.description;
+        $scope.checkout.available= $scope.mensShoe.available;
+        $scope.checkout.image= $scope.mensShoe.perspectives[1];
+
+
+
+        console.log($scope.checkout);
+       $scope.checkoutArray.push($scope.checkout);
+        $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
+
+       //////  var unique = $rootScope.myLoves.filter(function(elem, index, self) {
+       ///     return index == self.indexOf(elem);
+        //});
+       // $rootScope.myLoves = unique;
+        /*Shop.addToCheckout($scope.checkout).then(function(data){
+
+            console.log(data.data.message);
+            console.log(data.data);
+
+        });
+        */
+        console.log("button pressed");
+        console.log($scope.size);
+        console.log($scope.amt);
+        console.log($scope.mensShoe.name);
+        console.log($routeParams.name);
+        console.log($scope.mensShoe.price+".00");
+        $window.localStorage.setItem('shoppingCartNumber',$routeParams.name);
+
+    };
    /* Heart.isActivated($routeParams).then(function(data){
 
         console.log("heartActivated "+data.data.success);

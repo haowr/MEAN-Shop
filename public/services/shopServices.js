@@ -48,6 +48,12 @@ app.factory('Shop', function($http){
 
         return $http.put('/api/thumbnails');
     }
+    //Shop.addToCheckout();
+    shopFactory.addToCheckout = function(newitem){
+
+        return $http.post('/api/addtocheckout',newitem);
+
+    }
 
 return shopFactory;
 

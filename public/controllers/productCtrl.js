@@ -1,6 +1,6 @@
 (function(){
 
-var app = angular.module('productsController',['shopServices','heartServices','authServices',"userServices",'shopServices','cookieServices']);
+var app = angular.module('productsController',['shopServices','heartServices','authServices',"userServices",'shopServices','cookieServices','ngAnimate']);
 
 app.config(function(){
 

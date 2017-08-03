@@ -41,7 +41,7 @@
 <div infinite-scroll = "loadMoreo()"  infinite-scroll-distance ="0.1" class = "container container-fluid">
 
 
-        <div class = "landing" ng-repeat="shoe in shoes | orderBy: order track by $index " ng-animate=" 'animate' ">
+        <div class = "landing" ng-repeat="shoe in shoes | orderBy: order track by $index " >
             <h1 class = "pull-left"> {{shoe.name}}</h1>
             <h3 class = "pull-right"> {{shoe.price}}</h3>
             <br>

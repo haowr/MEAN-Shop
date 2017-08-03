@@ -1,0 +1,125 @@
+
+<div class = "container container-fluid">
+
+       <div class = "row">
+
+            <div class = "col-sm-12 ">
+               <center><h2 id ="maintitle">THE HOUSE OF JEWELS</h2></center>
+                <center><img src="../img/logosm.jpg"></center>
+            </div>
+            <div class = "col-sm-12 details">
+            </div>
+            <div class = "col-sm-12 pull-left">
+                <a href="#"><p>continue-shopping</p></a>
+            </div>
+            <div class = "col-sm-8 shoppingbagtitle">
+                <h3>Shopping Bag</h3>
+               
+                <p>Need help?  <i class="fa fa-question" aria-hidden="true"></i></p>
+                
+                <p>No?</p>
+                <button class = "btn btn-submit">Begin Checkout</button>
+                </div>
+                            <div class = "col-sm-4">
+            </div>
+            
+              
+            </div>
+                
+
+            
+
+              <br>
+              <div class ="row">
+                  <div class ="col-sm-8 pull-right">
+                      <h2><p>Checkout</p></h2>
+                  </div>
+                  <div class ="col-sm-4">
+                    <center><h2><p>Order Summary :{{shoppingBagShoes.length}} items</p><h2></center>
+                  </div>
+                  <div class = "col-sm-8 details">
+                  </div>
+                  <div class= "col-sm-4 ">
+ 
+                  </div>
+              </div>
+              <br>
+              <div class = "row">
+                  
+                  <div class = "col-sm-8 formstyling">
+                      <form>
+                      <div class="form-group countryselectsizing ">
+                         
+                            <label for="sel1">Country:</label>
+                            <select ng-model="country"class="form-control" id="sel1">
+                                <option ng-click="selectCountry(1);">Canada</option>
+                                <option ng-click="selectCountry(2);">United States</option>
+                            </select>
+                      </div>
+                      <div class = "form-group">
+                            <label>First Name:</label>
+                            <br>
+                            <input type = "textarea" placeholder="Name..."></input>
+                      </div>
+                      <div class = "form-group">
+                            <label>Last Name:</label>
+                            <br>
+                            <input type = "textarea" placeholder="Name..."></input>
+                      </div>
+                            <br>
+
+                            <label>Street Address:</label>
+                            <br>
+                            <input type = "textarea" placeholder="Name..."></input>
+                            <br>
+                            <label>Street Address 2:</label>
+                            <br>
+                            <input type = "textarea" placeholder="Name..."></input>
+                            <br>
+                            <label>Apt:</label>
+                            <br>
+                            <input type = "textarea" placeholder="Name..."></input>
+                            <br>
+                            <label>City:</label>
+                            <br>
+                            <input type = "textarea" placeholder="Name..."></input>
+                            <div class="form-group countryselectsizing">
+                            <div ng-show="country == 'Canada'">
+                                <label for="sel1">Province:</label>
+                                <select class="form-control" id="sel1">
+                                    <option>Canada</option>
+                                    <option>United States</option>
+                                </select>
+                            </div>
+                            </div>
+                            
+                            <div ng-show="country == 'United States'">
+                                <label for="sel1">State:</label>
+                                <select class="form-control" id="sel1">
+                                    <option>Canada</option>
+                                    <option>United States</option>
+                                </select>
+                            </div>
+                            <label>Postal Code:</label>
+                            <br>
+                            <input type= "textarea", placeholder="Postal Code..."></input>
+                            <br>
+                            <label>Phone Number:</label>
+                            <br>
+                            <input type= "textarea", placeholder="Postal Code..."></input>
+                        </form>
+                        </div>
+                        <div class = "col-sm-4">
+                            
+                           <div class = "iterator" ng-repeat="shoe in shoppingBagShoes">
+                               <img  ng-src="{{shoe.image}}">
+                           </div>
+                           
+                        </div>
+                            
+                    </div>
+                  </div>
+              </div>
+
+        </div>
+</div>

@@ -129,6 +129,7 @@
  
      console.log($rootScope.myLoves);
      $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
+     $rootScope.cartItems = $window.localStorage.getItem('shoppingCartNumber');
      if($rootScope.myLoves[0] == null){
          $rootScope.myLoves=[];
      }

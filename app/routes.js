@@ -12,9 +12,17 @@ var Thumbnail = require('./models/thumbnail');
 var Email = require('./models/emaillist');
 //var Heart = require('./models/heartscount');
 var User = require('./models/user');
+var CheckoutItem = require('./models/checkout');
 var jwt  = require('jsonwebtoken');
+var Hogan = require('hogan.js');
+var fs = require('fs'); // node's baked in file-system module;
 var nodemailer = require('nodemailer');
-var sgTransport = require('nodemailer-sendgrid-transport');
+var sgTransport = require('nodemailer-sendgrid-transport'); 
+var template = fs.readFileSync('./public/views/pages/newsletter/newsletter1.hjs', 'utf-8');
+var compiledTemplate = Hogan.compile(template);
+
+//get file (email template);
+//complile template;
 
 var options = {
   auth: {
@@ -393,17 +401,9 @@ app.put('/api/addtoemaillist/:email',function(req,res){
                             from: 'A House Of Jewels, admin@hoj.com',
                             to: newemail.emaillist[0],
                             subject: 'Welcome to The House Of Jewels Email List',
-                            text: "",
-                            html: '<br><br><div class = "row"><div class = "col-sm-12 "><center><h2 id ="maintitle">THE HOUSE OF JEWELS</h2></center><center><img src="../img/logosm.jpg"></center></div></div>\
-                                  <div class = "row"><div class = "col-sm-12 details"></div></div><div class = "row"><div class = "col-sm-2"></div><div class = "col-sm-8"><!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->\
-                                    <center> <img src ="https://image.ibb.co/ncyf5Q/ADS.jpg"></center></div><div class = "col-sm-2"></div></div><div class = "row"><div class = "col-sm-12"><center><h3 id ="whatsnewtitle">Whats New?</h3></center>\
-                                    </div></div><div class = "row"><div class = "col-sm-1"></div><div class = "col-sm-10  whatsnewoverflow" ><img src ="http://imgur.com/a/YL6gn"></div><div class = "col-sm-1"></div></div>\
-                                    <div class = "row"><div class = "col-sm-12 details"></div></div><div class = "row"><div class = "col-sm-3 sitemap"><ul><li><a href = "#"><p>Faq</p></a></li><li><a href = "#"><p>Order Tracking</p></a></li><li><a href = "#"><p>Return Policy</p></a></li><li><a href = "#"><p>Shoe Chart Size</p></a></li><li><a href = "#"><p>Contact Us</p></a></li></ul>\
-                                    </div><div class = "col-sm-6"> </div><div class = "col-sm-1"></div></div><div class = "row"><div class = "col-sm-9 bottompadding"><br><br><br>\
-                                    <a href ="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:30px"class="fa fa-instagram" aria-hidden="true"></i></a>\
-                                    </div>div class = "col-sm-3"></div></div>'
-                            
-                        };
+                            text: '',
+                            html: compiledTemplate.render({firstName:'Zill'})
+                        }; 
 
                     // Function to send e-mail to user
                     client.sendMail(email, function(err, info) {
@@ -421,7 +421,35 @@ app.put('/api/addtoemaillist/:email',function(req,res){
                 //res.json({success:true, message:"User found..."})
 });
 
+app.post('/api/addtocheckout', function(req, res){
+/*
+    var checkoutItem = new CheckoutItem();
+    checkoutItem.items
 
+*/
+    var checkoutItem = new CheckoutItem();
+
+    checkoutItem.name =req.body.name;
+    checkoutItem.size = req.body.size;
+    checkoutItem.price = req.body.price;
+    checkoutItem.description = req.body.description;
+    checkoutItem.picture = req.body.picture;
+    checkoutItem.amt = req.body.amt;
+    checkoutItem.available= req.body.available;
+    checkoutItem.save(function(err,checkout){
+
+        if(err){
+            res.json({success:false, message:"Save failed.."});
+
+        }else{
+            res.json({success: true, message: "Save Successful...", checkout:checkout});
+        }
+
+    });
+console.log(req.body.name);
+//console.log(req.body.newitem);
+
+});
 
 app.post('/api/pages', function(req,res){
 
