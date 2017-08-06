@@ -155,6 +155,7 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
         $scope.invalid = false;
         $scope.useBillingAddressSelected = true;
         $scope.checkoutPhase = false;
+        
         }else{
             $scope.errorMsg = "Please properly complete form...";
             $scope.invalid = true;
@@ -165,6 +166,8 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
         if(valid){
             $scope.creditFormDataa.push(creditData)
             $scope.creditCardDataAdded= true;
+            $scope.finalCheckoutButton= true;
+            $scope.ccPhase = false;
         }{
             $scope.errorMsg = "Invalid Credit-Card Entry...";
         }
