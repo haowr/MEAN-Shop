@@ -10,6 +10,8 @@ console.log("checkoutController loaded and initialized...");
 
 app.controller('checkoutCtrl', function($scope, $window,Shop){
     $scope.country="Canada";
+    $scope.expmonth = "Jan";
+    $scope.expyear = "2017";
     $scope.shoppingBagShoes=[];
     $scope.grandTotal;
     $scope.errorMsg;
@@ -17,11 +19,15 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
     $scope.addNewShippingAddress = false;
     $scope.checkoutDataa=[];
     $scope.shippingFormDataa=[];
+    $scope.creditFormDataa = [];
     $scope.finalCheckoutData =[];
     $scope.invalid = false;
     $scope.addShippingAddressPhase = false;
     $scope.useBillingAddressSelected= false;
     $scope.finalCheckoutButton = false;
+    $scope.ccPhase = false;
+    $scope.checkoutPhase = true;
+    $scope.creditCardDataAdded= false;
        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
        $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
     console.log($scope.shoppingBagShoes);
@@ -42,6 +48,65 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
             }
 
     };
+    $scope.selectExpYear = function(number){
+            if(number === 1){
+                $scope.expyear = "2017";
+
+            }else if(number === 2){
+                $scope.expyear = "2018";
+            }else if(number === 3){
+                $scope.expyear = "2019";
+            }else if(number === 4){
+                $scope.expyear = "2020";
+            }else if(number === 5){
+                $scope.expyear = "2021";
+            }else if(number === 6){
+                $scope.expyear = "2022";
+            }else if(number === 7){
+                $scope.expyear = "2023";
+            }else if(number === 8){
+                $scope.expyear ="2024";
+            }else if(number === 9){
+                $scope.expyear = "2025";
+            }else if(number === 10){
+                $scope.expyear = "2026";
+            }else if(number === 11){
+                $scope.expyear = "2027";
+            }else if(number === 12){
+                $scope.expyear = "2028";
+            }else{
+                $scope.expyear = "2029";
+            }
+
+    }
+    $scope.selectExpMonth = function(number){
+        if(number === 1){
+                $scope.expmonth = "January";
+
+            }else if(number === 2){
+                $scope.expmonth = "February";
+            }else if(number === 3){
+                $scope.expmonth = "March";
+            }else if(number === 4){
+                $scope.expmonth = "April";
+            }else if(number === 5){
+                $scope.expmonth = "May";
+            }else if(number === 6){
+                $scope.expmonth = "June";
+            }else if(number === 7){
+                $scope.expmonth = "July";
+            }else if(number === 8){
+                $scope.expmonth ="August";
+            }else if(number === 9){
+                $scope.expmonth = "September";
+            }else if(number === 10){
+                $scope.expmonth = "October";
+            }else if(number === 11){
+                $scope.expmonth = "November";
+            }else{
+                $scope.expmonth = "December";
+            }
+    }
     $scope.addShippingAddress = function(){
         $scope.addNewShippingAddress = true;
         $scope.useBillingAddressSelected = false;
@@ -55,7 +120,10 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
          $scope.finalCheckoutData[1]= $scope.checkoutDataa[0];
          console.log($scope.finalCheckoutData);
          $scope.useBillingAddressSelected = false;
-         $scope.finalCheckoutButton = true;
+        // $scope.finalCheckoutButton = true;
+         $scope.ccPhase = true;
+         $scope.addNewShippingAddressPhase = false;
+         $scope.shipPhase = false;
 
 
     };
@@ -69,6 +137,7 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
         $scope.addNewShippingAddressPhase = true;
         $scope.finalCheckoutButton = true;
          $scope.useBillingAddressSelected = false;
+         $scope.ccPhase = true;
 
     };
 
@@ -85,13 +154,24 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
         $scope.shipPhase = true;
         $scope.invalid = false;
         $scope.useBillingAddressSelected = true;
+        $scope.checkoutPhase = false;
         }else{
             $scope.errorMsg = "Please properly complete form...";
             $scope.invalid = true;
         }
-
+    };
+    $scope.addCreditCardFunc = function(creditData, valid){
+        console.log(creditData);
+        if(valid){
+            $scope.creditFormDataa.push(creditData)
+            $scope.creditCardDataAdded= true;
+        }{
+            $scope.errorMsg = "Invalid Credit-Card Entry...";
+        }
+        
 
     };
+
     $scope.finalCheckout= function(){
         
               Shop.checkout($scope.finalCheckoutData).then(function(data){

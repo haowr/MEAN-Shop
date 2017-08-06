@@ -39,6 +39,18 @@
                   </div>
 
                   <div class = "col-sm-8 details">
+                                  <div class = "row">
+                    <div ng-show="useBillingAddressSelected" class = "col-sm-12 wouldyouliketouse">
+                        <h3>Would you like to ship to this address, as well?</h3>
+                        <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submit">No!</button>
+                    </div>
+
+                    <div ng-show = "finalCheckoutButton" class = "col-sm-12 finalcheckout">
+                        <h3 class="smallerh3">Continue To Final Checkout!</h3>
+                        <button ng-click="finalCheckout();" class = "btn btn-submit">Continue</button> 
+                    </div>
+  
+            </div>
                   </div>
                   <div class= "col-sm-4 details">
  
@@ -50,7 +62,7 @@
 
               <br>
               <div class = "row">
-<div ng-show="!shipPhase"class = "col-sm-8 formstyling">
+<div ng-show="checkoutPhase"class = "col-sm-8 formstyling">
                       <form name = "checkoutForm" ng-submit = "checkOutFunc(checkoutFormData, checkoutForm.$valid);" novalidate>
                       <div class="form-group countryselectsizing ">
                          {{country}}
@@ -350,8 +362,76 @@
                     
                         </form>
                     </div>
+                    <div ng-show="ccPhase"class = "col-sm-8 formstyling">
+            <form name = "creditForm" ng-submit = "addCreditCardFunc(creditFormData, creditForm.$valid);" novalidate>
+                <h3> Payment</h3>
+                                      <div ng-class="{ 'has-success': (creditForm.name.$valid && !creditForm.name.$pristine), 'has-error':(!creditForm.name.$valid && !creditForm.name.$pristine)|| (!creditForm.name.$valid && creditForm.$submitted) }"class = "form-group">
+                            <label>Card Name:</label>
+                            <br>
+                            <input   type = "textarea" name = "name" ng-model="creditFormData.cardname"placeholder="Name..."ng-minLength="3" ng-maxLength="20"required ></input>
+                            <ul class ="help-block" ng-show=" (!creditForm.name.$pristine && creditForm.name.$error.minlength) || (!creditForm.name.$pristine && creditForm.name.$error.maxlength)">
+                                <li>First Name must be between 3 and 20 characters long..</li>
+                            </ul>
+                      </div>
+                                            <div ng-class="{ 'has-success': (creditForm.name.$valid && !creditForm.name.$pristine), 'has-error':(!creditForm.name.$valid && !creditForm.name.$pristine)|| (!creditForm.name.$valid && creditForm.$submitted) }"class = "form-group">
+                            <label>Card Number:</label>
+                            <br>
+                            <input   type = "number" name = "name" ng-model="creditFormData.cardnumber"placeholder="Name..."ng-minLength="3" ng-maxLength="20"required ></input>
+                            <ul class ="help-block" ng-show=" (!creditForm.name.$pristine && creditForm.name.$error.minlength) || (!creditForm.name.$pristine && creditForm.name.$error.maxlength)">
+                                <li>First Name must be between 3 and 20 characters long..</li>
+                            </ul>
+                      </div>
+                <div class="form-group countryselectsizing ">
+                         
+                            <label for="sel1">Month:</label>
+                            {{expmoth}}
+                            <select name = "expmonth"ng-model="creditFormData.expmonth"ng-change="country"class="form-control" id="sel1" required>
+                                <option ng-click="selectExpMonth(1);">January</option>
+                                <option ng-click="selectExpMonth(2);">February</option>
+                                <option ng-click="selectExpMonth(3);">March</option>
+                                <option ng-click="selectExpMonth(4);">April</option>
+                                <option ng-click="selectExpMonth(5);">May</option>
+                                <option ng-click="selectExpMonth(6);">June</option>
+                                <option ng-click="selectExpMonth(7);">July</option>
+                                <option ng-click="selectExpMonth(8);">August</option>
+                                <option ng-click="selectExpMonth(9);">September</option>
+                                <option ng-click="selectExpMonth(10);">October</option>
+                                <option ng-click="selectExpMonth(11);">November</option>
+                                <option ng-click="selectExpMonth(12);">December</option>
+                            </select>
+                            <label for="sel2">Year:</label>
+                            {{expyear}}
+                            <select name = "expyear"ng-model="creditFormData.expyear"ng-change="country"class="form-control" id="sel1" required>
+                                <option ng-click="selectExpYear(1);">2017</option>
+                                <option ng-click="selectExpYear(2);">2018</option>
+                                <option ng-click="selectExpYear(3);">2019</option>
+                                <option ng-click="selectExpYear(4);">2020</option>
+                                <option ng-click="selectExpYear(5);">2021</option>
+                                <option ng-click="selectExpYear(6);">2022</option>
+                                <option ng-click="selectExpYear(7);">2023</option>
+                                <option ng-click="selectExpYear(8);">2024</option>
+                                <option ng-click="selectExpYear(9);">2025</option>
+                                <option ng-click="selectExpYear(10);">2026</option>
+                                <option ng-click="selectExpYear(11);">2027</option>
+                                <option ng-click="selectExpYear(12);">2028</option>
+                                <option ng-click="selectExpYear(13);">2029</option>
+                            </select>
+                      </div>
+                      <div ng-class="{ 'has-success': (creditForm.securitycode.$valid && !creditForm.securitycode.$pristine), 'has-error':(!creditForm.securitycode.$valid && !creditForm.securitycode.$pristine)|| (!creditForm.securitycode.$valid && creditForm.$submitted) }"class = "form-group">
+                            <label>Security Code:</label>
+                            <br>
+                            <input   type = "number" name = "securitycode" ng-model="creditFormData.securitycode" placeholder="Name..."ng-minLength="3" ng-maxLength="5"required ></input>
+                            <ul class ="help-block" ng-show=" (!creditForm.securitycode.$pristine && creditForm.securitycode.$error.minlength) || (!creditForm.securitycode.$pristine && creditForm.securitycode.$error.maxlength)">
+                                <li>First Name must be between 3 and 20 characters long..</li>
+                            </ul>
+                      </div>
+                      <button class = "btn btn-submit" type="submit">Submit</button>
+                </div>
+            </form>
 
-                                        <div ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase"class ="col-sm-4 billingaddressstyling">
+
+
+                                        <div ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase ||creditCardDataAdded"class ="col-sm-3 billingaddressstyling">
                     <h3>Billing Address:<h3>
                      <p class = "billingaddressstylingp">First Name: {{checkoutDataa[0].firstname}}</p>
                      <p class = "billingaddressstylingp">Last Name: {{checkoutDataa[0].lastname}}</p>
@@ -362,7 +442,7 @@
                      <p class = "billingaddressstylingp">Postal Code: {{checkoutDataa[0].postalcode}}</p>
                      <p class = "billingaddressstylingp">Phone Number: {{checkoutDataa[0].phonenumber}}</p>
                     </div>
-                        <div ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase"class ="col-sm-4 billingaddressstyling">
+                        <div ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase||creditCardDataAdded"class ="col-sm-3 billingaddressstyling">
                     <h3>Shipping Address:<h3>
                      <p class = "billingaddressstylingp">First Name: {{shippingFormDataa[0].firstname}}</p>
                      <p class = "billingaddressstylingp">Last Name: {{shippingFormDataa[0].lastname}}</p>
@@ -372,6 +452,14 @@
                      <p class = "billingaddressstylingp">Province: {{shippingFormDataa[0].province}}</p>
                      <p class = "billingaddressstylingp">Postal Code: {{shippingFormDataa[0].postalcode}}</p>
                      <p class = "billingaddressstylingp">Phone Number: {{shippingFormDataa[0].phonenumber}}</p>
+                    </div>
+                <div ng-show="creditCardDataAdded"class ="col-sm-2 billingaddressstyling">
+                    <h3>Credit Card Info:<h3>
+                     <p class = "billingaddressstylingp">Card Name: {{creditFormDataa[0].cardname}}</p>
+                     <p class = "billingaddressstylingp">Card Number: {{creditFormDataa[0].cardnumber}}</p>
+                     <p class = "billingaddressstylingp">Exp. Month: {{creditFormDataa[0].expmonth}}</p>
+                     <p class = "billingaddressstylingp">Exp. Year: {{creditFormDataa[0].expyear}}</p>
+                     <p class = "billingaddressstylingp">Security Code: {{creditFormDataa[0].securitycode}}</p>
                     </div>
                     <div class = "col-sm-4">
                             <div class= "row" ng-repeat="shoe in shoppingBagShoes">
@@ -441,18 +529,7 @@
                     </div>
                 </div>
               -->      
-            <div class = "row">
-                    <div ng-show="useBillingAddressSelected" class = "col-sm-12 wouldyouliketouse">
-                        <h3>Would you like to ship to this address, as well?</h3>
-                        <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submit">No!</button>
-                    </div>
 
-                    <div ng-show = "finalCheckoutButton" class = "col-sm-12 finalcheckout">
-                        <h3 class="smallerh3">Continue To Final Checkout!</h3>
-                        <button ng-click="finalCheckout();" class = "btn btn-submit">Continue</button> 
-                    </div>
-  
-            </div>
    
                     <br>
                     <br>
