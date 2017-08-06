@@ -2,6 +2,7 @@
  
 </div>-->
   <!-- <h4>Hello {{ main.username }}...</h4>-->
+  
   <br>
   <br>
   
@@ -21,19 +22,19 @@
             <div class = "col-sm-2"><br>
              
                 <!--<img src="../img/next-left.jpg" ng-click="commercialChange();">-->
-                <img ng-class = "{arrowFade: opacityOn2}"class = "pull-right adnext" id = "adnextleft"src="../img/next-left.gif" ng-click="setCurrentSlideIndexSubtract();">
+                <img ng-class = "{arrowFade: opacityOn2}"class = "pull-right img-fluid" id = "adnextleft"src="../img/next-left.gif" ng-click="setCurrentSlideIndexSubtract();">
             </div>
             <div class = "col-sm-8">
                 
                 <!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->
-               <center> <img ng-repeat="slide in slides"class="slide"
+               <center> <img ng-repeat="slide in slides"class="slide img-fluid"
                  ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}"></center>
                 
             </div>
             <div class = "col-sm-2">
         
                                 <!--<img src="../img/next-left.jpg" ng-click="commercialChange();">-->
-                <img ng-class = "{arrowFade: opacityOn}"class ="pull-left adnext"src="../img/next-right.gif" ng-click="setCurrentSlideIndexAdd();">
+                <img ng-class = "{arrowFade: opacityOn}"class ="pull-left adnext img-fluid"src="../img/next-right.gif" ng-click="setCurrentSlideIndexAdd();">
             </div>
         </div>
         <div class = "row">

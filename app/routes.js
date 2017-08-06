@@ -10,6 +10,7 @@ var Page = require('./models/page');
 var Heart = require('./models/heart');
 var Thumbnail = require('./models/thumbnail');
 var Email = require('./models/emaillist');
+var Order = require('./models/order');
 //var Heart = require('./models/heartscount');
 var User = require('./models/user');
 var CheckoutItem = require('./models/checkout');
@@ -448,6 +449,41 @@ app.post('/api/addtocheckout', function(req, res){
     });
 console.log(req.body.name);
 //console.log(req.body.newitem);
+
+});
+app.post('/api/checkout', function(req,res){
+
+    console.log(req.body);
+    var order = new Order();
+    order.billingcountry = req.body[0].country;
+    order.billingfirstname = req.body[0].name;
+    order.billinglastname = req.body[0].lastname;
+    order.billingstreet = req.body[0].streetaddress;
+    order.billingstreet2 = req.body[0].streetaddress2;
+    order.billingapt = req.body[0].apt;
+    order.billingcity = req.body[0].city;
+    order.billingprovince = req.body[0].province;
+    order.billingphonenumber = req.body[0].phonenumber;
+    order.billingpostalcode = req.body[1].postalcode;
+    order.shippingcountry = req.body[1].country;
+    order.shippingfirstname = req.body[1].name;
+    order.shippinglastname = req.body[1].lastname;
+    order.shippingstreet = req.body[1].streetaddress;
+    order.shippingstreet2 = req.body[1].streetaddress2;
+    order.shippingapt = req.body[1].apt;
+    order.shippingcity = req.body[1].city;
+    order.shippingprovince = req.body[1].province;
+    order.shippingphonenumber = req.body[1].phonenumber;
+    order.shippingpostalcode = req.body[1].postalcode;
+    order.save(function(err,order){
+        if(err){
+            res.json({success: false, message: "Save Failed... "+err});
+        }else{
+            res.json({success: true, message: "Save Successful...", order: order});
+        }
+
+    });
+
 
 });
 

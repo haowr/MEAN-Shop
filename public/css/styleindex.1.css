@@ -4,8 +4,6 @@
   margin: 0 auto;
 }
 */
-
-
 a {
   color: #00000f;
 }
@@ -157,7 +155,7 @@ margin-right:30px;
  display:inline-block;
 }
 p{
-font-size:100%;
+
 font-family:'Muli';
 
 }
@@ -502,7 +500,6 @@ border: solid 1px black;
 
 /* The starting CSS styles for the enter animation */
 .slide.ng-enter {
-  width:100%;
   transition:1s linear all;
   opacity:0;
 }
@@ -524,17 +521,13 @@ border: solid 1px black;
   font-size: 20px;
 }
 .adnext{
-  margin-top: 100px;
-  width: 40%;
-  
+  margin-top: 200px;
 }
 #adnextleft{
-  width:40%;
   margin-top:180px;
 }
 #maintitle{
  /* font-family: 'Spectral';*/
-  font-size: 100%;
   font-family: 'Bellefair';
 }
 #whatsnewtitle{
@@ -622,12 +615,6 @@ opacity:0;
   border-top: 1px solid black;
   border-bottom: 1px dashed black;
   height: 100px;
-}
-#shopdescription{
-  width:100%;
-}
-#shoppingbagimages{
-  width:100%
 }
 .ordersummarystyling{
   border-bottom: 1px dashed black;

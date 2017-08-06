@@ -54,6 +54,12 @@ app.factory('Shop', function($http){
         return $http.post('/api/addtocheckout',newitem);
 
     }
+    //Shop.checkout();
+    shopFactory.checkout = function(checkoutData){
+
+        return $http.post('/api/checkout', checkoutData);
+        
+    }
 
 return shopFactory;
 
