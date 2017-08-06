@@ -74,6 +74,11 @@ var OrderSchema = new Schema({
     shippingpostalcode:{ type: String, required: true},
     shippingphonenumber:{ type: String, required: true},
     shippingprovince:{type:String},
+    cccardname:{type:String},
+    cccardnumber:{type:String},
+    ccexpmonth:{type:String},
+    ccexpyear:{type:String},
+    ccsecuritycode:{type:String}
 
 
 });

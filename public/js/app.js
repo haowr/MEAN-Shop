@@ -2,11 +2,12 @@
 
 console.log("app.js loaded");
 
-var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","checkoutController","shoppingBagController","infinite-scroll","heartServices","profileController","mensController","cookieServices","emailServices"]);
+var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","checkoutController","shoppingBagController","infinite-scroll","heartServices","profileController","mensController","cookieServices","emailServices","angularPayments"]);
 																																																  
 app.config(function($httpProvider){
 
 	$httpProvider.interceptors.push('AuthInterceptors');
+	//$window.Stripe.setPublishableKey('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
 
 });
 
@@ -34,7 +35,7 @@ app.config(function($httpProvider){
     });
 
 */
-app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter,$rootScope) {
+app.controller('StoreController', ['$http','$scope','$filter',  function($http,$scope,$filter,$rootScope,$window) {
 
     var  store = this;
 	var status=0;

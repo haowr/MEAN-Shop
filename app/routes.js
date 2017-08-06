@@ -475,6 +475,13 @@ app.post('/api/checkout', function(req,res){
     order.shippingprovince = req.body[1].province;
     order.shippingphonenumber = req.body[1].phonenumber;
     order.shippingpostalcode = req.body[1].postalcode;
+    order.cccardname = req.body[2].cardname;
+    order.cccardnumber = req.body[2].cardnumber;
+    order.ccexpmonth = req.body[2].expmonth;
+    order.ccexpyear = req.body[2].expyear;
+    order.ccsecuritycode = req.body[2].securitycode;
+
+
     order.save(function(err,order){
         if(err){
             res.json({success: false, message: "Save Failed... "+err});

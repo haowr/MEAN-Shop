@@ -1,6 +1,6 @@
 (function(){
 
-var app =  angular.module('checkoutController',['shopServices']);
+var app =  angular.module('checkoutController',['shopServices','angularPayments']);
 
 app.config(function(){
 
@@ -31,11 +31,16 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
        $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
     console.log($scope.shoppingBagShoes);
+   /* var stripe = Stripe('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
+    console.log(stripe);
+    //$scope.formName.inputName.$card=[];
+*/
     var getTotal = function(){
 
 
         
     }
+
 
     $scope.selectCountry = function(number){
             console.log("button pressed");
@@ -165,6 +170,7 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
         console.log(creditData);
         if(valid){
             $scope.creditFormDataa.push(creditData)
+            $scope.finalCheckoutData[2]= $scope.creditFormDataa[0];
             $scope.creditCardDataAdded= true;
             $scope.finalCheckoutButton= true;
             $scope.ccPhase = false;
@@ -176,6 +182,8 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
     };
 
     $scope.finalCheckout= function(){
+        $ccFormReqValidation = $('#ccFormReqValidation');
+        console.log($ccFormReqValidation);
         
               Shop.checkout($scope.finalCheckoutData).then(function(data){
 
