@@ -78,7 +78,9 @@ var OrderSchema = new Schema({
     cccardnumber:{type:String},
     ccexpmonth:{type:String},
     ccexpyear:{type:String},
-    ccsecuritycode:{type:String}
+    ccsecuritycode:{type:String},
+    ccgrandtotal:{type:String},
+    ccstripetoken:{type:String}
 
 
 });

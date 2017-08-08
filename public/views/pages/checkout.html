@@ -54,7 +54,7 @@
             </div>
                   </div>
                   <div class= "col-sm-4 details">
- 
+                            <button class ="btn btn-submit">hello</button>
                   </div>
 
               </div>
@@ -364,8 +364,11 @@
                         </form>
                     </div>
                     <div ng-show="ccPhase"class = "col-sm-8 formstyling">
-            <form name = "creditForm" ng-submit = "addCreditCardFunc(creditFormData, creditForm.$valid);" id="ccFormReqValidation" novalidate>
+   <!-- ng-submit =     -->    <form stripe-checkout-jquery add-credit-card-func="addCreditCardFunc(creditFormData, creditForm.$valid);" final-checkout-data="finalCheckoutData"name = "creditForm"  id="ccFormReqValidation" novalidate>
                 <h3> Payment</h3>
+                <div id = "charge-error"class = "alert alert-danger hidden">
+
+                </div>
                                       <div ng-class="{ 'has-success': (creditForm.name.$valid && !creditForm.name.$pristine), 'has-error':(!creditForm.name.$valid && !creditForm.name.$pristine)|| (!creditForm.name.$valid && creditForm.$submitted) }"class = "form-group">
                             <label>Card Name:</label>
                             <br>
@@ -378,16 +381,18 @@
                             <label>Card Number:</label>
                             {{cardnumber}}
                             <br>
-                            <input   type = "number" name = "name" ng-model="creditFormData.cardnumber" placeholder="Name..."ng-minLength="3" ng-maxLength="20"required ></input>
-                            <ul class ="help-block" ng-show=" (!creditForm.name.$pristine && creditForm.name.$error.minlength) || (!creditForm.name.$pristine && creditForm.name.$error.maxlength)">
+                            <input  id="card-number" type = "number" name = "name" ng-model="creditFormData.cardnumber" payments-validate="card"placeholder="Name..."required ></input>
+                          <!--  <ul class ="help-block" ng-show=" (!creditForm.name.$pristine && creditForm.name.$error.minlength) || (!creditForm.name.$pristine && creditForm.name.$error.maxlength)">
                                 <li>First Name must be between 3 and 20 characters long..</li>
-                            </ul>
+                            </ul>-->
                       </div>
                 <div class="form-group countryselectsizing ">
                          
                             <label for="sel1">Month:</label>
                             {{expmonth}}
-                            <select name = "expmonth"ng-model="creditFormData.expmonth"ng-change="country"class="form-control" id="sel1" required>
+                            <input  id="card-expiration-month" type = "number" name = "expmonth" ng-model="creditFormData.expmonth" placeholder="Name..."ng-minLength="1" ng-maxLength="2"required ></input>
+
+                           <!-- <select id = "card-expiration-month"name = "expmonth"ng-model="creditFormData.expmonth"ng-change="country"class="form-control" id="sel1" required>
                                 <option ng-click="selectExpMonth(1);">January</option>
                                 <option ng-click="selectExpMonth(2);">February</option>
                                 <option ng-click="selectExpMonth(3);">March</option>
@@ -401,9 +406,13 @@
                                 <option ng-click="selectExpMonth(11);">November</option>
                                 <option ng-click="selectExpMonth(12);">December</option>
                             </select>
+                            -->
+
                             <label for="sel2">Year:</label>
                             {{expyear}}
-                            <select name = "expyear"ng-model="creditFormData.expyear"ng-change="country"class="form-control" id="sel1" required>
+                            <input  id="card-expiration-year"" type = "number" name = "expyear" ng-model="creditFormData.expyear" placeholder="Name..."ng-minLength="1" ng-maxLength="4"required ></input>
+
+                            <!--<select id="card-expiration-year"name = "expyear"ng-model="creditFormData.expyear"ng-change="country"class="form-control" id="sel1" required>
                                 <option ng-click="selectExpYear(1);">2017</option>
                                 <option ng-click="selectExpYear(2);">2018</option>
                                 <option ng-click="selectExpYear(3);">2019</option>
@@ -418,16 +427,17 @@
                                 <option ng-click="selectExpYear(12);">2028</option>
                                 <option ng-click="selectExpYear(13);">2029</option>
                             </select>
-                      </div>
+                      </div> -->
                       <div ng-class="{ 'has-success': (creditForm.securitycode.$valid && !creditForm.securitycode.$pristine), 'has-error':(!creditForm.securitycode.$valid && !creditForm.securitycode.$pristine)|| (!creditForm.securitycode.$valid && creditForm.$submitted) }"class = "form-group">
                             <label>Security Code:</label>
                             <br>
-                            <input   type = "number" name = "securitycode" ng-model="creditFormData.securitycode" placeholder="Name..."ng-minLength="3" ng-maxLength="5"required ></input>
+                            <input  id="card-cvc" type = "number" name = "securitycode" ng-model="creditFormData.securitycode" placeholder="Name..."ng-minLength="3" ng-maxLength="5"required ></input>
                             <ul class ="help-block" ng-show=" (!creditForm.securitycode.$pristine && creditForm.securitycode.$error.minlength) || (!creditForm.securitycode.$pristine && creditForm.securitycode.$error.maxlength)">
                                 <li>First Name must be between 3 and 20 characters long..</li>
-                            </ul>
+                            </ul> 
                       </div>
-                      <button class = "btn btn-submit" type="submit">Submit</button>
+                      <button  class = "btn btn-submit" type="submit">Submit</button>
+                      {{$creditForm}}
                 </div>
             </form>
 
@@ -496,6 +506,10 @@
                                     <div class ="col-sm-12">
                                         <h3>{{errorMsg}}</h3>
                                     </div>
+                                </div>
+                                <div class = "row">
+                                    
+                                    <center><p>Grand Total: {{grandTotal| currency}}</p><center>
                                 </div>
 
                 <!-- shipping form data  8-->

@@ -60,6 +60,10 @@ app.factory('Shop', function($http){
         return $http.post('/api/checkout', checkoutData);
         
     }
+    //Shop.stripeCheckout(checkoutData);
+    shopFactory.stripeCheckout = function(checkoutData){
+        return $http.post('/api/stripecheckout',checkoutData);
+    }
 
 return shopFactory;
 

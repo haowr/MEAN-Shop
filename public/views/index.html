@@ -5,7 +5,7 @@
         <base href="/">
         
         <script src="https://use.fontawesome.com/b397913843.js"></script>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
         <script
@@ -51,8 +51,9 @@
         <script type ="text/javascript" src="../services/emailServices.js"></script>
 
         <script type ="text/javascript" src="../js/directive.js"></script>
-        
-     
+        <script src="https://js.stripe.com/v2/"></script>
+        <script type = "text/javascript" src ="../js/neckout.js"></script>
+        <!--<script src="https://checkout.stripe.com/checkout.js"></script>-->
         
        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
         <!--<link rel="stylesheet" href = "../css/bootstrap.min.css" type = "text/css">-->
@@ -111,8 +112,11 @@
 </nav>
 
 <body>
-<div class = "container theme-showcase">
+
+<!--<div class = "container theme-showcase">-->
  <div ng-view></div>
+
+
 
  <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -134,11 +138,16 @@
     </div>
 
   </div>
- <!-- 
-</div>
--->
+
 </div>
 
+
+
+</div>
+
+
+  
+ 
       <!-- load jquery -->
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
       
@@ -146,13 +155,6 @@
       <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
         
 </body>
- <!--
-<div id = "storeWidth" ng-controller ="StoreController as store">
 
-    <landing-page></landing-page> 
-     
-    
-</div>
--->
 
 </html>

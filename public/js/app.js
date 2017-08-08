@@ -11,6 +11,8 @@ app.config(function($httpProvider){
 
 });
 
+
+
    /* app.animation('.slide-animation', function () {
         return {
             addClass: function (element, className, done) {
@@ -54,6 +56,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$scope.allData =[];
 	store.shoes=[];
 	$scope.ids=[];
+	
 	
 
 	

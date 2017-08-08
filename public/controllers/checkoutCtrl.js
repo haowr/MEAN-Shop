@@ -8,12 +8,12 @@ console.log("checkoutController loaded and initialized...");
 
 });
 
-app.controller('checkoutCtrl', function($scope, $window,Shop){
+app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.country="Canada";
     $scope.expmonth = "Jan";
     $scope.expyear = "2017";
     $scope.shoppingBagShoes=[];
-    $scope.grandTotal;
+    $scope.grandTotal= $window.localStorage.getItem('grandTotal');
     $scope.errorMsg;
     $scope.shipPhase= false;
     $scope.addNewShippingAddress = false;
@@ -21,6 +21,7 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
     $scope.shippingFormDataa=[];
     $scope.creditFormDataa = [];
     $scope.finalCheckoutData =[];
+    $rootScope.finalCheckoutData =[];
     $scope.invalid = false;
     $scope.addShippingAddressPhase = false;
     $scope.useBillingAddressSelected= false;
@@ -35,12 +36,28 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
     console.log(stripe);
     //$scope.formName.inputName.$card=[];
 */
+/*
+var handler = StripeCheckout.configure({
+  key: 'pk_test_aE3UDuxFXzcslBrNanFIIi6Q',
+  image: '/img/documentation/checkout/marketplace.png',
+  locale: 'auto',
+  token: function(token) {
+    // Use the token to create the charge with a server-side script.
+    // You can access the token ID with `token.id`
+  }
+});
+
+handler.open({
+  name: 'Stripe.com',
+  description: '2 widgets',
+  amount: 2000
+});
     var getTotal = function(){
 
 
         
     }
-
+*/
 
     $scope.selectCountry = function(number){
             console.log("button pressed");
@@ -123,6 +140,7 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
          $scope.shippingFormDataa.push( $scope.checkoutDataa[0]);
          $scope.finalCheckoutData[0]= $scope.shippingFormDataa[0];
          $scope.finalCheckoutData[1]= $scope.checkoutDataa[0];
+         $rootScope.finalCheckoutData[1]= $scope.checkoutDataa[0];
          console.log($scope.finalCheckoutData);
          $scope.useBillingAddressSelected = false;
         // $scope.finalCheckoutButton = true;
@@ -137,6 +155,7 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
         $scope.shippingFormDataa.push(shippingFormData);
                  $scope.finalCheckoutData[0]= $scope.shippingFormDataa[0];
          $scope.finalCheckoutData[1]= $scope.checkoutDataa[0];
+         $rootScope.finalCheckoutData[1]= $scope.checkoutDataa[0];
         $scope.shipPhase = true;
         $scope.addNewShippingAddress = false;
         $scope.addNewShippingAddressPhase = true;
@@ -168,9 +187,12 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
     };
     $scope.addCreditCardFunc = function(creditData, valid){
         console.log(creditData);
+        console.log(valid);
+        creditData.grandTotal = $scope.grandTotal;
         if(valid){
             $scope.creditFormDataa.push(creditData)
             $scope.finalCheckoutData[2]= $scope.creditFormDataa[0];
+            $rootScope.finalCheckoutData[2]= $scope.creditFormDataa[0];
             $scope.creditCardDataAdded= true;
             $scope.finalCheckoutButton= true;
             $scope.ccPhase = false;
@@ -182,14 +204,17 @@ app.controller('checkoutCtrl', function($scope, $window,Shop){
     };
 
     $scope.finalCheckout= function(){
-        $ccFormReqValidation = $('#ccFormReqValidation');
-        console.log($ccFormReqValidation);
+
         
-              Shop.checkout($scope.finalCheckoutData).then(function(data){
+             /* Shop.checkout($scope.finalCheckoutData).then(function(data){
 
                 console.log(data.data);
 
-            });
+            });*/
+              Shop.stripeCheckout($scope.finalCheckoutData).then(function(data){
+                    console.log(data.data.charge);
+
+              });
 
     };
     

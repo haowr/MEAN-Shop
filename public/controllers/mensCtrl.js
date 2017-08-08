@@ -71,8 +71,10 @@
         console.log($scope.mensShoe.heartactivated);
     });
     $scope.checkoutFunc= function(){
-        $scope.checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
-        for(var i =0; i< $scope.checkoutArray.length; i++){
+        console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
+        if(JSON.parse($window.localStorage.getItem('checkoutArray'))!== null){
+            $scope.checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                   for(var i =0; i< $scope.checkoutArray.length; i++){
             console.log($scope.checkoutArray[i].name );
            // console.log($routeParams.name);
             if($scope.checkoutArray[i].name == $routeParams.name){
@@ -81,6 +83,9 @@
             }
 
         }
+        }
+        
+ 
         console.log($scope.checkoutArray);
         $scope.shoppingCartNumber++
         $scope.checkout.name = $routeParams.name;

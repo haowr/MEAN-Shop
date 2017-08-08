@@ -111,6 +111,9 @@
      
  */   
     //$window.localStorage.removeItem('myLoves');
+
+
+    
     $rootScope.EmailListEmail;
      $rootScope.localStorageMyLovesString = $window.localStorage.getItem('myLoves');// retrieves myLoves from local storage as string....
             console.log($rootScope.localStorageMyLovesString);
