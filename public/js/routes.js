@@ -66,6 +66,12 @@ app.config(function($routeProvider,$locationProvider){
         controllerAs:'checkout'
 
     })
+        .when('/shop/checkout/ordersummary',{
+        templateUrl: '../views/pages/ordersummary.html',
+        controller: 'checkoutCtrl',
+        controllerAs:'checkout'
+
+    })
     .when('/shop/shoppingbag',{
 
         templateUrl: '../views/pages/shoppingbag.html',

@@ -475,6 +475,7 @@ app.post('/api/stripecheckout', function(req,res){
     order.shippingphonenumber = req.body[1].phonenumber;
     order.shippingpostalcode = req.body[1].postalcode;
     order.cccardname = req.body[2].cardname;
+    order.ccstripetoken = req.body[2].stripetoken;
     //order.cccardnumber = req.body[2].cardnumber;
     //order.ccexpmonth = req.body[2].expmonth;
     //order.ccexpyear = req.body[2].expyear;
@@ -488,7 +489,7 @@ var stripe = require("stripe")(
 );
 
 stripe.charges.create({
-  amount: 2000,
+  amount: req.body[2].grandTotal,
   currency: "usd",
   source: req.body[2].stripeToken, // obtained with Stripe.js
   description: "Charge for charlotte.johnson@example.com"
@@ -527,11 +528,11 @@ app.post('/api/checkout', function(req,res){
     order.shippingprovince = req.body[1].province;
     order.shippingphonenumber = req.body[1].phonenumber;
     order.shippingpostalcode = req.body[1].postalcode;
+    
     order.cccardname = req.body[2].cardname;
-    order.cccardnumber = req.body[2].cardnumber;
-    order.ccexpmonth = req.body[2].expmonth;
-    order.ccexpyear = req.body[2].expyear;
-    order.ccsecuritycode = req.body[2].securitycode;
+    order.ccstripetoken = req.body[2].stripetoken;
+    order.ccgrandtotal = req.body[2].grandTotal/100;
+
 
 
     order.save(function(err,order){

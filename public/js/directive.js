@@ -16,7 +16,7 @@
 
     })
 
-    app.directive('stripeCheckoutJquery',function(Shop){
+    app.directive('stripeCheckoutJquery',function(Shop,$location){
 
         return{
             restrict: 'A',
@@ -24,6 +24,7 @@
             scope: {
                 'addCreditCardFunc': '&',
                 'finalCheckoutData':'=',
+                'grandTotal': '='
             },
             link: function(scope,elem,attrs,formCtrl){
                 //On click
@@ -81,6 +82,31 @@
                         console.log(elem[0][4].value);
                         console.log(elem[0][6].value);
                         console.log(scope.finalCheckoutData);
+                        var ccData = {
+                            cardname: elem[0][0].value,
+                            stripeToken: elem[0][6].value,
+                            grandTotal: scope.grandTotal
+
+                        };
+                        var checkoutData = scope.finalCheckoutData;
+                        checkoutData.push(ccData);
+                        console.log(checkoutData);
+                        Shop.stripeCheckout(checkoutData).then(function(data){
+                                console.log(data.data);
+                                console.log(data.data.message);
+                                console.log(data.data.charge);
+                                if(data.data.success == true){
+                                        Shop.checkout(checkoutData).then(function(data){
+
+                                            console.log(data.data);
+                                            console.log(data.data.message);
+                                            console.log(data.data.order);
+                                            $location.path('/shop/checkout/ordersummary');
+                                        });
+                                }
+
+
+                        });
                         scope.addCreditCardFunc( creditForm.$valid);
                        //$(elem).get(0).submit(function(e){
                          //  e.preventDefault();

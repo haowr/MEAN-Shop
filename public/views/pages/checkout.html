@@ -364,7 +364,7 @@
                         </form>
                     </div>
                     <div ng-show="ccPhase"class = "col-sm-8 formstyling">
-   <!-- ng-submit =     -->    <form stripe-checkout-jquery add-credit-card-func="addCreditCardFunc(creditFormData, creditForm.$valid);" final-checkout-data="finalCheckoutData"name = "creditForm"  id="ccFormReqValidation" novalidate>
+   <!-- ng-submit =     -->    <form stripe-checkout-jquery add-credit-card-func="addCreditCardFunc(creditFormData, creditForm.$valid);" final-checkout-data="finalCheckoutData" grand-total="grandTotal"name = "creditForm"  id="ccFormReqValidation" novalidate>
                 <h3> Payment</h3>
                 <div id = "charge-error"class = "alert alert-danger hidden">
 
