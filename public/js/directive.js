@@ -1,7 +1,7 @@
 (function(){
 
 
-    var app = angular.module('shop-directives', ['shopServices']);
+    var app = angular.module('shop-directives', ['shopServices','authServices','userServices']);
 
     app.directive('funcWrapper',function(){
 
@@ -16,7 +16,7 @@
 
     })
 
-    app.directive('stripeCheckoutJquery',function(Shop,$location){
+    app.directive('stripeCheckoutJquery',function(Auth,Shop,User,$location,$window,$timeout){
 
         return{
             restrict: 'A',
@@ -24,7 +24,8 @@
             scope: {
                 'addCreditCardFunc': '&',
                 'finalCheckoutData':'=',
-                'grandTotal': '='
+                'grandTotal': '=',
+                'paymentLoading': '='
             },
             link: function(scope,elem,attrs,formCtrl){
                 //On click
@@ -34,6 +35,7 @@
                     $('#charge-error').addClass('hidden');
                     console.log($('#card-number').val());
                     $(elem).find('button').prop('disabled', true);
+                    scope.paymentLoading = true;
                     Stripe.card.createToken({
                         /*number: $(elem).find('#card-number').val(),
                         cvc: $(elem).find('#card-cvc').val(),
@@ -101,30 +103,74 @@
                                             console.log(data.data);
                                             console.log(data.data.message);
                                             console.log(data.data.order);
-                                            $location.path('/shop/checkout/ordersummary');
+                                            //
+                                            //$scope.$apply() 
                                         });
+                                        if(Auth.isLoggedIn()){
+
+                                                Auth.getUser().then(function(data){
+                                                        var order = {};
+                                                       
+                                                       // console.log(checkoutArray);
+                                                        console.log(data);
+                                                        console.log(order);
+                                                        checkoutData.push(data.data.username);
+                                                        checkoutData.push([]);
+                                                        checkoutData[4] = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
+                                                       // for(var i =0; i<checkoutArray.length; i++){
+                                                       //        order{
+                                                       //            i: checkoutArray[i]
+//
+                                                        //}
+                                                        //console.log(order);
+                                                        //checkoutData[4]=order;
+                                                        console.log(checkoutData);
+                                                        User.addOrdersToUser(checkoutData).then(function(data){
+
+                                                            if(data.data.success){
+                                                                $window.localStorage.removeItem('checkoutArrayy');
+                                                                User.sendEmail(checkoutData[0].email).then(function(data){
+
+                                                                console.log(data.data.message);
+
+                                                            });
+                                                                $timeout(function(){
+                                                                        $location.path('/profile');
+
+                                                                },2000);
+                                                                
+
+                                                            }
+
+                                                        })
+
+                                                })
+
+                                        }else{
+
+                                            User.sendEmail(checkoutData[0].email).then(function(data){
+                                                    console.log(data.data.message);
+                                                    $window.localStorage.removeItem('checkoutArrayy');
+                                                     $timeout(function(){
+                                                                        $location.path('/home');
+
+                                                        },2000);
+                                                    
+
+                                            })
+                                        }
                                 }
 
 
                         });
                         scope.addCreditCardFunc( creditForm.$valid);
-                       //$(elem).get(0).submit(function(e){
-                         //  e.preventDefault();
-                       //});
-                        //$(elem).find('button').prop('disabled', false);
-                       //$(elem).find('button').click();
-
                     }
 
 
                     };
-                     //console.log("hello!");
+                     
                 });
-               // $(elem).click(function(){
-               //     console.log("hello!");
-                    //$(this).popover("open");
 
-               // });
             }
 
         }

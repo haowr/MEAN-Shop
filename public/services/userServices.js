@@ -99,6 +99,13 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/edit/'+id);
 
  }
+   //User.getUser(username){
+  userFactory.getUserProfile = function(username){
+
+    return $http.put('/api/finduser/'+username);
+
+  }
+   
     //User.editUser(id);
   userFactory.editUser= function(id){
 
@@ -120,6 +127,25 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/getloves/'+username);
 
   }
+  //User.getOrders(username);
+  userFactory.getOrders = function(username){
+
+    return $http.put('/api/getorders/'+username);
+
+  }
+  //User.addOrdertoUser(order);
+  userFactory.addOrdersToUser = function(order){
+
+    return $http.post('/api/addorderstouser',order);
+
+  }
+  //User.sendEmail(email);
+  userFactory.sendEmail = function(email){
+
+    return $http.put('/api/sendemail/'+email);
+
+  }
+
 
  return  userFactory;
 

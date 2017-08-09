@@ -12,6 +12,19 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.country="Canada";
     $scope.expmonth = "Jan";
     $scope.expyear = "2017";
+    $scope.alberta = .05;
+    $scope.britishColumbia = .05;
+    $scope.manitoba = .05;
+    $scope.newBrunswick =.15;
+    $scope.newFoundland = .15;
+    $scope.nwT = .05;
+    $scope.novaScotia = .05;
+    $scope.nunavut = .05;
+    $scope.ontario = .05;
+    $scope.quebec = .05;
+    $scope.pei = .05;
+    $scope.saskatchewan = .05;
+    $scope.yukon = 0.5;
     $scope.shoppingBagShoes=[];
     $scope.grandTotal= $window.localStorage.getItem('grandTotal');
     $scope.errorMsg;
@@ -27,10 +40,14 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.useBillingAddressSelected= false;
     $scope.finalCheckoutButton = false;
     $scope.ccPhase = false;
+    $scope.startCheckout = false;
     $scope.checkoutPhase = true;
+    $scope.paymentLoading = false;
+
     $scope.creditCardDataAdded= false;
        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
        $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
+       $scope.totalAfterTax=0;
     console.log($scope.shoppingBagShoes);
    /* var stripe = Stripe('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
     console.log(stripe);
@@ -58,6 +75,11 @@ handler.open({
         
     }
 */
+    
+    $scope.startCheckoutFunc = function(){
+
+        $scope.startCheckout = true;
+    }
 
     $scope.selectCountry = function(number){
             console.log("button pressed");
@@ -179,6 +201,31 @@ handler.open({
         $scope.invalid = false;
         $scope.useBillingAddressSelected = true;
         $scope.checkoutPhase = false;
+        console.log(checkoutData.province);
+        if(checkoutData.province == "Alberta"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.alberta);
+            console.log($scope.totalAfterTax);
+        }else if(checkoutData.province == "British Columbia"){
+           
+            $scope.totalAfterTax = $scope.grandTotal + ( $scope.grandTotal * $scope.britishColumbia);
+            console.log($scope.totalAfterTax);
+        }else if(checkoutData.province == "Saskatchewan"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.saskatchewan);
+        }else if(checkoutData.province == "Manitoba"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.manitoba);
+        }else if(checkoutData.province == "Quebec"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.quebec);
+        }else if(checkoutData.province == "Ontario"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.ontario);
+        }else if(checkoutData.province == "New Brunswick"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newBrunswick);
+        }else if(checkoutData.province == "Newfoundland"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newFoundland);
+        }else if(checkoutData.province == "Nova Scotia"){
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.novaScotia);
+        }else {
+            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.nwT);
+        }
         
         }else{
             $scope.errorMsg = "Please properly complete form...";

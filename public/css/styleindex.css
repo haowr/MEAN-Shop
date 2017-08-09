@@ -318,6 +318,9 @@ border: 1px solid black;
   border-top: 3px solid black;
   display:block;
 }
+.divider{
+  border-top: 2px solid black;
+}
 .detailo{
 border-top:2px solid black;
 border:1px solid black;
@@ -534,7 +537,7 @@ border: solid 1px black;
 }
 #maintitle{
  /* font-family: 'Spectral';*/
-  font-size: 100%;
+ 
   font-family: 'Bellefair';
 }
 #whatsnewtitle{
@@ -558,6 +561,7 @@ border: solid 1px black;
 .shoppingbagtitle{
 
   border-right:1px solid black;
+  border-bottom:1px dashed black;
   height: 200px;
 
 }
@@ -573,6 +577,25 @@ border: solid 1px black;
 .formstyling.ng-hide-remove {
   
 }
+.fade.in {
+  opacity: 1;
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.modal-backdrop.in {
+  opacity: 0.5;
+}
+.startCheckout.ng-hide{
+  opacity:0;
+}
+.startCheckout.ng-hide-add,
+.startCheckout.ng-hide-remove{
+transition: all linear 0.5s;
+}
+
 .invalidform.ng-hide{
   opacity:0;
 }
@@ -580,6 +603,7 @@ border: solid 1px black;
 .invalidform.ng-hide-remove{
 transition: all linear 0.5s;
 }
+
 .wouldyouliketouse.ng-hide{
  opacity:0;
 }
@@ -631,6 +655,17 @@ opacity:0;
 }
 .ordersummarystyling{
   border-bottom: 1px dashed black;
+}
+.ordersummaryitem{
+  height:20%;
+}
+#ordersummaryimage{
+  top: 500px;
+}
+.grandtotalstyling{
+
+  border-top: 2px solid black;
+  border-width:50%;
 }
 /*.landing-enter 
 { 

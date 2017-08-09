@@ -61,3 +61,39 @@
     </div>
     
 </div>
+<div class = "page-header">
+    <h1>Order History</h1>
+<div class = "row" ng-repeat = "order in orders">
+
+    <div class = "col-sm-6">
+       
+                      <div class = "row">
+            <div id ="ordersummaryimagediv"class = "col-sm-2 pull-left">
+                <img ng-src="{{order.image}}">
+            </div>
+            <div class ="col-sm-2 pull-left">
+                <h3 class = "pull-left">Name</h3>
+               <p id ="ordersummaryimage"> {{order.name}}</p>
+            </div>
+            <div class ="col-sm-2 pull-left">
+                <h3 class= "pull-left">Qty</h3>
+                <p id ="ordersummaryimage"> <br>{{order.amt}}</p>
+            </div>
+            <div  class ="col-sm-2 pull-left">
+                <h3 class = "pull-left">Price</h3>
+                <p id ="ordersummaryimage">  {{order.price | currency}} </p>
+            </div>
+            <div class ="col-sm-2 pull-left">
+                <h3 class = "pull-left">Total</h3>
+                <p id ="ordersummaryimage"> {{order.price | currency}}</p>
+            </div>
+        </div>
+        
+    </div>
+    <div class = "col-sm-6">
+        
+
+    </div>
+
+</div>
+</div>

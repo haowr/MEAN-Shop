@@ -74,6 +74,7 @@ var UserSchema = new Schema({
     temporarytoken: {type: String, required: true},
     resettoken:{type: String, required: false},
     permission: {type:String, required:true, default:'user' },
+    orders:{type:Array},
     loves: Array
 
 

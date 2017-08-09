@@ -388,6 +388,30 @@ app.put('/api/getloves/:name',function(req,res){
 
         });
 });
+app.put('/api/sendemail/:email',function(req,res){
+
+
+    var email = {
+
+        from: 'A House Of Jewels, admin@hoj.com',
+        to: req.params.email,
+        subject: 'Order Confirmation',
+        text:'',
+        html: compiledTemplate.render()
+    };
+                       // Function to send e-mail to user
+                    client.sendMail(email, function(err, info) {
+                        if (err) {
+                            console.log(err); // If error in sending e-mail, log to console/terminal
+                        } else {
+                            console.log(info); // Log confirmation to console
+                        }
+                    });
+                    res.json({success: true, message: "Email entry Save Success..."});
+
+                    
+
+})
 app.put('/api/addtoemaillist/:email',function(req,res){
 
    
@@ -546,6 +570,27 @@ app.post('/api/checkout', function(req,res){
 
 
 });
+app.post('/api/addorderstouser', function(req,res){
+
+    console.log(req.body);
+
+    User.findOneAndUpdate({username: req.body[3]}, {$push:{orders: req.body[4]}},{new:true},function(err,user){
+        if (err) throw err;
+        if(!user){
+            res.json({success:false, message:"User not found.."});
+        }else{
+
+            res.json({success: true, message: "User Found And Updated..", user: user, req: req.body[4]});
+
+        }
+
+
+
+
+    })
+
+
+})
 
 app.post('/api/pages', function(req,res){
 
@@ -1445,6 +1490,22 @@ const doc ={
 
     });
     */
+
+
+    app.put('/api/finduser/:username',function(req,res){
+
+        User.findOne({username:req.params.username},function(err,user){
+
+            if(err) throw err;
+            if(!user){
+                res.json({success:false, message:"User not found..."});
+            }else{
+                res.json({success:true, message:"Here ya go!", user:user});
+            }
+
+        })
+
+    });
     app.put('/api/heartscounts/:heartNum', function(req,res){
 
  console.log(req.params);
