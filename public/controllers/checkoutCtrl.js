@@ -47,7 +47,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.creditCardDataAdded= false;
        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
        $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
-       $scope.totalAfterTax=0;
+       $scope.totalAfterTax;
     console.log($scope.shoppingBagShoes);
    /* var stripe = Stripe('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
     console.log(stripe);
