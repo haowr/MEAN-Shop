@@ -37,6 +37,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $rootScope.finalCheckoutData =[];
     $scope.invalid = false;
     $scope.addShippingAddressPhase = false;
+    $scope.showGrandTotal = false;
     $scope.useBillingAddressSelected= false;
     $scope.finalCheckoutButton = false;
     $scope.ccPhase = false;
@@ -204,27 +205,37 @@ handler.open({
         console.log(checkoutData.province);
         if(checkoutData.province == "Alberta"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.alberta);
+            $scope.showGrandTotal=true;
             console.log($scope.totalAfterTax);
         }else if(checkoutData.province == "British Columbia"){
            
             $scope.totalAfterTax = $scope.grandTotal + ( $scope.grandTotal * $scope.britishColumbia);
+            $scope.showGrandTotal=true;
             console.log($scope.totalAfterTax);
         }else if(checkoutData.province == "Saskatchewan"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.saskatchewan);
+            $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Manitoba"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.manitoba);
+            $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Quebec"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.quebec);
+            $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Ontario"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.ontario);
+            $scope.showGrandTotal=true;
         }else if(checkoutData.province == "New Brunswick"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newBrunswick);
+            $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Newfoundland"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newFoundland);
+            $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Nova Scotia"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.novaScotia);
+            $scope.showGrandTotal=true;
         }else {
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.nwT);
+            $scope.showGrandTotal=true;
         }
         
         }else{
