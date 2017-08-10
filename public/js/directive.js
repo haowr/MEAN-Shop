@@ -16,6 +16,23 @@
 
     })
 
+    app.directive('galleryZoom', function(){
+        return{
+             restrict: 'A',
+             
+             link: function(elem){
+
+                  //$(elem).elevateZoom();
+                  $('.specificmainzoom').panzoom();
+
+             }
+        }
+       
+
+
+
+    });
+
     app.directive('stripeCheckoutJquery',function(Auth,Shop,User,$location,$window,$timeout){
 
         return{
@@ -24,7 +41,7 @@
             scope: {
                 'addCreditCardFunc': '&',
                 'finalCheckoutData':'=',
-                'grandTotal': '=',
+                'totalAfterTax': '=',
                 'paymentLoading': '='
             },
             link: function(scope,elem,attrs,formCtrl){
@@ -84,10 +101,12 @@
                         console.log(elem[0][4].value);
                         console.log(elem[0][6].value);
                         console.log(scope.finalCheckoutData);
+                        console.log(scope.totalAfterTax );
+                        console.log(scope.totalAfterTax * 100);
                         var ccData = {
                             cardname: elem[0][0].value,
                             stripeToken: elem[0][6].value,
-                            grandTotal: scope.grandTotal
+                            grandTotal: (scope.totalAfterTax*100).toFixed(0)
 
                         };
                         var checkoutData = scope.finalCheckoutData;

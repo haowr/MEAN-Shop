@@ -14,7 +14,7 @@ Shop.getMensShoe()
 
  $scope.user ;
  $scope.whoisthis;
-
+$scope.orders =[];
     Auth.getUser().then(function(data){
 
         console.log(data.data.username);
@@ -23,10 +23,18 @@ Shop.getMensShoe()
 
         console.log(data.data.user);
         $scope.user = data.data.user;
-        $scope.orders = data.data.user.orders[0];
+        for(var i= 0; i<data.data.user.orders.length; i++){
+            for(var j = 0; j< data.data.user.orders[i].length; j++){
+
+                $scope.orders.push(data.data.user.orders[i][j]);
+            }
+            
+
+        }
+        
 
     });
-
+console.log($scope.orders);
 
     });
  

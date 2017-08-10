@@ -99,7 +99,7 @@
                                     <!-- Email Input -->
                                     <label>Email:</label>
                                     <br>
-                                    <input ng-disabled="disabled" type="text" name="email" placeholder="E-mail..." ng-model="checkoutForm.email" ng-minlength="3" ng-maxlength="40" ng-pattern="/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/"  required>
+                                    <input ng-disabled="disabled" type="text" name="email" placeholder="E-mail..." ng-model="checkoutFormData.email" ng-minlength="3" ng-maxlength="40" ng-pattern="/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/"  required>
                                     <!-- Email Validation -->
                                     <p class="help-block" ng-show="(!checkoutForm.email.$pristine && checkoutForm.email.$error.required) || (checkoutForm.$submitted && checkoutForm.email.$error.required)">This field is required</p>
                                     <span ng-show="checkingEmail && checkoutForm.email.$valid" class="glyphicon glyphicon-repeat"></span>
@@ -398,7 +398,7 @@
 
                     
                     <div ng-show="ccPhase"class = "col-sm-8 formstyling">
-             <form stripe-checkout-jquery add-credit-card-func="addCreditCardFunc(creditFormData, creditForm.$valid);" final-checkout-data="finalCheckoutData" grand-total="grandTotal" payment-loading="paymentLoading"name = "creditForm"  id="ccFormReqValidation" novalidate>
+             <form stripe-checkout-jquery add-credit-card-func="addCreditCardFunc(creditFormData, creditForm.$valid);" final-checkout-data="finalCheckoutData" total-after-tax="totalAfterTax" payment-loading="paymentLoading"name = "creditForm"  id="ccFormReqValidation" novalidate>
                 <h3> Payment</h3>
                 <div ng-show="paymentLoading">
                     <center><h3>LOADING</h3></center>
@@ -481,7 +481,7 @@
                  </div>
                                 <br>
                                 <br>
-                                <div ng-show="invalid"class ="row invalidform">
+                                <div ng-show="invalid"class ="row invalidform pull-left">
                                     <div class ="col-sm-12">
                                         <h3>{{errorMsg}}</h3>
                                     </div>

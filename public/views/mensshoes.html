@@ -1,27 +1,37 @@
-<div >
+
     <br>
     <br>
+    <!--
 <div class = "page-header">
     <h1> {{mensShoe.name}}</h1>
+</div>
+-->
+<div class = "container container-fluid">
+    <div class = "col-sm-12">
+        <center><h2 class="shoetitlestyling"> ({{mensShoe.name}})</h2></center>
+    </div>
 </div>
 <div class = "container container-fluid">
 <div class = "row">
     <div class = "col-sm-2 shoesidepanel">
-
+        <br>
         <ul class = "img-thumbnails clearfix" ng-repeat ="perspective in mensShoe.perspectives">
+
             <li ng-click = "imageChange($index);"><img ng-src="{{perspective}}"></li>
+            <br>
+            
         </ul>
 
         <!--<landing-gallery></landing-gallery>-->
     </div>
-    <div class = "col-sm-7 mainshoeview">
+    <div class = "col-sm-7 mainshoeview " gallery-zoom>
     <div class = "zoomers pull-right">  
             <i class="fa fa-plus" ng-click = "zoom();" aria-hidden="true"></i>
             <i class="fa fa-minus" ng-click = "shippingDetails();"aria-hidden="true"></i>
             <br>
     </div>
-  
-       <img ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3}" ng-src = "{{mensShoe.fullsize[imageIndex]}}">
+       
+       <img  ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3} " class ="img-fluid specificmainzoom"ng-src = "{{mensShoe.fullsize[imageIndex]}}">
     </div>
     
     <div class = "col-sm-3 shoespecs">
@@ -50,18 +60,22 @@
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
                 </button>
+                
                 <ul class = "dropdown-menu">
                     <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('S');">S</a></li>
                     <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('M');">M</a></li>
                     <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('L');">L</a></li>
            
                 </ul>
+                <br>
+                <br>
                  <button type ="submit" class = "btn btn-submit" >Submit</button>
             </form>
             &nbsp
+            <br>
             <div class = "btn-group">
-                <button type ="button" class = "btn btn-default">Qty</button>
-                <button type ="button" class = "btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type ="button" class = "btn btn-primary">Qty&nbsp</button>
+                <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
                 </button>

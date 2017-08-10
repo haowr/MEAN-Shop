@@ -132,7 +132,8 @@
  
      console.log($rootScope.myLoves);
      $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
-     $rootScope.cartItems = $window.localStorage.getItem('shoppingCartNumber');
+     $rootScope.cartyItems = JSON.parse($window.localStorage.getItem('checkoutArray'));
+     $rootScope.cartItems =$rootScope.cartyItems.length;
      if($rootScope.myLoves[0] == null){
          $rootScope.myLoves=[];
      }
@@ -374,10 +375,10 @@ $rootScope.checkEmail = function(emailListData){
                 scope.loading= false;
                 scope.successMsg= data.data.message + '...Redirecting';
                 $timeout(function(){
-                    scope.loginData = '';
+                    scope.loginData = {};
                     scope.success = false;
                     $location.path('/about');
-                    scope.loginData = '';
+                    scope.loginData = {};
                     scope.successMsg= "";
                     scope.disabled= false;
                     scope.success = false;
