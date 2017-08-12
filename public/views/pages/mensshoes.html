@@ -18,41 +18,22 @@
         <ul class = "img-thumbnails clearfix" ng-repeat ="perspective in mensShoe.perspectives">
 
             <li ng-click = "imageChange($index);"><img ng-src="{{perspective}}"></li>
-            
+            <br>
             
         </ul>
 
         <!--<landing-gallery></landing-gallery>-->
     </div>
-    <div id="pan-when-zoomed" class = "col-sm-7 " >
-       <i class="fa fa-plus zoom-in" aria-hidden="true"></i>
-        <i class="fa fa-minus zoom-out" aria-hidden="true"></i>
-        <i class="fa fa-refresh reset" aria-hidden="true"></i>
-      <div class="parent">
-     
-        <div class="panzoom">
-       <img  class = "specificmainzoom img-fluid" ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3} " ng-src = "{{mensShoe.fullsize[imageIndex]}}">
-        </div>
-      </div>
-      
-
-
-      
-      <script>
-        (function() {
-          var $section = $('#pan-when-zoomed');
-          $section.find('.panzoom').panzoom({
-            $zoomIn: $section.find(".zoom-in"),
-            $zoomOut: $section.find(".zoom-out"),
-            $zoomRange: $section.find(".zoom-range"),
-            $reset: $section.find(".reset"),
-            panOnlyWhenZoomed: true,
-            minScale: 1
-          });
-        })();
-      </script>
-    
+    <div gallery-zoom class = "col-sm-7 mainshoeview " >
+    <div class = "zoomers pull-right">  
+            <i class="fa fa-plus mainshoeviewzoom" ng-click = "zoom();" aria-hidden="true"></i>
+            <i class="fa fa-minus" ng-click = "shippingDetails();"aria-hidden="true"></i>
+            <br>
     </div>
+       
+       <img   ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3} " class ="specificmainzoom"ng-src = "{{mensShoe.fullsize[imageIndex]}}">
+    </div>
+    
     <div class = "col-sm-3 shoespecs">
         <div class ="header">
             

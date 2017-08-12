@@ -36,7 +36,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
             }else{
                 //CREATE ERROR MESSAGE
                 scope.loading=false;
-                scope.disabled=true;
+                scope.disabled=false;
                 scope.errorMsg=  data.data.message;
                 $location.path('/register');
                 
@@ -47,7 +47,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
 
         }else{
             scope.loading = false;
-            scope.disabled=true;
+            scope.disabled=false;
             scope.errorMsg = "Please ensure form is filled out properly";
         }
 

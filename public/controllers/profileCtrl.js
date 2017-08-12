@@ -15,6 +15,12 @@ Shop.getMensShoe()
  $scope.user ;
  $scope.whoisthis;
 $scope.orders =[];
+
+   User.getProducts().then(function(data){
+
+    console.log(data.data.user.products);
+
+   })
     Auth.getUser().then(function(data){
 
         console.log(data.data.username);

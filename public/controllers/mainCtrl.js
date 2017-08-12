@@ -253,7 +253,7 @@ $rootScope.checkEmail = function(emailListData){
             Auth.logout();
             $location.path('/');
             hideModal();
-            //$route.reload();
+            $route.reload();
 
          },2000)
          //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";

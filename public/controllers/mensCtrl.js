@@ -30,7 +30,7 @@
     Shipping charges are not refundable and there is a $6.95 per order return fee that covers restocking and postage back to the warehouse. Clearance items and earring purchases cannot be returned or exchanged. \
     Click here to view our full Return Policy" ;
     $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
-    console.log($rootScope.heartss);
+    //console.log($rootScope.heartss);
     $scope.loadme = false;
     //$scope.open = false;
     $scope.amt = 0;
@@ -44,6 +44,8 @@
     $scope.myLovesEach=[];
     $scope.checkout={};
     $scope.checkoutArray=[];
+    $scope.newAdminProducts=[];
+    $scope.adminProducts;
     $scope.happy=[{name: "Ras", size: "M", amt: "1", price: "322.00", description: "The head of our creations. The perfection of the way"}];
     console.log(JSON.stringify($scope.happy));
      if($window.localStorage.getItem($routeParams.name) == 1){
@@ -61,6 +63,9 @@
   //$window.localStorage.setItem('cookieHearts',$scope.removeCookieHeart);
     //$window.localStorage.setItem('cookieHearts',$scope.addCookieHeart);
    
+  
+ 
+ 
 
     Shop.getMensShoe($routeParams.name).then(function(data){
         $scope.mensShoe = data.data.allshoe[0];
@@ -204,8 +209,8 @@
             return index == self.indexOf(elem);
         });
         $rootScope.myLoves = unique;
-        console.log($scope.heartactivated);
-        */
+        console.log($scope.heartactivated); 
+        */  
 
         $scope.open = true;
         console.log($scope.loading);
@@ -249,6 +254,7 @@
                     console.log("$scope.heartActivated "+$scope.heartActivated);
 
                 });
+                
               //$scope.heartactivated = true;
               //console.log($scope.heartactivated);
               if(Auth.isLoggedIn()){
@@ -265,7 +271,33 @@
               console.log($scope.cookieHearts+$scope.addCookieHeart);
               $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;
               $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
-              
+              Shop.incrementHearts($routeParams.name).then(function(data){
+
+                    console.log(data.data.shoe);
+
+              });
+              //User.increaseAdminHearts($routeParams.name).then(function(data){
+//
+                //    console.log(data.data.admin);
+
+              //});
+               User.getProducts().then(function(data){
+
+    $scope.adminProducts=data.data.user.products;
+    console.log($scope.adminProducts[0].Ras);
+    console.log($scope.adminProducts[0][$routeParams.name]+1);
+    $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]+1;
+    console.log($scope.adminProducts[0][$routeParams.name]);
+    console.log($scope.adminProducts[0]);
+    $scope.newAdminProducts.push($scope.adminProducts[0]);
+    User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
+
+            console.log(data.data.user);
+
+    });
+   });
+              $scope.adminProducts[0].$routeParams.name++;
+
                // $window.localStorage.setItem('cookieHearts',$scope.addCookieHeart);
               }else{
                 $window.localStorage.removeItem('myLoves',$rootScope.myLoves);  
@@ -276,15 +308,16 @@
                     $scope.open = true;
                     $rootScope.heartactivated = true;
                     console.log($rootScope.heartactivated);
-                                    Heart.activateHeart($routeParams).then(function(data){
+                    Heart.activateHeart($routeParams).then(function(data){
                     //console.log("did it work?");
                     //console.log("shoe.heartactivated = true");
                     //console.log(data.data.success);
-                    console.log(data.data.shoe);
-                    $scope.heartActivated = true;
-                    console.log("$scope.heartActivated "+$scope.heartActivated);
+                        console.log(data.data.shoe);
+                         $scope.heartActivated = true;
+                        console.log("$scope.heartActivated "+$scope.heartActivated);
 
-                });
+                    });
+                
 
                 if(Auth.isLoggedIn()){
                  User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){
@@ -300,7 +333,32 @@
               console.log($scope.cookieHearts+$scope.addCookieHeart);
               $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;
               $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
-              
+                Shop.incrementHearts($routeParams.name).then(function(data){
+
+                    console.log(data.data.shoe);
+
+                });
+              /*  User.increaseAdminHearts($routeParams.name).then(function(data){
+
+                    console.log(data.data.admin);
+
+                });
+                */
+               User.getProducts().then(function(data){
+
+    $scope.adminProducts=data.data.user.products;
+    console.log($scope.adminProducts[0].Ras);
+    console.log($scope.adminProducts[0][$routeParams.name]+1);
+    $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]+1;
+    console.log($scope.adminProducts[0][$routeParams.name]);
+    console.log($scope.adminProducts[0]);
+    $scope.newAdminProducts.push($scope.adminProducts[0]);
+    User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
+
+            console.log(data.data.user);
+
+    });
+   });
 
               }
               
@@ -348,6 +406,13 @@
                      console.log("$scope.heartActivated "+$scope.heartActivated);
 
             });
+            /*
+                                Shop.decrementHearts($routeParams.name).then(function(data){
+
+                    console.log(data.data.shoe);
+
+              });
+              */
            // $rootScope.heartactivated = false;
                             //$timeout(function(){
                     $scope.open = false;
@@ -365,6 +430,33 @@
               }else{
                 $window.localStorage.setItem('cookieHearts',$scope.removeCookieHeart);   
               }
+                //Shop.decrementHearts($routeParams.name).then(function(data){
+
+                    //console.log(data.data.shoe);
+
+                //});
+                //User.decreaseAdminHearts($routeParams.name).then(function(data){
+
+                   // console.log(data.data.admin);
+
+                //});
+               User.getProducts().then(function(data){
+
+    $scope.adminProducts=data.data.user.products;
+    console.log($scope.adminProducts[0].Ras);
+    console.log($scope.adminProducts[0][$routeParams.name]+1);
+    $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]-1;
+    console.log($scope.adminProducts[0][$routeParams.name]);
+    console.log($scope.adminProducts[0]);
+    console.log($scope.adminProducts);
+
+    $scope.newAdminProducts.push($scope.adminProducts[0]);
+    User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
+
+            console.log(data.data.user);
+
+    });
+   });
               
               
             console.log($window.localStorage.getItem('myLoves'));
@@ -444,6 +536,7 @@
                      console.log("$scope.heartActivated "+$scope.heartActivated);
 
             });
+  
 
             Heart.removeHeart().then(function(data){
                 console.log(data.data.success);
@@ -466,7 +559,7 @@
             $timeout(function(){
                 $location.path('/login');
 
-            },2000);
+            },2000); 
 
        }
 

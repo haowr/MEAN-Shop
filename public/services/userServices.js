@@ -145,6 +145,30 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/sendemail/'+email);
 
   }
+  //User.increaseAdminHearts(ohrha); MIGHT NOT USE
+  userFactory.increaseAdminHearts = function(shoename){
+
+    return $http.put('/api/increaseadminhearts/'+shoename);
+
+  }
+    //User.decreaseAdminHearts(ohrha); MIGHT NOT USE
+  userFactory.decreaseAdminHearts = function(shoename){
+
+    return $http.put('/api/decreaseadminhearts/'+shoename);
+
+  }
+  userFactory.getProducts = function(){
+
+    return $http.put('/api/getproducts');
+
+  }
+  userFactory.updateAdminProducts = function(newAdminProducts){
+
+    return $http.post('/api/updateadminproducts',newAdminProducts);
+
+  }
+
+
 
 
  return  userFactory;

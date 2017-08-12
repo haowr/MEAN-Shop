@@ -177,8 +177,102 @@ app.put('/api/allshoes', function(req,res){
      });
 
 });
+app.put('/api/incrementhearts/:shoename',function(req,res){
+console.log(req.params);
+    AllShoe.findOneAndUpdate({name: req.params.shoename},{$inc:{hearts: +1}},{new:true},function(err,shoe){
+        if(err) throw err;
+        if(!shoe){
+            res.json({success:false, message:"Shoe not found..."});
+        }else{
+            res.json({success:true, message: "Shoe updated...",shoe:shoe});
+        }
 
-app.post('/api/allshoes', function(req,res){
+
+
+    });
+ 
+});
+app.put('/api/decrementhearts/:shoename',function(req,res){
+console.log(req.params);
+    AllShoe.findOneAndUpdate({name: req.params.shoename},{$inc:{hearts: -1}},{new:true},function(err,shoe){
+        if(err) throw err;
+        if(!shoe){
+            res.json({success:false, message:"Shoe not found..."});
+        }else{
+            res.json({success:true, message: "Shoe updated...",shoe:shoe});
+        }
+
+
+
+    });
+
+});
+/*
+app.put('/api/increaseAdminHearts/:shoename', function(req,res){
+var shoename = req.params.shoename;
+    User.findOneAndUpdate({username:"ohrha"},{$inc:{shoename: +1}},{new:true}, function(err, admin){
+        if (err) throw err;
+        if(!admin){
+            res.json({success: false, message: "Admin not found..."});
+        }else{
+            res.json({success: true, message: "Admin Hearts Updated...", admin: admin});
+        }
+
+
+    });
+
+
+});
+
+app.put('/api/decreaseAdminHearts/:shoename', function(req,res){
+var shoename = req.params.shoename;
+    User.findOneAndUpdate({username:"ohrha"},{$inc:{products: -1}},{new:true}, function(err, admin){
+        if (err) throw err;
+        if(!admin){
+            res.json({success: false, message: "Admin not found..."});
+        }else{
+            res.json({success: true, message: "Admin Hearts Updated...", admin: admin});
+        }
+
+
+    });
+
+
+});
+*/
+app.put('/api/getproducts', function(req,res){
+
+    User.findOne({username: "ohrha"}, function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success: false, message: "User not found.."});
+        }else{
+            res.json({success: true, message: "User found..", user:user});
+        }
+
+    }); 
+
+
+});
+
+app.post('/api/updateadminproducts',function(req,res){
+    console.log(req.body);
+
+    User.findOneAndUpdate({username:"ohrha"},{$set:{products: req.body}},{new:true}, function(err,admin){
+
+        if(err)throw err; 
+        if(!admin){
+            res.json({success: false, message: "No user found..."});
+        }else{
+            res.json({success: true, message: "User found..", admin:admin});
+        }
+
+    })
+
+});
+
+app.post('/api/allshoes', function(req,res){ 
 
 
 var allshoe = new AllShoe();

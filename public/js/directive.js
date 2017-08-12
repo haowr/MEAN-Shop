@@ -23,7 +23,13 @@
              link: function(elem){
 
                   //$(elem).elevateZoom();
-                  $('.specificmainzoom').panzoom();
+                 $('.specificmainzoom').panzoom();
+                 $('.specificmainzoom').panzoom("zoom");
+                 //$(".specificmainzoom").panzoom({
+ // minScale: 2,
+ // maxScale:4,
+ // $zoomRange: $("input[type='range']")
+//});
 
              }
         }
@@ -32,6 +38,42 @@
 
 
     });
+        app.directive('zoomButton', function(){
+        return{
+             restrict: 'A',
+             
+             link: function(elem){
+
+var $section = $('.mainshoeview');
+          var $panzoom = $section.find('.specificmainzoom').panzoom({
+            $zoomIn: $(elem),
+            $zoomOut: $section.find(".zoom-out"),
+           // $zoomRange: $section.find(".zoom-range"),
+            $reset: $section.find(".reset"),
+            startTransform: 'scale(0.9)',
+            maxScale: 0.9,
+            increment: 0.1,
+            contain: true
+          }).panzoom('zoom', true);
+/*
+                  //$(elem).elevateZoom();
+                $('.mainshoeviewzoom').panzoom();
+                 $('.mainshoeviewzoom').panzoom("zoom");
+                 $(".mainshoeviewzoom").panzoom({
+  minScale: 6,
+ maxScale:6,
+ $zoomRange: $("input[type='range']")
+});
+*/
+
+             }
+        }
+       
+
+
+
+    });
+
 
     app.directive('stripeCheckoutJquery',function(Auth,Shop,User,$location,$window,$timeout){
 
