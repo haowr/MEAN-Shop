@@ -46,12 +46,14 @@
             <h1 class = "pull-left"> {{shoe.name}}</h1>
             <h1 class = "pull-right"> {{shoe.price}}</h1>
             <br>
-            <h1 id="shoehearts"class = "pull-right"> {{heartss}}</h1>
-            <!--<heart-adder></heart-adder>-->
+            <h1 id="shoehearts"class = "pull-right"> {{shoe.hearts}}</h1>
+            <br>
+            <div class = "pull-right">
+            <i ng-show="!heartactivated"class="fa fa-heart-o" ng-click="heartAdderShop(shoe.name)" aria-hidden="true"></i>
+            <i   ng-show="heartactivated"class="fa fa-heart"  ng-click="heartSubtractorShop(shoe.name)"aria-hidden="true"></i>
+            </div>
             <landing-gallery></landing-gallery>
-            <i  ng-show= "loadme" class="fa fa-heart-o" ng-click="heartAdder()" ng-class="{hearted: hearts.hearts===1}"aria-hidden="true"></i>
-            <i  ng-show= "loadme" class="fa fa-heart " ng-click="heartAdder()"ng-class="{heartbutton: hearts.hearts===1}"aria-hidden="true"></i>
-           <i class="fa fa-heart" aria-hidden="true"></i>
+            
            <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
 
 

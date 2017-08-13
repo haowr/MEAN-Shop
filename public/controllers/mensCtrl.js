@@ -41,6 +41,7 @@
     $scope.activatedByName;
     $scope.addCookieHeart = 1;
     $scope.removeCookieHeart = 0;
+   // $scope.totalHearts;
     $scope.myLovesEach=[];
     $scope.checkout={};
     $scope.checkoutArray=[];
@@ -70,9 +71,10 @@
     Shop.getMensShoe($routeParams.name).then(function(data){
         $scope.mensShoe = data.data.allshoe[0];
         $scope.loadme=true;
-
+        $rootScope.totalHearts = data.data.allshoe[0].hearts;
         console.log(data.data.allshoe);
         console.log("SCOPEHEARTACTIVATED");
+        console.log($scope.mensShoe.hearts);
         console.log($scope.mensShoe.heartactivated);
     });
     $scope.checkoutFunc= function(){
@@ -191,212 +193,292 @@
 
 
     };
-    $scope.heartAdder = function(){
+    $scope.heartAdder = function(shoename){
 
         console.log("new button press");
         
-        
-        //$rootScope.myLoves =[];
-        //console.log($window.localStorage.getItem('myLoves'));
-       // $window.localStorage.removeItem('myLoves');  //clear myLoves in cookies(localStorage)
-        
-       // $rootScope.myLoves.slice($rootScope.myLoves.indexOf(''),1);
-
-       // $rootScope.myLoves.push($window.localStorage.getItem('myLoves').split(','));
-      //  $rootScope.myLovesSplitter= $rootScope.myLoves.split(",");
-        //$rootScope.myLoves = $rootScope.myLovesSplitter;
-       /* var unique = $rootScope.myLoves.filter(function(elem, index, self) {
-            return index == self.indexOf(elem);
-        });
-        $rootScope.myLoves = unique;
-        console.log($scope.heartactivated); 
-        */  
 
         $scope.open = true;
         console.log($scope.loading);
         console.log($window.localStorage.getItem('page'));
         console.log($window.localStorage.getItem($routeParams.name));
-       // $rootScope.myLoves.push($routeParams.name);
+  
         console.log($rootScope.myLoves);
         
-        Cookie.setHearto($scope.removeCookieHeart);
-        //Cookie.setCookieHearts($scope.removeCookieHeart);
-        //$window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
-        //$window.localStorage.removeItem('hearto');
-       // $scope.cookiePages.push($routeParams.name);
-        //$window.localStorage.setItem($sope.cookiePages,$scope.cookiePages)
-        if($window.localStorage.getItem($routeParams.name) != 1){
-            $rootScope.heartactivated = true;
-            console.log($rootScope.heartactivated);
-              $rootScope.myLoves.push($routeParams.name);
-            var unique = $rootScope.myLoves.filter(function(elem, index, self) {
-            return index == self.indexOf(elem);
-            });
-             $rootScope.myLoves = unique;
-              console.log($rootScope.myLoves[0]);
-              console.log($rootScope.myLoves);
-              console.log($window.localStorage.getItem('myLoves'));
-              if($window.localStorage.getItem('myLoves')!= null && $window.localStorage.getItem('cookieHearts') <=1 ){
-                $rootScope.myLoves.push($window.localStorage.getItem('myLoves'));
-                $window.localStorage.removeItem('myLoves',$rootScope.myLoves);  
-                var unique = $rootScope.myLoves.filter(function(elem, index, self) {
-                         return index == self.indexOf(elem);
-              });
-              $rootScope.myLoves = unique;
-              $window.localStorage.setItem('myLoves',$rootScope.myLoves);  
-              $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart);
-                              Heart.activateHeart($routeParams).then(function(data){
-                    //console.log("did it work?");
-                    //console.log("shoe.heartactivated = true");
-                    //console.log(data.data.success);
-                    console.log(data.data.shoe);
-                    $scope.heartActivated = true;
-                    console.log("$scope.heartActivated "+$scope.heartActivated);
+        Cookie.setHearto($scope.removeCookieHeart);  //Right now set to 0.. removeCookieHeart = 0;
 
-                });
+ 
+        if($window.localStorage.getItem($routeParams.name) != 1){// IF THE VALUE OF THE ITEM(ROUTENAME) IN LOCALSTORAGE IS 0 SO CAN BE TURNED ON... 
+
+                $rootScope.heartactivated = true;                // ACTIVATES FA FA-HEART "BLACK HEART" ICON (NG-SHOW)...
+                console.log($rootScope.heartactivated);
+                $rootScope.myLoves.push($routeParams.name);      // PUSHES CURRENT ROUTE NAME INTO "myLoves" ARRAY. LOCATED IN THE ROOTSCOPE...
+
+                    var unique = $rootScope.myLoves.filter(function(elem, index, self) {  //MAKES SURE THE "myLoves" ARRAY HAS NO DUPLICATES...
+                        return index == self.indexOf(elem);
+                     });
+        
+                    $rootScope.myLoves = unique;                // REPLACES OLD "myLoves" ARRAY WITH NEW FILTERED ARRAY...
+
+              if($window.localStorage.getItem('myLoves')!= null && $window.localStorage.getItem('cookieHearts') <=1 ){ // IF THE 'myLoves' ARRAY IN LOCAL STORAGE EXISTS AND THE VALUE OF COOKIE HEARTS IS LESS THEN TWO..THIS ONLY WORKS IF THERE IS TWO ITEMS THOUGH. SO WILL NEED TO CHANGE.
+
+
+                    $rootScope.myLoves.push($window.localStorage.getItem('myLoves')); //SINCE THE LS'myLoves' ARRAY ISN'T NULL. PULL IT DOWN AND ADD IT TO LOCAL 'myLoves' ARRAY...
+                    $window.localStorage.removeItem('myLoves');                       // REMOVE THE 'myLoves' ARRAY COMPLETELY FROM THE LOCAL STORAGE...
+
+                        var unique = $rootScope.myLoves.filter(function(elem, index, self) { //REMOVE DUPLICATE ITEMS...
+                            return index == self.indexOf(elem);
+                        });
+
+                    $rootScope.myLoves = unique;                                       // REPLACES OLD "myLoves" ARRAY WITH NEW FILTERED ARRAY...
+
+                    $window.localStorage.setItem('myLoves',$rootScope.myLoves);        //SETS LS 'myLoves' TO LOCAL 'myLoves' ARRAY...
+                    $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart); //SETS STORE ITEM (FROM ROUTE) IN LS TO 1
+
+                        Heart.activateHeart($routeParams).then(function(data){          // NOT SURE ABOUT THIS GUY MIGHT BE USELESS...
+
+                            console.log(data.data.shoe);
+                            $scope.heartActivated = true;
+                            console.log("$scope.heartActivated "+$scope.heartActivated);
+
+                        });
                 
-              //$scope.heartactivated = true;
-              //console.log($scope.heartactivated);
-              if(Auth.isLoggedIn()){
-                 User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){
-                     console.log(data.data.message);
-                     console.log(data.data);
-                 });
 
+                            if(Auth.isLoggedIn()){ // IF THE USER IS LOGGED IN...
+                                               // "usernamey" IS THE USERNAME OF THE LOGGED IN USER WHICH IS RETRIEVED DURING THE EXECUTION OF MAINCTRL. AUTH.getUser()
+                                 User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
+                                    console.log(data.data.message); 
+                                    console.log(data.data);
+                                 });
+                                            //RIGHT NOW THERE IS NO 'User.removeLove()' SERVICE FOR REMOVING OR DEACTIVATING HEART...
+                            }
 
-              }
+                            
+                    //DO THIS WHETHER LOGGED IN OR NOT..
+                    $scope.cookieHearts = $window.localStorage.getItem('cookieHearts'); //GET cookieHeart VALUE FROM LOCALSTORAGE...
+                    $scope.cookieHearts = Number($scope.cookieHearts);                  //CHANGE FROM STRING TO NUMBER...
+                    console.log($scope.cookieHearts+$scope.addCookieHeart);             
+                    $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;//'newCookieHeart' VALUE EQUALS LOCALSTORAGE 'cookieHeart' PLUS 1...
+                    $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart); //SET LOCALSTORAGE 'cookieHearts' TO THE 'newCookieHeart' VALUE...
+                        
+                        //TOTAL HEARTS FOR STORE ITEM..
+                        Shop.incrementHearts($routeParams.name).then(function(data){    //FIND STORE ITEM WITH ROUTE AND THEN INCREMENT HEARTS VALUE BY ONE...
 
-              $scope.cookieHearts = $window.localStorage.getItem('cookieHearts');
-              $scope.cookieHearts = Number($scope.cookieHearts);
-              console.log($scope.cookieHearts+$scope.addCookieHeart);
-              $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;
-              $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
-              Shop.incrementHearts($routeParams.name).then(function(data){
+                            console.log(data.data.shoe);
+                            //THERE DOESN'T SEEM TO BE A Shop.incrementHearts() SERVICE USED... THOUGH ONE EXISTS...
+                                Shop.getMensShoe($routeParams.name).then(function(data){
 
-                    console.log(data.data.shoe);
+                                        $scope.mensShoe = data.data.allshoe[0];
+                                        console.log(data.data.allshoe);
+                                        console.log($scope.mensShoe.hearts);
+                                        $rootScope.totalHearts = data.data.allshoe[0].hearts;
+        
+                                });
 
-              });
-              //User.increaseAdminHearts($routeParams.name).then(function(data){
-//
-                //    console.log(data.data.admin);
+                        });
 
-              //});
-               User.getProducts().then(function(data){
+                        //ADMIN VIEW OF PRODUCT LIKES WILL CHECK IF NECESSARY SINCE I WANT EVERYONE TO SEE THE LIKES.. SO COULD PULL FROM SHOP ITEMS' HEARTS VALUE..
+                         User.getProducts().then(function(data){
 
-    $scope.adminProducts=data.data.user.products;
-    console.log($scope.adminProducts[0].Ras);
-    console.log($scope.adminProducts[0][$routeParams.name]+1);
-    $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]+1;
-    console.log($scope.adminProducts[0][$routeParams.name]);
-    console.log($scope.adminProducts[0]);
-    $scope.newAdminProducts.push($scope.adminProducts[0]);
-    User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
+                                $scope.adminProducts=data.data.user.products;
+                                console.log($scope.adminProducts[0].Ras);
+                                console.log($scope.adminProducts[0][$routeParams.name]+1);
+                                $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]+1;
+                                console.log($scope.adminProducts[0][$routeParams.name]);
+                                console.log($scope.adminProducts[0]);
+                                $scope.newAdminProducts.push($scope.adminProducts[0]);
+                                
+                                        User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
 
-            console.log(data.data.user);
+                                                console.log(data.data.user);
 
-    });
-   });
-              $scope.adminProducts[0].$routeParams.name++;
+                                        });
 
-               // $window.localStorage.setItem('cookieHearts',$scope.addCookieHeart);
-              }else{
-                $window.localStorage.removeItem('myLoves',$rootScope.myLoves);  
-                $window.localStorage.setItem('myLoves',$rootScope.myLoves);  
-                $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart);
+                         });
+                                 //$scope.adminProducts[0].$routeParams.name++;// DOESN'T APPEAR TO DO ANYTHING...
+
+              }else{ //IF LOCALSTORAGE 'myLoves' IS NULL OR LOCALSTORAGE 'cookieHearts' IS LESS THAN OR EQUAL TO ONE THEN...
+                   
+                                                                                            //DON'T PULL FROM LOCALSTORAGE 'myLoves' ARRAY AND DON'T ADD TO LOCAL 'myLoves' ARRAY...
+                    $window.localStorage.removeItem('myLoves');                             // CLEAR LOCALSTORAGE 'myLoves' ARRAY...
+                    $window.localStorage.setItem('myLoves',$rootScope.myLoves);             // SET LOCALSTORAGE 'myLoves' ARRAY TO THE LOCAL 'myLoves' ARRAY...
+                    $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart);  // SET LOCALSTORAGE STORE ITEM TO 1..
                 
-                //$timeout(function(){
+                    //$timeout(function(){
                     $scope.open = true;
-                    $rootScope.heartactivated = true;
-                    console.log($rootScope.heartactivated);
-                    Heart.activateHeart($routeParams).then(function(data){
-                    //console.log("did it work?");
-                    //console.log("shoe.heartactivated = true");
-                    //console.log(data.data.success);
-                        console.log(data.data.shoe);
-                         $scope.heartActivated = true;
-                        console.log("$scope.heartActivated "+$scope.heartActivated);
+                    $rootScope.heartactivated = true;                                       //ACTIVATES FA FA-HEART-O "WHITE-HEART" ICON...
+                    
+                        Heart.activateHeart($routeParams).then(function(data){              //NOT SURE ABOUT THIS GUY...MIGHT BE USELESS...
 
-                    });
+                            console.log(data.data.shoe);
+                            $scope.heartActivated = true;
+                            console.log("$scope.heartActivated "+$scope.heartActivated);
+
+                        });
                 
 
-                if(Auth.isLoggedIn()){
-                 User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){
-                     console.log(data.data.message);
-                     console.log(data.data);
-                 });
+                            if(Auth.isLoggedIn()){
 
+                                     User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
+                                                console.log(data.data.message);
+                                                console.log(data.data);
+                                     });
+                            }
 
-              }
-                //$window.localStorage.setItem('cookieHearts',$scope.addCookieHeart);
-                 $scope.cookieHearts = $window.localStorage.getItem('cookieHearts');
-              $scope.cookieHearts = Number($scope.cookieHearts);
-              console.log($scope.cookieHearts+$scope.addCookieHeart);
-              $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;
-              $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
-                Shop.incrementHearts($routeParams.name).then(function(data){
+                    $scope.cookieHearts = $window.localStorage.getItem('cookieHearts');     // GET CURRENT 'cookieHearts' VALUE FROM LOCALSTORAGE..
+                    $scope.cookieHearts = Number($scope.cookieHearts);                      // COERCE INTO A NUMBER...
+                    console.log($scope.cookieHearts+$scope.addCookieHeart);             
+                    $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;    // 'newCookieHeart' VALUE EQUALS LOCALSTORAGE 'cookieHearts' PLUS 1...
+                    $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);     // SET LOCALSTORAGE 'cookieHearts' TO 'newCookieHearts' VALUE...
 
-                    console.log(data.data.shoe);
+                        Shop.incrementHearts($routeParams.name).then(function(data){
 
-                });
-              /*  User.increaseAdminHearts($routeParams.name).then(function(data){
+                            console.log(data.data.shoe);
+                                Shop.getMensShoe($routeParams.name).then(function(data){
+                                        $scope.mensShoe = data.data.allshoe[0];
+                                        console.log(data.data.allshoe);
+                                        console.log($scope.mensShoe.hearts);
+                                        $rootScope.totalHearts = data.data.allshoe[0].hearts;
+                                        console.log($scope.totalHearts);
+        
+                                });
 
-                    console.log(data.data.admin);
+                        });
 
-                });
-                */
-               User.getProducts().then(function(data){
+                        User.getProducts().then(function(data){
 
-    $scope.adminProducts=data.data.user.products;
-    console.log($scope.adminProducts[0].Ras);
-    console.log($scope.adminProducts[0][$routeParams.name]+1);
-    $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]+1;
-    console.log($scope.adminProducts[0][$routeParams.name]);
-    console.log($scope.adminProducts[0]);
-    $scope.newAdminProducts.push($scope.adminProducts[0]);
-    User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
+                            $scope.adminProducts=data.data.user.products;
+                            console.log($scope.adminProducts[0].Ras);
+                            console.log($scope.adminProducts[0][$routeParams.name]+1);
+                            $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]+1;
+                            console.log($scope.adminProducts[0][$routeParams.name]);
+                            console.log($scope.adminProducts[0]);
+                            $scope.newAdminProducts.push($scope.adminProducts[0]);
 
-            console.log(data.data.user);
+                                User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
 
-    });
-   });
+                                    console.log(data.data.user);
+
+                                });
+                         });
 
               }
               
+        }else{
+                console.log($window.localStorage.getItem('myLoves'));
+                if($window.localStorage.getItem('myLoves')!= null){
 
-              /*$scope.cookieHearts = $window.localStorage.getItem('cookieHearts');
-              $scope.cookieHearts = Number($scope.cookieHearts);
-              console.log($scope.cookieHearts+$scope.addCookieHeart);
-              $scope.newCookieHeart = $scope.cookieHearts + $scope.addCookieHeart;
-              $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
-              */
+                $rootScope.heartactivated = false;              //ACTIVATES FA FA-HEART-0 "WHITE HEART" ICON (NG-SHOW)...
+                console.log($rootScope.heartactivated);
+                $rootScope.localStorageMyLovesString = $window.localStorage.getItem('myLoves'); // RETRIEVES LOCALSTORATE 'myLoves'FROM LOCAL STORAGE AS STRING...
+                console.log($rootScope.localStorageMyLovesString);
+                $rootScope.myLovesStringSplit = $rootScope.localStorageMyLovesString.split(",");// splits string into an array, with each shoe at its own index. Or returns shoe at zero index if one seperator exists WITH NO VALUE AFTER..
+                console.log($rootScope.myLovesStringSplit);
+                console.log($routeParams.name);
+                $rootScope.myLovesStringSplit.splice($rootScope.myLovesStringSplit.indexOf($routeParams.name),1); // REMOVES CURRENT STORE ITEM (ROUTE) FROM myLovesStringSplit ARRAY...
+                console.log($rootScope.myLovesStringSplit);
+                $window.localStorage.setItem('myLoves',$rootScope.myLovesStringSplit);                            // SETS LOCALSTORAGE 'myLoves' TO 'myLovesStringSplit' ARRAY... (MYLOVES MINUS STORE ITEM...)
+
+                     if(Auth.isLoggedIn()){                      //IF USER IS LOGGED IN...
+
+                             User.removeLove($routeParams.name,$rootScope.usernamey).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
+                                    console.log(data.data.message);
+                                    console.log(data.data);
+                             });
+                        }
+
+                $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
+
+                            Heart.deactivateHeart($routeParams).then(function(data){
+                                    console.log("did it work?");
+                                    console.log("activated");
+                                    console.log(data.data.success);
+                                    console.log(data.data.shoe);
+                                    $scope.heartActivated = false;
+                                    console.log("$scope.heartActivated "+$scope.heartActivated);
+
+                            });
             
-        }/*else if($window.localStorage.getItem('cookieHearts') !=0 && window.localStorage.getItem($routeParams.name) != 1){
-            $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
-            $scope.cookieHearts = $window.localStorage.getItem('cookieHearts');
-            $scope.cookieHearts = Number($scope.cookieHearts);
-            console.log($scope.cookieHearts-$scope.addCookieHeart);
-            $scope.newCookieHeart = $scope.cookieHearts - $scope.addCookieHeart;
-            $window.localStorage.setItem('cookieHearts',$scope.removeCookieHeart);
+                            Shop.decrementHearts($routeParams.name).then(function(data){
 
-        }*/else{
-            $rootScope.heartactivated = false;
-            console.log($rootScope.heartactivated);
-            $rootScope.localStorageMyLovesString = $window.localStorage.getItem('myLoves');// retrieves myLoves from local storage as string....
-            console.log($rootScope.localStorageMyLovesString);
-           $rootScope.myLovesStringSplit = $rootScope.localStorageMyLovesString.split(",");// splits string into an array, with each shoe at its own index. Or returns shoe at zero index if one seperator exists..
-            console.log($rootScope.myLovesStringSplit);
-            console.log($routeParams.name);
-          $rootScope.myLovesStringSplit.splice($rootScope.myLovesStringSplit.indexOf($routeParams.name),1);
-            console.log($rootScope.myLovesStringSplit);
-            $window.localStorage.setItem('myLoves',$rootScope.myLovesStringSplit);
+                                    console.log(data.data.shoe);
+                                Shop.getMensShoe($routeParams.name).then(function(data){
+   
+                                        $scope.mensShoe = data.data.allshoe[0];
+                                        console.log(data.data.allshoe);
+                                        console.log($scope.mensShoe.hearts);
+                                        $rootScope.totalHearts = data.data.allshoe[0].hearts;
+                                        console.log($scope.totalHearts);
+        
+                                });
 
-            if(Auth.isLoggedIn()){
-                 User.removeLove($routeParams.name,$rootScope.usernamey).then(function(data){
-                     console.log(data.data.message);
-                     console.log(data.data);
-                 });
+                            });
+              
+           // $rootScope.heartactivated = false;
+                            //$timeout(function(){
+                $scope.open = false;
+                $rootScope.heartactivated = false;
+                //},200);
+            //$scope.heartactivated= false;
+            //console.log($scope.heartactivated);
+            //$window.localStorage.setItem('cookieHearts',$scope.removeCookieHeart);
+                $scope.cookieHearts = $window.localStorage.getItem('cookieHearts');
+                $scope.cookieHearts = Number($scope.cookieHearts);
+                console.log($scope.cookieHearts+$scope.addCookieHeart);
+                            if($scope.cookieHearts != 0){
+
+                                 $scope.newCookieHeart = $scope.cookieHearts - $scope.addCookieHeart;
+                                 $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
+
+                            }else{
+
+                                 $window.localStorage.setItem('cookieHearts',$scope.removeCookieHeart);   
+
+                            }
+ 
+                        User.getProducts().then(function(data){
+
+                                $scope.adminProducts=data.data.user.products;
+                                console.log($scope.adminProducts[0].Ras);
+                                console.log($scope.adminProducts[0][$routeParams.name]+1);
+                                $scope.adminProducts[0][$routeParams.name]= $scope.adminProducts[0][$routeParams.name]-1;
+                                console.log($scope.adminProducts[0][$routeParams.name]);
+                                console.log($scope.adminProducts[0]);
+                                console.log($scope.adminProducts);
+
+                                $scope.newAdminProducts.push($scope.adminProducts[0]);
+
+                                 User.updateAdminProducts($scope.adminProducts[0]).then(function(data){
+
+                                        console.log(data.data.user);
+
+                                 });
+                         });
+              
+              
+            //console.log($window.localStorage.getItem('myLoves'));
+            if($window.localStorage.getItem('myLoves') == ""){
+                $window.localStorage.removeItem('myLoves');
+                $rootScope.myLoves = [];
             }
-            $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
+
+
+                }else{
+
+                    console.log("NULLY SCULLY!");
+                    
+                    $rootScope.heartactivated = false;              //ACTIVATES FA FA-HEART-0 "WHITE HEART" ICON (NG-SHOW)...
+                    $window.localStorage.setItem('myLoves',$rootScope.myLoves);                            // SETS LOCALSTORAGE 'myLoves' TO 'myLovesStringSplit' ARRAY... (MYLOVES MINUS STORE ITEM...)
+
+                     if(Auth.isLoggedIn()){                      //IF USER IS LOGGED IN...
+
+                             User.removeLove($routeParams.name,$rootScope.usernamey).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
+                                    console.log(data.data.message);
+                                    console.log(data.data);
+                             });
+                    }
+
+                $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
                         Heart.deactivateHeart($routeParams).then(function(data){
                     console.log("did it work?");
                     console.log("activated");
@@ -406,13 +488,22 @@
                      console.log("$scope.heartActivated "+$scope.heartActivated);
 
             });
-            /*
-                                Shop.decrementHearts($routeParams.name).then(function(data){
+            
+                        Shop.decrementHearts($routeParams.name).then(function(data){
 
                     console.log(data.data.shoe);
+                                 Shop.getMensShoe($routeParams.name).then(function(data){
+   
+                                        $scope.mensShoe = data.data.allshoe[0];
+                                        console.log(data.data.allshoe);
+                                        console.log($scope.mensShoe.hearts);
+                                        $rootScope.totalHearts = data.data.allshoe[0].hearts;
+                                        console.log($scope.totalHearts);
+        
+                                });
 
-              });
-              */
+                        });
+              
            // $rootScope.heartactivated = false;
                             //$timeout(function(){
                     $scope.open = false;
@@ -465,31 +556,10 @@
                 $rootScope.myLoves = [];
             }
 
-            //$scope.myLovesEach.push($window.localStorage.getItem('myLoves'));
-           /* $rootScope.myLoves.splice(($rootScope.myLoves.length - 1),1);
-            console.log("$rootScope.myLoves after splice")
-            console.log($rootScope.myLoves);
-            console.log($scope.myLovesEach);
-            console.log($rootScope.myLoves[0]);
-            $scope.myLoveSplit=$rootScope.myLoves[0].split(",");
-            console.log($scope.myLoveSplit);
-            $scope.myLoveSplit.forEach(function(element) {
-                var i =  $scope.myLoveSplit.indexOf($routeParams.name);
-                if(element == $routeParams.name){
-                    $scope.myLoveSplit.splice(i,1);
-                }
-            });
-            console.log($scope.myLoveSplit);
-            console.log($window.localStorage.getItem('cookieHearts'));
-            $scope.cookieHearts = $window.localStorage.getItem('cookieHearts');
-            $scope.cookieHearts = Number($scope.cookieHearts);
-            $scope.newCookieHeart = $scope.cookieHearts - $scope.addCookieHeart;
 
-            $window.localStorage.setItem('myLoves',$scope.myLoveSplit); 
-            $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
-            $window.localStorage.setItem('cookieHearts',$scope.newCookieHeart);
-           */
-            
+                }
+
+
         }
         
        // Heart.whoActivated().then

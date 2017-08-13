@@ -115,20 +115,20 @@
 
     
     $rootScope.EmailListEmail;
+     
      $rootScope.localStorageMyLovesString = $window.localStorage.getItem('myLoves');// retrieves myLoves from local storage as string....
             console.log($rootScope.localStorageMyLovesString);
+            
             if($rootScope.localStorageMyLovesString != null){
                  $rootScope.myLovesStringSplit = $rootScope.localStorageMyLovesString.split(",");// splits string into an array, with each shoe at its own index. Or returns shoe at zero index if one seperator exists..
     
                     var unique =  $rootScope.myLovesStringSplit.filter(function(elem, index, self) {
-            return index == self.indexOf(elem);
-    });
+                    return index == self.indexOf(elem);
+                    });
 
-     $rootScope.myLoves= unique;
+                    $rootScope.myLoves= unique;
             }
-            //most recent change might havebroken...
-            //$rootScope.myLovesStringSplit = $rootScope.localStorageMyLovesString.split(",");// splits string into an array, with each shoe at its own index. Or returns shoe at zero index if one seperator exists..
-    
+
  
      console.log($rootScope.myLoves);
      $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
@@ -143,6 +143,10 @@
         $rootScope.myLovesSeparated=  $rootScope.myLoves;
         
     }
+
+
+
+
     //console.log($rootScope.myLovesSeparated);
     //$rootScope.myLovesSeparated.slice($rootScope.myLovesSeparated.indexOf(""),1);
     //console.log($rootScope.myLovesSeparated);

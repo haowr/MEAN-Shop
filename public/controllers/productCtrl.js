@@ -24,6 +24,7 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
     scope.loading= true;
     $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
     scope.sort;
+    $scope.allShoes=[];
     $scope.shoes=[];
     $scope.shoesPaginated;
     $scope.hearts = 1;
@@ -32,15 +33,21 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
 
     var _page= -3;
 
- 
+
 
     function getShoes(){
+         Shop.getAllShoes().then(function(data){
 
-                Shop.getShoes().then(function(data){
+    console.log(data.data.allshoes);
+    for(var i = 0; i<8 ; i++){
+        $scope.allShoes.push(data.data.allshoes[i]);
+
+    }    
+                   Shop.getShoes().then(function(data){
                     console.log("getshoes");
                      console.log(data);
                      if(data.data.success){
-                         $scope.shoes = data.data.shoes;
+                         $scope.shoes = $scope.allShoes;
                          //$scope.shoesPaginated = data.data.shoes[0].pages;
                          //console.log($scope.shoesPaginated);
                          $scope.loadme = true;
@@ -49,6 +56,12 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
                         console.log(data.data.message);
                     }
                 });
+
+
+ })
+
+ 
+
     };
             getShoes();
 
@@ -73,6 +86,51 @@ function getAllShoes() {
 };
         getAllShoes();
 
+   $scope.heartAdderShop=function(shoename){
+
+       console.log(shoename);
+       $scope.heartactivated = true;
+
+                               //TOTAL HEARTS FOR STORE ITEM..
+                        Shop.incrementHearts(shoename).then(function(data){    //FIND STORE ITEM WITH ROUTE AND THEN INCREMENT HEARTS VALUE BY ONE...
+
+                            console.log(data.data.shoe);
+                            //THERE DOESN'T SEEM TO BE A Shop.incrementHearts() SERVICE USED... THOUGH ONE EXISTS...
+                                Shop.getMensShoe(shoename).then(function(data){
+
+                                        $scope.mensShoe = data.data.allshoe[0];
+                                        //console.log(data.data.allshoe);
+                                        //console.log($scope.mensShoe.hearts);
+                                        $rootScope.totalHearts = data.data.allshoe[0].hearts;
+                                        $scope.totalHeartsShop = data.data.allshoe[0].hearts;
+        
+                                });
+
+                        });
+   }
+   
+   $scope.heartSubtractorShop=function(shoename){
+
+       console.log(shoename);
+       $scope.heartactivated = false;
+
+                               //TOTAL HEARTS FOR STORE ITEM..
+                        Shop.incrementHearts(shoename).then(function(data){    //FIND STORE ITEM WITH ROUTE AND THEN INCREMENT HEARTS VALUE BY ONE...
+
+                            console.log(data.data.shoe);
+                            //THERE DOESN'T SEEM TO BE A Shop.incrementHearts() SERVICE USED... THOUGH ONE EXISTS...
+                                Shop.getMensShoe(shoename).then(function(data){
+
+                                        $scope.mensShoe = data.data.allshoe[0];
+                                        //console.log(data.data.allshoe);
+                                        //console.log($scope.mensShoe.hearts);
+                                        $rootScope.totalHearts = data.data.allshoe[0].hearts;
+                                        $scope.totalHeartsShop = data.data.allshoe[0].hearts;
+        
+                                });
+
+                        });
+   }
 
    $scope.loadMoreo = function(){
             _page++;
@@ -85,7 +143,6 @@ function getAllShoes() {
             }else{
                 console.log("No more pages");
             }
-            
             
     };
 
