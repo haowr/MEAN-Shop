@@ -1,7 +1,7 @@
 (function(){
 
 
-    var app = angular.module('shop-directives', ['shopServices','authServices','userServices']);
+    var app = angular.module('shop-directives', ['shopServices','authServices','userServices',]);
 
     app.directive('funcWrapper',function(){
 
@@ -75,7 +75,7 @@ var $section = $('.mainshoeview');
     });
 
 
-    app.directive('stripeCheckoutJquery',function(Auth,Shop,User,$location,$window,$timeout){
+    app.directive('stripeCheckoutJquery',function(Auth,Shop,User,$location,$window,$timeout,$rootScope){
 
         return{
             restrict: 'A',
@@ -86,7 +86,7 @@ var $section = $('.mainshoeview');
                 'totalAfterTax': '=',
                 'paymentLoading': '='
             },
-            link: function(scope,elem,attrs,formCtrl){
+            link: function(scope,elem,attrs,formCtrl, $rootScope){
                 //On click
                 console.log(formCtrl);
                 $(elem).submit(function(event){
@@ -159,6 +159,18 @@ var $section = $('.mainshoeview');
                                 console.log(data.data.message);
                                 console.log(data.data.charge);
                                 if(data.data.success == true){
+                                    Auth.getUser().then(function(data){
+                                            console.log(data.data);
+                                            User.clearShoppingBag(data.data.username).then(function(data){
+
+                                                console.log(data.data);
+                                                //$rootScope.cartItems = data.data.user.shoppingbag;
+
+                                            });
+
+
+                                    })
+                                    
                                         Shop.checkout(checkoutData).then(function(data){
 
                                             console.log(data.data);
@@ -177,15 +189,10 @@ var $section = $('.mainshoeview');
                                                         console.log(order);
                                                         checkoutData.push(data.data.username);
                                                         checkoutData.push([]);
-                                                        checkoutData[4] = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
-                                                       // for(var i =0; i<checkoutArray.length; i++){
-                                                       //        order{
-                                                       //            i: checkoutArray[i]
-//
-                                                        //}
-                                                        //console.log(order);
-                                                        //checkoutData[4]=order;
-                                                        console.log(checkoutData);
+                                                        User.getShoppingBag(data.data.username).then(function(data){
+
+                                                            checkoutData[4] = data.data.user.shoppingbag;
+                                                            console.log(checkoutData);
                                                         User.addOrdersToUser(checkoutData).then(function(data){
 
                                                             if(data.data.success){
@@ -204,6 +211,17 @@ var $section = $('.mainshoeview');
                                                             }
 
                                                         })
+
+                                                        })
+                                                        //checkoutData[4] = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
+                                                       // for(var i =0; i<checkoutArray.length; i++){
+                                                       //        order{
+                                                       //            i: checkoutArray[i]
+//
+                                                        //}
+                                                        //console.log(order);
+                                                        //checkoutData[4]=order;
+                                                        
 
                                                 })
 

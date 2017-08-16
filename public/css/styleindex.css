@@ -5,7 +5,9 @@
 }
 */
 
-
+body{
+  color:black;
+}
 a {
   color: #00000f;
 }
@@ -367,6 +369,28 @@ width: 500px !important;
   height: 230px;
   width:  100%;
 
+}
+.mylovesname{
+  margin-top:40px;
+  font-family:'Bellefair';
+}
+.mylovestitle{
+  font-family:'Bellefair';
+}
+.orderhistorytitle{
+
+   font-family:'Bellefair'
+}
+.orderhistorystyling{
+
+  border: 1px solid black;
+
+}
+.myprofiletitle{
+  font-family: 'Bellefair';
+}
+.mylovesdescription{
+  margin-top:40px;
 }
 #ad{
   width:400px;
@@ -751,6 +775,12 @@ opacity:0;
 
   border-top: 2px solid black;
   border-width:50%;
+}
+.emptycartstyling{
+    
+    font-family:'Bellefair';
+    border-bottom: 1px solid black;
+
 }
 /*.landing-enter 
 { 

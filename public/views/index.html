@@ -104,7 +104,7 @@
           <a class="dropdown-item" href ="/about">About</a>
            </li>
         </div>
-           <li><a ng-show="main.isLoggedIn" class="nav-link navbar-right" id="hover" href="/profile"> Hello&nbsp{{ main.username }}</a></li>
+           <li><a ng-show="main.isLoggedIn" class="nav-link navbar-right" id="hover" href="/profile"> Hello&nbsp({{ main.username }})</a></li>
            <li ><a class ="nav-link navbar-right" id= 'hover' ng-click ="$route.reload();" href = "/profile">My&nbspLoves:&nbsp{{heartss}}</a></li>
            <li ><a class ="nav-link navbar-right" id= 'hover' ng-click ="$route.reload();" href = "/shop/shoppingbag"><i class ="fa fa-shopping-bag" aria-hidden="true">&nbsp{{cartItems}}</i></a></li>
       </ul>

@@ -29,7 +29,7 @@
     If there is no store near you then you may obtain return authorization via phone, Live Chat, e-mail or by signing into your account and going into your order. The authorization requests must be made within 30 days from when your order is delivered. \
     Shipping charges are not refundable and there is a $6.95 per order return fee that covers restocking and postage back to the warehouse. Clearance items and earring purchases cannot be returned or exchanged. \
     Click here to view our full Return Policy" ;
-    $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
+    
     //console.log($rootScope.heartss);
     $scope.loadme = false;
     //$scope.open = false;
@@ -37,7 +37,7 @@
     $scope.newHeartValue=false;
     $scope.zoomValue =0;
     //$rootScope.heartActivated= false;
-    $rootScope.heartactivated =false;
+    //$rootScope.heartactivated =false;
     $scope.activatedByName;
     $scope.addCookieHeart = 1;
     $scope.removeCookieHeart = 0;
@@ -49,6 +49,36 @@
     $scope.adminProducts;
     $scope.happy=[{name: "Ras", size: "M", amt: "1", price: "322.00", description: "The head of our creations. The perfection of the way"}];
     console.log(JSON.stringify($scope.happy));
+
+    if(Auth.isLoggedIn()){
+
+        Auth.getUser().then(function(data){
+            console.log(data.data.username);
+            $scope.currentUser = data.data.username;
+            User.getUserProfile(data.data.username).then(function(data){
+
+                $rootScope.heartss = data.data.user.loves.length;
+                User.findLove($scope.currentUser,$routeParams.name).then(function(data){
+
+                    console.log(data.data.success);
+                    if(data.data.success){
+
+                        $rootScope.heartactivated = true;
+                        console.log($rootScope.heartactivated);
+                    }else{
+                        $rootScope.heartactivated = false;
+                        console.log($rootScope.heartactivated);
+                    }
+
+                })
+                
+            })
+
+        });
+
+
+    }
+
      if($window.localStorage.getItem($routeParams.name) == 1){
          $rootScope.heartactivated = true;
          console.log($rootScope.heartactivated);
@@ -79,6 +109,43 @@
     });
     $scope.checkoutFunc= function(){
         console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
+        if(Auth.isLoggedIn()){
+
+            Auth.getUser().then(function(data){
+
+                            console.log("OY");
+                    $scope.shoppingCartNumber++
+                    $scope.checkout.name = $routeParams.name;
+                    $scope.checkout.size =  $scope.size;
+                    $scope.checkout.amt = $scope.amt;
+                    $scope.checkout.price = $scope.mensShoe.price+".00";
+                    $scope.checkout.description = $scope.mensShoe.description;
+                    $scope.checkout.available= $scope.mensShoe.available;
+                    $scope.checkout.image= $scope.mensShoe.perspectives[1];
+                    $scope.checkout.username = data.data.username;
+                    $scope.checkoutArray.push($scope.checkout);
+
+                     User.addToShoppingBag( $scope.checkout).then(function(data){
+                            console.log(data.data);
+                            $rootScope.cartItems = data.data.user.shoppingbag.length;
+                    });
+
+                    User.getLoves()
+
+
+            })
+
+
+
+        Auth.getUser().then(function(data){
+
+                    console.log(data.data);
+
+        });
+
+
+
+        }
         if(JSON.parse($window.localStorage.getItem('checkoutArray'))!== null){
             $scope.checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
                    for(var i =0; i< $scope.checkoutArray.length; i++){

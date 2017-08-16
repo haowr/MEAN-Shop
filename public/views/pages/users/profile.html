@@ -2,7 +2,7 @@
     <h1>Hello ({{ main.username }})</h1>
 </div>
 <div class = "panel panel-info">
-    <div class="panel-heading" style="text-align: center;"><strong>User Profile</strong></div>
+    <div class="panel-heading" style="text-align: center;"><strong><h4 class = "myprofiletitle">User Profile</h4></strong></div>
 
 <table class= "table">
     <tr>
@@ -15,42 +15,38 @@
         <td>****************</td>
     </tr>
 </table>
-<table class= "table" >
-    <tr>
-        <td><strong>Loves</strong></td>
-    </tr>
-    <tr>
-        <td ng-repeat="love in personalMyLoves">
-            <a  href="http://localhost:8080/shop/mens/{{love}}">{{love}}</a>
-            </td>
-    </tr>
-        
-    
 
-</table>
 </div>
     <div class = "page-header">
-        <center><h4>My Loves</h4></center>
+        <center><h4 class = "mylovestitle">My Loves</h4></center>
     </div>
- <div class ="row" ng-repeat="shoe in shoeThumbs track by $index">
+     <div class ="row" ng-repeat="love in loveObjectArray track by $index">
 
-  <center> <div class="thumbnailholder">
-    <div class = "col-sm-3">
+  <center> <div class=" row "> <!-- thumbnailholder-->
+      <div class = "  col-sm-3">
+            <h2 class = "mylovesname"> {{love.name}}</h2>
     </div>
+    <div class = "col-sm-3 pull-left">
+        <img ng-src="{{love.thumbnail}}">
+    </div>
+
     <div class="col-sm-6">
-      <a  href="http://localhost:8080/shop/mens/{{personalMyLoves[$index]}}"> <img ng-src="{{shoe}}"></a>
-      <a  href="http://localhost:8080/shop/mens/{{personalMyLoves[$index]}}"> <p>{{personalMyLoves[$index]}}</p></a>
+     
+      <a  href="http://localhost:8080/shop/mens/{{love}}"> <p class ="mylovesdescription">{{love.description}}</p></a>
        
     </div>
-        <div class = "col-sm-3">
-    </div>
+
     <br>
-    </div></center>
+    </div>
+    </center>
     <br>
 
 </div>
 
+
+<center><button class = "btn btn-submit"ng-click="clearLoves();">Clear My Loves</button></center>
 <br>
+<!--
 <div class ="row" ng-repeat="loop in looper">
 
     <div class="thumbnailholder">
@@ -61,33 +57,40 @@
     </div>
     
 </div>
+-->
 <div class = "page-header">
-    <h1>Order History</h1>
+   <center> <h1 class="orderhistorytitle">Order History</h1></center>
+</div>
+
 <div class = "row" ng-repeat = "order in orders track by $index">
 
-    <div class = "col-sm-6">
+    <div class = "col-sm-12">
        
-                      <div class = "row">
-            <div id ="ordersummaryimagediv"class = "col-sm-2 pull-left">
+        <center><div class = "row orderhistorystyling">
+            <div class = "col-sm-2 ">
                 <img ng-src="{{order.image}}">
             </div>
-            <div class ="col-sm-2 pull-left">
-                <h3 class = "pull-left">Name</h3>
-               <p id ="ordersummaryimage"> {{order.name}}</p>
+            <div class ="col-sm-2 ">
+                <h3 >Name</h3>
+               <p > {{order.name}}</p>
             </div>
-            <div class ="col-sm-2 pull-left">
-                <h3 class= "pull-left">Qty</h3>
-                <p id ="ordersummaryimage"> <br>{{order.amt}}</p>
+            <div class ="col-sm-2">
+                <h3 >Qty</h3>
+                <p > <br>{{order.amt}}</p>
             </div>
-            <div  class ="col-sm-2 pull-left">
-                <h3 class = "pull-left">Price</h3>
-                <p id ="ordersummaryimage">  {{order.price | currency}} </p>
+            <div  class ="col-sm-2">
+                <h3 >Price</h3>
+                <p >  {{order.price | currency}} </p>
             </div>
-            <div class ="col-sm-2 pull-left">
-                <h3 class = "pull-left">Total</h3>
-                <p id ="ordersummaryimage"> {{order.price | currency}}</p>
+            <div class ="col-sm-2">
+                <h3>Total</h3>
+                <p > {{order.price | currency}}</p>
             </div>
-        </div>
+                        <div class ="col-sm-2">
+                <h3>Total</h3>
+                <p > {{order.price | currency}}</p>
+            </div>
+        </div></center>
         
     </div>
     <div class = "col-sm-6">
@@ -96,4 +99,4 @@
     </div>
 
 </div>
-</div>
+

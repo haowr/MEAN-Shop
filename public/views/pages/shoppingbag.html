@@ -17,7 +17,8 @@
                 <p>Need help?  <i class="fa fa-question" aria-hidden="true"></i></p>
                 
                 <p>No?</p>
-                <button class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
+                <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
+                <button ng-show="shoppingBagShoes.length < 0"class = "btn btn-submit"><a href="/shop">Continue Shopping</a></button>
 
                 </div>
   
@@ -29,7 +30,7 @@
             </div>
             
         </div>
-        <div class = "row">
+        <div ng-show="shoppingBagShoes.length > 0 " class = "row">
                 <div class = "col-sm-2">
                         <p>Item</p>
                 </div>
@@ -49,7 +50,15 @@
                         <p>Item</p>
                 </div>
         </div>
-            <div class = "row  " ng-repeat="shoe in shoppingBagShoes">
+        <br>
+        <br>
+            <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length == 0 || shoppingCartEmpty ">
+                <div class ="col-sm-12">
+                    <center><h3><p>|| Empty Cart! :( ||</p></h3></center>
+                </div>
+            </div>
+            <div  ng-show ="shoppingBagShoes.length > 0"class = "row  " ng-repeat="shoe in shoppingBagShoes">
+
                 <div class= "col-sm-2">
                    <a href = "/shop/mens/{{shoe.name}}"> <img  class ="img-fluid"ng-src="{{shoe.image}}"></a>
                 </div>
@@ -67,39 +76,47 @@
                     <p>{{shoe.amt}}</p>
                 </div>
                 <div class= "col-sm-2">
-                     <p>{{shoe.price * shoe.amt| currency}}</p>
+                    <button ng-show="shoppingBagShoes.length > 0" ng-click ="removeOneItem($index);"class = "btn btn-submit"> <a href = "/shop/shoppingbag">Remove</a></button>
+                     <!--<p>{{shoe.price * shoe.amt| currency}}</p>-->
+                </div>
+            </div>
+            <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length >0 ">
+                <div class ="col-sm-12">
+                    <button ng-show="shoppingBagShoes.length > 0" ng-click ="clearShoppingBag();"class = "btn btn-submit"> <a href = "/shop/shoppingbag">Clear Cart</a></button>
+
                 </div>
             </div>
                 <br>
                <div class ="row"> 
                 <div class = "col-sm-6">
-                </div>
-                <div class ="col-sm-6">
-                    
-                           <form name ="emailSignup" ng-submit="addToEmailList(emailListData, emailSignup.$valid);"novalidate>
+                                               <form name ="couponCodeForm" ng-submit="addCouponCode(couponCode, couponCodeForm.$valid);"novalidate>
 
                                   
                             <div class="form-group">
                                 <!-- Email Div -->
-                                <div ng-class="{ 'has-success':(emailSignup.email.$valid && !emailSignup.email.$pristine && !emailInvalid), 'has-error':(!emailSignup.email.$valid && !emailSignup.email.$pristine) || (!emailSignup.email.$valid && emailSignup.$submitted) || emailInvalid }">
+                                <div ng-class="{ 'has-success':(couponCodeForm.code.$valid && !couponCodeForm.code.$pristine && !codeInvalid)||totalaftercoupon, 'has-error': (!couponCodeForm.code.$valid && couponCodeForm.$submitted) || codeInvalid }">
                                     <!-- Email Input -->
-                                    <label>Email:</label>
-                                    <input ng-disabled="disabled" class="form-control" type="text" name="email" placeholder="E-mail *" ng-model="emailListData.email" ng-minlength="3" ng-maxlength="40" ng-pattern="/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/" ng-blur="checkEmail(emailSignupData);" required>
+                                    <strong><label ng-show="!totalaftercoupon">Enter Your Coupon Code:</label></strong>
+                                    <strong><label ng-show="totalaftercoupon">Coupon Code Activated!!!</label></strong>
+                                    <input ng-disabled="totalaftercoupon" class="form-control" type="text" name="code" placeholder="Enter Your Coupon Code!" ng-model="couponCode.code" ng-minlength="3" ng-maxlength="40"  required>
                                     <!-- Email Validation -->
                                     <p class="help-block" ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.required) || (emailSignup.$submitted && emailSignup.email.$error.required)">This field is required</p>
                                     <span ng-show="checkingEmail && emailSignup.email.$valid" class="glyphicon glyphicon-repeat"></span>
                                     <p class="help-block" ng-show="emailMsg && !emailSignup.email.$error.required && emailSignup.email.$valid">{{ emailMsg }}</p>
-                                    <ul ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.pattern) || (!emailSignup.email.$pristine && emailSignup.email.$error.minlength) || (!emailSignup.email.$pristine && emailSignup.email.$error.maxlength)" class="help-block">
-                                        <li>Must contain "@"</li>
-                                        <li>Must not contain any special characters</li>
-                                        <li>Must be at least 3 characters but no more than 25</li>
+                                    <ul ng-show="couponCodeError" class="help-block">
+                                        <li>Invalid Coupon Code...</li>
+             
                                     </ul>
                                 </div>
                             </div>
-                            <button class = "btn btn-primary">Sign-up!</button>
+                            <button ng-disabled = "totalaftercoupon"class = "btn btn-primary">Sign-up!</button>
 
 
         </form>
+                </div>
+                <div class ="col-sm-6">
+                    
+
                 </div>
                </div>
         
@@ -109,12 +126,15 @@
                     <div class = "col-sm-4 pull-left">
                         <p>Merchandise:<p>
                     </div>
-                    <div class = "col-sm-8 pull-right">
+                    <div ng-show="totalaftercoupon"class = "col-sm-8 pull-right">
                         <p>{{total|currency}}</p>
+                    </div>
+                     <div ng-show="!totalaftercoupon"class = "col-sm-8 pull-right">
+                        <p>{{oldtotal|currency}}</p>
                     </div>
                     
                     <div class = "col-sm-4 pull-left">
-                        <p>Estimated total w/shipping...:<p>
+                        <p>Estimated total w/shipping:<p>
                         
                     </div>
                     <div class = "col-sm-8 pull-right">
@@ -134,12 +154,18 @@
                             </form>
                     </div>
                     <div class = "col-sm-8 pull-right">
-                        <p>$322.00</p>
                     </div>
                     
                     
 
                 </div>
+                <div class = "row">
+                    <div class = "col-sm-12">
+                        <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
+                    </div>
+                </div>
+                <br>
+                <br>
                </div>
             </div>
 </div>

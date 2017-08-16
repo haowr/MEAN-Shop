@@ -441,8 +441,25 @@ app.put('/api/thumbnails', function(req,res){
 app.put('/api/addlove/:love/:name', function(req,res){
     console.log(req.params.love);
     console.log(req.params.name);
+        User.findOne({username: req.params.name}).select('loves').exec(function(err,loves){
+
+            if (err) throw err;
+            if(!loves){
+                res.json({success: false, message:"User loves not found..."});
+
+            }else{
+
+                console.log(loves.loves);
+                var unique = loves.loves.filter(function(elem, index, self) {
+                    return index == self.indexOf(elem);
+                })
+                console.log(unique);
+
+            }
+
+        })
     
-        User.findOneAndUpdate({username:req.params.name},{$push:{loves:req.params.love}},{new:true},function(err,user){
+        User.findOneAndUpdate({username:req.params.name},{$push:{loves:unique}},{new:true},function(err,user){
 
             if (err) throw err;
             if(!user){
@@ -482,6 +499,44 @@ app.put('/api/getloves/:name',function(req,res){
 
         });
 });
+app.put('/api/findlove/:user/:love', function(req,res){
+
+    
+    User.findOne({username:req.params.user}).select('loves').exec(function(err, love){
+        var found = false;
+        if(err) throw err;
+        if(!love){
+            res.json({success: false, message:"No love mang.."});
+        }else{
+            console.log(love);
+            
+            console.log(love.loves);
+            for(var i = 0; i < love.loves.length; i++){
+
+                if(love.loves[i] == req.params.love){
+                    found= true;
+                    //res.json({success: true, message: love+" exists in User My Loves..."});
+                }else{
+                    found= false;
+                    //res.json({success: false, message: love+" doesn't exist in User My Loves..."});
+                }
+
+
+            }
+            console.log(found);
+            if(found){
+                res.json({success: true, message: love+" exists in User My Loves..."});
+
+            }else{
+                res.json({success: false, message: love+" doesn't exist in User My Loves..."});
+
+            }
+        }
+
+    })
+
+
+})
 app.put('/api/sendemail/:email',function(req,res){
 
 
@@ -569,8 +624,133 @@ console.log(req.body.name);
 //console.log(req.body.newitem);
 
 });
-app.post('/api/stripecheckout', function(req,res){
 
+app.post('/api/addtoshoppingbag', function(req,res){
+
+    console.log(req.body);
+    //console.log(req.params.shoppingBag);
+    User.findOneAndUpdate({username: req.body.username}, {$push:{shoppingbag: req.body}},{new:true}, function(err,user){
+        if (err) throw err;
+        if(!user){
+            res.json({success: false,message:"No user found..."});
+        }else{
+            res.json({success: true, user:user});
+        }
+
+
+
+    })
+
+});
+
+app.put('/api/addtotaltouser/:user/:newtotal',function(req,res){
+
+     User.findOneAndUpdate({username: req.params.user},{$set:{totalaftercoupon:req.params.newtotal}},{new:true},function(err,user){
+        if(err) throw err;
+        if(!user){
+            res.json({success: false, message:"No user found..."});
+        }else{
+            res.json({success: true, user:user});
+        }
+     });
+
+});
+app.put('/api/addshippingchoicetouser/:username/:shippingChoice',function(req,res){
+
+    User.findOneAndUpdate({username: req.params.username},{$set:{shippingchoice: req.params.shippingChoice}},{new:true},function(err,user){
+
+                if(err) throw err;
+        if(!user){
+            res.json({success: false, message:"No user found..."});
+        }else{
+            res.json({success: true, user:user});
+        }
+
+    });
+
+
+});
+app.put('/api/getshoppingbag/:user', function(req,res){
+
+    User.findOne({username:req.params.user}, function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success: false, message:"No user found..."});
+        }else{
+            res.json({success: true, user:user});
+        }
+
+    });
+});
+app.put('/api/clearshoppingbag/:user/:emptyshoppingcart',function(req,res){
+
+    console.log(req.params.user);
+    User.findOneAndUpdate({username: req.params.user},{$set:{shoppingbag: []}}, {new:true},function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success: false, message:"No user found..."});
+        }else{
+            res.json({success: true, user:user});
+        }
+
+
+    })
+
+});
+app.put('/api/removeoneitem/:user/:index',function(req,res){
+
+    console.log(req.params.user, req.params.index);
+    User.findOne({username: req.params.user}).select('shoppingbag').exec(function(err, shoppingbag){
+
+        if(err) throw err;
+        if(!shoppingbag){
+
+            console.log("shoppingbag property not selected...");
+
+        }else{
+
+            var shoppingbag = shoppingbag;
+            console.log(shoppingbag.shoppingbag[req.params.index]);
+            shoppingbag.shoppingbag.splice(req.params.index,1);
+            console.log(shoppingbag.shoppingbag);
+            //res.json({success: true, ""})
+            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag}}, {new:true}, function(err, user){
+
+                if(err) throw err;
+                if(!user){
+                    res.json({success: false, message:"User not found, so not updated..."});
+                }else{
+
+                    res.json({success: true, message:"Successfully updated...", user: user});
+
+                }
+
+            })
+        }
+
+    });
+
+});
+app.put('/api/clearhearts/:user',function(req,res){
+
+    User.findOneAndUpdate({username: req.params.user}, {$set:{loves: []}}, {new:true}, function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success: false, message: "User not found, so not updated..."});
+        }else{
+            res.json({success: true, user:user});
+        }
+
+
+    });
+
+
+});
+app.post('/api/stripecheckout', function(req,res){
+/*
     var order = new Order();
     order.billingcountry = req.body[0].country;
     order.billingfirstname = req.body[0].name;
@@ -599,7 +779,7 @@ app.post('/api/stripecheckout', function(req,res){
     //order.ccexpyear = req.body[2].expyear;
    // order.ccsecuritycode = req.body[2].securitycode;
     order.ccgrandtotal = req.body[2].grandTotal;
-
+*/
 
 var stripe = require("stripe")(
   "sk_test_ht6NVhB9nETXLvHM8lC6KXVL"
@@ -655,7 +835,7 @@ app.post('/api/checkout', function(req,res){
 
     order.save(function(err,order){
         if(err){
-            res.json({success: false, message: "Save Failed... "+err});
+            res.json({success: false, message: "Save Failed... "});
         }else{
             res.json({success: true, message: "Save Successful...", order: order});
         }
@@ -796,7 +976,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
 
                    }else{
                        
-                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '1h'});
+                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '5m'});
                        res.json({success: true, message:'User authenticated', token: token});
                    }
 
@@ -1178,10 +1358,10 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
 
 
         });
-        app.put('/api/activateheart',function(req,res){
+        app.put('/api/activateheart/:shoename',function(req,res){
                         
-            console.log(req.body.name);//check why this var is name instead of shoename...
-            AllShoe.findOneAndUpdate({name: req.body.name},{$set:{heartactivated: true}},{new:true},function(err,shoe){
+            console.log(req.params.shoename);//check why this var is name instead of shoename...
+            AllShoe.findOneAndUpdate({name: req.params.shoename},{$set:{heartactivated: true}},{new:true},function(err,shoe){
                 if(err) throw err;
                 if (!shoe){
                     res.json({success: false, message: "Shoe to be updated not found.."});
@@ -1192,10 +1372,10 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
             });
 
         });
-                app.put('/api/deactivateheart',function(req,res){
+                app.put('/api/deactivateheart/:shoename',function(req,res){
                         
-            console.log(req.body.name);//check why this var is name instead of shoename...
-            AllShoe.findOneAndUpdate({name: req.body.name},{$set:{heartactivated: false}},{new:true},function(err,shoe){
+            console.log(req.params.shoename);//check why this var is name instead of shoename...
+            AllShoe.findOneAndUpdate({name: req.params.shoename},{$set:{heartactivated: false}},{new:true},function(err,shoe){
                 if(err) throw err;
                 if (!shoe){
                     res.json({success: false, message: "Shoe to be updated not found.."});

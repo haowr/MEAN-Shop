@@ -1,6 +1,6 @@
 (function(){
 
-var app =  angular.module('checkoutController',['shopServices','angularPayments']);
+var app =  angular.module('checkoutController',['shopServices','angularPayments','authServices','userServices']);
 
 app.config(function(){
 
@@ -8,7 +8,7 @@ console.log("checkoutController loaded and initialized...");
 
 });
 
-app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
+app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,User){
     $scope.country="Canada";
     $scope.expmonth = "Jan";
     $scope.expyear = "2017";
@@ -26,7 +26,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.saskatchewan = .05;
     $scope.yukon = 0.5;
     $scope.shoppingBagShoes=[];
-    $scope.grandTotal= $window.localStorage.getItem('grandTotal');
+   // $scope.grandTotal= $window.localStorage.getItem('grandTotal');
     $scope.errorMsg;
     $scope.shipPhase= false;
     $scope.addNewShippingAddress = false;
@@ -38,6 +38,8 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.invalid = false;
     $scope.addShippingAddressPhase = false;
     $scope.showGrandTotal = false;
+    $scope.orderItems;
+    $scope.shoppingBagAmountsArray=[];
     $scope.useBillingAddressSelected= false;
     $scope.finalCheckoutButton = false;
     $scope.ccPhase = false;
@@ -46,36 +48,50 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop){
     $scope.paymentLoading = false;
 
     $scope.creditCardDataAdded= false;
-       $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
-       $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
-       $scope.totalAfterTax;
-    console.log($scope.shoppingBagShoes);
-   /* var stripe = Stripe('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
-    console.log(stripe);
-    //$scope.formName.inputName.$card=[];
-*/
-/*
-var handler = StripeCheckout.configure({
-  key: 'pk_test_aE3UDuxFXzcslBrNanFIIi6Q',
-  image: '/img/documentation/checkout/marketplace.png',
-  locale: 'auto',
-  token: function(token) {
-    // Use the token to create the charge with a server-side script.
-    // You can access the token ID with `token.id`
-  }
-});
 
-handler.open({
-  name: 'Stripe.com',
-  description: '2 widgets',
-  amount: 2000
-});
-    var getTotal = function(){
+    if(Auth.isLoggedIn()){
+        Auth.getUser().then(function(data){
+
+            console.log(data.data.user);
+            User.getUserProfile(data.data.username).then(function(data){
+
+                console.log(data.data.user.totalaftercoupon);
+                $scope.grandTotal = data.data.user.totalaftercoupon;
+                $scope.shoppingBagShoes = data.data.user.shoppingbag;
+                for(var i = 0; i<$scope.shoppingBagShoes.length; i++){
+
+                      $scope.shoppingBagAmountsArray.push(Number($scope.shoppingBagShoes[i].amt));
 
 
+                }
+                console.log($scope.shoppingBagAmountsArray);
+                $scope.orderItems = $scope.shoppingBagAmountsArray.reduce(function(sum,value){
+
+                    return sum + value;
+                });
+                console.log($scope.orderItems);
+                //$scope.orderItems = 
+            });
+            //$scope.grandTotal = data.data.user.totalaftercoupon;
+            //$scope.shoppingBagShoes = data.data.user.shoppingbag;
+
+        })
         
+
+    }else{
+
+        $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
+        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
+        $scope.orderItems = $scope.shoppingBagShoes.length;
+
     }
-*/
+      
+
+       
+       
+       $scope.totalAfterTax;
+       console.log($scope.shoppingBagShoes);
+
     
     $scope.startCheckoutFunc = function(){
 
@@ -83,6 +99,7 @@ handler.open({
     }
 
     $scope.selectCountry = function(number){
+
             console.log("button pressed");
             if(number === 1){
                 $scope.country = "Canada";
@@ -175,14 +192,14 @@ handler.open({
     };
     $scope.shippingFunc= function(shippingFormData){
 
-        $scope.shippingFormDataa.push(shippingFormData);
-                 $scope.finalCheckoutData[0]= $scope.shippingFormDataa[0];
+         $scope.shippingFormDataa.push(shippingFormData);
+         $scope.finalCheckoutData[0]= $scope.shippingFormDataa[0];
          $scope.finalCheckoutData[1]= $scope.checkoutDataa[0];
          $rootScope.finalCheckoutData[1]= $scope.checkoutDataa[0];
-        $scope.shipPhase = true;
-        $scope.addNewShippingAddress = false;
-        $scope.addNewShippingAddressPhase = true;
-        $scope.finalCheckoutButton = true;
+         $scope.shipPhase = true;
+         $scope.addNewShippingAddress = false;
+         $scope.addNewShippingAddressPhase = true;
+         $scope.finalCheckoutButton = true;
          $scope.useBillingAddressSelected = false;
          $scope.ccPhase = true;
 
@@ -204,7 +221,7 @@ handler.open({
         $scope.checkoutPhase = false;
         console.log(checkoutData.province);
         if(checkoutData.province == "Alberta"){
-            $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.alberta);
+            $scope.totalAfterTax =$scope.grandTotal + ( $scope.grandTotal * $scope.alberta);
             $scope.showGrandTotal=true;
             console.log($scope.totalAfterTax);
         }else if(checkoutData.province == "British Columbia"){

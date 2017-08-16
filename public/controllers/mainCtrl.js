@@ -131,9 +131,29 @@
 
  
      console.log($rootScope.myLoves);
-     $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
-     $rootScope.cartyItems = JSON.parse($window.localStorage.getItem('checkoutArray'));
-     $rootScope.cartItems =$rootScope.cartyItems.length;
+
+     if(Auth.isLoggedIn()){
+          Auth.getUser().then(function(data){
+
+            console.log(data.data);
+            User.getUserProfile(data.data.username).then(function(data){
+                console.log(data.data.user.loves.length);
+                $rootScope.heartss = data.data.user.loves.length;
+                $rootScope.cartItems = data.data.user.shoppingbag.length;
+            })
+
+          });
+
+     }else{
+
+         $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
+         $rootScope.cartyItems = JSON.parse($window.localStorage.getItem('checkoutArray'));
+         $rootScope.cartItems =$rootScope.cartyItems.length;
+
+     }
+    
+     
+     
      if($rootScope.myLoves[0] == null){
          $rootScope.myLoves=[];
      }
@@ -220,11 +240,14 @@ $rootScope.checkEmail = function(emailListData){
 
                     //console.log(expireTime.exp - timeStamp);
                     var timeCheck = expireTime.exp - timeStamp;
-                    //console.log(timeCheck);
-                    if(timeCheck <= 350){
+                    console.log(timeCheck);
+                    if(timeCheck < 1000 && timeCheck>0){
                         console.log("Token has expired...");
-                        showModal(1);
-                        $interval.cancel(interval);
+                       // showModal(1);
+                       // $interval.cancel(interval);
+                    }else if(timeCheck <= 0){
+                        showModal(2);
+                    
                     }else{
                         //console.log("Token is not yet expired...")
                     }
@@ -255,6 +278,7 @@ $rootScope.checkEmail = function(emailListData){
          }
          $timeout(function(){
             Auth.logout();
+            $rootScope.heartss = 0;
             $location.path('/');
             hideModal();
             $route.reload();
@@ -381,7 +405,7 @@ $rootScope.checkEmail = function(emailListData){
                 $timeout(function(){
                     scope.loginData = {};
                     scope.success = false;
-                    $location.path('/about');
+                    $location.path('/');
                     scope.loginData = {};
                     scope.successMsg= "";
                     scope.disabled= false;

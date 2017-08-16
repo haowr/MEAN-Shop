@@ -8,7 +8,7 @@ app.config(function(){
 
 });
 
-app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
+app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window,Heart,Auth){
 /*
     var pink =$window.localStorage.getItem('myLoves');
     console.log(pink);
@@ -22,7 +22,7 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
     var name = "Z!";
     scope.imageIndex=0;
     scope.loading= true;
-    $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
+    //$rootScope.heartss =$window.localStorage.getItem('cookieHearts');
     scope.sort;
     $scope.allShoes=[];
     $scope.shoes=[];
@@ -33,17 +33,34 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
 
     var _page= -3;
 
+                 if(Auth.isLoggedIn()){
+          Auth.getUser().then(function(data){
 
+            console.log(data.data);
+            User.getUserProfile(data.data.username).then(function(data){
+                console.log(data.data.user.loves.length);
+                $rootScope.heartss = data.data.user.loves.length;
+            })
+
+          });
+
+     }else{
+
+         $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
+     }
+    
 
     function getShoes(){
+
          Shop.getAllShoes().then(function(data){
 
-    console.log(data.data.allshoes);
-    for(var i = 0; i<8 ; i++){
-        $scope.allShoes.push(data.data.allshoes[i]);
+            console.log(data.data.allshoes);
+            for(var i = 0; i<8 ; i++){
+                 $scope.allShoes.push(data.data.allshoes[i]);
 
-    }    
-                   Shop.getShoes().then(function(data){
+                }    
+                   
+            Shop.getShoes().then(function(data){
                     console.log("getshoes");
                      console.log(data);
                      if(data.data.success){
@@ -56,9 +73,7 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window){
                         console.log(data.data.message);
                     }
                 });
-
-
- })
+        })
 
  
 
@@ -74,7 +89,7 @@ function getPages() {
             });
  };
         getPages();
-
+/*
 function getAllShoes() {
         Shop.getAllShoes().then(function(data){
             console.log(data.data.allshoes);
@@ -85,11 +100,14 @@ function getAllShoes() {
 
 };
         getAllShoes();
+*/
 
-   $scope.heartAdderShop=function(shoename){
+   $scope.heartAdderShop=function(shoename,shoeindex){
 
        console.log(shoename);
-       $scope.heartactivated = true;
+       console.log(shoeindex);
+       console.log($scope.shoes[0]);
+     
 
                                //TOTAL HEARTS FOR STORE ITEM..
                         Shop.incrementHearts(shoename).then(function(data){    //FIND STORE ITEM WITH ROUTE AND THEN INCREMENT HEARTS VALUE BY ONE...
@@ -102,20 +120,28 @@ function getAllShoes() {
                                         //console.log(data.data.allshoe);
                                         //console.log($scope.mensShoe.hearts);
                                         $rootScope.totalHearts = data.data.allshoe[0].hearts;
-                                        $scope.totalHeartsShop = data.data.allshoe[0].hearts;
+                                        $scope.shoes[shoeindex].hearts= data.data.allshoe[0].hearts;
         
+                                });
+                                 Heart.activateHeart(shoename).then(function(data){
+
+                                        console.log(data.data);
+                            
+                                        $scope.shoes[shoeindex].heartactivated = data.data.shoe.heartactivated;
+
                                 });
 
                         });
    }
    
-   $scope.heartSubtractorShop=function(shoename){
+   $scope.heartSubtractorShop=function(shoename,shoeindex){
 
        console.log(shoename);
-       $scope.heartactivated = false;
-
+       console.log(shoeindex);
+       console.log($scope.shoes[0]);
+        
                                //TOTAL HEARTS FOR STORE ITEM..
-                        Shop.incrementHearts(shoename).then(function(data){    //FIND STORE ITEM WITH ROUTE AND THEN INCREMENT HEARTS VALUE BY ONE...
+                        Shop.decrementHearts(shoename).then(function(data){    //FIND STORE ITEM WITH ROUTE AND THEN INCREMENT HEARTS VALUE BY ONE...
 
                             console.log(data.data.shoe);
                             //THERE DOESN'T SEEM TO BE A Shop.incrementHearts() SERVICE USED... THOUGH ONE EXISTS...
@@ -125,9 +151,18 @@ function getAllShoes() {
                                         //console.log(data.data.allshoe);
                                         //console.log($scope.mensShoe.hearts);
                                         $rootScope.totalHearts = data.data.allshoe[0].hearts;
-                                        $scope.totalHeartsShop = data.data.allshoe[0].hearts;
+                                        $scope.shoes[shoeindex].hearts = data.data.allshoe[0].hearts;
         
                                 });
+
+                                
+
+                        });
+
+                         Heart.deactivateHeart(shoename).then(function(data){
+                            console.log(data.data);
+                            
+                            $scope.shoes[shoeindex].heartactivated = data.data.shoe.heartactivated;
 
                         });
    }
@@ -159,7 +194,8 @@ function getAllShoes() {
             $scope.order = order;
             console.log($scope.order);
         };
-        
+
+    
 });
 
 app.controller('galleryCtrl',function(){

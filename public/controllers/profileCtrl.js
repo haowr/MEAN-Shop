@@ -6,7 +6,7 @@ app.config(function(){
     console.log("profile controller loaded and initialized...");
 })
 
-app.controller('profileCtrl',function(Shop,Auth,User,$scope){
+app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope){
 /*
 var names = 
 Shop.getMensShoe()
@@ -14,7 +14,12 @@ Shop.getMensShoe()
 
  $scope.user ;
  $scope.whoisthis;
+ $scope.currentUser;
 $scope.orders =[];
+$scope.loves=[];
+$scope.loveObjectArray = [];
+$scope.loveObjects= [];
+$scope.allShoes;
 
    User.getProducts().then(function(data){
 
@@ -24,11 +29,65 @@ $scope.orders =[];
     Auth.getUser().then(function(data){
 
         console.log(data.data.username);
-        $scope.whoisthis = data.data.username;
-                   User.getUserProfile($scope.whoisthis).then(function(data){
+        $scope.currentUser = data.data.username;
 
-        console.log(data.data.user);
-        $scope.user = data.data.user;
+        $scope.whoisthis = data.data.username;
+        User.getUserProfile($scope.whoisthis).then(function(data){
+
+            console.log(data.data.user);
+            console.log(data.data.user.loves);
+            $scope.loves = data.data.user.loves;
+            $scope.user = data.data.user;
+            Shop.getAllShoes().then(function(data){
+
+                console.log(data.data.allshoes);
+                $scope.allShoes = data.data.allshoes;
+                console.log($scope.allShoes);
+                console.log($scope.allShoes[0]);
+                console.log($scope.allShoes.length);
+                console.log($scope.allShoes[0].name);
+                for(var i = 0; i < $scope.allShoes.length; i++){
+
+                    $scope.loveObjects.push({ name: $scope.allShoes[i].name,
+                                              thumbnail: $scope.allShoes[i].perspectives[1],
+                                              available: $scope.allShoes[i].available,
+                                              description: $scope.allShoes[i].description});
+
+                    console.log($scope.loveObjects);
+                    
+             
+
+                }
+
+                for(var i = 0; i < $scope.loves.length; i ++){
+
+                    for(var j = 0; j < $scope.loveObjects.length; j++){
+
+                            if($scope.loveObjects[j].name == $scope.loves[i]){
+
+                                console.log("I love "+$scope.loveObjects[j].name);
+                                $scope.loveObjectArray.push($scope.loveObjects[j]);
+    
+                            }
+                    }
+
+
+
+                }
+                var unique = $scope.loveObjectArray.filter(function(elem, index, self) {
+                        return index == self.indexOf(elem);
+                })    
+                $scope.loveObjectArray = unique;  
+                $rootScope.heartss = $scope.loveObjectArray.length;
+                
+
+            });
+            //for(var i = 0; i < data.data.user.loves; i ++){
+
+              //  $scope.loves.push(data.data.user.loves[i]);
+
+            //}
+
         for(var i= 0; i<data.data.user.orders.length; i++){
             for(var j = 0; j< data.data.user.orders[i].length; j++){
 
@@ -40,6 +99,19 @@ $scope.orders =[];
         
 
     });
+    $scope.clearLoves = function(){
+        console.log($scope.currentUser);
+        User.clearHearts($scope.currentUser).then(function(data){
+
+                console.log(data.data.user.loves);
+                $rootScope.heartss = data.data.user.loves.length;
+                 $scope.loveObjectArray= data.data.user.loves;
+                 $rootScope.heartactivated = false;
+            
+
+        })
+
+    }
 console.log($scope.orders);
 
     });

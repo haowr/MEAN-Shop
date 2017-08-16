@@ -30,10 +30,10 @@ console.log("heartServices loaded...");
             return $http.put('/api/findhearts');
         }
         heartFactory.activateHeart = function(shoename){
-            return $http.put('/api/activateheart',shoename);
+            return $http.put('/api/activateheart/'+shoename);
         }
         heartFactory.deactivateHeart = function(shoename){
-            return $http.put('/api/deactivateheart',shoename);
+            return $http.put('/api/deactivateheart/'+shoename);
         }
         heartFactory.isActivated = function(shoename){
             return $http.put('/api/isactivated',shoename);

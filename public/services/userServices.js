@@ -127,6 +127,11 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/getloves/'+username);
 
   }
+  userFactory.findLove = function(user,love){
+
+    return $http.put('/api/findlove/'+user+'/'+love);
+
+  }
   //User.getOrders(username);
   userFactory.getOrders = function(username){
 
@@ -167,8 +172,41 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.post('/api/updateadminproducts',newAdminProducts);
 
   }
+  userFactory.addToShoppingBag = function(shoppingBag){
+    
+    return $http.post('/api/addtoshoppingbag',shoppingBag);
 
+  }
+  userFactory.getShoppingBag = function(username){
 
+    return $http.put('/api/getshoppingbag/'+username);
+
+  }
+  userFactory.addTotalToUser = function(username, newtotal){
+
+    return $http.put('/api/addtotaltouser/'+username+'/'+newtotal);;
+
+  }
+  userFactory.addShippingChoiceToUser = function(username,shippingchoice){
+
+    return $http.put('/api/addshippingchoicetouser/'+username+'/'+shippingchoice);
+
+  }
+  userFactory.clearShoppingBag = function(user, shoppingbag){
+
+    return $http.put('/api/clearshoppingbag/'+user+'/'+shoppingbag);
+
+  }
+  userFactory.removeOneItem = function(user,index){
+
+    return $http.put('/api/removeoneitem/'+user+'/'+index);
+
+  }
+  userFactory.clearHearts = function(user){
+
+    return $http.put('/api/clearhearts/'+user);
+
+  }
 
 
  return  userFactory;

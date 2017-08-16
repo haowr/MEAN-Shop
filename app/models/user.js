@@ -75,6 +75,9 @@ var UserSchema = new Schema({
     resettoken:{type: String, required: false},
     permission: {type:String, required:true, default:'user' },
     products:{type:Array},
+    shoppingbag:{type:Array},
+    totalaftercoupon:{type:Number},
+    shippingchoice:{type:String},
     orders:{type:Array},
     loves: Array
 
