@@ -17,9 +17,10 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     $scope.shippingChoice = 0;
     $scope.grandTotal;
     $scope.couponCodeError = false;
-    $scope.currentUser;
+    $scope.currentUser; 
     $scope.totalaftercoupon = false;
     $scope.shoppingCartEmpty = false;
+    $scope.newShoppingBagQty;
     console.log("Hello");
     $scope.hello= function(){
         console.log("hello");
@@ -28,6 +29,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     $scope.addCouponCode = function(couponCode, valid){
 
         console.log(couponCode.code);
+        $scope.grandTotal=0;
         if(couponCode.code == "ping"){
 
             $scope.oldtotal = $scope.oldtotal - ($scope.oldtotal *0.1);
@@ -81,8 +83,22 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
     }else{
     $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+
+                         for(var i =0; i<$scope.shoppingBagShoes.length; i++){
+                            $scope.individualTotals.push($scope.shoppingBagShoes[i].amt * $scope.shoppingBagShoes[i].price);
+                           // $scope.shoppingBagShoes[i].invTotal= $scope.individualTotals[i];
+                           console.log($scope.shoppingBagShoes[i].amt);
+
+                            }
+                         $scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
+                            return sum + value;
+
+                        }, 0);
+                        console.log($scope.individualTotals);
+                        console.log($scope.total);
     }
     console.log($scope.shoppingBagShoes);
+
     Shop.getAllShoes().then(function(data){
 
         console.log(data.data.allshoes);
@@ -92,8 +108,125 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
    // $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
     console.log($scope.shoppingBagShoes);
 
-    $scope.clearShoppingBag = function(){
+    $scope.increaseQuantity = function(index,quantity){
+        console.log(index,quantity);
+        console.log($scope.shoppingBagShoes);
+        console.log($scope.shoppingBagShoes[index]);
+        console.log($scope.shoppingBagShoes[index].amt);
+        console.log($scope.newShoppingBagQty);
+        if(Auth.isLoggedIn()){
 
+        
+            User.addOneItem($scope.currentUser,index).then(function(data){
+
+                console.log(data.data);
+                $scope.shoppingBagShoes[index].amt = data.data.user.shoppingbag[index].amt;
+                $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+
+            })
+        }else{
+
+            $scope.shoppingBagShoes[index].amt++
+            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+
+
+        }
+    }
+        $scope.reduceQuantity = function(index,quantity){
+
+            console.log(quantity);
+
+            if(Auth.isLoggedIn()  && quantity > 1){
+
+                        User.removeOneItem($scope.currentUser,index).then(function(data){
+
+                            $scope.shoppingBagShoes[index].amt = data.data.user.shoppingbag[index].amt;
+                            $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+                            console.log(data.data);
+
+                        });
+
+            }else if(Auth.isLoggedIn() && quantity <2){
+
+                            console.log("Hello");
+                            User.pullOneItem($scope.currentUser,index).then(function(data){
+
+                                console.log(data.data.user.shoppingbag);
+                                $scope.shoppingBagShoes = data.data.user.shoppingbag;
+                                $rootScope.cartItems = $scope.shoppingBagShoes.length;
+                                $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+
+                            })
+
+
+            }else if(Auth.isLoggedIn() && quantity === 1){
+                            console.log("Hello");
+                            User.pullOneItem($scope.currentUser,index).then(function(data){
+
+                                console.log(data.data.user.shoppingbag);
+                                $scope.shoppingBagShoes = data.data.user.shoppingbag;
+                                $rootScope.cartItems = $scope.shoppingBagShoes.length; 
+                                $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+
+                               // $scope.oldtotal = 0;
+                                })
+                
+                
+                
+                }else{
+                    
+                            if( quantity === 1){
+
+                                                    $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                                                    $scope.shoppingBagShoes.splice(index,1);
+                                                    $rootScope.cartyItems = $scope.shoppingBagShoes.length;
+                                                    $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
+
+                            }
+
+
+                             $scope.shoppingBagShoes[index].amt--;
+                             $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                             //$scope.shoppingBagShoes = $window.localStorage.getItem('checkoutArray');
+                             console.log($scope.shoppingBagShoes);
+                             console.log($scope.shoppingBagShoes.length);
+
+ 
+                                                     for(var i =0; i<$scope.shoppingBagShoes.length; i++){
+                            $scope.individualTotals.push($scope.shoppingBagShoes[i].amt * $scope.shoppingBagShoes[i].price);
+                           // $scope.shoppingBagShoes[i].invTotal= $scope.individualTotals[i];
+                           console.log($scope.shoppingBagShoes[i].amt);
+                           console.log($scope.individualTotals);
+
+                            }
+                         $scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
+                            return sum + value;
+
+                        }, 0);
+                        $scope.individualTotals =[];
+                         //$scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
+                            //return sum + value;
+
+                        //}, 0);
+                        //console.log($scope.individualTotals);
+                        //console.log($scope.total);
+                    //$scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+
+                    //console.log($scope.shoppingBagShoes);
+                    //console.log($window.localStorage.getItem('checkoutArray'));
+
+            }
+
+
+
+
+    }
+
+    $scope.clearShoppingBag = function(){
+      
+      if(Auth.isLoggedIn()){
+
+      
         User.clearShoppingBag($scope.currentUser).then(function(data){
 
             console.log(data.data.success);
@@ -103,11 +236,17 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
             
 
         });
+      }else{
+
+        $scope.shoppingBagShoes = [];
+        $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
+
+      }
 
     }
     $scope.removeOneItem = function(index){
         console.log(index);
-        User.removeOneItem($scope.currentUser,index).then(function(data){
+        User.pullOneItem($scope.currentUser,index).then(function(data){
 
             console.log(data.data.user.shoppingbag);
             $scope.shoppingBagShoes = data.data.user.shoppingbag;
@@ -127,16 +266,29 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
             });
 
+            }else{
+
+                 //$scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                 $window.localStorage.setItem('shippingChoice',7.95);
+
+
             }
+
 
         }else{
             $scope.shippingChoice = 15.00;
            if(Auth.isLoggedIn()){
-            User.addShippingChoiceToUser($scope.currentUser,"1-7 Days Expedited").then(function(data){
+            User.addShippingChoiceToUser($scope.currentUser,"2days Xpresspost").then(function(data){
 
                 console.log(data.data.user);
 
             });
+
+            }else{
+
+                 //$scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                 $window.localStorage.setItem('shippingChoice',15.00);
+
 
             }
         }
@@ -162,7 +314,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
    
     
         console.log($scope.total);
-        $scope.grandTotal = $scope.total + $scope.shippingChoice;
+        $scope.grandTotal = $scope.oldtotal + $scope.shippingChoice;
         $window.localStorage.setItem('grandTotal', $scope.grandTotal);
         
     }
@@ -171,6 +323,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     var addShipping = function(total,shippingChoice){
      
         var newTotal = total + shippingChoice;
+        $window.localStorage.setItem('grandTotal', $scope.newTotal);
 
 
 

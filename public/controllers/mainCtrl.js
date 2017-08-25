@@ -35,13 +35,7 @@
      $scope.translateY = 0;
      $rootScope.opacityOn =false;
      $rootScope.opacityOn2 =false;
-     //$scope.new=0;
-     //var dataArray = [];
-    //var valueArray = [];
-    /*$(".adnext").click(function(){
-        $(".slide").fadeOut(2000);
 
-    });*/
         $rootScope.setCurrentSlideIndexAdd = function () {
             console.log( $rootScope.currentIndex);
             $rootScope.opacityOn = true;
@@ -138,7 +132,14 @@
             console.log(data.data);
             User.getUserProfile(data.data.username).then(function(data){
                 console.log(data.data.user.loves.length);
-                $rootScope.heartss = data.data.user.loves.length;
+
+                    var unique = data.data.user.loves.filter(function(elem, index, self) {
+                        return index == self.indexOf(elem);
+                    });
+                    $rootScope.personalMyLoves = unique;
+                    console.log($rootScope.personalMyLoves);
+                 $rootScope.heartss = $rootScope.personalMyLoves.length;
+
                 $rootScope.cartItems = data.data.user.shoppingbag.length;
             })
 
@@ -147,8 +148,19 @@
      }else{
 
          $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
-         $rootScope.cartyItems = JSON.parse($window.localStorage.getItem('checkoutArray'));
-         $rootScope.cartItems =$rootScope.cartyItems.length;
+         console.log($window.localStorage.getItem('checkoutArray'));
+         if(!$window.localStorage.getItem('checkoutArray') == ""){
+                console.log("OY");
+                $rootScope.cartyItems = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                $rootScope.cartItems =$rootScope.cartyItems.length;
+                console.log($rootScope.cartItems);
+         }else{
+                $rootScope.cartyItems = [];
+                $rootScope.cartItems =$rootScope.cartyItems.length;
+                console.log($rootScope.cartItems);
+
+         }
+ 
 
      }
     
@@ -319,9 +331,11 @@ $rootScope.checkEmail = function(emailListData){
                     var unique = data.data.loves.loves.filter(function(elem, index, self) {
                         return index == self.indexOf(elem);
                     });
+                    console.log(unique);
                     $rootScope.personalMyLoves = unique;
                     //$rootScope.personalMyLoves = data.data.loves.loves;
                     //$scope.looper.personalMyLoves = data.data.loves.loves;
+                    $rootScope.heartss = $rootScope.personalMyLoves.length;
                    console.log($rootScope.personalMyLoves);
                    console.log(data.data.loves.loves);
                  });

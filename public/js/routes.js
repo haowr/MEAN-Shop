@@ -60,6 +60,21 @@ app.config(function($routeProvider,$locationProvider){
         controllerAs: 'mens'
 
     })
+    .when('/shop/orderconfirmation',{
+        templateUrl:'../views/orderconfirmation.html',
+        controller: 'orderConfirmationCtrl',
+        controllerAs: 'order'
+
+
+
+    })
+    .when('/faq',{
+
+        templateUrl:'../views/pages/faq.html',
+        controller:'faqCtrl',
+        controllerAs: 'faq'
+
+    })
     .when('/shop/checkout',{
         templateUrl: '../views/pages/checkout.html',
         controller: 'checkoutCtrl',

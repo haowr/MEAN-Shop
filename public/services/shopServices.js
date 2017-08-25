@@ -74,6 +74,12 @@ app.factory('Shop', function($http){
         return $http.put('/api/decrementhearts/'+ shoename);
 
     }
+   // //Shop.decrementHeartsBy(shoename,loveslength);
+   shopFactory.decrementHeartsBy= function(shoename,loveslength){
+
+        return $http.put('/api/decrementheartsby/'+shoename+'/'+lovelength);
+
+   }
 
 return shopFactory;
 

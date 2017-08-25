@@ -223,6 +223,8 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
         if(checkoutData.province == "Alberta"){
             $scope.totalAfterTax =$scope.grandTotal + ( $scope.grandTotal * $scope.alberta);
             $scope.showGrandTotal=true;
+            console.log($scope.alberta);
+            console.log($scope.grandTotal);
             console.log($scope.totalAfterTax);
         }else if(checkoutData.province == "British Columbia"){
            

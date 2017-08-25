@@ -386,11 +386,53 @@ width: 500px !important;
   border: 1px solid black;
 
 }
+.orderconfirmationtitlediv{
+
+  font-family:'Bellefair'
+
+}
+.orderconfirmationtitle{
+
+  font-family:'Bellefair'
+
+}
 .myprofiletitle{
   font-family: 'Bellefair';
 }
 .mylovesdescription{
   margin-top:40px;
+}
+.mylovesremovebutton{
+
+   margin-top:40px;
+}
+.questionblock{
+
+  display:inline-block;
+
+}
+.faqheader{
+
+  height: 80px;
+  background-color: #ffe6e6;
+
+
+}
+#faqheaderstyle{
+  position:absolute;
+  margin-top:25px;
+
+}
+.fa-bolt {
+    top:-5%;
+    left:2%;
+    font-size:70%;
+}
+#shoppingbagquantitydecliner{
+  position:absolute;
+
+  margin-top:-10px;
+
 }
 #ad{
   width:400px;

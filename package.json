@@ -13,6 +13,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.14.1",
     "express": "~4.13.2",
+    "feather-icons": "^3.2.2",
     "hogan": "^1.0.2",
     "hogan.js": "^3.0.2",
     "jsonwebtoken": "^7.4.1",

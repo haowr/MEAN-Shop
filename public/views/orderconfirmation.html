@@ -1,0 +1,148 @@
+
+<div class = "container container-fluid">
+       <div class = "row">
+            <div class = "col-sm-12 ">
+               <center><h2 id ="maintitle">THE HOUSE OF JEWELS</h2></center>
+                <center><img src="../img/logosm.jpg"></center>
+            </div>
+            <div class = "col-sm-12 details">
+            </div>
+            <div class = "col-sm-12 pull-left">
+                <a href="/shop"><p>continue-shopping</p></a>
+            </div>
+            <div class = "col-sm-12 ">
+                <center><h2 class = "orderconfirmationtitle">Congratulations!<i class="fa fa-pagelines" aria-hidden="true"></i></h3></center>
+                <center><p ng-show="isLoggedIn">Your Order Has Been Recieved, And Is Being Processed...</p></center>
+                <center><p ng-show="!isLoggedIn">It Appears You Don't Have An Account...Please <a href = "/register">Create</a>One And Store Future Purchases In Your Order History</p><br>
+                        <p ng-show="!isLoggedIn">For Now, The Details Of Your Order Has Been Delivered To The Email Address You Provided...</p>
+                </center>
+
+                
+                <center><p>Need help? </p>
+                </center>
+                <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
+                <button ng-show="shoppingBagShoes.length < 0"class = "btn btn-submit"><a href="/shop">Continue Shopping</a></button>
+
+               
+  
+            </div>
+
+            </div>
+
+            
+        </div>
+        <div ng-show="lastOrder.length > 0 " class = "row">
+            <div class = "col-sm-12">
+           <center><h3 class = "orderconfirmationtitle"> Your Previous Order...<i class="fa fa-leaf" aria-hidden="true"></i></h3></center>
+            </div>
+        </div>
+        <br>
+        <br>
+        
+            <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length == 0 || shoppingCartEmpty ">
+                <div class ="col-sm-12">
+                    <center><h3><p>|| Empty Cart! :( ||</p></h3></center>
+                </div>
+            </div>
+        <center>
+            <div  ng-show ="lastOrder.length > 0"class = "row  " ng-repeat="last in lastOrder">
+
+                <div class= "col-sm-2">
+                   <a href = "/shop/mens/{{last.name}}"> <img  class ="img-fluid"ng-src="{{last.image}}"></a>
+                </div>
+                <div class= "col-sm-2">
+                    <p id= "shopdescription">{{last.description  |limitTo:25}}</p>
+                </div>
+                <div class= "col-sm-2">
+                    
+
+                </div>
+                <div class= "col-sm-2">
+                    <p>{{last.price}}</p>
+                </div>
+                <div class= "col-sm-2">
+                    
+                    <p>{{last.amt}}</p>
+                                        
+                </div>
+                <div class= "col-sm-2">
+                    <!--<button  ng-click ="removeOneItem($index);"class = "btn btn-submit"> <a href = "/shop/shoppingbag">Remove</a></button>-->
+                     <!--<p>{{shoe.price * shoe.amt| currency}}</p>-->
+                </div>
+            </div>
+        </center>
+            <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length >0 ">
+                <div class ="col-sm-12">
+                    <button ng-show="shoppingBagShoes.length > 0" ng-click ="clearShoppingBag();"class = "btn btn-submit"> <a href = "/shop/shoppingbag">Clear Cart</a></button>
+
+                </div>
+            </div>
+                <br>
+               <div class ="row"> 
+                   <div class = "col-sm-12">
+                       <center><h3 class = "orderconfirmationtitle"> Join Our Mailing List...</h3></center>
+                   </div>
+                   <div class = "col-sm-3">
+                   </div>
+
+                    <div class = "col-sm-6">
+                            
+                        <center>
+        <form name ="emailSignup" ng-submit="addToEmailList(emailListData, emailSignup.$valid);"novalidate>
+               <center> <div class = "col-sm-12">
+                   <p> ...to recieve 10% off, House Of Jewels News, And In-Store Sales!!!</p>
+                </div>
+               </center>                 
+                            <div class="form-group">
+                                <!-- Email Div -->
+                                <div ng-class="{ 'has-success':(emailSignup.email.$valid && !emailSignup.email.$pristine && !emailInvalid), 'has-error':(!emailSignup.email.$valid && !emailSignup.email.$pristine) || (!emailSignup.email.$valid && emailSignup.$submitted) || emailInvalid }">
+                                    <!-- Email Input -->
+                                    <label>Email:</label>
+                                    <input ng-disabled="disabled" class="form-control" type="text" name="email" placeholder="E-mail *" ng-model="emailListData.email" ng-minlength="3" ng-maxlength="40" ng-pattern="/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/" ng-blur="checkEmail(emailSignupData);" required>
+                                    <!-- Email Validation -->
+                                    <p class="help-block" ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.required) || (emailSignup.$submitted && emailSignup.email.$error.required)">This field is required</p>
+                                    <span ng-show="checkingEmail && emailSignup.email.$valid" class="glyphicon glyphicon-repeat"></span>
+                                    <p class="help-block" ng-show="emailMsg && !emailSignup.email.$error.required && emailSignup.email.$valid">{{ emailMsg }}</p>
+                                    <ul ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.pattern) || (!emailSignup.email.$pristine && emailSignup.email.$error.minlength) || (!emailSignup.email.$pristine && emailSignup.email.$error.maxlength)" class="help-block">
+                                        <li>Must contain "@"</li>
+                                        <li>Must not contain any special characters</li>
+                                        <li>Must be at least 3 characters but no more than 25</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <button class = "btn btn-primary">Sign-up!</button>
+
+
+        </form>
+                        </center>
+                </div>
+                    <div class = "col-sm-3">
+                   </div>
+
+  
+               </div>
+        
+                  
+                </div>
+                <br>
+                <div class = "row">
+                                    
+                    <div class = "col-sm-12">
+                        <center><h3 class = "orderconfirmationtitle"> Or...<a href="/shop">Keep Shopping!</a></h3></center>
+                      
+
+                    </div>
+                    <div class ="col-sm-12 details">
+                    </div>
+                
+                </div>
+                <div class = "row">
+                    <div class = "col-sm-12">
+                        <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
+                    </div>
+                </div>
+                <br>
+                <br>
+               </div>
+            </div>
+</div>

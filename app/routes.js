@@ -207,6 +207,23 @@ console.log(req.params);
     });
 
 });
+app.put('/api/decrementheartsby/:shoename/:loveslength', function(req,res){
+
+    AllShoe.findOneAndUpdate({name: req.params.shoename},{$inc:{hearts: -req.params.loveslength}},{new:true},function(err,shoe){
+
+        if(err) throw err;
+        if(!shoe){
+            res.json({success: false, message:"Shoe not found, so not updated.."});
+        }else{
+            res.json({success: true, message:"Shoe found, and updated...", shoe:shoe});
+        }
+
+
+
+    })
+
+
+})
 /*
 app.put('/api/increaseAdminHearts/:shoename', function(req,res){
 var shoename = req.params.shoename;
@@ -450,25 +467,28 @@ app.put('/api/addlove/:love/:name', function(req,res){
             }else{
 
                 console.log(loves.loves);
-                var unique = loves.loves.filter(function(elem, index, self) {
-                    return index == self.indexOf(elem);
-                })
-                console.log(unique);
+
+                //console.log(unique);
+                        User.findOneAndUpdate({username:req.params.name},{$push:{loves:req.params.love}},{new:true},function(err,user){
+
+                            if (err) throw err;
+                            if(!user){
+                                res.json({success: false, message: "User not found"});
+                            }else{
+                                var unique = user.loves.filter(function(elem, index, self) {
+                                    return index == self.indexOf(elem);
+                                })
+                                user.loves = unique;
+                                res.json({success: true, message:"Document updated? Lets see",user:user });
+                            }
+
+                         });
 
             }
 
         })
     
-        User.findOneAndUpdate({username:req.params.name},{$push:{loves:unique}},{new:true},function(err,user){
 
-            if (err) throw err;
-            if(!user){
-                res.json({success: false, message: "User not found"});
-            }else{
-                res.json({success: true, message:"Document updated? Lets see",user:user });
-            }
-
-        });
 
 });
 app.put('/api/removelove/:love/:name',function(req,res){
@@ -511,14 +531,13 @@ app.put('/api/findlove/:user/:love', function(req,res){
             console.log(love);
             
             console.log(love.loves);
-            for(var i = 0; i < love.loves.length; i++){
 
+            for(var i = 0; i < love.loves.length; i++){
+                console.log(req.params.love);
                 if(love.loves[i] == req.params.love){
                     found= true;
+                    console.log(found)
                     //res.json({success: true, message: love+" exists in User My Loves..."});
-                }else{
-                    found= false;
-                    //res.json({success: false, message: love+" doesn't exist in User My Loves..."});
                 }
 
 
@@ -699,6 +718,83 @@ app.put('/api/clearshoppingbag/:user/:emptyshoppingcart',function(req,res){
     })
 
 });
+app.put('/api/addoneitem/:user/:index',function(req,res){
+
+    console.log(req.params.user, req.params.index);
+    User.findOne({username: req.params.user}).select('shoppingbag').exec(function(err, shoppingbag){
+
+        if(err) throw err;
+        if(!shoppingbag){
+
+            console.log("shoppingbag property not selected...");
+
+        }else{
+
+            var shoppingbag = shoppingbag;
+            console.log(shoppingbag.shoppingbag[req.params.index].amt++);
+            //shoppingbag.shoppingbag.splice(req.params.index,1);
+            console.log(shoppingbag.shoppingbag);
+            //res.json({success: true, ""})
+            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag[req.params.index]}}, {new:true}, function(err, user){
+
+                if(err) throw err;
+                if(!user){
+                    res.json({success: false, message:"User not found, so not updated..."});
+                }else{
+
+                    res.json({success: true, message:"Successfully updated...", user: user});
+
+                }
+
+            })
+        }
+
+    });
+
+});
+app.put('/api/pulloneitem/:user/:index', function(req,res){
+
+    User.findOne({username: req.params.user}).select('shoppingbag').exec(function(err, shoppingbag){
+
+        if(err) throw err;
+        if(!shoppingbag){
+            res.json({success: false, message: "User not found..."});
+        }else{
+            //res.json({success: true, message:"User found.", shoppingbag:shoppingbag});
+            console.log(shoppingbag);
+            shoppingbag.shoppingbag.splice(req.params.index,1);
+            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag:shoppingbag.shoppingbag}}, {new:true}, function(err, user){
+
+                if(err)throw err;
+                if(!user){
+                    res.json({success: false, message: "User not found and updated..."}); 
+                }else{
+                    res.json({success: true, message: "User found and updated...", user: user});
+                }
+
+
+            })
+        }
+
+    })
+    /*
+    User.findOneAndUpdate({username: req.params.user},{$pull:{shoppingbag: req.params.index}}, {new:true}, function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({sucess:true, message: "User not so not updated..."});
+        }else{
+
+            res.json({success: true, message: "Successfully updated...", user: user});
+        }
+
+
+
+    })
+    */
+
+
+});
 app.put('/api/removeoneitem/:user/:index',function(req,res){
 
     console.log(req.params.user, req.params.index);
@@ -712,11 +808,11 @@ app.put('/api/removeoneitem/:user/:index',function(req,res){
         }else{
 
             var shoppingbag = shoppingbag;
-            console.log(shoppingbag.shoppingbag[req.params.index]);
-            shoppingbag.shoppingbag.splice(req.params.index,1);
+            console.log(shoppingbag.shoppingbag[req.params.index].amt--);
+            //shoppingbag.shoppingbag.splice(req.params.index,1);
             console.log(shoppingbag.shoppingbag);
             //res.json({success: true, ""})
-            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag}}, {new:true}, function(err, user){
+            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag[req.params.index]}}, {new:true}, function(err, user){
 
                 if(err) throw err;
                 if(!user){
@@ -747,6 +843,26 @@ app.put('/api/clearhearts/:user',function(req,res){
 
     });
 
+
+});
+app.put('/api/removeonelove/:username/:shoename',function(req,res){
+
+    var shoename = req.params.shoename;
+    var username = req.params.username;
+    console.log(req.params.username)
+        User.findOneAndUpdate({username: req.params.username}, {$pull:{loves:req.params.shoename}}, {new:true},function(err, user){
+
+            if(err) throw err;
+            if(!user){
+
+                    res.json({success: false, message: "User not found, so not updated..."});
+            }else{
+
+                res.json({success: true, message: "User found...updated?", user:user});
+
+            }
+
+        });
 
 });
 app.post('/api/stripecheckout', function(req,res){
@@ -976,7 +1092,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
 
                    }else{
                        
-                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '5m'});
+                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '1hr'});
                        res.json({success: true, message:'User authenticated', token: token});
                    }
 

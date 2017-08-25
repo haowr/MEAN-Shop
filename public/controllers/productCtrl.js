@@ -89,18 +89,6 @@ function getPages() {
             });
  };
         getPages();
-/*
-function getAllShoes() {
-        Shop.getAllShoes().then(function(data){
-            console.log(data.data.allshoes);
-            console.log(data.data.message);
-            $scope.allShoes = data.data.allshoes;
-            console.log($scope.allShoes);
-        });
-
-};
-        getAllShoes();
-*/
 
    $scope.heartAdderShop=function(shoename,shoeindex){
 

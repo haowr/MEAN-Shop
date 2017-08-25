@@ -10,10 +10,9 @@
             </div>
             <div class = "col-sm-12 details">
             </div>
-            <div class = "col-sm-12 pull-left">
-                <a href="#"><p>continue-shopping</p></a>
-            </div>
+
             <div class = "col-sm-8 shoppingbagtitle">
+                <a href="#"><p>continue-shopping</p></a>
                 <h3>Shopping Bag</h3>
                
                 <p>Need help<i class="fa fa-question" aria-hidden="true"></i></p>
@@ -41,14 +40,15 @@
                       <h3><p>Checkout</p></h3>
                   </div>
                   <div class ="col-sm-4 ">
-                    <h3><p>Order Summary:&nbsp{{orderItems}} items</p><h3>
+                    <h3>Order Summary:</h3><p>{{orderItems}} items</p>
                   </div>
               </div>
               <div class = "row">
 
                   <div class = "col-sm-12 details">
                                   <div class = "row">
-                    <div ng-show="useBillingAddressSelected" class = "col-sm-12 wouldyouliketouse">
+                    <div ng-show="useBillingAddressSelected" class = "col-sm-8 wouldyouliketouse">
+                        <br> <!-- col-sm-12 -->
                         <h4>Would you like to ship to this address, as well?</h4>
                         <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submit">No!</button>
                     </div>
@@ -70,7 +70,7 @@
 
               <br>
               <div class = "row">
-                  
+<div ng-show="!checkoutPhase" class = "col-sm-8"></div>
 <div ng-show="checkoutPhase"class = "col-sm-8 formstyling">
                       <form name = "checkoutForm" ng-submit = "checkOutFunc(checkoutFormData, checkoutForm.$valid);" novalidate>
                       <div class="form-group countryselectsizing ">
@@ -257,7 +257,6 @@
                     </div>
                     
                     <button class ="btn btn-submit"type="submit">Continue</button>
-                    {{checkoutForm.$valid}}
                         </form>
                     </div>
                     
@@ -462,18 +461,19 @@
                                 <div class="col-sm-4 ordersummarystyling">
                                     
                                     {{shoe.name}}:
-                                    <br>
-                                     Size:{{shoe.size}}
-                                     <br>
-                                    Qty:{{shoe.amt}}
-                                    <br>
-                                     Price:{{shoe.price |currency}}
+                                    
+                                     Size: {{shoe.size}}
+                                     
+                                     
+                                    Qty: {{shoe.amt}}
+                                    
+                                     Price: {{shoe.price |currency}}
                                     
                                 </div>
                                 <div class="col-sm-4 ordersummarystyling">
                                     
                            
-                                    <strong> Total:{{shoe.invTotal |currency}}</strong>
+                                    <!-- Total:{{shoe.invTotal |currency}}-->
                                     
                                 </div>
 

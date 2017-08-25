@@ -159,17 +159,7 @@ var $section = $('.mainshoeview');
                                 console.log(data.data.message);
                                 console.log(data.data.charge);
                                 if(data.data.success == true){
-                                    Auth.getUser().then(function(data){
-                                            console.log(data.data);
-                                            User.clearShoppingBag(data.data.username).then(function(data){
 
-                                                console.log(data.data);
-                                                //$rootScope.cartItems = data.data.user.shoppingbag;
-
-                                            });
-
-
-                                    })
                                     
                                         Shop.checkout(checkoutData).then(function(data){
 
@@ -197,13 +187,20 @@ var $section = $('.mainshoeview');
 
                                                             if(data.data.success){
                                                                 $window.localStorage.removeItem('checkoutArrayy');
+                                                        User.clearShoppingBag(data.data.username).then(function(data){
+
+                                                        console.log(data.data);
+                                                //$rootScope.cartItems = data.data.user.shoppingbag;
+
+                                                        });
+
                                                                 User.sendEmail(checkoutData[0].email).then(function(data){
 
-                                                                console.log(data.data.message);
+                                                                        console.log(data.data.message);
 
-                                                            });
+                                                                });
                                                                 $timeout(function(){
-                                                                        $location.path('/profile');
+                                                                        $location.path('/shop/orderconfirmation');
 
                                                                 },2000);
                                                                 
@@ -230,8 +227,9 @@ var $section = $('.mainshoeview');
                                             User.sendEmail(checkoutData[0].email).then(function(data){
                                                     console.log(data.data.message);
                                                     $window.localStorage.removeItem('checkoutArrayy');
+                                                   // $window.localStorage.setItem('checkoutArray',JSON.stringify([]));
                                                      $timeout(function(){
-                                                                        $location.path('/home');
+                                                                        $location.path('/shop/orderconfirmation');
 
                                                         },2000);
                                                     

@@ -17,6 +17,7 @@ Shop.getMensShoe()
  $scope.currentUser;
 $scope.orders =[];
 $scope.loves=[];
+$scope.lovesLength;
 $scope.loveObjectArray = [];
 $scope.loveObjects= [];
 $scope.allShoes;
@@ -37,6 +38,9 @@ $scope.allShoes;
             console.log(data.data.user);
             console.log(data.data.user.loves);
             $scope.loves = data.data.user.loves;
+            $scope.lovesLength = $scope.loves.length;
+            console.log($scope.loves);
+            console.log($scope.lovesLength)
             $scope.user = data.data.user;
             Shop.getAllShoes().then(function(data){
 
@@ -96,9 +100,30 @@ $scope.allShoes;
             
 
         }
+        console.log($scope.orders);
         
 
     });
+    $scope.removeOneLove = function(index){
+
+       
+
+        User.removeLove($scope.currentUser,$scope.loveObjectArray[index].name).then(function(data){
+           console.log($scope.currentUser);
+            console.log(data.data);
+                    Shop.decrementHearts($scope.loveObjectArray[index].name).then(function(data){
+
+            console.log(data.data);
+             $scope.loveObjectArray.splice($scope.loveObjectArray[index],1);
+             $rootScope.heartss = $scope.loveObjectArray.length;
+
+        })
+
+
+        })
+
+
+    }
     $scope.clearLoves = function(){
         console.log($scope.currentUser);
         User.clearHearts($scope.currentUser).then(function(data){
@@ -107,6 +132,7 @@ $scope.allShoes;
                 $rootScope.heartss = data.data.user.loves.length;
                  $scope.loveObjectArray= data.data.user.loves;
                  $rootScope.heartactivated = false;
+                 //Shop.decrementHeartsBy()
             
 
         })

@@ -34,6 +34,7 @@
     $scope.loadme = false;
     //$scope.open = false;
     $scope.amt = 0;
+    $scope.noQty = false;
     $scope.newHeartValue=false;
     $scope.zoomValue =0;
     //$rootScope.heartActivated= false;
@@ -43,6 +44,7 @@
     $scope.removeCookieHeart = 0;
    // $scope.totalHearts;
     $scope.myLovesEach=[];
+    
     $scope.checkout={};
     $scope.checkoutArray=[];
     $scope.newAdminProducts=[];
@@ -56,17 +58,23 @@
             console.log(data.data.username);
             $scope.currentUser = data.data.username;
             User.getUserProfile(data.data.username).then(function(data){
-
-                $rootScope.heartss = data.data.user.loves.length;
+                console.log(data.data.user.loves.length);
+            
+                var unique = data.data.user.loves.filter(function(elem, index, self) {
+                    return index == self.indexOf(elem);
+                });
+                 $rootScope.heartss = unique.length;
                 User.findLove($scope.currentUser,$routeParams.name).then(function(data){
 
                     console.log(data.data.success);
                     if(data.data.success){
 
                         $rootScope.heartactivated = true;
+                        $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart);
                         console.log($rootScope.heartactivated);
                     }else{
                         $rootScope.heartactivated = false;
+                        $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
                         console.log($rootScope.heartactivated);
                     }
 
@@ -107,9 +115,57 @@
         console.log($scope.mensShoe.hearts);
         console.log($scope.mensShoe.heartactivated);
     });
+
     $scope.checkoutFunc= function(){
-        console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
-        if(Auth.isLoggedIn()){
+       // console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
+       if($scope.amt == 0){
+
+            $scope.noQty=true;
+
+       }
+       if($scope.amt !== 0 ){
+
+             
+        console.log($scope.checkoutArray);
+        $scope.shoppingCartNumber++
+        $scope.checkout.name = $routeParams.name;
+        $scope.checkout.size =  $scope.size;
+        $scope.checkout.amt = $scope.amt;
+        $scope.checkout.price = $scope.mensShoe.price+".00";
+        $scope.checkout.description = $scope.mensShoe.description;
+        $scope.checkout.available= $scope.mensShoe.available;
+        $scope.checkout.image= $scope.mensShoe.perspectives[1];
+
+
+
+       
+        $scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
+        $scope.checkoutArray.push($scope.checkout);
+        console.log($scope.checkoutArray);
+        $rootScope.cartItems = $scope.checkoutArray.length;
+        $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
+
+       //////  var unique = $rootScope.myLoves.filter(function(elem, index, self) {
+       ///     return index == self.indexOf(elem);
+        //});
+       // $rootScope.myLoves = unique;
+        /*Shop.addToCheckout($scope.checkout).then(function(data){
+
+            console.log(data.data.message);
+            console.log(data.data);
+
+        });
+        */
+        console.log("button pressed");
+        console.log($scope.size);
+        console.log($scope.amt);
+        console.log($scope.mensShoe.name);
+        console.log($routeParams.name);
+        console.log($scope.mensShoe.price+".00");
+        $window.localStorage.setItem('shoppingCartNumber',$routeParams.name);
+
+       }
+        if(Auth.isLoggedIn() && $scope.amt !== 0){
 
             Auth.getUser().then(function(data){
 
@@ -145,9 +201,20 @@
 
 
 
-        }
-        if(JSON.parse($window.localStorage.getItem('checkoutArray'))!== null){
+    }
+        //if($window.localStorage.getItem('checkoutArray') === null || $window.localStorage.getItem('checkoutArray') !== "" ){
+
+
+           // console.log("Not Null!");
+            //$scope.checkoutArray = [];
+            //$window.localStorage.setItem('checkoutArray', $scope.checkoutArray);
+
+       // }//COME BACK AND CHECK FOR ERRORS
+       /* if(JSON.parse($window.localStorage.getItem('checkoutArray'))!== null){ //JSON.parse($window.localStorage.getItem('checkoutArray'))
+            console.log($window.localStorage.getItem('checkoutArray'));
             $scope.checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
+            $rootScope.cartItems = $scope.checkoutArray.length;
+            console.log($scope.checkoutArray.length);
                    for(var i =0; i< $scope.checkoutArray.length; i++){
             console.log($scope.checkoutArray[i].name );
            // console.log($routeParams.name);
@@ -158,42 +225,8 @@
 
         }
         }
-        
- 
-        console.log($scope.checkoutArray);
-        $scope.shoppingCartNumber++
-        $scope.checkout.name = $routeParams.name;
-        $scope.checkout.size =  $scope.size;
-        $scope.checkout.amt = $scope.amt;
-        $scope.checkout.price = $scope.mensShoe.price+".00";
-        $scope.checkout.description = $scope.mensShoe.description;
-        $scope.checkout.available= $scope.mensShoe.available;
-        $scope.checkout.image= $scope.mensShoe.perspectives[1];
-
-
-
-        console.log($scope.checkout);
-       $scope.checkoutArray.push($scope.checkout);
-        $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
-
-       //////  var unique = $rootScope.myLoves.filter(function(elem, index, self) {
-       ///     return index == self.indexOf(elem);
-        //});
-       // $rootScope.myLoves = unique;
-        /*Shop.addToCheckout($scope.checkout).then(function(data){
-
-            console.log(data.data.message);
-            console.log(data.data);
-
-        });
         */
-        console.log("button pressed");
-        console.log($scope.size);
-        console.log($scope.amt);
-        console.log($scope.mensShoe.name);
-        console.log($routeParams.name);
-        console.log($scope.mensShoe.price+".00");
-        $window.localStorage.setItem('shoppingCartNumber',$routeParams.name);
+
 
     };
    /* Heart.isActivated($routeParams).then(function(data){
@@ -289,6 +322,20 @@
 
               if($window.localStorage.getItem('myLoves')!= null && $window.localStorage.getItem('cookieHearts') <=1 ){ // IF THE 'myLoves' ARRAY IN LOCAL STORAGE EXISTS AND THE VALUE OF COOKIE HEARTS IS LESS THEN TWO..THIS ONLY WORKS IF THERE IS TWO ITEMS THOUGH. SO WILL NEED TO CHANGE.
 
+                     if(Auth.isLoggedIn() && $rootScope.heartactivated){ //THE USER IS LOGGED IN...
+                                               // "usernamey" IS THE USERNAME OF THE LOGGED IN USER WHICH IS RETRIEVED DURING THE EXECUTION OF MAINCTRL. AUTH.getUser()
+                                 User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
+                                    console.log(data.data.message); 
+                                    console.log(data.data);
+                                                
+                                     var unique = data.data.user.loves.filter(function(elem, index, self) {
+                                            return index == self.indexOf(elem);
+                                     });
+                                     $rootScope.heartss = unique.length;
+                                    //$rootScope.heartss= data.data.user.loves.length;
+                                 });
+                                            //RIGHT NOW THERE IS NO 'User.removeLove()' SERVICE FOR REMOVING OR DEACTIVATING HEART...
+                            }
 
                     $rootScope.myLoves.push($window.localStorage.getItem('myLoves')); //SINCE THE LS'myLoves' ARRAY ISN'T NULL. PULL IT DOWN AND ADD IT TO LOCAL 'myLoves' ARRAY...
                     $window.localStorage.removeItem('myLoves');                       // REMOVE THE 'myLoves' ARRAY COMPLETELY FROM THE LOCAL STORAGE...
@@ -311,11 +358,17 @@
                         });
                 
 
-                            if(Auth.isLoggedIn()){ // IF THE USER IS LOGGED IN...
+                            if(Auth.isLoggedIn() && $rootScope.heartactivated){ //THE USER IS LOGGED IN...
                                                // "usernamey" IS THE USERNAME OF THE LOGGED IN USER WHICH IS RETRIEVED DURING THE EXECUTION OF MAINCTRL. AUTH.getUser()
                                  User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
                                     console.log(data.data.message); 
                                     console.log(data.data);
+                                                
+                                    var unique = data.data.user.loves.filter(function(elem, index, self) {
+                                         return index == self.indexOf(elem);
+                                    });
+                                     $rootScope.heartss = unique.length;
+
                                  });
                                             //RIGHT NOW THERE IS NO 'User.removeLove()' SERVICE FOR REMOVING OR DEACTIVATING HEART...
                             }
@@ -384,11 +437,16 @@
                         });
                 
 
-                            if(Auth.isLoggedIn()){
+                            if(Auth.isLoggedIn() && $rootScope.heartactivated){
 
                                      User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
                                                 console.log(data.data.message);
                                                 console.log(data.data);
+                                                            
+                                                var unique = data.data.user.loves.filter(function(elem, index, self) {
+                                                    return index == self.indexOf(elem);
+                                                    });
+                                                 $rootScope.heartss = unique.length;
                                      });
                             }
 
@@ -446,11 +504,17 @@
                 console.log($rootScope.myLovesStringSplit);
                 $window.localStorage.setItem('myLoves',$rootScope.myLovesStringSplit);                            // SETS LOCALSTORAGE 'myLoves' TO 'myLovesStringSplit' ARRAY... (MYLOVES MINUS STORE ITEM...)
 
-                     if(Auth.isLoggedIn()){                      //IF USER IS LOGGED IN...
-
+                     if(Auth.isLoggedIn()){
+                                               //IF USER IS LOGGED IN...
+                             console.log("User.removeLove");
                              User.removeLove($routeParams.name,$rootScope.usernamey).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
                                     console.log(data.data.message);
-                                    console.log(data.data);
+                                    console.log(data.data.user.loves.length);
+                                               
+                                     var unique = data.data.user.loves.filter(function(elem, index, self) {
+                                             return index == self.indexOf(elem);
+                                        });
+                                        $rootScope.heartss = unique.length;
                              });
                         }
 
@@ -538,10 +602,15 @@
                     $window.localStorage.setItem('myLoves',$rootScope.myLoves);                            // SETS LOCALSTORAGE 'myLoves' TO 'myLovesStringSplit' ARRAY... (MYLOVES MINUS STORE ITEM...)
 
                      if(Auth.isLoggedIn()){                      //IF USER IS LOGGED IN...
-
+                            console.log("User.removeLove");
                              User.removeLove($routeParams.name,$rootScope.usernamey).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
                                     console.log(data.data.message);
                                     console.log(data.data);
+                                               
+                                    var unique = data.data.user.loves.filter(function(elem, index, self) {
+                                            return index == self.indexOf(elem);
+                                     });
+                                     $rootScope.heartss = unique.length;
                              });
                     }
 
@@ -658,7 +727,7 @@
                        Heart.getHearts().then(function(data){
         console.log("getHearts has run...");
         console.log(data.data.hearts[0].hearts);
-        $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
+                                                                         // $rootScope.heartss =$window.localStorage.getItem('cookieHearts');
        // $window.localStorage.setItem('cookieHearts',$rootScope.heartss);
        // $scope.loading = false;
     });
@@ -682,7 +751,7 @@
                 Heart.getHearts().then(function(data){
         console.log("getHearts has run...");
         console.log(data.data.hearts[0].hearts);
-        $rootScope.heartss = $window.localStorage.getItem('cookieHearts');
+                                                                     //overriding isLoggedIn heartss getter   //$rootScope.heartss = $window.localStorage.getItem('cookieHearts');
        // $window.localStorage.setItem('cookieHearts',$rootScope.heartss);
         
        // $scope.loading = false;

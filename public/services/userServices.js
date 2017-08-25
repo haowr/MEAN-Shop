@@ -202,9 +202,25 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/removeoneitem/'+user+'/'+index);
 
   }
+  userFactory.addOneItem = function(user,index){
+
+    return $http.put('/api/addoneitem/'+user+'/'+index);
+
+  }
+  userFactory.pullOneItem =function(user, index){
+
+
+    return $http.put('/api/pulloneitem/'+user+'/'+index);
+
+  }
   userFactory.clearHearts = function(user){
 
     return $http.put('/api/clearhearts/'+user);
+
+  }
+  userFactory.removeLove = function(username, shoename){
+
+    return $http.put('/api/removeonelove/'+username+'/'+shoename);
 
   }
 

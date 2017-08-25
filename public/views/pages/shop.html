@@ -44,15 +44,11 @@
 
         <div class = "landing " ng-repeat="shoe in shoes | orderBy: order track by $index " >
             <h1 class = "pull-left"> {{shoe.name}}</h1>
-            <h1 class = "pull-right">{{shoe.price}}</h1>
+            <h1 class = "pull-right">{{shoe.price | currency}}</h1>
             <br>
-            <h1 class = "pull-right"> {{shoe.hearts}}</h1>
+            <h1 > {{shoe.hearts}}</h1>
             <br>
-            <div class = "pull-right">
-            <!--<i ng-show="!shoe.heartactivated"class="fa fa-heart-o" ng-click="heartAdderShop(shoe.name,$index)" aria-hidden="true"></i>
-            <i ng-show="shoe.heartactivated"class="fa fa-heart"  ng-click="heartSubtractorShop(shoe.name,$index)"aria-hidden="true"></i>
-            -->
-            </div>
+
             <landing-gallery></landing-gallery>
             
            <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
