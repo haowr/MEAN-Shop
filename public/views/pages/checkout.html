@@ -1,5 +1,4 @@
 
-
 <div class = "container container-fluid">
 
        <div class = "row">
@@ -14,13 +13,13 @@
             <div class = "col-sm-8 shoppingbagtitle">
                 <a href="#"><p>continue-shopping</p></a>
                 <h3>Shopping Bag</h3>
-               
                 <p>Need help<i class="fa fa-question" aria-hidden="true"></i></p>
-                
                 <p>No?</p>
+
                 <button ng-click="startCheckoutFunc();"class = "btn btn-submit">Begin Checkout</button>
-                </div>
-                <div class = "col-sm-4"> 
+            </div>
+            
+            <div class = "col-sm-4"> 
             </div>
             
               
@@ -40,7 +39,10 @@
                       <h3><p>Checkout</p></h3>
                   </div>
                   <div class ="col-sm-4 ">
-                    <h3>Order Summary:</h3><p>{{orderItems}} items</p>
+                    <h3>Order Summary:</h3> <p><ng-pluralize count="orderItems" when="{'one': 'item.',
+                                                                                    'other': '{} orders.'}">
+                                                                                    </ng-pluralize></p>
+
                   </div>
               </div>
               <div class = "row">
@@ -458,7 +460,7 @@
                                     <img class="img-responsive" ng-src="{{shoe.image}}">
                                 
                                 </div>
-                                <div class="col-sm-4 ordersummarystyling">
+                                <div class="col-sm-8 ordersummarystyling">
                                     
                                     {{shoe.name}}:
                                     
@@ -470,17 +472,13 @@
                                      Price: {{shoe.price |currency}}
                                     
                                 </div>
-                                <div class="col-sm-4 ordersummarystyling">
-                                    
-                           
-                                    <!-- Total:{{shoe.invTotal |currency}}-->
-                                    
-                                </div>
+
 
                             </div>
                  </div>
-
+                 
                  <div ng-show="showGrandTotal"class = "col-sm-12 pull-left grandtotalstyling" ng-cloak>
+                     <br>
                      <h3>Grand Total: </h3><h4><p>{{totalAfterTax | currency}}</p></h4>
                  </div>
                                 <br>
@@ -500,29 +498,31 @@
                   
  
                   
-           
-
-        <div ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase ||creditCardDataAdded"class ="col-sm-2 billingaddressstyling">
+           <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase ||creditCardDataAdded"-->
+           <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase||creditCardDataAdded"-->
+            
+        <div class ="col-sm-6 billingaddressstyling">
+            <br>
                     <h3>Billing Address:<h3>
-                     <p class = "billingaddressstylingp">First Name: {{checkoutDataa[0].firstname}}</p>
-                     <p class = "billingaddressstylingp">Last Name: {{checkoutDataa[0].lastname}}</p>
-                     <p class = "billingaddressstylingp">Street Address: {{checkoutDataa[0].streetaddress}}</p>
-                     <p class = "billingaddressstylingp">Apt: {{checkoutDataa[0].apt}}</p>
-                     <p class = "billingaddressstylingp">City: {{checkoutDataa[0].city}}</p>
-                     <p class = "billingaddressstylingp">Province: {{checkoutDataa[0].province}}</p>
-                     <p class = "billingaddressstylingp">Postal Code: {{checkoutDataa[0].postalcode}}</p>
-                     <p class = "billingaddressstylingp">Phone Number: {{checkoutDataa[0].phonenumber}}</p>
+                     <p class = "billingaddressstylingp"><strong>First Name:</strong> {{checkoutDataa[0].firstname}}</p>
+                     <p class = "billingaddressstylingp"><strong>Last Name:</strong> {{checkoutDataa[0].lastname}}</p>
+                     <p class = "billingaddressstylingp"><strong>Street Address:</strong> {{checkoutDataa[0].streetaddress}}</p>
+                     <p class = "billingaddressstylingp"><strong>Apt:</strong> {{checkoutDataa[0].apt}}</p>
+                     <p class = "billingaddressstylingp"><strong>City:</strong> {{checkoutDataa[0].city}}</p>
+                     <p class = "billingaddressstylingp"><strong>Province:</strong> {{checkoutDataa[0].province}}</p>
+                     <p class = "billingaddressstylingp"><strong>Postal Code:</strong> {{checkoutDataa[0].postalcode}}</p>
+                     <p class = "billingaddressstylingp"><strong>Phone Number:</strong> {{checkoutDataa[0].phonenumber}}</p>
                     </div>
-                        <div ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase||creditCardDataAdded"class ="col-sm-2 billingaddressstyling">
+                        <div class ="col-sm-6 billingaddressstyling">
                     <h3>Shipping Address:<h3>
-                     <p class = "billingaddressstylingp">First Name: {{shippingFormDataa[0].firstname}}</p>
-                     <p class = "billingaddressstylingp">Last Name: {{shippingFormDataa[0].lastname}}</p>
-                     <p class = "billingaddressstylingp">Street Address: {{shippingFormDataa[0].streetaddress}}</p>
-                     <p class = "billingaddressstylingp">Apt: {{shippingFormDataa[0].apt}}</p>
-                     <p class = "billingaddressstylingp">City: {{shippingFormDataa[0].city}}</p>
-                     <p class = "billingaddressstylingp">Province: {{shippingFormDataa[0].province}}</p>
-                     <p class = "billingaddressstylingp">Postal Code: {{shippingFormDataa[0].postalcode}}</p>
-                     <p class = "billingaddressstylingp">Phone Number: {{shippingFormDataa[0].phonenumber}}</p>
+                     <p class = "billingaddressstylingp"><strong>First Name:</strong> {{shippingFormDataa[0].firstname}}</p>
+                     <p class = "billingaddressstylingp"><strong>Last Name:</strong> {{shippingFormDataa[0].lastname}}</p>
+                     <p class = "billingaddressstylingp"><strong>Street Address:</strong> {{shippingFormDataa[0].streetaddress}}</p>
+                     <p class = "billingaddressstylingp"><strong>Apt:</strong> {{shippingFormDataa[0].apt}}</p>
+                     <p class = "billingaddressstylingp"><strong>City:</strong> {{shippingFormDataa[0].city}}</p>
+                     <p class = "billingaddressstylingp"><strong>Province:</strong> {{shippingFormDataa[0].province}}</p>
+                     <p class = "billingaddressstylingp"><strong>Postal Code:</strong> {{shippingFormDataa[0].postalcode}}</p>
+                     <p class = "billingaddressstylingp"><strong>Phone Number:</strong> {{shippingFormDataa[0].phonenumber}}</p>
                     </div>
 
                    

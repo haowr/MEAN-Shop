@@ -71,7 +71,7 @@
 
     Shop.getAllShoes().then(function(data){
 
-        console.log(data.data.allshoes);
+         console.log(data.data.allshoes);
          console.log(data.data.allshoes[0].perspectives[1]);
 
        for(var i = 0; i<data.data.allshoes.length; i++){
@@ -138,9 +138,8 @@
                     });
                     $rootScope.personalMyLoves = unique;
                     console.log($rootScope.personalMyLoves);
-                 $rootScope.heartss = $rootScope.personalMyLoves.length;
-
-                $rootScope.cartItems = data.data.user.shoppingbag.length;
+                    $rootScope.heartss = $rootScope.personalMyLoves.length;
+                    $rootScope.cartItems = data.data.user.shoppingbag.length;
             })
 
           });
@@ -253,16 +252,15 @@ $rootScope.checkEmail = function(emailListData){
                     //console.log(expireTime.exp - timeStamp);
                     var timeCheck = expireTime.exp - timeStamp;
                     console.log(timeCheck);
-                    if(timeCheck < 1000 && timeCheck>0){
-                        console.log("Token has expired...");
-                       // showModal(1);
-                       // $interval.cancel(interval);
-                    }else if(timeCheck <= 0){
-                        showModal(2);
-                    
-                    }else{
-                        //console.log("Token is not yet expired...")
+                    if(timeCheck < 200 && timeCheck>0){
+                        //console.log("Token has expired...");
+                        showModal(1); // Open bootstrap modal and let user decide what to do
+                        $interval.cancel(interval); // Stop interval
                     }
+                    //else{
+                        //console.log("Token is not yet expired...")
+                      //  showModal(2);
+                    //}
                 }
             },2000);
         }
@@ -270,16 +268,27 @@ $rootScope.checkEmail = function(emailListData){
      };
      scope.checkSession();// INITIATE SESSION CHECKING....
 
+         // Function to expire session and logout (activated when user presses 'no)
+    scope.endSession = function() {
+        scope.choiceMade = true; // Set to true to stop 10-second check in option 1
+        hideModal(); // Hide modal
+        // After 1 second, activate modal option 2 (log out)
+        $timeout(function() {
+            showModal(2); // logout user
+        }, 1000);
+    };
      var  showModal= function(option){
          scope.choiceMade = false;
          scope.modalHeader = undefined;
          scope.modalBody = undefined;
          scope.hideButton = false;
          if(option === 1){
-         scope.modalHeader = "Timeout Warning";
-         scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
-        $("#myModal").modal({backdrop: "static"});
-
+                scope.modalHeader = "Timeout Warning";
+                scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
+                $("#myModal").modal({backdrop: "static"});
+                    $timeout(function() {
+                        if (!scope.choiceMade) scope.endSession(); // If no choice is made after 10 seconds, select 'no' for them
+                    }, 10000);
 
          }else if (option ===2){
          scope.hideButton=true;
@@ -300,14 +309,14 @@ $rootScope.checkEmail = function(emailListData){
          //scope.choiceMade = false;
         }
 
-        $timeout(function(){
-            if(!scope.choiceMade){
+        //$timeout(function(){
+         ////   if(!scope.choiceMade){
                 
-                hideModal();
-            }
+         //       hideModal();
+//}
 
 
-        },5000);
+       // },5000);
 
 
 

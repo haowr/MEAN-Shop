@@ -223,6 +223,11 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/removeonelove/'+username+'/'+shoename);
 
   }
+  userFactory.removeOneOrder = function(username,index){
+
+    return $http.put('/api/removeoneorder/'+username+'/'+index);
+
+  }
 
 
  return  userFactory;

@@ -18,22 +18,48 @@
         <ul class = "img-thumbnails clearfix" ng-repeat ="perspective in mensShoe.perspectives">
 
             <li ng-click = "imageChange($index);"><img ng-src="{{perspective}}"></li>
-            <br>
+            
             
         </ul>
 
         <!--<landing-gallery></landing-gallery>-->
     </div>
-    <div gallery-zoom class = "col-sm-7 mainshoeview " >
-    <div class = "zoomers pull-right">  
-            <i class="fa fa-plus mainshoeviewzoom" ng-click = "zoom();" aria-hidden="true"></i>
-            <i class="fa fa-minus" ng-click = "shippingDetails();"aria-hidden="true"></i>
-            <br>
-    </div>
-       
-       <img   ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3} " class ="specificmainzoom"ng-src = "{{mensShoe.fullsize[imageIndex]}}">
-    </div>
+    <div id="pan-when-zoomed" class = "col-sm-7 " >
+       <i class="fa fa-plus zoom-in" aria-hidden="true"></i>
+        <i class="fa fa-minus zoom-out" aria-hidden="true"></i>
+        <i class="fa fa-refresh reset" aria-hidden="true"></i>
+                    <div  class = "thumbnails" ng-repeat ="perspective in mensShoe.perspectives">
+
+            <img ng-click = "imageChange($index);" ng-src="{{perspective}}">
+            
+            
+        </div>  
+        
+      <div class="parent">
+     
+        <div class="panzoom">
+       <img  class = "specificmainzoom img-fluid" ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3} " ng-src = "{{mensShoe.fullsize[imageIndex]}}">
+        </div>
+      </div>
     
+
+
+      
+      <script>
+        (function() {
+          var $section = $('#pan-when-zoomed');
+          $section.find('.panzoom').panzoom({
+            $zoomIn: $section.find(".zoom-in"),
+            $zoomOut: $section.find(".zoom-out"),
+            $zoomRange: $section.find(".zoom-range"),
+            $reset: $section.find(".reset"),
+            panOnlyWhenZoomed: true,
+            minScale: 1
+          });
+        })();
+      </script>
+    
+    </div>
     <div class = "col-sm-3 shoespecs">
         <div class ="header">
             
@@ -41,14 +67,13 @@
             <p>{{mensShoe.description}}</p>
             <h3>Price</h3>
             <p>{{mensShoe.price | currency}}</p>
-            <p>{{mensShoe.hearts}}</p>
             <div class ="sizer">
                <p>Size: {{size}}</p>
             </div>
             <div class ="sizer">
                <p>Qty: {{amt}} </p>
-              <heart-adder></heart-adder>
-              
+               <p ng-show ="noQty">Please Enter An Amount</p>
+              <heart-adder></heart-adder><p>{{totalHearts}} </p>
             </div>
                             <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
             
@@ -56,43 +81,53 @@
             <div class = " pull-left sizeselector">
         
             
-            <form name= "checkoutForm" ng-submit="checkoutFunc(checkout);" class = "btn-group">
+
+         
+            
+            <div class = "btn-group" role= "group">
+                <button type ="button" class = "btn btn-primary">Qty&nbsp</button>
+                <div class = "btn-group" role= "group">
+                <button  id="btnGroupDrop1" type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" >
+                   <!-- <span class = "caret"></span>-->
+                    Toggle Dropdown
+                </button>
+                <div class = "dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class ="dropdown-item" href="#" ng-click = "changeQty('1');">1</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('2');">2</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('3');">3</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('4');">4</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('5');">5</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('6');">6</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('7');">7</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('8');">8</a>
+                    <a class ="dropdown-item"  href="#" ng-click = "changeQty('9');">9</a>
+           
+                </div>
+                </div>
+            </div>
+                        <form name= "checkoutForm" ng-submit="checkoutFunc(checkout);" class = "btn-group">
                 <button type ="button" class = "btn btn-primary">Size</button>
+                <br>
                 <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
                 </button>
                 
                 <ul class = "dropdown-menu">
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('S');">S</a></li>
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('M');">M</a></li>
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('L');">L</a></li>
+                    <li ng-model="checkout.size"ng-click = "changeSize('S');">S</li>
+                    <li ng-model="checkout.size"ng-click = "changeSize('M');">M</li>
+                    <li ng-model="checkout.size"ng-click = "changeSize('L');">L</li>
            
                 </ul>
                 <br>
                 <br>
-                 <button type ="submit" class = "btn btn-submit" >Submit</button>
+                 <button type ="submit" class = "btn btn-primary" >Submit</button>
             </form>
-            &nbsp
-            <br>
-            <div class = "btn-group">
-                <button type ="button" class = "btn btn-primary">Qty&nbsp</button>
-                <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   <!-- <span class = "caret"></span>-->
-                    <span class = "sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class = "dropdown-menu">
-                    <li><a href="#" ng-click = "changeQty('1');">1</a></li>
-                    <li><a href="#" ng-click = "changeQty('2');">2</a></li>
-                    <li><a href="#" ng-click = "changeQty('3');">3</a></li>
-                    <li><a href="#" ng-click = "changeQty('4');">4</a></li>
-                    <li><a href="#" ng-click = "changeQty('5');">5</a></li>
-                    <li><a href="#" ng-click = "changeQty('6');">6</a></li>
-                    <li><a href="#" ng-click = "changeQty('7');">7</a></li>
-                    <li><a href="#" ng-click = "changeQty('8');">8</a></li>
-                    <li><a href="#" ng-click = "changeQty('9');">9</a></li>
-           
-                </ul>
+                        <div class = "row">
+                <div class = "col-sm-12">
+                    <p></p>
+                    <p  class="addToCart"ng-show="addedToCart"><strong>({{itemAddedToCart}}) </strong> Successfully added to your cart!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -146,7 +181,7 @@
     <div class = "col-sm-3 sitemap">
         
         <ul>
-            <li><a href = "#"><p>Faq</p></a></li>
+            <li><a href = "/faq"><p>Faq</p></a></li>
             <li><a href = "#"><p>Order Tracking</p></a></li>
             <li><a href = "#"><p>Return Policy</p></a></li>
             <li><a href = "#"><p>Shoe Chart Size</p></a></li>

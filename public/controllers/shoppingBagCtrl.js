@@ -31,11 +31,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
         console.log(couponCode.code);
         $scope.grandTotal=0;
         if(couponCode.code == "ping"){
-
+            $scope.total = $scope.oldtotal;
             $scope.oldtotal = $scope.oldtotal - ($scope.oldtotal *0.1);
             User.addTotalToUser($scope.currentUser,$scope.oldtotal).then(function(data){
                 console.log(data.data.user.totalaftercoupon);
-                $scope.total = data.data.user.totalaftercoupon;
+                
                 $scope.oldtotal = data.data.user.totalaftercoupon;
                 $scope.totalaftercoupon = true;
                 couponCode.code = "...";
@@ -246,14 +246,29 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     }
     $scope.removeOneItem = function(index){
         console.log(index);
-        User.pullOneItem($scope.currentUser,index).then(function(data){
+        if(Auth.isLoggedIn()){
+
+            User.pullOneItem($scope.currentUser,index).then(function(data){
 
             console.log(data.data.user.shoppingbag);
             $scope.shoppingBagShoes = data.data.user.shoppingbag;
             $rootScope.cartItems = $scope.shoppingBagShoes.length;
 
 
-        })
+            })
+
+
+        }else{
+            $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+            console.log($scope.shoppingBagShoes);
+            $scope.shoppingBagShoes.splice($scope.shoppingBagShoes[index],1);
+            console.log($scope.shoppingBagShoes);
+            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+            $rootScope.cartItems = $scope.shoppingBagShoes.length;
+
+
+        }
+
 
     }
     $scope.chooseShipping= function(number){

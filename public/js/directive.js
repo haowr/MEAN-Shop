@@ -210,15 +210,7 @@ var $section = $('.mainshoeview');
                                                         })
 
                                                         })
-                                                        //checkoutData[4] = JSON.parse($window.localStorage.getItem('checkoutArrayy'));
-                                                       // for(var i =0; i<checkoutArray.length; i++){
-                                                       //        order{
-                                                       //            i: checkoutArray[i]
-//
-                                                        //}
-                                                        //console.log(order);
-                                                        //checkoutData[4]=order;
-                                                        
+                      
 
                                                 })
 

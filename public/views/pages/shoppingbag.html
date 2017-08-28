@@ -8,7 +8,7 @@
             <div class = "col-sm-12 details">
             </div>
             <div class = "col-sm-12 pull-left">
-                <a href="/shop"><p>continue-shopping</p></a>
+                <!--<a href="/shop"><p>continue-shopping</p></a>-->
             </div>
             <div class = "col-sm-8 shoppingbagtitle">
                 <h3>Shopping Bag</h3>
@@ -16,10 +16,9 @@
                 <div class ="pull-left">
                 <p>Need help?</p>
                 <p> Please, <a href ='/faq'>Visit the FAQ</p>
-                
-                <p>No?</p>
-                <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
-                <button ng-show="shoppingBagShoes.length < 0"class = "btn btn-submit"><a href="/shop">Continue Shopping</a></button>
+
+                <!--<button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>-->
+                <button class = "btn btn-submit"><a href="/shop">Continue Shopping</a></button>
 
                 </div>
   
@@ -84,7 +83,9 @@
                      <!--<p>{{shoe.price * shoe.amt| currency}}</p>-->
                 </div>
             </div>
+            <br>
             <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length >0 ">
+                <br>
                 <div class ="col-sm-12">
                     <button ng-show="shoppingBagShoes.length > 0" ng-click ="clearShoppingBag();"class = "btn btn-submit"> Clear Cart</button>
 
@@ -130,11 +131,11 @@
                     <div class = "col-sm-4 pull-left">
                         <p>Merchandise:<p>
                     </div>
-                    <div ng-show="totalaftercoupon"class = "col-sm-8 pull-right">
+                    <div class = "col-sm-4 pull-right">
                         <p>{{total|currency}}</p>
                     </div>
-                     <div ng-show="!totalaftercoupon"class = "col-sm-8 pull-right">
-                        <p>{{oldtotal|currency}}</p>
+                     <div class = "col-sm-4 pull-right">
+                        <p>Total before  Coupon Code: {{oldtotal|currency}}!</p>
                     </div>
                     
                     <div class = "col-sm-4 pull-left">
@@ -165,7 +166,7 @@
                 </div>
                 <div class = "row">
                     <div class = "col-sm-12">
-                        <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>
+                        <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit" ng-click = "shop/checkout">Begin Checkout</button>
                     </div>
                 </div>
                 <br>

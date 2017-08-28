@@ -124,6 +124,18 @@ $scope.allShoes;
 
 
     }
+    $scope.removeOrder = function(index){
+
+        console.log($scope.currentUser);
+        User.removeOneOrder($scope.currentUser,index).then(function(data){
+
+            console.log(data.data);
+            $scope.orders = data.data.order.orders;
+
+
+        })
+
+    }
     $scope.clearLoves = function(){
         console.log($scope.currentUser);
         User.clearHearts($scope.currentUser).then(function(data){

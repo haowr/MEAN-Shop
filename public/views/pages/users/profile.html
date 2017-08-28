@@ -1,3 +1,4 @@
+
 <div class = "page-header">
     <h1>Hello ({{ main.username }})</h1>
 </div>
@@ -89,7 +90,7 @@
             </div>
             <div class ="col-sm-2">
                 <h3 >Qty</h3>
-                <p > <br>{{order.amt}}</p>
+                <p > {{order.amt}}</p>
             </div>
             <div  class ="col-sm-2">
                 <h3 >Price</h3>
@@ -101,9 +102,11 @@
             </div>
                         <div class ="col-sm-2">
                 <h3>Total</h3>
-                <p > {{order.price | currency}}</p>
+                <button ng-click = "removeOrder($index);"class = "btn btn-submit">Remove</button>
             </div>
         </div></center>
+        <br>
+        <br>
         
     </div>
     <div class = "col-sm-6">

@@ -394,6 +394,38 @@ app.put('/api/hearts',function(req,res){
    })
  
 });
+
+app.put('/api/removeoneorder/:username/:index', function(req,res){
+
+    User.findOne({username: req.params.username}).select('orders').exec(function(err, order){
+        if(err) throw err;
+        if(!order){
+            res.json({success: false, message:"No user, or order property found..."});
+        }else{
+            
+            var order =order.orders;
+            console.log(order);
+            console.log(req.params.index);
+            order.splice(order[req.params.index],1);
+            User.findOneAndUpdate({username: req.params.username}, {$set:{orders: order}}, {new:true}, function(err,order){
+
+                if(err) throw err;
+                if(!order){
+                    res.json({success: false, message: "User found but not updated..."});
+                }else{
+                    res.json({success:true, message: "User found and updated...", order: order});
+                }
+
+            })
+            //User.findOneAndUpdate({username: req.params.username}, )
+        }
+
+
+    })
+
+
+
+})
 app.put('/api/activatedby', function(req,res){
     console.log(req.body.name);
 
@@ -1092,7 +1124,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
 
                    }else{
                        
-                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '1hr'});
+                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '6m'});
                        res.json({success: true, message:'User authenticated', token: token});
                    }
 

@@ -383,7 +383,7 @@ width: 500px !important;
 }
 .orderhistorystyling{
 
-  border: 1px solid black;
+  border-top: 1px solid black;
 
 }
 .orderconfirmationtitlediv{
@@ -398,6 +398,11 @@ width: 500px !important;
 }
 .myprofiletitle{
   font-family: 'Bellefair';
+}
+#shopprice{
+
+  font-size: 20px;
+
 }
 .mylovesdescription{
   margin-top:40px;
@@ -421,6 +426,18 @@ width: 500px !important;
 #faqheaderstyle{
   position:absolute;
   margin-top:25px;
+
+}
+#shophearts{
+
+  position:absolute;
+  font-size: 20px;
+  margin-left: 200px;
+
+}
+#shophearticon{
+
+  font-size: 16px;
 
 }
 .fa-bolt {
@@ -623,7 +640,8 @@ border: solid 1px black;
 }
 .btn-submit, .btn-submit:hover, .btn-submit:active, .btn-psubmit:visited {
     background-color: #ffbbbc !important;
-    border-radius:0px;
+    border: 1px solid black;
+    border-radius:3px;
 }
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: white !important;
@@ -724,6 +742,19 @@ margin-top:200px;
   opacity: 0;
 }
 
+.addToCart.ng-hide{
+ opacity:0;
+}
+.addToCart.ng-hide-add,
+.addToCart.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+.thumbnails{
+
+display: inline-block;
+
+}
+
 .formstyling.ng-hide-add,
 .formstyling.ng-hide-remove {
   
@@ -805,7 +836,7 @@ opacity:0;
   width:100%
 }
 .ordersummarystyling{
-  border-bottom: 1px dashed black;
+  border-right: 1px dashed black;
 }
 .ordersummaryitem{
   height:20%;

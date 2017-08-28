@@ -13,6 +13,7 @@
     app.controller('orderConfirmationCtrl', function($window,$scope,Auth,Email,User,$rootScope){
 
         $scope.isLoggedIn= false;
+        $scope.currentUser;
         
         console.log($scope.lastOrder);
 
@@ -23,10 +24,16 @@
         Auth.getUser().then(function(data){
 
             console.log(data.data.username);
+            $scope.currentUser = data.data.username;
             User.getUserProfile(data.data.username).then(function(data){
 
                 console.log(data.data);
                 $scope.lastOrder= data.data.user.shoppingbag;
+                User.clearShoppingBag($scope.currentUser).then(function(data){
+                        console.log($scope.currentUser);
+                        $rootScope.cartItems = data.data.user.shoppingbag.length;
+                        console.log(data.data);
+                });
 
 
             });

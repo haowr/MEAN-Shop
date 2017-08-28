@@ -36,6 +36,8 @@
     $scope.amt = 0;
     $scope.noQty = false;
     $scope.newHeartValue=false;
+    $scope.addedToCart = false;
+    $scope.itemAddedToCart;
     $scope.zoomValue =0;
     //$rootScope.heartActivated= false;
     //$rootScope.heartactivated =false;
@@ -138,13 +140,39 @@
 
 
 
-       
-        $scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
-        $scope.checkoutArray.push($scope.checkout);
-        console.log($scope.checkoutArray);
-        $rootScope.cartItems = $scope.checkoutArray.length;
-        $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
+        console.log($scope.checkout);
+        if($window.localStorage.getItem('checkoutArray') != null){
 
+                 $scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
+                 $scope.checkoutArray.push($scope.checkout);
+                 console.log($scope.checkoutArray);
+                 $scope.addedToCart = true;
+                 $rootScope.cartItems = $scope.checkoutArray.length;
+                 $scope.itemAddedToCart = $routeParams.name;
+                 $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
+                 $timeout(function(){
+
+                        $scope.addedToCart = false;
+
+                 },2500);
+
+        }else{
+            
+                //$scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
+                $scope.checkoutArray.push($scope.checkout);
+                console.log($scope.checkoutArray);
+                $scope.addedToCart = true;
+                $rootScope.cartItems = $scope.checkoutArray.length;
+                $scope.itemAddedToCart = $routeParams.name;
+                $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
+                $timeout(function(){
+
+                        $scope.addedToCart = false;
+
+                },2500);
+
+        }
+       
        //////  var unique = $rootScope.myLoves.filter(function(elem, index, self) {
        ///     return index == self.indexOf(elem);
         //});

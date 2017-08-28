@@ -14,13 +14,13 @@
 <div class = "container container-fluid">
 <div class = "row">
     <div class = "col-sm-2 shoesidepanel">
-        <br>
+      <!--  <br>
         <ul class = "img-thumbnails clearfix" ng-repeat ="perspective in mensShoe.perspectives">
 
             <li ng-click = "imageChange($index);"><img ng-src="{{perspective}}"></li>
             
             
-        </ul>
+        </ul>-->
 
         <!--<landing-gallery></landing-gallery>-->
     </div>
@@ -28,15 +28,22 @@
        <i class="fa fa-plus zoom-in" aria-hidden="true"></i>
         <i class="fa fa-minus zoom-out" aria-hidden="true"></i>
         <i class="fa fa-refresh reset" aria-hidden="true"></i>
+
+        
       <div class="parent">
      
         <div class="panzoom">
        <img  class = "specificmainzoom img-fluid" ng-class="{onepointfive:zoomValue === 1, twotimes: zoomValue === 2, threetimes: zoomValue === 3} " ng-src = "{{mensShoe.fullsize[imageIndex]}}">
         </div>
       </div>
-      
+    
 
+        <center><div  class = "thumbnails" ng-repeat ="perspective in mensShoe.perspectives">
 
+            <img ng-click = "imageChange($index);" ng-src="{{perspective}}">
+            
+            
+        </div> </center> 
       
       <script>
         (function() {
@@ -74,26 +81,9 @@
             <div class = " pull-left sizeselector">
         
             
-            <form name= "checkoutForm" ng-submit="checkoutFunc(checkout);" class = "btn-group">
-                <button type ="button" class = "btn btn-primary">Size</button>
-                <br>
-                <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   <!-- <span class = "caret"></span>-->
-                    <span class = "sr-only">Toggle Dropdown</span>
-                </button>
-                
-                <ul class = "dropdown-menu">
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('S');">S</a></li>
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('M');">M</a></li>
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('L');">L</a></li>
-           
-                </ul>
-                <br>
-                <br>
-                 <button type ="submit" class = "btn btn-primary" >Submit</button>
-            </form>
-            &nbsp
-            <br>
+
+         
+            
             <div class = "btn-group">
                 <button type ="button" class = "btn btn-primary">Qty&nbsp</button>
                 <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,6 +102,30 @@
                     <li><a href="#" ng-click = "changeQty('9');">9</a></li>
            
                 </ul>
+            </div>
+                        <form name= "checkoutForm" ng-submit="checkoutFunc(checkout);" class = "btn-group">
+                <button type ="button" class = "btn btn-primary">Size</button>
+                <br>
+                <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <!-- <span class = "caret"></span>-->
+                    <span class = "sr-only">Toggle Dropdown</span>
+                </button>
+                
+                <ul class = "dropdown-menu">
+                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('S');">S</a></li>
+                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('M');">M</a></li>
+                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('L');">L</a></li>
+           
+                </ul>
+                <br>
+                <br>
+                 <button type ="submit" class = "btn btn-primary" >Submit</button>
+            </form>
+                        <div class = "row">
+                <div class = "col-sm-12">
+                    <p></p>
+                    <p  class="addToCart"ng-show="addedToCart"><strong>({{itemAddedToCart}}) </strong> Successfully added to your cart!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -165,7 +179,7 @@
     <div class = "col-sm-3 sitemap">
         
         <ul>
-            <li><a href = "#"><p>Faq</p></a></li>
+            <li><a href = "/faq"><p>Faq</p></a></li>
             <li><a href = "#"><p>Order Tracking</p></a></li>
             <li><a href = "#"><p>Return Policy</p></a></li>
             <li><a href = "#"><p>Shoe Chart Size</p></a></li>
