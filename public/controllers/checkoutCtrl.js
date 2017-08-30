@@ -1,6 +1,6 @@
 (function(){
 
-var app =  angular.module('checkoutController',['shopServices','angularPayments','authServices','userServices']);
+var app =  angular.module('checkoutController',['shopServices','authServices','userServices']);
 
 app.config(function(){
 

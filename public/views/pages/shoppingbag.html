@@ -1,4 +1,4 @@
-
+<br>
 <div class = "container container-fluid">
        <div class = "row">
             <div class = "col-sm-12 ">
@@ -132,14 +132,15 @@
                         <p>Merchandise:<p>
                     </div>
                     <div class = "col-sm-4 pull-right">
-                        <p>{{total|currency}}</p>
+                        <p>Total after  Coupon Code: {{total|currency}}</p>
+                        
                     </div>
                      <div class = "col-sm-4 pull-right">
-                        <p>Total before  Coupon Code: {{oldtotal|currency}}!</p>
+                        <p>Total before Coupon Code: {{oldtotal|currency}}</p>
                     </div>
                     
                     <div class = "col-sm-4 pull-left">
-                        <p>Estimated total w/shipping:<p>
+                        <p>Estimated total w/shipping:<p> 
                         
                     </div>
                     <div class = "col-sm-8 pull-right">
@@ -166,7 +167,7 @@
                 </div>
                 <div class = "row">
                     <div class = "col-sm-12">
-                        <button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit" ng-click = "shop/checkout">Begin Checkout</button>
+                        <button class = "btn btn-submit"><a href="/shop/checkout">Begin Checkout</a></button>
                     </div>
                 </div>
                 <br>

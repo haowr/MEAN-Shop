@@ -11,7 +11,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
     $scope.shoppingBagShoes=[];
     $scope.individualTotals = [];
-    $scope.total;
+    $scope.total=0;
     $scope.hello = "hello";
     $scope.number;
     $scope.shippingChoice = 0;
@@ -22,6 +22,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     $scope.shoppingCartEmpty = false;
     $scope.newShoppingBagQty;
     console.log("Hello");
+    console.log($scope.total);
     $scope.hello= function(){
         console.log("hello");
     }
@@ -113,10 +114,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
         console.log($scope.shoppingBagShoes);
         console.log($scope.shoppingBagShoes[index]);
         console.log($scope.shoppingBagShoes[index].amt);
-        console.log($scope.newShoppingBagQty);
+        //console.log($scope.newShoppingBagQty);
+        console.log(Auth.isLoggedIn());
         if(Auth.isLoggedIn()){
 
-        
+        console.log('increase@!');
             User.addOneItem($scope.currentUser,index).then(function(data){
 
                 console.log(data.data);
@@ -128,6 +130,9 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
             $scope.shoppingBagShoes[index].amt++
             $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+
+            $scope.oldtotal= $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+            console.log($scope.oldtotal);
 
 
         }
@@ -175,11 +180,15 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                 
                 }else{
                     
-                            if( quantity === 1){
+                            if( quantity === 1 || quantity === 0){
 
                                                     $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
-                                                    $scope.shoppingBagShoes.splice(index,1);
-                                                    $rootScope.cartyItems = $scope.shoppingBagShoes.length;
+                                                    
+                                                    console.log($scope.oldtotal);
+                                                    $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                                    console.log($scope.oldtotal);
+                                                    $scope.shoppingBagShoes.splice($scope.shoppingBagShoes[index],1);
+                                                    $rootScope.cartItems = $scope.shoppingBagShoes.length;
                                                     $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
 
                             }
@@ -233,6 +242,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
             $rootScope.cartItems=0;
             $scope.shoppingBagShoes = data.data.user.shoppingbag;
             $scope.shoppingCartEmpty = true;
+            $scope.oldtotal =0;
             
 
         });
@@ -240,6 +250,8 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
         $scope.shoppingBagShoes = [];
         $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
+        $scope.oldtotal=0;
+        $scope.total = 0;
 
       }
 
@@ -261,10 +273,14 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
         }else{
             $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
             console.log($scope.shoppingBagShoes);
+            $scope.oldtotal = $scope.oldtotal - ( $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+            console.log($scope.oldtotal);
             $scope.shoppingBagShoes.splice($scope.shoppingBagShoes[index],1);
+            
             console.log($scope.shoppingBagShoes);
             $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
             $rootScope.cartItems = $scope.shoppingBagShoes.length;
+
 
 
         }
@@ -312,6 +328,8 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
         console.log(number);
          getTotal();
     };
+    //THIS MIGHT BE MESSED UP... MIGHT NEED TO UNCOMMENT;
+/*
          for(var i =0; i<$scope.shoppingBagShoes.length; i++){
                 $scope.individualTotals.push($scope.shoppingBagShoes[i].amt * $scope.shoppingBagShoes[i].price);
                 $scope.shoppingBagShoes[i].invTotal= $scope.individualTotals[i];
@@ -325,6 +343,8 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
             return sum + value;
 
         }, 0);
+*/
+
     var getTotal = function(){
    
     
