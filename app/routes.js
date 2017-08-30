@@ -685,7 +685,7 @@ app.post('/api/addtoshoppingbag', function(req,res){
         if(!user){
             res.json({success: false,message:"No user found..."});
         }else{
-            res.json({success: true, user:user});
+            res.json({success: true, user:user}); 
         }
 
 
@@ -763,14 +763,17 @@ app.put('/api/addoneitem/:user/:index',function(req,res){
         }else{
 
             var shoppingbag = shoppingbag;
-            console.log(shoppingbag.shoppingbag[req.params.index].amt++);
+            //console.log(shoppingbag.shoppingbag[req.params.index].amt++);
             //shoppingbag.shoppingbag.splice(req.params.index,1);
-            console.log(shoppingbag.shoppingbag);
+            console.log(shoppingbag.shoppingbag[req.params.index].amt);
+            console.log(Number(shoppingbag.shoppingbag[req.params.index].amt)+1);
+            shoppingbag.shoppingbag[req.params.index].amt = Number(shoppingbag.shoppingbag[req.params.index].amt)+1;
+
             //res.json({success: true, ""})
-            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag[req.params.index]}}, {new:true}, function(err, user){
+            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag}}, {new:true}, function(err, user){
 
                 if(err) throw err;
-                if(!user){
+                if(!user){ 
                     res.json({success: false, message:"User not found, so not updated..."});
                 }else{
 
@@ -794,7 +797,8 @@ app.put('/api/pulloneitem/:user/:index', function(req,res){
         }else{
             //res.json({success: true, message:"User found.", shoppingbag:shoppingbag});
             console.log(shoppingbag);
-            shoppingbag.shoppingbag.splice(req.params.index,1);
+            shoppingbag.shoppingbag.splice(shoppingbag.shoppingbag[req.params.index],1);
+            console.log("AFTR"+shoppingbag);
             User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag:shoppingbag.shoppingbag}}, {new:true}, function(err, user){
 
                 if(err)throw err;
@@ -809,21 +813,6 @@ app.put('/api/pulloneitem/:user/:index', function(req,res){
         }
 
     })
-    /*
-    User.findOneAndUpdate({username: req.params.user},{$pull:{shoppingbag: req.params.index}}, {new:true}, function(err, user){
-
-        if(err) throw err;
-        if(!user){
-            res.json({sucess:true, message: "User not so not updated..."});
-        }else{
-
-            res.json({success: true, message: "Successfully updated...", user: user});
-        }
-
-
-
-    })
-    */
 
 
 });
@@ -840,11 +829,13 @@ app.put('/api/removeoneitem/:user/:index',function(req,res){
         }else{
 
             var shoppingbag = shoppingbag;
-            console.log(shoppingbag.shoppingbag[req.params.index].amt--);
+            console.log(shoppingbag.shoppingbag[req.params.index].amt);
+            console.log(Number(shoppingbag.shoppingbag[req.params.index].amt)-1);
+            shoppingbag.shoppingbag[req.params.index].amt = Number(shoppingbag.shoppingbag[req.params.index].amt)-1;
             //shoppingbag.shoppingbag.splice(req.params.index,1);
-            console.log(shoppingbag.shoppingbag);
+            
             //res.json({success: true, ""})
-            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag[req.params.index]}}, {new:true}, function(err, user){
+            User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag: shoppingbag.shoppingbag}}, {new:true}, function(err, user){
 
                 if(err) throw err;
                 if(!user){
@@ -853,7 +844,7 @@ app.put('/api/removeoneitem/:user/:index',function(req,res){
 
                     res.json({success: true, message:"Successfully updated...", user: user});
 
-                }
+                } 
 
             })
         }

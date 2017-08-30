@@ -894,6 +894,12 @@ opacity:1;
 }
 	
 /*navbar*/
+#hover{
+  color: black;
+}
+#navbarDropdownMenuLink{
+  color: black;
+}
 .navbar {
   background-color: #fff1ef;
 }

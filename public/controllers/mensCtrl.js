@@ -141,7 +141,7 @@
 
 
         console.log($scope.checkout);
-        if($window.localStorage.getItem('checkoutArray') != null){
+        if(!Auth.isLoggedIn() && $window.localStorage.getItem('checkoutArray') != null){
 
                  $scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
                  $scope.checkoutArray.push($scope.checkout);
@@ -156,7 +156,7 @@
 
                  },2500);
 
-        }else{
+        }else if(!Auth.isLoggedIn() && $window.localStorage.getItem('checkoutArray') == null) {
             
                 //$scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
                 $scope.checkoutArray.push($scope.checkout);

@@ -122,10 +122,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
             User.addOneItem($scope.currentUser,index).then(function(data){
 
                 console.log(data.data);
+                console.log($scope.oldtotal);
                 $scope.shoppingBagShoes[index].amt = data.data.user.shoppingbag[index].amt;
-                $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
+                $scope.oldtotal = $scope.oldtotal + Number($scope.shoppingBagShoes[index].price);
 
-            })
+            }) 
         }else{
 
             $scope.shoppingBagShoes[index].amt++
@@ -141,12 +142,13 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
             console.log(quantity);
 
-            if(Auth.isLoggedIn()  && quantity > 1){
+            if(Auth.isLoggedIn()  && quantity > 2){
+                        console.log( $scope.shoppingBagShoes[index].amt);
+                        $scope.oldtotal = $scope.oldtotal- $scope.shoppingBagShoes[index].price;
 
                         User.removeOneItem($scope.currentUser,index).then(function(data){
-
+                            console.log(data.data);
                             $scope.shoppingBagShoes[index].amt = data.data.user.shoppingbag[index].amt;
-                            $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
                             console.log(data.data);
 
                         });
@@ -154,12 +156,15 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
             }else if(Auth.isLoggedIn() && quantity <2){
 
                             console.log("Hello");
+                            console.log($scope.oldtotal);
                             User.pullOneItem($scope.currentUser,index).then(function(data){
 
                                 console.log(data.data.user.shoppingbag);
+                                $scope.oldtotal = $scope.oldtotal-$scope.shoppingBagShoes[index].price;
+
                                 $scope.shoppingBagShoes = data.data.user.shoppingbag;
+                                
                                 $rootScope.cartItems = $scope.shoppingBagShoes.length;
-                                $scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
 
                             })
 
@@ -180,7 +185,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                 
                 }else{
                     
-                            if( quantity === 1 || quantity === 0){
+                            if(!Auth.isLoggedIn() && quantity === 1 ||!Auth.isLoggedIn() && quantity === 0){
 
                                                     $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
                                                     
