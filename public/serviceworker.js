@@ -1,9 +1,11 @@
-/*importScripts('/cache-polyfill.js');
+importScripts('/cache-polyfill.js');
 self.addEventListener('install', function(e) {
 e.waitUntil(
 caches.open('airhorner').then(function(cache) {
 return cache.addAll([
 '/',
+'/home'
+/*
 '/index.html',
 '/index.html?homescreen=1',
 '/?homescreen=1',
@@ -26,9 +28,11 @@ return cache.addAll([
 '/js/nginfiniteScroll.js',
 '/js/npm.js',
 '/js/routes.js',
-
+*/
 ]);
 })
 );
 });
-*/
+self.addEventListener('fetch', function(e) {
+console.log(e.request.url);
+});
