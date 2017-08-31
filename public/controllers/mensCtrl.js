@@ -277,7 +277,7 @@
         $rootScope.title = $routeParams.name;
 
     }
-    changetitle();
+    changeTitle();
     console.log("$scope.heartActivated: "+$scope.heartActivated);
     $scope.imageChange = function(index){
         $scope.imageIndex = index;
