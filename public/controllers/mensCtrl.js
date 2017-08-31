@@ -272,7 +272,7 @@
     });
     */
 
-    $scope.changeTitle = function(){
+    var changeTitle = function(){
 
         $rootScope.title = $routeParams.name;
 
