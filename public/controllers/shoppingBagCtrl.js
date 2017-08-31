@@ -142,7 +142,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
             console.log(quantity);
 
-            if(Auth.isLoggedIn()  && quantity > 2){
+            if(Auth.isLoggedIn()  && quantity >= 2){
                         console.log( $scope.shoppingBagShoes[index].amt);
                         $scope.oldtotal = $scope.oldtotal- $scope.shoppingBagShoes[index].price;
 

@@ -251,8 +251,8 @@ $rootScope.checkEmail = function(emailListData){
 
                     //console.log(expireTime.exp - timeStamp);
                     var timeCheck = expireTime.exp - timeStamp;
-                    console.log(timeCheck);
-                    if(timeCheck < 200 && timeCheck>0){
+                   // console.log(timeCheck);
+                    if(timeCheck < 200 && timeCheck>0){ 
                         //console.log("Token has expired...");
                         showModal(1); // Open bootstrap modal and let user decide what to do
                         $interval.cancel(interval); // Stop interval
