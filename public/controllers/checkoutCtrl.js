@@ -78,7 +78,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
         })
         
 
-    }else{
+    }else if (window.localStorage.getItem('checkoutArray') !== null){
 
         $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
         $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
