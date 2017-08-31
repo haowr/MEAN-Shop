@@ -844,10 +844,21 @@ opacity:0;
 #ordersummaryimage{
   top: 500px;
 }
-.grandtotalstyling{
+#checkouttitlestyling{
 
+  font-family: 'Bellefair';
+
+}
+#grandtotalstyling{
+  font-family: 'Bellefair';
+  
+}
+.grandtotalstyling{
+  
   border-top: 2px solid black;
-  border-width:50%;
+  border-bottom: 1px solid black;
+
+  border-width:20%;
 }
 .emptycartstyling{
     

@@ -478,8 +478,8 @@
                  </div>
                  
                  <div ng-show="showGrandTotal"class = "col-sm-12 pull-left grandtotalstyling" ng-cloak>
-                     <br>
-                     <h3>Grand Total: </h3><h4><p>{{totalAfterTax | currency}}</p></h4>
+                     
+                     <h3 id = "grandtotalstyling">Grand Total: </h3><h4><p>{{totalAfterTax | currency}}</p></h4>
                  </div>
                                 <br>
                                 <br>
@@ -500,7 +500,7 @@
                   
            <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase ||creditCardDataAdded"-->
            <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase||creditCardDataAdded"-->
-            
+          <br>  
         <div class ="col-sm-6 billingaddressstyling">
             <br>
                     <h3>Billing Address:<h3>
@@ -513,7 +513,8 @@
                      <p class = "billingaddressstylingp"><strong>Postal Code:</strong> {{checkoutDataa[0].postalcode}}</p>
                      <p class = "billingaddressstylingp"><strong>Phone Number:</strong> {{checkoutDataa[0].phonenumber}}</p>
                     </div>
-                        <div class ="col-sm-6 billingaddressstyling">
+        <div class ="col-sm-6 billingaddressstyling">
+            <br>
                     <h3>Shipping Address:<h3>
                      <p class = "billingaddressstylingp"><strong>First Name:</strong> {{shippingFormDataa[0].firstname}}</p>
                      <p class = "billingaddressstylingp"><strong>Last Name:</strong> {{shippingFormDataa[0].lastname}}</p>

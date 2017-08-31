@@ -132,11 +132,11 @@
                         <p>Merchandise:<p>
                     </div>
                     <div class = "col-sm-4 pull-right">
-                        <p>Total after  Coupon Code: {{total|currency}}</p>
+                        <p>Total before Coupon Code: {{oldtotal|currency}}</p>
                         
                     </div>
                      <div class = "col-sm-4 pull-right">
-                        <p>Total before Coupon Code: {{oldtotal|currency}}</p>
+                        <p>Total after Coupon Code: {{total|currency}}</p>
                     </div>
                     
                     <div class = "col-sm-4 pull-left">
@@ -148,8 +148,8 @@
                     </div>
                     
                      <div class = "col-sm-4 pull-left">
-                                           <form>
-                                        <div class="form-group">
+                        <form>
+                            <div class="form-group">
                                 <label for="sel1">Shipping:</label>
                                 {{number}}
                                 <select  ng-change="chooseShipping(number)"ng-model = "number"class="form-control" id="sel1">

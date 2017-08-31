@@ -82,6 +82,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
 
         $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
         $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+        console.log($scope.shoppingBagShoes);
         $scope.orderItems = $scope.shoppingBagShoes.length;
 
     }
