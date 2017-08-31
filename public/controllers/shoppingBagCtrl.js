@@ -82,7 +82,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
         
 
-    }else{
+    }else if (window.localStorage.getItem('checkoutArray') !== null){
     $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
 
                          for(var i =0; i<$scope.shoppingBagShoes.length; i++){
