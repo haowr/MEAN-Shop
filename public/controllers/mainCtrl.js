@@ -15,6 +15,7 @@
      var scope= this;
      scope.loadme =false;
      //scope.username="";
+     $rootScope.title = "A House Of Jewels";
      $rootScope.commercials=["../img/SummerSale.jpg","../img/ADS.jpg","../img/DSG.jpg"];
      $rootScope.slides = [
          {image: "../img/SummerSale.jpg", description: "Image 00"},

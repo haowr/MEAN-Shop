@@ -11,6 +11,7 @@
     app.controller('mensCtrl',function($routeParams,$route,Shop,$scope, $rootScope,Heart,Auth,$timeout,$location,User,$window,Cookie){
     console.log('"'+$routeParams.name+'"');
     
+    $rootScope.title = $routeParams.name;
     $scope.shoppingCartNumber=0;
     $scope.imageIndex = 0;
     $scope.size = "S";
