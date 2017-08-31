@@ -866,6 +866,15 @@ opacity:0;
     border-bottom: 1px solid black;
 
 }
+#shoppingbagstyling{
+  
+    font-family: 'Bellefair';
+
+}
+#checkouttitlestyling{
+
+    font-family: 'Bellefair';  
+}
 
 #myBtn {
     opacity:0; /* Hidden by default */
