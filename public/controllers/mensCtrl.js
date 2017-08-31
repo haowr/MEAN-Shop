@@ -11,7 +11,7 @@
     app.controller('mensCtrl',function($routeParams,$route,Shop,$scope, $rootScope,Heart,Auth,$timeout,$location,User,$window,Cookie){
     console.log('"'+$routeParams.name+'"');
     
-    $rootScope.title = $routeParams.name;
+    //$rootScope.title = $routeParams.name;
     $scope.shoppingCartNumber=0;
     $scope.imageIndex = 0;
     $scope.size = "S";
@@ -272,7 +272,12 @@
     });
     */
 
+    $scope.changeTitle = function(){
 
+        $rootScope.title = $routeParams.name;
+
+    }
+    changetitle();
     console.log("$scope.heartActivated: "+$scope.heartActivated);
     $scope.imageChange = function(index){
         $scope.imageIndex = index;
