@@ -15,7 +15,7 @@
      var scope= this;
      scope.loadme =false;
      //scope.username="";
-     $rootScope.title = "A House Of Jewels";
+     
      $rootScope.commercials=["../img/SummerSale.jpg","../img/ADS.jpg","../img/DSG.jpg"];
      $rootScope.slides = [
          {image: "../img/SummerSale.jpg", description: "Image 00"},
@@ -36,6 +36,12 @@
      $scope.translateY = 0;
      $rootScope.opacityOn =false;
      $rootScope.opacityOn2 =false;
+    var changeTitle = function(){
+
+        $rootScope.title = "A House Of Jewels";
+
+    }
+    changeTitle();
 
         $rootScope.setCurrentSlideIndexAdd = function () {
             console.log( $rootScope.currentIndex);
