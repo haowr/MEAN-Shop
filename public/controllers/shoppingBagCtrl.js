@@ -124,16 +124,17 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                 console.log(data.data);
                 console.log($scope.oldtotal);
                 $scope.shoppingBagShoes[index].amt = data.data.user.shoppingbag[index].amt;
-                $scope.total = $scope.total + Number($scope.shoppingBagShoes[index].price);
+                $scope.oldtotal = $scope.oldtotal + Number($scope.shoppingBagShoes[index].price);
 
             }) 
         }else{
 
+            $scope.oldtotal = $scope.oldtotal-($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
             $scope.shoppingBagShoes[index].amt++
             $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
 
-            $scope.total= $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
-            console.log($scope.total);
+            $scope.oldtotal= $scope.oldtotal +($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+            console.log($scope.oldtotal);
 
 
         }
@@ -198,25 +199,31 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
                             }
 
-
+                            console.log("Here we are");
+                             console.log($scope.oldtotal);
+                             $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                             console.log($scope.oldtotal);
                              $scope.shoppingBagShoes[index].amt--;
                              $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                             $scope.oldtotal = $scope.oldtotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                             console.log($scope.oldtotal);
                              //$scope.shoppingBagShoes = $window.localStorage.getItem('checkoutArray');
                              console.log($scope.shoppingBagShoes);
                              console.log($scope.shoppingBagShoes.length);
 
- 
-                                                     for(var i =0; i<$scope.shoppingBagShoes.length; i++){
+                            console.log($scope.individualTotals);
+                           /* for(var i =0; i<$scope.shoppingBagShoes.length; i++){
                             $scope.individualTotals.push($scope.shoppingBagShoes[i].amt * $scope.shoppingBagShoes[i].price);
                            // $scope.shoppingBagShoes[i].invTotal= $scope.individualTotals[i];
-                           console.log($scope.shoppingBagShoes[i].amt);
-                           console.log($scope.individualTotals);
+                                console.log($scope.shoppingBagShoes[i].amt);
+                          
 
-                            }
-                         $scope.total=$scope.individualTotals.reduce(function(sum, value) {
+                            }*/
+                             console.log($scope.individualTotals);
+                        /* $scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
                             return sum + value;
 
-                        }, 0);
+                        }, 0);*/
                         $scope.individualTotals =[];
                          //$scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
                             //return sum + value;
