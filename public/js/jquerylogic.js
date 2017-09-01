@@ -6,6 +6,7 @@ function scrollFunction() {
         document.getElementById("myBtn").style.opacity = 100;
     } else {
         document.getElementById("myBtn").style.opacity = 0;
+        document.getElementById("myBtn").style.backgroundColor = "#ffbbbc";
     }
 }
 
