@@ -3,6 +3,12 @@
     var app = angular.module('faqController',[]);
 
     app.controller('faqCtrl',function($scope){
+              var changeTitle = function(){
+
+        $rootScope.title ="HOJ | FAQ";
+
+    }
+    changeTitle();
 
         console.log("faqCtrl is loaded and initialized...");
     

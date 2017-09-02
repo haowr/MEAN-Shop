@@ -50,6 +50,13 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
 
     $scope.creditCardDataAdded= false;
 
+      var changeTitle = function(){
+
+        $rootScope.title ="HOJ | Checkout";
+
+    }
+    changeTitle();
+
     if(Auth.isLoggedIn()){
         Auth.getUser().then(function(data){
 

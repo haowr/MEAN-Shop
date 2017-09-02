@@ -30,9 +30,9 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     
 
 
-    var changeTitle = function(){
-        console.log("changeTitle has run..");
-        $rootScope.title = "Shopping Bag";
+   var changeTitle = function(){
+
+        $rootScope.title ="HOJ | Shopping Bag";
 
     }
     changeTitle();
