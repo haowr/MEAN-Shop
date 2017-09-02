@@ -94,7 +94,7 @@
                 <br>
                <div class ="row"> 
                 <div class = "col-sm-6">
-                                               <form name ="couponCodeForm" ng-submit="addCouponCode(couponCode, couponCodeForm.$valid);"novalidate>
+                    <form name ="couponCodeForm" ng-submit="addCouponCode(couponCode, couponCodeForm.$valid);"novalidate>
 
                                   
                             <div class="form-group">
@@ -114,7 +114,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <button ng-disabled = "totalaftercoupon"class = "btn btn-primary">Submit!</button>
+                            <button ng-disabled = "totalaftercoupon"class = "btn btn-submit">Submit!</button>
 
 
         </form>
@@ -128,30 +128,28 @@
                     
                 <div class = "row">
                     
-                    <div class = "col-sm-4 pull-left">
-                        <p>Merchandise:<p>
-                    </div>
-                    <div class = "col-sm-4 pull-right">
+
+                    <div class = "col-sm-6 pull-left">
                         <p>Total before Coupon Code: {{oldtotal|currency}}</p>
                         
                     </div>
-                     <div class = "col-sm-4 pull-right">
-                        <p>Total after Coupon Code: {{total|currency}}</p>
+                     <div class = "col-sm-6 pull-left">
+                        <p id="totalWithCouponFader"ng-show="couponCodeAdded">Total after Coupon Code: {{total|currency}}</p>
                     </div>
                     
-                    <div class = "col-sm-4 pull-left">
-                        <p>Estimated total w/shipping:<p> 
+                    <div class = "col-sm-4 pull-left"> 
+                        <p id="totalWithShippingFader"ng-show="totalWithShipping">Estimated total w/shipping: {{grandTotal|currency}}<p> 
                         
                     </div>
                     <div class = "col-sm-8 pull-right">
-                        <p>{{grandTotal|currency}}</p>
+                       <!-- <p ng-show="totalWithShipping">{{grandTotal|currency}}</p>-->
                     </div>
                     
                      <div class = "col-sm-4 pull-left">
-                        <form>
+                        <form >
                             <div class="form-group">
                                 <label for="sel1">Shipping:</label>
-                                {{number}}
+                               
                                 <select  ng-change="chooseShipping(number)"ng-model = "number"class="form-control" id="sel1">
                                     <option ng-click="chooseShipping(1);" value="1">1-7 Days Expedited $7.95</option>
                                     <option ng-click="chooseShipping(2);" value="2">1-2 Days Xpresspost $15.00</option>
@@ -167,7 +165,7 @@
                 </div>
                 <div class = "row">
                     <div class = "col-sm-12">
-                        <button class = "btn btn-submit"><a href="/shop/checkout">Begin Checkout</a></button>
+                        <button ng-show="beginCheckout"class = "btn btn-submit btn-fader"><a href="/shop/checkout">Begin Checkout</a></button>
                     </div>
                 </div>
                 <br>

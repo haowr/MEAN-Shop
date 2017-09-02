@@ -17,7 +17,12 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window,Heart,Auth){
         $window.localStorage.setItem('myLoves',$rootScope.myLoves);
     }
      */
-     console.log($rootScope.myLoves);
+       var changeTitle = function(){
+        console.log("changeTitle has run..");
+        $rootScope.title = "Shop";
+
+    }
+    changeTitle();
     var scope = this;
     var name = "Z!";
     scope.imageIndex=0;
@@ -55,6 +60,7 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window,Heart,Auth){
          Shop.getAllShoes().then(function(data){
 
             console.log(data.data.allshoes);
+            changeTitle();
             for(var i = 0; i<8 ; i++){
                  $scope.allShoes.push(data.data.allshoes[i]);
 

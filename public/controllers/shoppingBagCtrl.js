@@ -16,13 +16,28 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     $scope.number;
     $scope.shippingChoice = 0;
     $scope.grandTotal;
+    $scope.beginCheckout = false;
+    $scope.shippingTime = false;
     $scope.couponCodeError = false;
+    $scope.couponCodeAdded = false;
+    $scope.totalWithShipping = false;
     $scope.currentUser; 
     $scope.totalaftercoupon = false;
     $scope.shoppingCartEmpty = false;
     $scope.newShoppingBagQty;
-    console.log("Hello");
+    console.log($scope.chooseShipping);
     console.log($scope.total);
+    
+
+
+    var changeTitle = function(){
+        console.log("changeTitle has run..");
+        $rootScope.title = "Shopping Bag";
+
+    }
+    changeTitle();
+
+
     $scope.hello= function(){
         console.log("hello");
     }
@@ -31,9 +46,10 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
         console.log(couponCode.code);
         $scope.grandTotal=0;
-        if(couponCode.code == "ping"){
+        if(couponCode.code == "ping"){ 
            // $scope.oldtotal = $scope.total;
             $scope.total = $scope.oldtotal - ($scope.oldtotal *0.1);
+            $scope.couponCodeAdded = true;
             User.addTotalToUser($scope.currentUser,$scope.total).then(function(data){
                 console.log(data.data.user.totalaftercoupon);
                 
@@ -320,6 +336,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
         }else{
             $scope.shippingChoice = 15.00;
+           
            if(Auth.isLoggedIn()){
             User.addShippingChoiceToUser($scope.currentUser,"2days Xpresspost").then(function(data){
 
@@ -331,6 +348,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
                  //$scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
                  $window.localStorage.setItem('shippingChoice',15.00);
+                 
 
 
             }
@@ -361,14 +379,21 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
    
     
         console.log($scope.total);
-        $scope.grandTotal = $scope.total + $scope.shippingChoice;
+        if($scope.total == 0){
+            $scope.grandTotal = $scope.oldtotal + $scope.shippingChoice;
+        }else{
+            $scope.grandTotal = $scope.total + $scope.shippingChoice;
+        }
+        //$scope.grandTotal = $scope.total + $scope.shippingChoice;
         $window.localStorage.setItem('grandTotal', $scope.grandTotal);
+        $scope.totalWithShipping = true;
+        $scope.beginCheckout = true;
         
     }
    
 
     var addShipping = function(total,shippingChoice){
-     
+        
         var newTotal = total + shippingChoice;
         $window.localStorage.setItem('grandTotal', $scope.newTotal);
 

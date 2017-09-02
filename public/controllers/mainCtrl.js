@@ -37,11 +37,15 @@
      $rootScope.opacityOn =false;
      $rootScope.opacityOn2 =false;
     var changeTitle = function(){
-
+        console.log("changeTitle has run..");
         $rootScope.title = "A House Of Jewels";
 
     }
-    changeTitle();
+    //changeTitle();
+        $scope.chgTitle= function(){
+
+            $rootScope.title = "Login";
+        }
 
         $rootScope.setCurrentSlideIndexAdd = function () {
             console.log( $rootScope.currentIndex);
@@ -392,6 +396,8 @@ $rootScope.checkEmail = function(emailListData){
              });
                 console.log('Success: User is logged in.');
         }else{
+               
+    changeTitle();
                 console.log('Failure: User is not logged in.')
                 scope.username = "";
                 scope.isLoggedIn= false;

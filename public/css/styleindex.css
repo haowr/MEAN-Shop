@@ -591,6 +591,11 @@ border: solid 1px black;
 .homeimageover2{
   overflow:auto;
 }
+#sizeformstyling{
+
+  height:40px;
+
+}
 
 /* The starting CSS styles for the enter animation */
 .slide.ng-enter {
@@ -742,12 +747,33 @@ margin-top:200px;
   opacity: 0;
 }
 
+.btn-fader.ng-hide{
+ opacity:0;
+}
+.btn-fader.ng-hide-add,
+.btn-fader.ng-hide-remove{
+  transition: all linear 0.5s;
+}
 .addToCart.ng-hide{
  opacity:0;
 }
 .addToCart.ng-hide-add,
 .addToCart.ng-hide-remove{
   transition: all linear 0.5s;
+}
+#totalWithShippingFader.ng-hide{
+ opacity:0;
+}
+#totalWithShippingFader.ng-hide-add,
+#totalWithShippingFader.ng-hide-remove{
+  transition: all linear 0.2s;
+}
+#totalWithCouponFader.ng-hide{
+ opacity:0;
+}
+#totalWithCouponFader.ng-hide-add,
+#totalWithCouponFader.ng-hide-remove{
+  transition: all linear 0.2s;
 }
 .thumbnails{
 

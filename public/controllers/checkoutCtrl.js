@@ -38,6 +38,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
     $scope.invalid = false;
     $scope.addShippingAddressPhase = false;
     $scope.showGrandTotal = false;
+    $scope.orderItemsArray = [];
     $scope.orderItems;
     $scope.shoppingBagAmountsArray=[];
     $scope.useBillingAddressSelected= false;
@@ -82,8 +83,17 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
 
         $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
         $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
-        console.log($scope.shoppingBagShoes);
-        $scope.orderItems = $scope.shoppingBagShoes.length;
+        console.log($scope.shoppingBagShoes.length);
+        for(var i =0; i< $scope.shoppingBagShoes.length; i++ ){
+            //console.log($scope.shoppingBagShoes[0].amt);
+            $scope.orderItemsArray.push($scope.shoppingBagShoes[i].amt);
+
+        }
+
+        $scope.orderItems = $scope.orderItemsArray.reduce(function(sum,val){
+
+                return sum+val;
+        });
 
     }
       
