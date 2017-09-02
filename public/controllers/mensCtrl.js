@@ -274,7 +274,7 @@
 
     var changeTitle = function(){
 
-        $rootScope.title = $routeParams.name;
+        $rootScope.title ="HOJ | "+ $routeParams.name;
 
     }
     changeTitle();

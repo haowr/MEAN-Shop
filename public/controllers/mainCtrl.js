@@ -38,7 +38,7 @@
      $rootScope.opacityOn2 =false;
     var changeTitle = function(){
         console.log("changeTitle has run..");
-        $rootScope.title = "A House Of Jewels";
+        $rootScope.title = "HOJ | A House Of Jewels";
 
     }
     //changeTitle();

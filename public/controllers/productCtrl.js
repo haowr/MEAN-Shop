@@ -17,9 +17,9 @@ app.controller('shoesCtrl',function(Shop,$scope,$rootScope,$window,Heart,Auth){
         $window.localStorage.setItem('myLoves',$rootScope.myLoves);
     }
      */
-       var changeTitle = function(){
-        console.log("changeTitle has run..");
-        $rootScope.title = "Shop";
+   var changeTitle = function(){
+
+        $rootScope.title ="HOJ | Shop";
 
     }
     changeTitle();
