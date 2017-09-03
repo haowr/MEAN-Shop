@@ -2,7 +2,7 @@
 
     var app = angular.module('faqController',[]);
 
-    app.controller('faqCtrl',function($scope){
+    app.controller('faqCtrl',function($scope,$rootScope){
               var changeTitle = function(){
 
         $rootScope.title ="HOJ | FAQ";

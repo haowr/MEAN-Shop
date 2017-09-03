@@ -51,9 +51,10 @@
                 </div>
         </div>-->
             <br>
-            <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length == 0 || shoppingCartEmpty ">
+            <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length == 0 || shoppingCartEmpty " >
                 <div class ="col-sm-12">
-                    <center><h3><p> Empty Cart! :( </p></h3></center>
+                    <center><p id = "emptycartstylings"> (Cart Empty) </p></center>
+                    <center><p id = "emptycartstylings"> Visit The <a href = "/shop"><strong>Shop</strong></a> To Add Items! </p></center>
                 </div>
             </div>
             <div  ng-show ="shoppingBagShoes.length > 0"class = "row  " ng-repeat="shoe in shoppingBagShoes track by $index">
