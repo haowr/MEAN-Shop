@@ -208,6 +208,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                                                     
                                                     console.log($scope.oldtotal);
                                                     $scope.total = $scope.total - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                                    $scope.oldtotal = 0;
                                                     console.log($scope.oldtotal);
                                                     $scope.shoppingBagShoes.splice($scope.shoppingBagShoes[index],1);
                                                     $rootScope.cartItems = $scope.shoppingBagShoes.length;
