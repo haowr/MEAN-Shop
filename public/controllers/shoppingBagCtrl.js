@@ -11,11 +11,13 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
     $scope.shoppingBagShoes=[];
     $scope.individualTotals = [];
-    $scope.total=0;
+    $scope.total=false;
+    $scope.grandTotal = false;
+    $scope.oldtotal=false;
     $scope.hello = "hello";
     $scope.number;
     $scope.shippingChoice = 0;
-    $scope.grandTotal;
+   
     $scope.beginCheckout = false;
     $scope.shippingTime = false;
     $scope.couponCodeError = false;
@@ -50,6 +52,14 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
            // $scope.oldtotal = $scope.total;
             $scope.total = $scope.oldtotal - ($scope.oldtotal *0.1);
             $scope.couponCodeAdded = true;
+            if($scope.beginCheckout){
+
+                $scope.grandTotal = $scope.total + $scope.shippingChoice;
+
+            }
+            if(Auth.isLoggedIn()){
+
+            
             User.addTotalToUser($scope.currentUser,$scope.total).then(function(data){
                 console.log(data.data.user.totalaftercoupon);
                 
@@ -57,6 +67,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                 $scope.totalaftercoupon = true;
                 couponCode.code = "...";
             });
+            }
 
         }else{
 
@@ -144,20 +155,55 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
 
             }) 
         }else{
+            if($scope.grandTotal && $scope.total){
+                                            console.log("OY");
+                                            $scope.oldtotal = $scope.oldtotal + $scope.shoppingBagShoes[index].price;
+                                            $scope.total    = $scope.total + $scope.shoppingBagShoes[index].price;
 
-            $scope.oldtotal = $scope.oldtotal-($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
-            $scope.shoppingBagShoes[index].amt++
-            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                                            $scope.grandTotal = $scope.grandTotal+ $scope.shoppingBagShoes[index].price;
+                                            $scope.shoppingBagShoes[index].amt++;
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                                            //$scope.total = $scope.total + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                            //$scope.oldtotal = $scope.oldtotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                            //$scope.grandTotal = $scope.grandTotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
 
-            $scope.oldtotal= $scope.oldtotal +($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
-            console.log($scope.oldtotal);
 
+                                        }else if($scope.grandTotal){
+                                            console.log("grandTotal is truthy");
+                                            $scope.oldtotal = $scope.oldtotal+ $scope.shoppingBagShoes[index].price;
 
+                                            $scope.grandTotal = $scope.grandTotal+ $scope.shoppingBagShoes[index].price;
+                                            $scope.shoppingBagShoes[index].amt++;
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));                                            
+
+                                        }else if($scope.total){
+                                            console.log("total is true");
+                                            $scope.oldtotal = $scope.oldtotal+ $scope.shoppingBagShoes[index].price;
+                                            $scope.total = $scope.total +  $scope.shoppingBagShoes[index].price;
+
+                                            
+                                            $scope.shoppingBagShoes[index].amt++;
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+
+                                        }else{
+
+                                            $scope.oldtotal = $scope.oldtotal-$scope.shoppingBagShoes[index].price;
+                                            $scope.shoppingBagShoes[index].amt++
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+
+                                            //$scope.oldtotal= $scope.oldtotal +($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                            console.log($scope.oldtotal);
+
+                                        }
         }
     }
         $scope.reduceQuantity = function(index,quantity){
 
             console.log(quantity);
+            console.log(index);
+            console.log($scope.grandTotal);
+            console.log($scope.total);
+            console.log($scope.oldtotal);
 
             if(Auth.isLoggedIn()  && quantity >= 2){
                         console.log( $scope.shoppingBagShoes[index].amt);
@@ -201,59 +247,85 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                 
                 
                 }else{
-                    
-                            if(!Auth.isLoggedIn() && quantity === 1 ||!Auth.isLoggedIn() && quantity === 0){
+                            console.log("ELSEO!");
+                            if(!Auth.isLoggedIn() && quantity == 1 ||!Auth.isLoggedIn() && quantity == 0){
 
-                                                    $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
-                                                    
-                                                    console.log($scope.oldtotal);
+                                                   // $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                                                    console.log("shoppingBagShoes before Splice...");
+                                                    console.log(JSON.stringify($scope.shoppingBagShoes));
+                                                    console.log("HELLO!!!");
+                                                    console.log(index);
+                                                    //console.log($scope.oldtotal);
                                                     $scope.total = $scope.total - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
                                                     $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price)
                                                     console.log($scope.oldtotal);
+                                                    
                                                     $scope.shoppingBagShoes[index].amt--;
+                                                    console.log($scope.shoppingBagShoes[index-1]);
+                                                    console.log($scope.shoppingBagShoes[index]);
+                                                    console.log($scope.shoppingBagShoes[index+1]);
+                                                    
+                                                    console.log(JSON.stringify($scope.shoppingBagShoes));
                                                     $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price)
-                                                    $scope.shoppingBagShoes.splice($scope.shoppingBagShoes[index],1);
+                                                    $scope.shoppingBagShoes.splice(index,1);
+                                                    console.log("shoppingBagShoes after Splice...");
+                                                    console.log(JSON.stringify($scope.shoppingBagShoes));
                                                     $rootScope.cartItems = $scope.shoppingBagShoes.length;
                                                     $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
 
+                            }else{
+                                        console.log("TOTALITY!");
+
+                                        if($scope.grandTotal && $scope.total){
+                                            console.log("OY");
+                                            $scope.oldtotal = $scope.oldtotal- $scope.shoppingBagShoes[index].price;
+                                            $scope.total = $scope.total -  $scope.shoppingBagShoes[index].price;
+
+                                            $scope.grandTotal = $scope.grandTotal- $scope.shoppingBagShoes[index].price;
+                                            $scope.shoppingBagShoes[index].amt--;
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                                            //$scope.total = $scope.total + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                            //$scope.oldtotal = $scope.oldtotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                            //$scope.grandTotal = $scope.grandTotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+
+
+                                        }else if($scope.grandTotal){
+                                            console.log("grandTotal is truthy");
+                                            $scope.oldtotal = $scope.oldtotal- $scope.shoppingBagShoes[index].price;
+
+                                            $scope.grandTotal = $scope.grandTotal- $scope.shoppingBagShoes[index].price;
+                                            $scope.shoppingBagShoes[index].amt--;
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));                                            
+
+                                        }else if($scope.total){
+                                            console.log("total is true");
+                                            $scope.oldtotal = $scope.oldtotal- $scope.shoppingBagShoes[index].price;
+                                            $scope.total = $scope.total -  $scope.shoppingBagShoes[index].price;
+
+                                            
+                                            $scope.shoppingBagShoes[index].amt--;
+                                            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+
+                                        }else{
+                                                    console.log("Final Else");
+                                                    console.log($scope.oldtotal);
+                                                    $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                                    console.log($scope.oldtotal);
+                                                    $scope.shoppingBagShoes[index].amt--;
+                                                    console.log($scope.shoppingBagShoes);
+                                                    $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                                                    $scope.oldtotal = $scope.oldtotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                                    console.log($scope.oldtotal);
+                                                    //$scope.shoppingBagShoes = $window.localStorage.getItem('checkoutArray');
+                                                    console.log($scope.shoppingBagShoes);
+                                                    console.log($scope.shoppingBagShoes.length);
+                                                    console.log($scope.individualTotals);
+                                                    console.log($scope.individualTotals);
+                                                    $scope.individualTotals =[];
+                                        }
                             }
 
-                            console.log("Here we are");
-                             console.log($scope.oldtotal);
-                             $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
-                             console.log($scope.oldtotal);
-                             $scope.shoppingBagShoes[index].amt--;
-                             $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
-                             $scope.oldtotal = $scope.oldtotal + ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
-                             console.log($scope.oldtotal);
-                             //$scope.shoppingBagShoes = $window.localStorage.getItem('checkoutArray');
-                             console.log($scope.shoppingBagShoes);
-                             console.log($scope.shoppingBagShoes.length);
-
-                            console.log($scope.individualTotals);
-                           /* for(var i =0; i<$scope.shoppingBagShoes.length; i++){
-                            $scope.individualTotals.push($scope.shoppingBagShoes[i].amt * $scope.shoppingBagShoes[i].price);
-                           // $scope.shoppingBagShoes[i].invTotal= $scope.individualTotals[i];
-                                console.log($scope.shoppingBagShoes[i].amt);
-                          
-
-                            }*/
-                             console.log($scope.individualTotals);
-                        /* $scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
-                            return sum + value;
-
-                        }, 0);*/
-                        $scope.individualTotals =[];
-                         //$scope.oldtotal=$scope.individualTotals.reduce(function(sum, value) {
-                            //return sum + value;
-
-                        //}, 0);
-                        //console.log($scope.individualTotals);
-                        //console.log($scope.total);
-                    //$scope.oldtotal = $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price;
-
-                    //console.log($scope.shoppingBagShoes);
-                    //console.log($window.localStorage.getItem('checkoutArray'));
+    
 
             }
 
@@ -383,6 +455,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
     
         console.log($scope.total);
         if($scope.total == 0){
+            if($scope.beginCheckout){
+                $scope.grandTotal= $scope.grandTotal - $scope.shippingChoice;
+                $scope.total = $scope.oldtotal -($scope.oldtotal * 0.1);
+                $scope.grandTotal = $scope.total + $scope.shippingChoice;
+            }
             $scope.grandTotal = $scope.oldtotal + $scope.shippingChoice;
         }else{
             $scope.grandTotal = $scope.total + $scope.shippingChoice;
