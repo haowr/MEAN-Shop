@@ -208,8 +208,10 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                                                     
                                                     console.log($scope.oldtotal);
                                                     $scope.total = $scope.total - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
-                                                    $scope.oldtotal = 0;
+                                                    $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price)
                                                     console.log($scope.oldtotal);
+                                                    $scope.shoppingBagShoes[index].amt--;
+                                                    $scope.oldtotal = $scope.oldtotal - ($scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price)
                                                     $scope.shoppingBagShoes.splice($scope.shoppingBagShoes[index],1);
                                                     $rootScope.cartItems = $scope.shoppingBagShoes.length;
                                                     $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
