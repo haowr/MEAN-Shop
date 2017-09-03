@@ -257,6 +257,8 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                                             $scope.total = $scope.total - $scope.shoppingBagShoes[index].price;
                                             $scope.grandTotal = $scope.total + $scope.shippingChoice;
                                             $scope.shoppingBagShoes.splice(index,1);
+                                            $rootScope.cartItems = $scope.shoppingBagShoes.length;
+                                            $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
                                             //if($scope.grandTotal == $scope.shippingChoice){
                                                // $scope.grandTotal = false;
                                             //}
@@ -271,6 +273,8 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                                             $scope.oldtotal = $scope.oldtotal - $scope.shoppingBagShoes[index].price;
                                             $scope.grandTotal = $scope.oldtotal + $scope.shippingChoice;
                                             $scope.shoppingBagShoes.splice(index,1);
+                                            $rootScope.cartItems = $scope.shoppingBagShoes.length;
+                                            $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
                                             if($scope.grandTotal == $scope.shippingChoice){
                                                 $scope.grandTotal = false;
                                                 $scope.beginCheckout = false;
@@ -286,6 +290,8 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,Auth,User,$rootSc
                                             $scope.oldtotal = $scope.oldtotal- $scope.shoppingBagShoes[index].price;
                                             $scope.total = $scope.total - $scope.shoppingBagShoes[index].price;
                                             $scope.shoppingBagShoes.splice(index,1);
+                                            $rootScope.cartItems = $scope.shoppingBagShoes.length;
+                                            $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));                                           
                                             if($scope.oldtotal == 0 ){
                                                 $scope.total = false;
                                                 $scope.grandTotal = false;
