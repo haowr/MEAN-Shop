@@ -147,8 +147,9 @@
                  $scope.checkoutArray= JSON.parse($window.localStorage.getItem('checkoutArray'));
                  $scope.checkoutArray.push($scope.checkout);
                  console.log($scope.checkoutArray);
-                 $scope.addedToCart = true;
+                 
                  $rootScope.cartItems = $scope.checkoutArray.length;
+                 $scope.addedToCart = true;
                  $scope.itemAddedToCart = $routeParams.name;
                  $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.checkoutArray));
                  $timeout(function(){
@@ -213,6 +214,13 @@
                      User.addToShoppingBag( $scope.checkout).then(function(data){
                             console.log(data.data);
                             $rootScope.cartItems = data.data.user.shoppingbag.length;
+                                             $scope.addedToCart = true;
+                 $scope.itemAddedToCart = $routeParams.name;
+                            $timeout(function(){
+
+                                $scope.addedToCart = false;
+
+                            },2500);
                     });
 
                     User.getLoves()
