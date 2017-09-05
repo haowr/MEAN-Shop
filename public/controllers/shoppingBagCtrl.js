@@ -673,7 +673,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                              console.log($scope.shoppingBagShoes);
                                              $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
                                              $rootScope.cartItems = $scope.shoppingBagShoes.length;                                          
-                                           
+                                           if($scope.shoppingBagShoes.length <2){
+                                               $scope.oldtotal = false;
+                                               $scope.grandTotal = false;
+                                               $scope.total = false;
+                                           }
                                              
                                             if($scope.grandTotal == $scope.shippingChoice){
                                                 $scope.oldtotal = false;
