@@ -72,8 +72,7 @@
     <div class="alert alert-success">{{management.successMsg}}</div>
     
 </div>
-<br>
-<br>
+
 <button type ="button"ng-click="management.showMore(number);" class ="btn btn-inverse">Apply Filter</button>
 <button type = "button" ng-click="management.showAll();"class = "btn btn-inverse">Show All</button>
 <div class = "showmore">
@@ -83,6 +82,19 @@
             <input type= "text" class="form-control" ng-model="number">
         </div>
     </div>
+</div>
+<div class ="row" ng-repeat= "email in emailList track by $index">
+
+    <div class = "col-sm-3">
+    </div>
+    <div class = "col-sm-6">
+        <center><h1>{{email}}</h1>
+    </div>
+    <div class = "col-sm-3">
+        <button class = "btn btn-submit" ng-click="removeEmail($index);">Remove</button>
+    </div>
+
+
 </div>
 
 

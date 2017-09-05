@@ -15,6 +15,16 @@
         emailFactory.addToMailList = function(email){
             return $http.put('/api/addtoemaillist/'+email);
         }
+        emailFactory.getEmailList = function(){
+
+            return $http.put('/api/getemaillist/');
+
+        }
+        emailFactory.removeEmail = function(index){
+
+            return $http.put('/api/removeemail/'+index+'/');
+
+        }
         
         return emailFactory;
 

@@ -289,6 +289,7 @@ app.post('/api/updateadminproducts',function(req,res){
 
 });
 
+
 app.post('/api/allshoes', function(req,res){ 
 
 
@@ -588,6 +589,60 @@ app.put('/api/findlove/:user/:love', function(req,res){
 
 
 })
+app.put('/api/getemaillist/', function(req, res){
+
+    Email.find({}, function(err, emails){
+
+        if(err) throw err;
+        if(!emails){
+            res.json({success: false, message: "Email List Retrieval Failed..."});
+        }else{
+            res.json({success: true, message: "Success!", emails: emails});
+        }
+
+
+    });
+app.put('/api/removeemail/:index/', function(req,res){
+
+    Email.find({}, function(err, emails){
+
+        if(err) throw err;
+        if(!emails){
+            res.json({success: false, message: "Email List Retrieval Failed..."});
+        }else{
+            console.log(emails[req.params.index]);
+            console.log(emails);
+            emails.splice(req.params.index,1);
+            //emails[req.params.index].emaillist[0]
+            console.log("hello");
+            console.log(emails);
+            Email.findOneAndUpdate({}, {$set:{ emails: emails}}, {new:true}, function(err, emails){
+
+                if(err) throw err;
+                if(!emails){
+
+                    res.json({success: false, message: "Emaillist Retrieval Failed..."});
+
+                }else{
+
+                    res.json({success: true, message:"Email List Retrieval Successful", emails:emails});
+                }
+
+
+
+
+            })
+
+        }
+
+
+    });
+
+
+})
+
+
+});
 app.put('/api/sendemail/:email',function(req,res){
 
 
@@ -797,7 +852,7 @@ app.put('/api/pulloneitem/:user/:index', function(req,res){
         }else{
             //res.json({success: true, message:"User found.", shoppingbag:shoppingbag});
             console.log(shoppingbag);
-            shoppingbag.shoppingbag.splice(shoppingbag.shoppingbag[req.params.index],1);
+            shoppingbag.shoppingbag.splice(req.params.index,1);
             console.log("AFTR"+shoppingbag);
             User.findOneAndUpdate({username: req.params.user}, {$set:{shoppingbag:shoppingbag.shoppingbag}}, {new:true}, function(err, user){
 

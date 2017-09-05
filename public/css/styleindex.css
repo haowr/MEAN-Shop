@@ -596,7 +596,9 @@ border: solid 1px black;
   height:40px;
 
 }
-
+.shoplinkstyling{
+  text-decoration: underline;
+}
 /* The starting CSS styles for the enter animation */
 .slide.ng-enter {
   width:100%;
@@ -683,7 +685,7 @@ border: solid 1px black;
 }
 *//
 .specificmainzoom{
-position:absolute;
+/*position:absolute;*/
 margin-top:200px;
 
 
@@ -782,7 +784,20 @@ margin-top:200px;
 #emptycartstyling.ng-hide-remove{
   transition: all linear 0.2s;
 }
-
+#invalidcouponcodestyling.ng-hide{
+ opacity:0;
+}
+#invalidcouponcodestyling.ng-hide-add,
+#invalidcouponcodestyling.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+.couponcodestyling.ng-hide{
+ opacity:0;
+}
+.couponcodestyling.ng-hide-add,
+.couponcodestyling.ng-hide-remove{
+  transition: all linear 0.2s;
+}
 .thumbnails{
 
 display: inline-block;

@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module('managementController',['userServices']);
+    var app = angular.module('managementController',['userServices','emailServices']);
 
     app.config(function(){
 
@@ -8,7 +8,7 @@
 
     });
 
-    app.controller('managementCtrl',function(User,$scope){
+    app.controller('managementCtrl',function(User,$scope,Email){
 
         scope = this;
         scope.loading = false;
@@ -20,6 +20,7 @@
         scope.successMsg = "";
         scope.errorMsg = false;
         scope.searchLimit = 0;
+        $scope.emailList = [];
         //$scope.shoes;
 
 function getUsers(){
@@ -35,6 +36,17 @@ function getUsers(){
                     if(data.data.permission == 'admin'){
                         scope.editAccess = true;
                         scope.deleteAccess = true;
+                        Email.getEmailList().then(function(data){
+
+
+                            //console.log(data.data.emails);
+                            for(var i = 0; i< data.data.emails.length; i++){
+
+                                $scope.emailList.push(data.data.emails[i].emaillist[0]);
+                            }
+                            console.log($scope.emailList);
+
+                        });
 
                     }else if(data.data.permission == 'moderator'){
 
@@ -55,7 +67,17 @@ function getUsers(){
 };
 getUsers();
 
+    $scope.removeEmail = function(index){
 
+        Email.removeEmail(index).then(function(data){
+
+
+            console.log(data.data.emails);
+
+
+        })
+
+    };
         scope.showMore = function(number){
             scope.showMoreError = false;
 
