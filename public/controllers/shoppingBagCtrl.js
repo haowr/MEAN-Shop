@@ -752,17 +752,30 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                             //$scope.shoppingBagShoes[index].amt--;
                                             //$window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
 
-                                        }
-            /*$scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
-            console.log($scope.shoppingBagShoes);
-            $scope.oldtotal = $scope.oldtotal - ( $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
-            console.log($scope.total);
-            $scope.shoppingBagShoes.splice(index,1);
+                                        }else{
+                                        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                                        console.log($scope.shoppingBagShoes);
+                                        $scope.oldtotal = $scope.oldtotal - ( $scope.shoppingBagShoes[index].amt * $scope.shoppingBagShoes[index].price);
+                                        console.log($scope.total);
+                                         $scope.shoppingBagShoes.splice(index,1);
             
-            console.log($scope.shoppingBagShoes);
-            $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
-            $rootScope.cartItems = $scope.shoppingBagShoes.length;
-            */
+                                        console.log($scope.shoppingBagShoes);
+                                         $window.localStorage.setItem('checkoutArray',JSON.stringify($scope.shoppingBagShoes));
+                                         $rootScope.cartItems = $scope.shoppingBagShoes.length;
+            
+                                        if($scope.shoppingBagShoes.length <2){
+                                               $scope.oldtotal = false;
+                                               $scope.grandTotal = false;
+                                               $scope.total = false;
+                                               
+                                                $scope.shoppingCartEmpty = true;
+                                                $scope.totalWithShipping = false;
+                                                 $scope.couponCodeAdded = false;
+                                                $scope.grandTotal = false;
+                                                $scope.beginCheckout = false;
+                                           }
+                                        }
+
 
 
         }
