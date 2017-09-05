@@ -308,6 +308,7 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                     $scope.totalaftercoupon =false;
                                     $scope.couponCodeAdded = false;
                                     $scope.totalWithShipping = false;
+                                    $scope.beginCheckout = false;
                                 }else{
                                     console.log("subtractor");
                                     $scope.oldtotal = $scope.oldtotal- Number($scope.shoppingBagShoes[index].price);
@@ -385,8 +386,14 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                                // $scope.grandTotal = false;
                                             //}
                                             if($scope.oldtotal == 0 ){
-                                                $scope.total = false;
+                                                //$scope.total = false;
                                                 $scope.grandTotal = false;
+                                                $scope.oldtotal = false;
+                                      
+                                                $scope.shoppingCartEmpty = true;
+                                                $scope.totalWithShipping = false;
+                                                 $scope.couponCodeAdded = false;
+                                                 $scope.beginCheckout = false;
 
                                             }
 
@@ -537,9 +544,12 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
 
         $scope.shoppingBagShoes = [];
         $window.localStorage.setItem('checkoutArray', JSON.stringify($scope.shoppingBagShoes));
-        $scope.oldtotal= false;
-        $scope.total = false;
-        $scope.grandTotal = false;
+            $scope.shoppingCartEmpty = true;
+            $scope.total = false;
+            $scope.oldtotal = false;
+            $scope.grandTotal = false;
+            $scope.totalWithShipping = false;
+            $scope.couponCodeAdded = false;
 
       }
 
@@ -643,8 +653,13 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                                // $scope.grandTotal = false;
                                             //}
                                             if($scope.oldtotal == 0 ){
+                                                $scope.oldtotal = false;
                                                 $scope.total = false;
                                                 $scope.grandTotal = false;
+                                                $scope.shoppingCartEmpty = true;
+                                                $scope.totalWithShipping = false;
+                                                 $scope.couponCodeAdded = false;
+                                                 $scope.beginCheckout = false;
 
                                             }
 
@@ -661,6 +676,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                            
                                              
                                             if($scope.grandTotal == $scope.shippingChoice){
+                                                $scope.oldtotal = false;
+
+                                                $scope.shoppingCartEmpty = true;
+                                                $scope.totalWithShipping = false;
+                                                 $scope.couponCodeAdded = false;
                                                 $scope.grandTotal = false;
                                                 $scope.beginCheckout = false;
                                             }
@@ -685,6 +705,11 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                                                 $scope.total = false;
                                                 $scope.couponCodeAdded = false;
                                                 $scope.totalaftercoupon = false;
+                                                
+                                                $scope.shoppingCartEmpty = true;
+                                                $scope.totalWithShipping = false;
+                                                
+                                                 //$scope.couponCodeAdded = false;
                                                 //$scope.grandTotal = false;
 
                                             }
