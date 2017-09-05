@@ -145,7 +145,12 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
         
 
     }else if (window.localStorage.getItem('checkoutArray') !== null){
-    $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
+
+        $scope.shoppingBagReady = true;
+        $timeout(function(){
+            $scope.shoppingBagReady = false;
+            //$scope.shoppingCartEmpty = false;
+        $scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
 
                          for(var i =0; i<$scope.shoppingBagShoes.length; i++){
                             $scope.individualTotals.push($scope.shoppingBagShoes[i].amt * $scope.shoppingBagShoes[i].price);
@@ -159,6 +164,9 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
                         }, 0);
                         console.log($scope.individualTotals);
                         console.log($scope.oldtotal);
+
+        },2000);
+
     }
     console.log($scope.shoppingBagShoes);
 
