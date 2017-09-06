@@ -791,6 +791,28 @@ margin-top:200px;
 #invalidcouponcodestyling.ng-hide-remove{
   transition: all linear 0.5s;
 }
+#totalFader.ng-hide{
+ opacity:0;
+}
+#totalFader.ng-hide-add,
+#totalFader.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+#shippingFader.ng-hide{
+ opacity:0;
+}
+#shippingFader.ng-hide-add,
+#shippingFader.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+#couponFader.ng-hide{
+ opacity:0;
+}
+#couponFader.ng-hide-add,
+#couponFader.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+
 .couponcodestyling.ng-hide{
  opacity:0;
 }

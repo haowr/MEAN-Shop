@@ -102,7 +102,7 @@
                 <br>
                <div class ="row"> 
                 <div class = "col-sm-6">
-                    <form name ="couponCodeForm" ng-submit="addCouponCode(couponCode, couponCodeForm.$valid);"ng-show="shoppingBagShoes.length > 0"novalidate>
+                    <form id="couponFader"name ="couponCodeForm" ng-submit="addCouponCode(couponCode, couponCodeForm.$valid);"ng-show="shoppingBagShoes.length > 0"novalidate>
 
                                   
                             <div class="form-group">
@@ -139,7 +139,7 @@
                     
 
                     <div class = "col-sm-6 pull-left">
-                        <p ng-show = "!couponCodeAdded && shoppingBagShoes.length > 0">Total: {{oldtotal|currency}}</p>
+                        <p id="totalFader" ng-show = "!couponCodeAdded && shoppingBagShoes.length > 0">Total: {{oldtotal|currency}}</p>
                         <p ng-show = "couponCodeAdded">Total before Coupon Code: {{oldtotal|currency}}</p>
                         
                     </div>
@@ -158,7 +158,7 @@
                     </div>
                     
                      <div class = "col-sm-4 pull-left">
-                        <form ng-show="shoppingBagShoes.length >0">
+                        <form id="shippingFader"ng-show="shoppingBagShoes.length >0">
                             <div class="form-group">
                                 <label for="sel1">Shipping:</label>
                                
