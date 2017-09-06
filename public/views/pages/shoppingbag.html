@@ -139,7 +139,7 @@
                     
 
                     <div class = "col-sm-6 pull-left">
-                        <p ng-show = "!couponCodeAdded">Total: {{oldtotal|currency}}</p>
+                        <p ng-show = "!couponCodeAdded && shoppingBagShoes.length > 0">Total: {{oldtotal|currency}}</p>
                         <p ng-show = "couponCodeAdded">Total before Coupon Code: {{oldtotal|currency}}</p>
                         
                     </div>
