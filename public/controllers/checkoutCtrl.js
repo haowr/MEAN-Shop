@@ -64,8 +64,8 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
             User.getUserProfile(data.data.username).then(function(data){
 
                 console.log(data.data.user.totalaftercoupon);
-                $scope.grandTotal = data.data.user.totalaftercoupon;
-                $scope.shoppingBagShoes = data.data.user.shoppingbag;
+                $scope.grandTotal = $window.localStorage.getItem('grandTotal');              
+                 $scope.shoppingBagShoes = data.data.user.shoppingbag;
                 for(var i = 0; i<$scope.shoppingBagShoes.length; i++){
 
                       $scope.shoppingBagAmountsArray.push(Number($scope.shoppingBagShoes[i].amt));
@@ -238,6 +238,9 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
         $scope.useBillingAddressSelected = true;
         $scope.checkoutPhase = false;
         console.log(checkoutData.province);
+        console.log($scope.grandTotal);
+        $scope.grandTotal = Number($window.localStorage.getItem('grandTotal'));
+        console.log($scope.grandTotal);
         if(checkoutData.province == "Alberta"){
             $scope.totalAfterTax =$scope.grandTotal + ( $scope.grandTotal * $scope.alberta);
             $scope.showGrandTotal=true;

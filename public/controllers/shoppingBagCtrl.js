@@ -846,6 +846,9 @@ app.controller('shoppingBagCtrl', function($scope,Shop,$window,$timeout,Auth,Use
    
     
         console.log($scope.total);
+        if(Auth.isLoggedIn()){
+            
+        }
         if($scope.total == 0){
             if($scope.beginCheckout){
                 $scope.grandTotal= $scope.grandTotal - $scope.shippingChoice;

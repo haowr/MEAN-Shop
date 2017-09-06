@@ -680,6 +680,11 @@ text-decoration:underline;
     border: 1px solid black;
     border-radius:3px;
 }
+.btn-submitdarker, .btn-submitdarker:hover, .btn-submitdarker:active, .btn-psubmit:visited {
+    background-color: #ffbbbc !important;
+    border: 1px solid black;
+    border-radius:3px;
+}
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: white !important;
     border: 1px solid black;
@@ -955,6 +960,9 @@ opacity:0;
 #grandtotalstyling{
   font-family: 'Bellefair';
   
+}
+#grandtotaltext{
+  font-size:20px;
 }
 .grandtotalstyling{
   
