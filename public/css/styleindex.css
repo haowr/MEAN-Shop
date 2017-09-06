@@ -629,6 +629,10 @@ border: solid 1px black;
 #itemdescription{
 text-decoration:underline;
 }
+#shippingandreturnsstyling{
+  text-decoration:underline;
+
+}
 /*
 .slide.ng-leave{
   transition:1s linear all;
@@ -696,7 +700,8 @@ text-decoration:underline;
 }
 #pan-when-zoomed{
 
-  border: 1px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 
 }
 /*
@@ -843,6 +848,7 @@ margin-top:200px;
 .thumbnails{
 
 display: inline-block;
+border-top: 1px solid #586368;
 
 }
 

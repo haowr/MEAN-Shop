@@ -137,15 +137,15 @@
 <div class = "row">
     <div class = "col-sm-6 details">
         <div class ="pull-right ">
-            <i class="fa fa-plus" ng-click = "openDetails();" ng-class= "{deselected: shippingSelection === 1}"aria-hidden="true"></i>
-            <i class="fa fa-minus" ng-click = "openDetails();" ng-class= "{deselected: shippingSelection === 0}"aria-hidden="true"></i>
+            <i class="fa fa-minus" ng-click = "openDetails();" ng-class= "{deselected: shippingSelection === 1}"aria-hidden="true"></i>
+            <i class="fa fa-plus" ng-click = "openDetails();" ng-class= "{deselected: shippingSelection === 0}"aria-hidden="true"></i>
             <br>
             
         </div>
         <br>
         
         <div ng-show="selection === 1"class= "container-fluid detailo">
-            <h3>Details</h3>
+            <h3>Details|</h3>
             <p>{{mensShoe.description}}</p>
         </div>
         <div class ="pull-right ">
@@ -155,7 +155,7 @@
         </div>
         <br>
         <div ng-show="fit=== 1"class= "container-fluid detailo">
-            <h3>Shipping & Returns</h3>
+            <h3 id ="shippingandreturnsstyling">Shipping & Returns</h3>
             <p>{{shipping}}</p>
             <br>
             <p>{{returns}}</p>

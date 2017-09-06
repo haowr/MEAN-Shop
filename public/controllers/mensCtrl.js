@@ -302,10 +302,10 @@
     $scope.openDetails = function(){
         if($scope.selection === 0){
             $scope.selection = 1;
-            $scope.shippingSelection = 1;
+            $scope.shippingSelection = 0;
         }else{
             $scope.selection = 0;
-            $scope.shippingSelection = 0;
+            $scope.shippingSelection = 1;
         }
     };
     $scope.shippingDetails = function(){
