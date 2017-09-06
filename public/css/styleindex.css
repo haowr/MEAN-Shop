@@ -626,6 +626,9 @@ border: solid 1px black;
   color:#586368;
 
 }
+#itemdescription{
+text-decoration:underline;
+}
 /*
 .slide.ng-leave{
   transition:1s linear all;

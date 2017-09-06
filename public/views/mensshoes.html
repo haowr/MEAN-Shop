@@ -63,7 +63,7 @@
     <div class = "col-sm-3 shoespecs">
         <div class ="header">
             
-            <h3 style="word-wrap:break-word">Description|</h3>
+            <h3 style="word-wrap:break-word" id="itemdescription">Description</h3>
             <p class = "secondarytext">{{mensShoe.description}}</p>
             <h3>Price| <span class = "secondarytext">{{mensShoe.price | currency}}</span></h3>
             
@@ -74,8 +74,9 @@
                <p>Qty: <span class = "secondarytext">{{amt}} </span></p>
                <p ng-show ="noQty">Please Enter An Amount</p>
               <heart-adder></heart-adder>
+              
             </div>
-                            <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
+            <br>            <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
             
             
             <div class = " pull-left sizeselector">
@@ -119,7 +120,7 @@
                 </ul>
                 <br>
                 <br>
-                 <button type ="submit" class = "btn btn-primary" >Submit</button>
+                 <button type ="submit" class = "btn btn-submit" >Submit</button>
             </form>
                         <div class = "row">
                 <div class = "col-sm-12">
