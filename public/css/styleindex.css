@@ -609,6 +609,23 @@ border: solid 1px black;
  
   opacity:1;
 }
+.heartsizer{
+  font-size: 13px;
+}
+#joinourmailinglist{
+
+  font-size:16px;
+  line-height: 1.5;
+  color:#586368;
+
+}
+.secondarytext{
+
+  font-size:16px;
+  line-height: 1.5;
+  color:#586368;
+
+}
 /*
 .slide.ng-leave{
   transition:1s linear all;

@@ -366,7 +366,7 @@
 
                      if(Auth.isLoggedIn() && $rootScope.heartactivated){ //THE USER IS LOGGED IN...
                                                // "usernamey" IS THE USERNAME OF THE LOGGED IN USER WHICH IS RETRIEVED DURING THE EXECUTION OF MAINCTRL. AUTH.getUser()
-                                 User.addLove($routeParams.name,$rootScope.usernamey).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
+                                 User.addLove($rootScope.usernamey,$routeParams.name).then(function(data){ //SEARCH FOR THE USER AND ADD STOREITEM(ROUTE) TO THE LOVES PROPERTY OF USER MODEL...
                                     console.log(data.data.message); 
                                     console.log(data.data);
                                                 
@@ -548,7 +548,7 @@
 
                      if(Auth.isLoggedIn()){
                                                //IF USER IS LOGGED IN...
-                             console.log("User.removeLove");
+                             console.log($rootScope.usernamey);
                              User.removeLove($routeParams.name,$rootScope.usernamey).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
                                     console.log(data.data.message);
                                     console.log(data.data.user.loves.length);
@@ -644,8 +644,9 @@
                     $window.localStorage.setItem('myLoves',$rootScope.myLoves);                            // SETS LOCALSTORAGE 'myLoves' TO 'myLovesStringSplit' ARRAY... (MYLOVES MINUS STORE ITEM...)
 
                      if(Auth.isLoggedIn()){                      //IF USER IS LOGGED IN...
-                            console.log("User.removeLove");
-                             User.removeLove($routeParams.name,$scope.currentUser).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
+                            console.log($scope.currentUser);
+                            console.log($rootScope.usernamey);
+                             User.removeLove($scope.currentUser,$routeParams.name).then(function(data){        // FIND CURRENT USER AND PULLS CURRENT STORE ITEM(ROUTEPARAM) FROM LOVES ARRAY... 
                                     console.log(data.data.message);
                                     console.log(data.data);
                                                

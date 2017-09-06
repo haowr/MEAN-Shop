@@ -927,8 +927,11 @@ app.put('/api/removeonelove/:username/:shoename',function(req,res){
 
     var shoename = req.params.shoename;
     var username = req.params.username;
+    
     console.log(req.params.username)
-        User.findOneAndUpdate({username: req.params.username}, {$pull:{loves:req.params.shoename}}, {new:true},function(err, user){
+    console.log("removeonelove");
+    
+        User.findOneAndUpdate({username: username}, {$pull:{loves:req.params.shoename}}, {new:true},function(err, user){
 
             if(err) throw err;
             if(!user){

@@ -63,17 +63,17 @@
     <div class = "col-sm-3 shoespecs">
         <div class ="header">
             
-            <h3 style="word-wrap:break-word">Description</h3>
-            <p>{{mensShoe.description}}</p>
-            <h3>Price</h3>
-            <p>{{mensShoe.price | currency}}</p>
+            <h3 style="word-wrap:break-word">Description|</h3>
+            <p class = "secondarytext">{{mensShoe.description}}</p>
+            <h3>Price| <span class = "secondarytext">{{mensShoe.price | currency}}</span></h3>
+            
             <div class ="sizer">
-               <p>Size: {{size}}</p>
+               <p >Size: <span class = "secondarytext">{{size}}</span></p>
             </div>
             <div class ="sizer">
-               <p>Qty: {{amt}} </p>
+               <p>Qty: <span class = "secondarytext">{{amt}} </span></p>
                <p ng-show ="noQty">Please Enter An Amount</p>
-              <heart-adder></heart-adder><p>{{totalHearts}} </p>
+              <heart-adder></heart-adder>
             </div>
                             <!--<i ng-show= "loading"class="fa fa-heart-o fa-spin" aria-hidden="true"></i>-->
             
