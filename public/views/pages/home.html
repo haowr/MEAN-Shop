@@ -76,7 +76,8 @@
                                 <!-- Email Div -->
                                 <div ng-class="{ 'has-success':(emailSignup.email.$valid && !emailSignup.email.$pristine && !emailInvalid), 'has-error':(!emailSignup.email.$valid && !emailSignup.email.$pristine) || (!emailSignup.email.$valid && emailSignup.$submitted) || emailInvalid }">
                                     <!-- Email Input -->
-                                    <label>Email:</label>
+                                    <center><label id ="emailcodetitlestyling"
+>Email:</label></center>
                                     <input ng-disabled="disabled" class="form-control" type="text" name="email" placeholder="E-mail *" ng-model="emailListData.email" ng-minlength="3" ng-maxlength="40" ng-pattern="/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/" ng-blur="checkEmail(emailSignupData);" required>
                                     <!-- Email Validation -->
                                     <p class="help-block" ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.required) || (emailSignup.$submitted && emailSignup.email.$error.required)">This field is required</p>
