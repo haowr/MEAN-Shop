@@ -629,6 +629,11 @@ border: solid 1px black;
   color:#586368;
 
 }
+.secondarytextaddresses{
+
+  color:#586368;
+
+}
 #itemdescription{
 text-decoration:underline;
 }
@@ -963,6 +968,12 @@ opacity:0;
 }
 #grandtotaltext{
   font-size:20px;
+}
+#billingaddresstitles{
+  font-family:'Bellefair;'
+}
+#shippingaddresstitles{
+  font-family:'Bellefair;'
 }
 .grandtotalstyling{
   
