@@ -591,7 +591,7 @@ app.put('/api/findlove/:user/:love', function(req,res){
 })
 app.put('/api/getemaillist/', function(req, res){
 
-    Email.find({}, function(err, emails){
+    Email.find({name:"emaillist"}).select("emaillist").exec(function(err, emails){
 
         if(err) throw err;
         if(!emails){
@@ -602,41 +602,19 @@ app.put('/api/getemaillist/', function(req, res){
 
 
     });
-app.put('/api/removeemail/:index/', function(req,res){
+app.put('/api/removeemail/:email/', function(req,res){
 
-    Email.find({}, function(err, emails){
+    Email.findOneAndUpdate({name:"emaillist"},{$pull:{emaillist:req.params.email}},{new:true}, function(err, emails){
 
         if(err) throw err;
         if(!emails){
             res.json({success: false, message: "Email List Retrieval Failed..."});
         }else{
-            console.log(emails[req.params.index]);
-            console.log(emails);
-            emails.splice(req.params.index,1);
-            //emails[req.params.index].emaillist[0]
-            console.log("hello");
-            console.log(emails);
-            Email.findOneAndUpdate({}, {$set:{ emails: emails}}, {new:true}, function(err, emails){
-
-                if(err) throw err;
-                if(!emails){
-
-                    res.json({success: false, message: "Emaillist Retrieval Failed..."});
-
-                }else{
-
-                    res.json({success: true, message:"Email List Retrieval Successful", emails:emails});
-                }
-
-
-
-
-            })
-
+            
+            res.json({success:true, message: "Email Removed From List...", emails:emails});
         }
-
-
     });
+
 
 
 })
@@ -669,8 +647,36 @@ app.put('/api/sendemail/:email',function(req,res){
 })
 app.put('/api/addtoemaillist/:email',function(req,res){
 
-   
+                Email.findOneAndUpdate({name:'emaillist'},{$push:{emaillist: req.params.email}},{new:true},function(err, emaillist){
+
+                    if(err) throw err;
+                    if(!emaillist){
+                        res.json({success: false,message:"Email Entry Failed..."});
+                    }else{
+                        
+                        var email = {
+                            from: 'A House Of Jewels, admin@hoj.com',
+                            to: req.params.email,
+                            subject: 'Welcome to The House Of Jewels Email List',
+                            text: '',
+                            html: compiledTemplate.render({firstName:'Zill'})
+                        }; 
+                                            // Function to send e-mail to user
+                    client.sendMail(email, function(err, info) {
+                        if (err) {
+                            console.log(err); // If error in sending e-mail, log to console/terminal
+                        } else {
+                            console.log(info); // Log confirmation to console
+                        }
+                    });
+                    res.json({success: true, message: "Email entry Save Success...",emaillist:emaillist});
+                    }
+
+
+                } );
+            /*
                 var emailentry = new Email();
+                emailentry.name = "emaillist";
                 emailentry.emaillist = req.params.email;
                 emailentry.save(function(err,newemail){
                     if(err){
@@ -698,7 +704,8 @@ app.put('/api/addtoemaillist/:email',function(req,res){
                     }
 
                 });
-                //res.json({success:true, message:"User found..."})
+                */
+                
 });
 
 app.post('/api/addtocheckout', function(req, res){
@@ -930,7 +937,7 @@ app.put('/api/removeonelove/:username/:shoename',function(req,res){
     
     console.log(req.params.username)
     console.log("removeonelove");
-    
+
         User.findOneAndUpdate({username: username}, {$pull:{loves:req.params.shoename}}, {new:true},function(err, user){
 
             if(err) throw err;

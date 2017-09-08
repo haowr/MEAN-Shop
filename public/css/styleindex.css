@@ -819,7 +819,7 @@ margin-top:200px;
 }
 #emailloading.ng-hide-add,
 #emailloading.ng-hide-remove{
-  transition: all linear 0.5s;
+  transition: all linear 0.3s;
 }
 
 .addToCart.ng-hide{
@@ -878,7 +878,13 @@ margin-top:200px;
 #couponFader.ng-hide-remove{
   transition: all linear 0.2s;
 }
+#emaillisttitlestyling{
+  font-family: 'Bellefair';
 
+}
+.bellefair{
+  font-family: 'Bellefair';
+}
 .couponcodestyling.ng-hide{
  opacity:0;
 }

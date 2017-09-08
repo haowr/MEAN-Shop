@@ -20,9 +20,9 @@
             return $http.put('/api/getemaillist/');
 
         }
-        emailFactory.removeEmail = function(index){
+        emailFactory.removeEmail = function(email){
 
-            return $http.put('/api/removeemail/'+index+'/');
+            return $http.put('/api/removeemail/'+email+'/');
 
         }
         

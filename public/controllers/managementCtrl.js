@@ -40,9 +40,9 @@ function getUsers(){
 
 
                             //console.log(data.data.emails);
-                            for(var i = 0; i< data.data.emails.length; i++){
+                            for(var i = 0; i< data.data.emails[0].emaillist.length; i++){
 
-                                $scope.emailList.push(data.data.emails[i].emaillist[0]);
+                                $scope.emailList.push(data.data.emails[0].emaillist[i]);
                             }
                             console.log($scope.emailList);
 
@@ -67,12 +67,13 @@ function getUsers(){
 };
 getUsers();
 
-    $scope.removeEmail = function(index){
+    $scope.removeEmail = function(email){
 
-        Email.removeEmail(index).then(function(data){
+        Email.removeEmail(email).then(function(data){
 
 
-            console.log(data.data.emails);
+            console.log(data.data.emails.emaillist);
+            $scope.emailList = data.data.emails.emaillist;
 
 
         })

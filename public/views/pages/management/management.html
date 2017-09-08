@@ -1,32 +1,21 @@
-<br>
 <div class ="container container-fluid">
-<div class = "page-header">
-    <h1>User Management</h1>
-</div>
 
-<button type ="button"ng-click="management.showMore(number);" class ="btn btn-inverse">Apply Filter</button>
-<button type = "button" ng-click="management.showAll();"class = "btn btn-inverse">Show All</button>
-<div class = "showmore">
-    <div class = "col-lg-6">
-        <div class = "input-group">
+
+<br>
+<br>
+<!-- Input for filter -->
+<div class = "row">
+    <div class ="col-sm-12">
+        <center><h4 class = "bellefair">User Management</h4></center>
+    </div>
+    <div class = "col-sm-12">
+<button type ="button"ng-click="management.showMore(number);" class ="btn btn-submit">Apply Filter</button>
+<button type = "button" ng-click="management.showAll();"class = "btn btn-submitdarker">Show All</button>
+<div class = "input-group pull-left">
             <span class="input-group-addon">Results to dislay</span>
             <input type= "text" class="form-control" ng-model="number">
         </div>
     </div>
-</div>
-<br>
-<br>
-<!-- Input for filter -->
-<div class = "navbar-form">
-
-    <div class = "form-group">
-        <input type= "text" name="search" class= "form-control" placeholder= "search for..." ng-model="searchKeyword">
-        <button type = "button" ng-click = "management.search(searchKeyword, number);" class = "btn btn-submitdarker">Search</button>
-       <a href ="/search"> <button type = "button" class ="btn btn-submit" >Advanced Search</button></a>
-        <button class = "btn btn-submit" ng-click = "management.clear();">Clear</button>
-
-    </div>
-
 </div>
 <br>
 <div ng-show="searchFilter !== undefined">
@@ -35,22 +24,19 @@
 <div ng-show="searchFilter !== undefined">
      <p><strong>Showing:</strong>{{( management.users | filter: searchFilter | limitTo: management.limit ).length}}</p>   
 </div>
-
-
-<div class="row show-hide-message"ng-show="management.showMoreError">
-    <div class="alert alert-danger">{{management.showMoreError}}&nbsp </div>
-</div>
-<div class= "panel panel-default">
-    <div class = "panel-heading">
-        <strong>User Management</strong>
-    </div>
-    <table class = "table">
-        <tr>
-            <th>Name</th>
-            <th>Username</th>
-            <th>E-mail</th>
-        </tr>
-        <tr ng-repeat="person in management.users | filter: searchFilter | limitTo: management.limit">
+<div class = "table-responsive">
+<table class="table table-sm table-inverse">
+  <thead>
+    <tr>
+      
+      <th>Name|</th>
+      <th>Username|</th>
+      <th>E-mail|</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="person in management.users | filter: searchFilter | limitTo: management.limit">
             <td>{{person.name}}</td>
             <td>{{person.username}}</td>
             <td>{{person.email}}</td>
@@ -58,8 +44,13 @@
                <a href="/edit/{{person._id}}"> <button ng-show='management.editAccess' type="button" class = "btn btn-submit">Edit</button></a>
                 <button ng-show='management.deleteAccess' ng-click ="management.deleteUser(person.username);" type="button" class = "btn btn-submitdarker">Delete</button>
             </td>
-        </tr>
-    </table>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+<div class="row show-hide-message"ng-show="management.showMoreError">
+    <div class="alert alert-danger">{{management.showMoreError}}&nbsp </div>
 </div>
 
 
@@ -74,31 +65,38 @@
     <div class="alert alert-success">{{management.successMsg}}</div>
     
 </div>
-
-<button type ="button"ng-click="management.showMore(number);" class ="btn btn-inverse">Apply Filter</button>
-<button type = "button" ng-click="management.showAll();"class = "btn btn-inverse">Show All</button>
-<div class = "showmore">
-    <div class = "col-lg-6">
-        <div class = "input-group">
+<div class = "row">
+    <div class = "col-sm-12">
+<button type ="button"ng-click="management.showMore(number);" class ="btn btn-submit">Apply Filter</button>
+<button type = "button" ng-click="management.showAll();"class = "btn btn-submitdarker">Show All</button>
+<div class = "input-group pull-left">
             <span class="input-group-addon">Results to dislay</span>
             <input type= "text" class="form-control" ng-model="number">
         </div>
     </div>
 </div>
-<div class ="row" ng-repeat= "email in emailList track by $index">
-
-    <div class = "col-sm-3">
-    </div>
-    <div class = "col-sm-6">
-        <center><h1>{{email}}</h1>
-    </div>
-    <div class = "col-sm-3">
-        <button class = "btn btn-submit" ng-click="removeEmail($index);">Remove</button>
-    </div>
 
 
+<div class = "row">
+    <div class = "col-sm-12">
+        <center><h4 class = "bellefair">E-mail List</h4></center>
+        <center><p ng-show="emailList.length < 0"class = "secondarytext">(No Entries...)</p></center>
+    </div>
+</div>
+<div class = "table-responsive">
+<table class = "table table-sm table-inverse">
+    <tbody>
+        <tr ng-repeat= "email in emailList track by $index">
+            <td>{{email}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class = "btn btn-submit" ng-click="removeEmail(email);">Remove</button></td>
+
+        </tr>
+    </tbody>
+</table>
+</div>
 </div>
 
 
-
-</div>

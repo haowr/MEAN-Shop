@@ -252,11 +252,15 @@ $rootScope.checkEmail = function(emailListData){
            if (data.data.success){
                $rootScope.checkingEmail = false;
                $rootScope.emailInvalid = false;
-               $rootScope.emailMsg = data.data.message;
+               $rootScope.emailMsg = false;
            }else{
                $rootScope.checkingEmail = false;
               $rootScope.emailInvalid = true;
-              $rootScope.emailMsg = data.data.message;
+              $rootScope.emailMsg = "You're already signed up!";
+              $timeout(function(){
+
+                $rootScope.emailMsg = false;
+              },500);
            }
 
         });
