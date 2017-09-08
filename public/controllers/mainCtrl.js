@@ -28,12 +28,16 @@
      $rootScope.personalMyLoves=[];
      $rootScope.usernamey;
      $scope.shoeThumbs = [];
+
      $scope.looper={};
      $scope.whatsNewThumbs = [];
      $scope.longAd =["../img/longad80.jpg"];
      $scope.whatsNew = ["../img/blackshoeside.jpg","../img/pinkshoeside.jpg","../img/blackshoeside.jpg","../img/pinkshoeside.jpg","../img/blackshoeside.jpg","../img/pinkshoeside.jpg","../img/blackshoeside.jpg","../img/pinkshoeside.jpg"];
      $scope.translate = 0;
      $scope.translateY = 0;
+     $scope.emailLoading = false;
+     $scope.joinOurEmailList = true;
+     $scope.emailAdded = false;
      $rootScope.opacityOn =false;
      $rootScope.opacityOn2 =false;
     var changeTitle = function(){
@@ -212,6 +216,25 @@
         if(valid){
             Email.addToMailList(emailListData.email).then(function(data){
 
+                 $scope.emailLoading = true;
+                 $scope.joinOurEmailList= false;
+                if(data.data.success){
+                    
+                    
+                   
+                    $timeout(function(){
+                        $scope.emailAdded = true;
+                        $scope.emailLoading = false;
+                        $scope.joinOurEmailList = false;
+                        $timeout(function(){
+                            $scope.joinOurEmailList = true;
+                            $scope.emailAdded = false;
+                        },4000);
+
+                    },2500);
+
+
+                }
                 console.log(data.data.message);
                 console.log(data.data);
             });
@@ -309,8 +332,11 @@ $rootScope.checkEmail = function(emailListData){
              $window.localStorage.removeItem($rootScope.personalMyLoves[i]);
          }
          $timeout(function(){
-            Auth.logout();
+            $window.localStorage.clear();
             $rootScope.heartss = 0;
+            $rootScope.cartItems = 0;
+            Auth.logout();
+            
             $location.path('/');
             hideModal();
             $route.reload();

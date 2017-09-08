@@ -68,7 +68,11 @@
     </div>
     <div class  = "col-sm-3 emailsignup pull-right">
         <center><h4 id ="whatsnewtitle">Stay Connected!</h4></center>
-        <center><p id ="joinourmailinglist">"Join Our Maillist To Recieve 10% Off Coupon Code, And Early Bird Savings!"</p></center>
+        <center><p ng-show="emailLoading"id ="emailloading">"LOADING.."</p></center>
+
+        <center><p ng-show="joinOurEmailList"id ="emailadded">"Join Our Maillist To Receive 10% Off Coupon Code, And Early Bird Savings!"</p></center>
+        <center><p ng-show="emailAdded"id ="joinourmailingliststyling">"Email Added, Check Your Inbox For Confirmation..."</p></center>
+
         <form name ="emailSignup" ng-submit="addToEmailList(emailListData, emailSignup.$valid);"novalidate>
 
                                   

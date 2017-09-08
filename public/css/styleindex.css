@@ -620,7 +620,10 @@ border: solid 1px black;
   font-size:16px;
   line-height: 1.5;
   color:#586368;
-
+ 
+}
+#ordersummarytitlestyling{
+  font-family: 'Bellefair';
 }
 .secondarytext{
 
@@ -797,6 +800,28 @@ margin-top:200px;
 .btn-fader.ng-hide-remove{
   transition: all linear 0.5s;
 }
+#joinourmailingliststyling.ng-hide{
+ opacity:0;
+}
+#joinourmailingliststyling.ng-hide-add,
+#joinourmailingliststyling.ng-hide-remove{
+  transition: all linear 0.4s;
+}
+#emailadded.ng-hide{
+ opacity:0;
+}
+#emailadded.ng-hide-add,
+#emailadded.ng-hide-remove{
+  transition: all linear 0.1s;
+}
+#emailloading.ng-hide{
+ opacity:0;
+}
+#emailloading.ng-hide-add,
+#emailloading.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+
 .addToCart.ng-hide{
  opacity:0;
 }

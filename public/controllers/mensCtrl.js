@@ -41,7 +41,7 @@
     $scope.itemAddedToCart;
     $scope.zoomValue =0;
     //$rootScope.heartActivated= false;
-    //$rootScope.heartactivated =false;
+    //$rootScope.heartactivated =true;
     $scope.activatedByName;
     $scope.addCookieHeart = 1;
     $scope.removeCookieHeart = 0;
