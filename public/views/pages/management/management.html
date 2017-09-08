@@ -69,6 +69,9 @@
     <div class = "col-sm-12">
 <button type ="button"ng-click="management.showMore(number);" class ="btn btn-submit">Apply Filter</button>
 <button type = "button" ng-click="management.showAll();"class = "btn btn-submitdarker">Show All</button>
+
+        <i ng-show="emailList<1"class="fa fa-spinner fa-spin fa-3x fa-fw" id="managementloader"></i>
+  
 <div class = "input-group pull-left">
             <span class="input-group-addon">Results to dislay</span>
             <input type= "text" class="form-control" ng-model="number">
@@ -80,9 +83,18 @@
 <div class = "row">
     <div class = "col-sm-12">
         <center><h4 class = "bellefair">E-mail List</h4></center>
+        <center><i id = "managementloader"ng-show="emailList<1"class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+<span class="sr-only">Loading...</span></center>
         <center><p ng-show="emailList.length < 0"class = "secondarytext">(No Entries...)</p></center>
     </div>
 </div>
+<div class = "row">
+    <div class = "col-sm-12">
+        <i ng-show="emailList<1"class="fa fa-spinner fa-spin fa-3x fa-fw" id="managementloader"></i>
+    </div>
+</div>
+
+
 <div class = "table-responsive">
 <table class = "table table-sm table-inverse">
     <tbody>
@@ -99,4 +111,5 @@
 </div>
 </div>
 
-
+</div>
+</div>

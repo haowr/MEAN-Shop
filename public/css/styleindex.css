@@ -713,7 +713,11 @@ text-decoration:underline;
 
 
 }
+#managementloader{
+  position:fixed;
 
+
+}
 .panzoom{
  height: 100%;
 }
