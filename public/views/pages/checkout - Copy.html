@@ -506,9 +506,11 @@
            <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase ||creditCardDataAdded"-->
            <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase||creditCardDataAdded"-->
           <br>  
-                      <div class = "table-responsive">
+        <div class ="col-sm-6 billingaddressstyling">
+            <br>
+            <div class = "table-responsive">
                 <table class = "table table-sm table-inverse">
-                    <thead>
+                    <tbody>
                         <tr>
                             <th>First Name|</th>
                             <th>Last Name|</th>
@@ -519,8 +521,6 @@
                             <th>Postal Code|</th>
                             <th>Phone Number|</th>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr >
                             <td> {{checkoutDataa[0].firstname}}</td>
                             <td> {{checkoutDataa[0].lastname}}</td>
@@ -534,37 +534,6 @@
                     </tbody>
                 </table>
             </div>
-                                  <div class = "table-responsive">
-                <table class = "table table-sm table-inverse">
-                    <thead>
-                        <tr>
-                            <th>First Name|</th>
-                            <th>Last Name|</th>
-                            <th>Street Address|</th>
-                            <th>Apt|</th>
-                            <th>City|</th>
-                            <th>Province|</th>
-                            <th>Postal Code|</th>
-                            <th>Phone Number|</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td> {{shippingFormDataa[0].firstname}}</td>
-                            <td> {{shippingFormDataa[0].lastname}}</td>
-                            <td> {{shippingFormDataa[0].streetaddress}}</td>
-                            <td> {{shippingFormDataa[0].apt}}</td>
-                            <td> {{shippingFormDataa[0].city}}</td>
-                            <td> {{shippingFormDataa[0].province}}</td>
-                            <td> {{shippingFormDataa[0].postalcode}}</td>
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        <div class ="col-sm-6 billingaddressstyling">
-            <br>
-
                     <h3 id="billingaddresstitles">Billing Address:<h3>
                      <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].firstname}}</span></p>
                      <p class = "billingaddressstylingp">Last Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].lastname}}</span></p>
