@@ -50,7 +50,7 @@
                   <div class = "col-sm-4">
                   </div>
                   <div class ="col-sm-4 ">
-                    <h3 id ="ordersummarystyling">Order Summary: </h3> <p class = "secondarytextsimple"><ng-pluralize count="orderItems" when="{'one': 'item.',
+                    <h3 id ="ordersummarystyling">Order Summary| </h3> <p class = "secondarytextsimple"><ng-pluralize count="orderItems" when="{'one': 'item.',
                                                                                     'other': '{} items.'}">
                                                                                     </ng-pluralize></p>
 
@@ -84,12 +84,12 @@
               <br>
               <div class = "row">
             
-<div ng-show="!checkoutPhase" class = "col-sm-8">
-                         <div ng-show="useBillingAddressSelected" class = "col-sm-8 wouldyouliketouse">
-                        <br> <!-- col-sm-12 -->
+<div ng-show="!checkoutPhase && useBillingAddressSelected" class = "col-sm-8 wouldyouliketouse">
+                         
+                         <!-- col-sm-12 -->
                         <h4>Would you like to ship to this address, as well?</h4>
                         <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submitdarker">No!</button>
-                    </div>
+                    <br>
 </div>
 <div ng-show="checkoutPhase"class = "col-sm-8 formstyling">
                       <form name = "checkoutForm" ng-submit = "checkOutFunc(checkoutFormData, checkoutForm.$valid);" novalidate>
@@ -472,7 +472,7 @@
             
             </div>
             
-  <div class = "col-sm-4">
+  <div class = "col-sm-4 ordersummarydiv">
                     <div class = "row">
                            <div class ="col-sm-12">
                                

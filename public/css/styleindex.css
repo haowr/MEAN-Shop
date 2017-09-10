@@ -950,6 +950,9 @@ transition: all linear 0.5s;
 transition: all linear 0.5s;
 }
 
+.wouldyouliketouse{
+  border-bottom: 2px solid #586368;;
+}
 .wouldyouliketouse.ng-hide{
  opacity:0;
 }
@@ -1008,7 +1011,10 @@ opacity:0;
 }
 .ordersummarystyling{
   /*border-right: 1px dashed black;*/
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #586368;;
+}
+.ordersummarydiv{
+  border-bottom: 2px solid #586368;
 }
 .ordersummaryitem{
   height:20%;
@@ -1027,6 +1033,8 @@ opacity:0;
 }
 #grandtotaltext{
   font-size:20px;
+  color:#586368;
+
 }
 #billingaddresstitles{
   font-family:'Bellefair';
