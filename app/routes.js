@@ -397,6 +397,18 @@ app.put('/api/hearts',function(req,res){
 });
 
 app.put('/api/removeoneorder/:username/:index', function(req,res){
+/*
+    User.findOneAndUpdate({username: req.params.username}, {$pull:{orders:orders[req.params.index]}},{new:true},function(err,orders){
+
+        if(err) throw err;
+        if(!order){
+            res.json({success: false, message:"No orders found..."});
+        }else{
+            res.json({success: true, message:"Your orders, sir...", orders:orders});
+        }
+
+
+    })*/
 
     User.findOne({username: req.params.username}).select('orders').exec(function(err, order){
         if(err) throw err;
@@ -406,11 +418,13 @@ app.put('/api/removeoneorder/:username/:index', function(req,res){
             
             console.log(order.orders[0]);
             var order =order.orders;
-            console.log(order);
+            console.log(order[0]);
             console.log(order.length);
             console.log(req.params.index);
-            order.splice(req.params.index,1);
-            console.log(order.length);
+            console.log(order[0][req.params.index]);
+            order[0].splice(req.params.index,1);
+            console.log("new");
+            console.log(order[0]);
             User.findOneAndUpdate({username: req.params.username}, {$set:{orders: order}}, {new:true}, function(err,order){
 
                 if(err) throw err;
@@ -421,7 +435,7 @@ app.put('/api/removeoneorder/:username/:index', function(req,res){
                 }
 
             })
-            //User.findOneAndUpdate({username: req.params.username}, )
+            
         }
 
 

@@ -134,10 +134,27 @@ $scope.allShoes;
 
         console.log($scope.currentUser);
         User.removeOneOrder($scope.currentUser,index).then(function(data){
+            User.getUserProfile($scope.whoisthis).then(function(data){
+                console.log($scope.whoisthis);
+                $scope.orders = [];
+                console.log($scope.orders);
+                for(var i= 0; i<data.data.user.orders.length; i++){
+                     for(var j = 0; j< data.data.user.orders[i].length; j++){
 
-            console.log(data.data);
+                        $scope.orders.push(data.data.user.orders[i][j]);
+                    }
+            
+
+                }
+                console.log($scope.orders);
+            });
+
+
+            console.log(data.data.order);
              console.log($scope.orders);
-            $scope.orders = data.data.order.orders;
+             console.log(index);
+             //$scope.orders.splice(index,1);
+           //$scope.orders = data.data.order.orders;
             //console.log(data.data.)
             console.log($scope.orders);
 
