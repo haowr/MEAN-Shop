@@ -44,7 +44,7 @@
               <div class ="row">
                   <div class ="col-sm-4 " ng-cloak>
                       <!--<h3><p>Checkout</p></h3>-->
-                                           <h3 ng-show="showGrandTotal" id = "grandtotalstyling">Grand Total| </h3><p class = "secondarytextsimple" id="grandtotaltext">{{totalAfterTax | currency}}</p>
+                    <h3 ng-show="showGrandTotal" id = "grandtotalstyling">Grand Total| </h3><p class = "secondarytextsimple" id="grandtotaltext">{{totalAfterTax | currency}}</p>
 
                   </div>
                   <div class = "col-sm-4">
@@ -87,7 +87,7 @@
 <div ng-show="!checkoutPhase && useBillingAddressSelected" class = "col-sm-8 wouldyouliketouse">
                          
                          <!-- col-sm-12 -->
-                        <h4>Would you like to ship to this address, as well?</h4>
+                        <p>Would you like to ship to this address, as well?</p>
                         <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submitdarker">No!</button>
                     <br>
                     <br>
@@ -474,14 +474,9 @@
             </div>
             
   <div class = "col-sm-4 ordersummarydiv">
-                    <div class = "row">
-                           <div class ="col-sm-12">
-                               
-                                        <p id = "formerrorstyling" ng-show="invalid">{{errorMsg}}</p>
-                            </div>
-                    </div>
+
                             <div class= "row" ng-repeat="shoe in shoppingBagShoes">
-                                <div class = "col-sm-3 ">
+                                <div class = "col-sm-3 ordersummarystyling ">
                                     
                                     <img class="img-responsive" ng-src="{{shoe.image}}">
                                 
@@ -501,6 +496,12 @@
                                      
                                     
                             </div>
+                                                <div class = "row">
+                           <div class ="col-sm-12">
+                               
+                                <center><p id = "formerrorstyling" ng-show="invalid">{{errorMsg}}</p></center>
+                            </div>
+                    </div>
                  </div>
                  <br>
                  <!--<div ng-show="showGrandTotal"class = "col-sm-12 pull-left grandtotalstyling" ng-cloak>
@@ -519,7 +520,7 @@
  
         <div class = "col-sm-6 billingaddressstyling">
             <br>
-                  <center>  <h3 id="billingaddresstitles" class = "bellefair">Billing Address:<h3></center>
+                    <h3 id="billingaddresstitles" class = "bellefair">Billing Address:<h3>
                      <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].name}}</span></p>
                      <p class = "billingaddressstylingp">Last Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].lastname}}</span></p>
                      <p class = "billingaddressstylingp">Street Address:<span class="secondarytextaddresses"> {{checkoutDataa[0].streetaddress}}</span></p>
@@ -532,8 +533,8 @@
             
         <div class ="col-sm-6 billingaddressstyling">
             <br>
-            <center>
-                    <h3 id="shippingaddresstitles" class = "bellefair">Shipping Address:<h3></center>
+            
+                    <h3 id="shippingaddresstitles" class = "bellefair">Shipping Address:<h3>
                      <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{shippingFormDataa[0].name}}</span></p>
                      <p class = "billingaddressstylingp">Last Name:<span class="secondarytextaddresses"> {{shippingFormDataa[0].lastname}}</span></p>
                      <p class = "billingaddressstylingp">Street Address:<span class="secondarytextaddresses"> {{shippingFormDataa[0].streetaddress}}</span></p>
@@ -544,7 +545,10 @@
                      <p class = "billingaddressstylingp">Phone Number:<span class="secondarytextaddresses"> {{shippingFormDataa[0].phonenumber}}</span></p>
                     </div>
 
-            
+            <div class = "col-sm-12 details2">
+            </div>
+            <br>
+            <br>
                   
                            
                         </div>

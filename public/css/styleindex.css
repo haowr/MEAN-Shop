@@ -328,6 +328,7 @@ border: 1px solid black;
 }
 .details2{
   border-top: 2px solid black;
+  color:#586368;
 }
 .divider{
   border-top: 2px solid black;
@@ -990,6 +991,7 @@ opacity:0;
 .ordersummarystyling2{
   color:#586368;
   width:100%;
+  
 }
 .smallerh3{
   font-size:20px;
@@ -1012,6 +1014,7 @@ opacity:0;
 .ordersummarystyling{
   /*border-right: 1px dashed black;*/
   border-bottom: 1px solid #586368;;
+
 }
 .ordersummarydiv{
   border-bottom: 2px solid #586368;
@@ -1029,10 +1032,11 @@ opacity:0;
 }
 #grandtotalstyling{
   font-family: 'Bellefair';
+
   
 }
 #grandtotaltext{
-  font-size:20px;
+  font-size:18px;
   color:#586368;
 
 }

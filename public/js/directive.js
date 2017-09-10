@@ -92,6 +92,7 @@ var $section = $('.mainshoeview');
                 $(elem).submit(function(event){
                     Stripe.setPublishableKey('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
                     $('#charge-error').addClass('hidden');
+                    $('#charge-error').empty();
                     console.log($('#card-number').val());
                     $(elem).find('button').prop('disabled', true);
                     scope.paymentLoading = true;
@@ -118,12 +119,13 @@ var $section = $('.mainshoeview');
                         if (response.error) { // Problem!
 
                             // Show the errors on the form
+                        scope.paymentLoading = false;
                         $('#charge-error').text(response.error.message);
                         $('#charge-error').removeClass('hidden');
                         $(elem).find('button').prop('disabled', false); // Re-enable submission
 
                         } else { // Token was created!
-
+                        
                         // Get the token ID:
                         var token = response.id;
                         console.log(token);
