@@ -978,6 +978,10 @@ opacity:0;
 #ordersummarystyling{
   font-family:"Bellefair";
 }
+.ordersummarystyling2{
+  color:#586368;
+  width:100%;
+}
 .smallerh3{
   font-size:20px;
 }
