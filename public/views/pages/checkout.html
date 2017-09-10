@@ -42,8 +42,10 @@
               <br>
 
               <div class ="row">
-                  <div class ="col-sm-8 ">
+                  <div class ="col-sm-8 " ng-cloak>
                       <!--<h3><p>Checkout</p></h3>-->
+                                           <h3 ng-show="showGrandTotal" id = "grandtotalstyling">Grand Total| <h4><p class = "secondarytext" id="grandtotaltext">{{totalAfterTax | currency}}</p></h4></h3>
+
                   </div>
                   <div class ="col-sm-4 ">
                     <h3 id ="ordersummarystyling">Order Summary: <span><ng-pluralize count="orderItems" when="{'one': 'item.',
@@ -498,11 +500,11 @@
                             </div>
                  </div>
                  <br>
-                 <div ng-show="showGrandTotal"class = "col-sm-12 pull-left grandtotalstyling" ng-cloak>
+                 <!--<div ng-show="showGrandTotal"class = "col-sm-12 pull-left grandtotalstyling" ng-cloak>
                      <br>
                      <h3 id = "grandtotalstyling">Grand Total| <h4><p class = "secondarytext" id="grandtotaltext">{{totalAfterTax | currency}}</p></h4></h3>
                  </div>
-
+                 -->
 
 
    
