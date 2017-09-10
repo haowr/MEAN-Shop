@@ -14,13 +14,12 @@
                 <a href="#"><p>continue-shopping</p></a>
                 <h3 id ="checkouttitlestyling">Checkout</h3>
 
-                
+                <div class ="pull-left">
                 <p>Need help?</p>
                 <p> Please, <a href ='/faq'>Visit the FAQ</a></p>
-                
+
                 <button ng-click="startCheckoutFunc();"class = "btn btn-submit">Begin Checkout</button>
-                <br>
-                       
+            </div>           
               
             </div>
             <div class = "col-sm-4"> 
@@ -29,7 +28,7 @@
                 
 <div class = "row" ng-show="shoppingBagShoes.length <= 0">
     <div class = "col-sm-12">
-       <center> <h4>Please visit our</h4> <a href='/shop'><strong>Shop</strong></a> <h4> add items to your cart!</h4></center>
+       <center> <h4>Please visit our</h4> <a href='/shop'><strong>Shop<strong></a> <h4> add items to your cart!</h4></center>
     </div>
 </div>
 <div ng-show ='!startCheckout'>
@@ -37,7 +36,6 @@
 <br>
 <br>
 </div>
-
 <div ng-show ="startCheckout && shoppingBagShoes.length > 0" class ="startCheckout">
               <br>
 
@@ -46,51 +44,44 @@
                       <h3><p>Checkout</p></h3>
                   </div>
                   <div class ="col-sm-4 ">
-                    <h3 id ="ordersummarystyling">Order Summary: <span><ng-pluralize count="orderItems" when="{'one': 'item.',
+                    <h3>Order Summary:</h3> <p><ng-pluralize count="orderItems" when="{'one': 'item.',
                                                                                     'other': '{} items.'}">
-                                                                                    </ng-pluralize></span></h3> 
+                                                                                    </ng-pluralize></p>
 
                   </div>
               </div>
               <div class = "row">
 
                   <div class = "col-sm-12 details">
-                  </div>
-            </div>
-                <!--  <div class = "row">
+                                  <div class = "row">
                     <div ng-show="useBillingAddressSelected" class = "col-sm-8 wouldyouliketouse">
-                        <br> 
+                        <br> <!-- col-sm-12 -->
                         <h4>Would you like to ship to this address, as well?</h4>
                         <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submit">No!</button>
                     </div>
-                   <div class= "col-sm-4 ">
-                       
-                   </div>
+
                     <div ng-show = "finalCheckoutButton" class = "col-sm-12 finalcheckout" id="finalcheckoutbutton">
                         <h3 class="smallerh3">Continue To Final Checkout!</h3>
                         <button ng-click="finalCheckout();" class = "btn btn-submit">Continue</button> 
                     </div>
-                    
+  
+            </div>
                   </div>
-            -->
-              
+                  <div class= "col-sm-4 ">
+                            
+                  </div>
+
+              </div>
 
 
 
               <br>
               <div class = "row">
-            
-<div ng-show="!checkoutPhase" class = "col-sm-8">
-                         <div ng-show="useBillingAddressSelected" class = "col-sm-8 wouldyouliketouse">
-                        <br> <!-- col-sm-12 -->
-                        <h4>Would you like to ship to this address, as well?</h4>
-                        <button ng-click="useBillingAddress();" class = "btn btn-submit">Yes!</button> &nbsp<button ng-click="addShippingAddress();"class = "btn btn-submit">No!</button>
-                    </div>
-</div>
+<div ng-show="!checkoutPhase" class = "col-sm-8"></div>
 <div ng-show="checkoutPhase"class = "col-sm-8 formstyling">
                       <form name = "checkoutForm" ng-submit = "checkOutFunc(checkoutFormData, checkoutForm.$valid);" novalidate>
                       <div class="form-group countryselectsizing ">
-                         
+                         {{country}}
                             <label for="sel1">Country:</label>
                             <select name = "country"ng-model="checkoutFormData.country"ng-change="country"class="form-control" id="sel1" required>
                                 <option ng-click="selectCountry(1);">Canada</option>
@@ -465,36 +456,29 @@
                       {{$creditForm}}
                 </div>
             </form>
-            <br>
             </div>
             
   <div class = "col-sm-4">
-                    <div class = "row">
-                           <div class ="col-sm-12">
-                               <br>
-                                        <p id = "formerrorstyling" ng-show="invalid">{{errorMsg}}</p>
-                            </div>
-                    </div>
                             <div class= "row" ng-repeat="shoe in shoppingBagShoes">
-                                <div class = "col-sm-3 ">
+                                <div class = "col-sm-4">
                                     
-                                    <img class="img-fluid" ng-src="{{shoe.image}}">
+                                    <img class="img-responsive" ng-src="{{shoe.image}}">
                                 
                                 </div>
-                                <div class="col-sm-3 ordersummarystyling">
+                                <div class="col-sm-8 ordersummarystyling">
                                     
-                                     <p>Price| <span class ="ordersummarystyling2 secondarytext"> {{shoe.price |currency}}</span></p>
-                  
-                                </div>
-                                <div class = "col-sm-3 ordersummarystyling">
-                                    <p>Size| <span class ="ordersummarstyling2 secondarytext">{{shoe.size}}</span></p> 
-                                                                       
-                                </div>
-                                <div class = "col-sm-3 ordersummarystyling">
-                                     <p> Qty| <span class = "ordersummarystyling2 secondarytext">{{shoe.amt}}</span></p> 
-                                </div>
+                                    {{shoe.name}}
+                                    
+                                     Size: <p class ="ordersummarstyling2">{{shoe.size}}</p>
                                      
+                                     
+                                    Qty: <p class = "ordersummarystyling2">{{shoe.amt}}</p>
                                     
+                                     Price:<p class ="ordersummarystyling2"> {{shoe.price |currency}}</p>
+                                    
+                                </div>
+
+
                             </div>
                  </div>
                  <br>
@@ -502,7 +486,13 @@
                      <br>
                      <h3 id = "grandtotalstyling">Grand Total| <h4><p class = "secondarytext" id="grandtotaltext">{{totalAfterTax | currency}}</p></h4></h3>
                  </div>
-
+                                <br>
+                                <br>
+                                <div ng-show="invalid"class ="row invalidform pull-left">
+                                    <div class ="col-sm-12">
+                                        <h3>{{errorMsg}}</h3>
+                                    </div>
+                                </div>
 
 
    
@@ -512,34 +502,62 @@
 
                   
  
-        <div class = "col-sm-6 billingaddressstyling">
+                  
+           <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase ||creditCardDataAdded"-->
+           <!--ng-show="shipPhase && !addNewShippingAddress || addNewShippingAddressPhase||creditCardDataAdded"-->
+          <br>  
+        <div class ="col-sm-6 billingaddressstyling">
             <br>
-                  <center>  <h3 id="billingaddresstitles" class = "bellefair">Billing Address:<h3></center>
-                     <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].name}}</span></p>
+            <div class = "table-responsive">
+                <table class = "table table-sm table-inverse">
+                    <tbody>
+                        <tr>
+                            <th>First Name|</th>
+                            <th>Last Name|</th>
+                            <th>Street Address|</th>
+                            <th>Apt|</th>
+                            <th>City|</th>
+                            <th>Province|</th>
+                            <th>Postal Code|</th>
+                            <th>Phone Number|</th>
+                        </tr>
+                        <tr >
+                            <td> {{checkoutDataa[0].firstname}}</td>
+                            <td> {{checkoutDataa[0].lastname}}</td>
+                            <td> {{checkoutDataa[0].streetaddress}}</td>
+                            <td> {{checkoutDataa[0].apt}}</td>
+                            <td> {{checkoutDataa[0].city}}</td>
+                            <td> {{checkoutDataa[0].province}}</td>
+                            <td> {{checkoutDataa[0].postalcode}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                    <h3 id="billingaddresstitles">Billing Address:<h3>
+                     <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].firstname}}</span></p>
                      <p class = "billingaddressstylingp">Last Name:<span class="secondarytextaddresses"> {{checkoutDataa[0].lastname}}</span></p>
                      <p class = "billingaddressstylingp">Street Address:<span class="secondarytextaddresses"> {{checkoutDataa[0].streetaddress}}</span></p>
                      <p class = "billingaddressstylingp">Apt:<span class="secondarytextaddresses"> {{checkoutDataa[0].apt}}</span></p>
                      <p class = "billingaddressstylingp">City:<span class="secondarytextaddresses"> {{checkoutDataa[0].city}}</span></p>
                      <p class = "billingaddressstylingp">Province:<span class="secondarytextaddresses"> {{checkoutDataa[0].province}}</span></p>
                      <p class = "billingaddressstylingp">Postal Code:<span class="secondarytextaddresses"> {{checkoutDataa[0].postalcode}}</span></p>
-                     <p class = "billingaddressstylingp ">Phone Number:<span class="secondarytextaddresses"> {{checkoutDataa[0].phonenumber}}</span></p>
+                     <p class = "billingaddressstylingp ">Phone Number:<span class="secondarytextaddresses"> {{checkoutDataa[0].phonenumber}</span>}</p>
                     </div>
-            
         <div class ="col-sm-6 billingaddressstyling">
             <br>
-            <center>
-                    <h3 id="shippingaddresstitles" class = "bellefair">Shipping Address:<h3></center>
-                     <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{shippingFormDataa[0].name}}</span></p>
+                    <h3 id="shippingaddresstitles">Shipping Address:<h3>
+                     <p class = "billingaddressstylingp">First Name:<span class="secondarytextaddresses"> {{shippingFormDataa[0].firstname}}</span></p>
                      <p class = "billingaddressstylingp">Last Name:<span class="secondarytextaddresses"> {{shippingFormDataa[0].lastname}}</span></p>
                      <p class = "billingaddressstylingp">Street Address:<span class="secondarytextaddresses"> {{shippingFormDataa[0].streetaddress}}</span></p>
                      <p class = "billingaddressstylingp">Apt:<span class="secondarytextaddresses"> {{shippingFormDataa[0].apt}}</span></p>
-                     <p class = "billingaddressstylingp">City:<span class="secondarytextaddresses"> {{shippingFormDataa[0].city}}</span></p>
+                     <p class = "billingaddressstylingp">City:<span class="secondarytextaddresses"> {{shippingFormDataa[0].city}</span>}</p>
                      <p class = "billingaddressstylingp">Province:<span class="secondarytextaddresses"> {{shippingFormDataa[0].province}}</span></p>
                      <p class = "billingaddressstylingp">Postal Code: <span class="secondarytextaddresses">{{shippingFormDataa[0].postalcode}}</span></p>
                      <p class = "billingaddressstylingp">Phone Number:<span class="secondarytextaddresses"> {{shippingFormDataa[0].phonenumber}}</span></p>
                     </div>
 
-            
+                   
                   
                            
                         </div>
