@@ -42,15 +42,17 @@
               <br>
 
               <div class ="row">
-                  <div class ="col-sm-8 " ng-cloak>
+                  <div class ="col-sm-4 " ng-cloak>
                       <!--<h3><p>Checkout</p></h3>-->
-                                           <h3 ng-show="showGrandTotal" id = "grandtotalstyling">Grand Total| <h4><p class = "secondarytext" id="grandtotaltext">{{totalAfterTax | currency}}</p></h4></h3>
+                                           <h3 ng-show="showGrandTotal" id = "grandtotalstyling">Grand Total| </h3><p class = "secondarytextsimple" id="grandtotaltext">{{totalAfterTax | currency}}</p>
 
                   </div>
+                  <div class = "col-sm-4">
+                  </div>
                   <div class ="col-sm-4 ">
-                    <h3 id ="ordersummarystyling">Order Summary: <span><ng-pluralize count="orderItems" when="{'one': 'item.',
+                    <h3 id ="ordersummarystyling">Order Summary: </h3> <p class = "secondarytextsimple"><ng-pluralize count="orderItems" when="{'one': 'item.',
                                                                                     'other': '{} items.'}">
-                                                                                    </ng-pluralize></span></h3> 
+                                                                                    </ng-pluralize></p>
 
                   </div>
               </div>
@@ -464,10 +466,10 @@
                             </ul> 
                       </div>
                       <button  class = "btn btn-submit" type="submit">Submit</button>
-                      {{$creditForm}}
+                      
                 </div>
             </form>
-            <br>
+            
             </div>
             
   <div class = "col-sm-4">
