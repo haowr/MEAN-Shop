@@ -80,10 +80,44 @@
    <center> <h1 class="orderhistorytitle">Order History</h1></center>
 </div>
 
+
+<div class = "table-responsive">
+<table class="table table-sm table-inverse">
+  <thead>
+    <tr>
+      
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="order in orders track by $index">
+            
+            <td><a style = "color:white"href="/shop/mens/{{order.name}}"><p>{{order.name}}</p></a></td>
+            <td>{{order.amt}}</td>
+            <td>{{order.price | currency}}</td>
+            <td>{{order.price*order.amt | currency}}
+            <td>
+              <button ng-click = "removeOrder($index);"class = "btn btn-submit">Remove</button>
+            </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+<br>
+<br>
+<div class ="col-sm-12 details2">
+</div>
 <div class = "row" ng-repeat = "order in orders track by $index">
 
-    <div class = "col-sm-12">
-       
+    <div class = "col-sm-12 details2">
+
+
+       <!--
         <center><div class = "row orderhistorystyling">
             <div class = "col-sm-2 ">
                 <img ng-src="{{order.image}}">
@@ -117,7 +151,7 @@
         
 
     </div>
-
+-->
 </div>
 
 </div>

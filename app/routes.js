@@ -404,10 +404,13 @@ app.put('/api/removeoneorder/:username/:index', function(req,res){
             res.json({success: false, message:"No user, or order property found..."});
         }else{
             
+            console.log(order.orders[0]);
             var order =order.orders;
             console.log(order);
+            console.log(order.length);
             console.log(req.params.index);
-            order.splice(order[req.params.index],1);
+            order.splice(req.params.index,1);
+            console.log(order.length);
             User.findOneAndUpdate({username: req.params.username}, {$set:{orders: order}}, {new:true}, function(err,order){
 
                 if(err) throw err;
@@ -539,6 +542,23 @@ app.put('/api/removelove/:love/:name',function(req,res){
 
 
 });
+app.put('/api/getorders/:username',function(req,res){
+
+
+        User.findOne({username: req.params.username}).select('orders').exec(function(err,orders){
+
+            if(err)throw err;
+            if(!orders){
+                res.json({success:false, message:"No orders found.."});
+            }else{
+                res.json({success:true,message:"Your orders sir",orders:orders});
+            }
+
+
+        })
+
+
+})
 app.put('/api/getloves/:name',function(req,res){
 
         User.findOne({username: req.params.name}).select('loves').exec(function(err, loves){

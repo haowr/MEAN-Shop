@@ -988,6 +988,7 @@ opacity:0;
 #ordersummarystyling{
   font-family:"Bellefair";
   font-size: 25px;
+  text-decoration:underline;
 }
 .ordersummarystyling2{
   color:#586368;
@@ -1034,11 +1035,13 @@ opacity:0;
 #grandtotalstyling{
   font-family: 'Bellefair';
   font-size: 25px;
+  text-decoration: underline;
 
   
 }
 #grandtotaltext{
   font-size:18px;
+  
   color:#586368;
 
 }

@@ -35,6 +35,12 @@ $scope.allShoes;
         $scope.whoisthis = data.data.username;
         User.getUserProfile($scope.whoisthis).then(function(data){
 
+           /* User.getOrders($scope.whoisthis).then(function(data){
+
+                console.log(data.data);
+                $scope.orders= data.data.orders.orders;
+
+            })*/
             console.log(data.data.user);
             console.log(data.data.user.loves);
             $scope.loves = data.data.user.loves;
@@ -130,7 +136,10 @@ $scope.allShoes;
         User.removeOneOrder($scope.currentUser,index).then(function(data){
 
             console.log(data.data);
+             console.log($scope.orders);
             $scope.orders = data.data.order.orders;
+            //console.log(data.data.)
+            console.log($scope.orders);
 
 
         })
