@@ -107,7 +107,7 @@
   <tbody>
     <tr ng-repeat="order in orders track by $index">
             
-            <td><a href="/shop/mens/{{order.name}}"><p class ="secondarytextsimple">{{order.name}}</p></a></td>
+            <td><a href="/shop/mens/{{order.name}}"><p class ="secondarytextsimple">{{order.name}}|</p></a></td>
             <td class ="secondarytextsimple">{{order.amt}}</td>
             <td class ="secondarytextsimple">{{order.price | currency}}</td>
             <td class ="secondarytextsimple">{{order.price*order.amt | currency}}</td>
@@ -145,6 +145,13 @@
 
   </tbody>
 </table>
+</div>
+<div class ="col-sm-3 details2 openorderstyling">
+    <button class = "btn btn-submit" ng-click = "openOrder();">open</button>
+    <div ng-show="openOrderr"class ="col-sm-12 " ng-repeat="total in totals track by $index">
+        <p>{{total}}!</p>
+    </div>
+
 </div>
 <br>
 <br>

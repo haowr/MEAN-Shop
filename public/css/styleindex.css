@@ -629,6 +629,11 @@ border: solid 1px black;
 #ordersummarytitlestyling{
   font-family: 'Bellefair';
 }
+.openorderstyling{
+
+  height:200px;
+  overflow-y: auto;
+}
 .secondarytext{
 
   font-size:16px;

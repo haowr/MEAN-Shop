@@ -24,6 +24,18 @@ $scope.allShoes;
 $scope.grandTotal = $window.localStorage.getItem('grandTotal');
 console.log($scope.grandTotal);
 $scope.totals = [];
+$scope.openOrderr = false;
+$scope.openOrder = function(){
+
+    if($scope.openOrderr){
+        $scope.openOrderr = false;
+    }else{
+
+        $scope.openOrderr = true;
+    }
+
+};
+
    User.getProducts().then(function(data){
 
     console.log(data.data.user.products);
@@ -117,6 +129,7 @@ $scope.totals = [];
             console.log(data.data);
             console.log(data.data.history.totalhistory);
             $scope.totals = data.data.history.totalhistory;
+            console.log($scope.totals);
           
             //$scope.order.push(data.data.history.totalhistory);
 
