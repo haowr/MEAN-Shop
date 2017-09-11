@@ -144,8 +144,15 @@ $scope.openOrder = function(){
         
 
     });
+    $rootScope.hideModal = function(){
+
+                 $("#myModal").modal('hide');
+
+    }
     $scope.showModal= function(option){
+        console.log(option);
          $scope.choiceMade = false;
+         $scope.areYouSure = false;
          $scope.modalHeader = undefined;
          $scope.modalBody = undefined;
          $scope.hideButton = false;
@@ -158,8 +165,8 @@ $scope.openOrder = function(){
                     }, 10000);
 
          }else if (option ===2){
-         scope.hideButton=true;
-         scope.modalHeader = "Logging Out...";
+         $scope.hideButton=true;
+         $scope.modalHeader = "Logging Out...";
          $("#myModal").modal({backdrop: "static"});
          for(var i =0; i< $rootScope.personalMyLoves.length; i++){
              $window.localStorage.removeItem($rootScope.personalMyLoves[i]);
@@ -178,8 +185,12 @@ $scope.openOrder = function(){
          //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";
          //scope.choiceMade = false;
         }else if(option === 3){
-            $scope.hideButton=true;
-            $scope.areYouSure =true;
+            console.log("here");
+            $rootScope.hideButton=true;
+            $rootScope.areYouSure =true;
+            $rootScope.modalHeader = "Are You Sure...";
+            $rootScope.modalBody = "Items Deleted From Your Order History Are Unretrievable!";    
+
             $("#myModal").modal({backdrop: "static"});
 
 
@@ -218,7 +229,7 @@ $scope.openOrder = function(){
 
 
     }
-    $scope.removeOrder = function(index){
+    $rootScope.removeOrder = function(index){
 
         console.log($scope.currentUser);
         User.removeOneOrder($scope.currentUser,index).then(function(data){
