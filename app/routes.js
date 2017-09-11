@@ -416,16 +416,17 @@ app.put('/api/removeoneorder/:username/:index', function(req,res){
             res.json({success: false, message:"No user, or order property found..."});
         }else{
             
-            console.log(order.orders[0]);
-            var order =order.orders;
-            console.log(order[0]);
-            console.log(order.length);
-            console.log(req.params.index);
-            console.log(order[0][req.params.index]);
-            order[0].splice(req.params.index,1);
-            console.log("new");
-            console.log(order[0]);
-            User.findOneAndUpdate({username: req.params.username}, {$set:{orders: order}}, {new:true}, function(err,order){
+            //console.log(order.orders[0]);
+            console.log(order.orders[req.params.index]);
+            //var order =order.orders;
+            //console.log(order[0]);
+            //console.log(order.length);
+            //console.log(req.params.index);
+            //console.log(order[0][req.params.index]);
+           order.orders.splice(req.params.index,1);
+            //console.log("new");
+            //console.log(order[0]);
+            User.findOneAndUpdate({username: req.params.username}, {$set:{orders: order.orders}}, {new:true}, function(err,order){
 
                 if(err) throw err;
                 if(!order){
@@ -1085,8 +1086,38 @@ app.post('/api/checkout', function(req,res){
 app.post('/api/addorderstouser', function(req,res){
 
     console.log(req.body);
+    var separatedOrders = [];
+    for(var i =  0; i <req.body[4].length;i++){
 
-    User.findOneAndUpdate({username: req.body[3]}, {$push:{orders: req.body[4]}},{new:true},function(err,user){
+        
+    }
+    User.findOne({username: req.body[3]}).select('orders').exec(function(err,orders){
+
+        if(err)throw err;
+        if(!orders){
+            res.json({success:false, message: "No orders amigo.."});
+        }else{
+           // res.json({success: true, message: "Here you go sir!", orders:orders})
+           for(var i = 0; i <req.body[4].length; i++){
+
+                orders.orders.push(req.body[4][i]);
+
+           }
+
+           User.findOneAndUpdate({username: req.body[3]}, {$set:{orders: orders.orders}}, {new:true},function(err,user){
+
+                if(err)throw err;
+                if(!user){
+                    res.json({success: false, message: "User not found..."});
+                }else{
+                    res.json({success: true, message:"User Found And Updated..", user:user});
+                }
+
+           })
+        }
+    })
+
+   /* User.findOneAndUpdate({username: req.body[3]}, {$push:{orders: req.body[4]}},{new:true},function(err,user){
         if (err) throw err;
         if(!user){
             res.json({success:false, message:"User not found.."});
@@ -1100,7 +1131,7 @@ app.post('/api/addorderstouser', function(req,res){
 
 
     })
-
+*/
 
 })
 
