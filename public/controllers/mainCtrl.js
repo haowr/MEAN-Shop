@@ -320,6 +320,7 @@ $rootScope.checkEmail = function(emailListData){
          $scope.modalHeader = undefined;
          $scope.modalBody = undefined;
          $scope.hideButton = false;
+         $scope.areYouSure = false;
          if(option === 1){
                 $scope.modalHeader = "Timeout Warning";
                 $scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
@@ -348,7 +349,13 @@ $rootScope.checkEmail = function(emailListData){
          },2000)
          //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";
          //scope.choiceMade = false;
-        }else if(option === 3){
+   }else if(option === 3){
+            console.log("here");
+            $rootScope.hideButton=true;
+            $rootScope.areYouSure =true;
+            $rootScope.modalHeader = "Are You Sure...";
+            $rootScope.modalBody = "Items Deleted From Your Order History Are Unretrievable!";    
+
             $("#myModal").modal({backdrop: "static"});
 
 
