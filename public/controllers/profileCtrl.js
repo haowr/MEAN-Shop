@@ -178,6 +178,8 @@ $scope.openOrder = function(){
          //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";
          //scope.choiceMade = false;
         }else if(option === 3){
+            $scope.hideButton=true;
+            $scope.areYouSure =true;
             $("#myModal").modal({backdrop: "static"});
 
 
