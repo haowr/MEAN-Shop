@@ -101,7 +101,7 @@
   <tbody>
     <tr ng-repeat="order in orders track by $index">
             
-            <td><a style = "color:white"href="/shop/mens/{{order.name}}"><p>{{order.name}}</p></a></td>
+            <td><a href="/shop/mens/{{order.name}}"><p>{{order.name}}</p></a></td>
             <td>{{order.amt}}</td>
             <td>{{order.price | currency}}</td>
             <td>{{order.price*order.amt | currency}}

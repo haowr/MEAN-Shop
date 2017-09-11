@@ -1110,7 +1110,7 @@ app.post('/api/addorderstouser', function(req,res){
                 if(!user){
                     res.json({success: false, message: "User not found..."});
                 }else{
-                    res.json({success: true, message:"User Found And Updated..", user:user});
+                    res.json({success: true, message:"User Found And Updated..", user:user,grandtotal:req.body[2].grandTotal});
                 }
 
            })

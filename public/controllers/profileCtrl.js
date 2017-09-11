@@ -102,6 +102,7 @@ $scope.allShoes;
 
             $scope.orders.push(data.data.user.orders[i]);
 
+
             
 
         }
@@ -143,6 +144,7 @@ $scope.allShoes;
             //console.log(data.data.)
             console.log($scope.orders);
             $scope.orders= data.data.order.orders;
+
 
 
         })
