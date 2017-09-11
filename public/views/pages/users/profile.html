@@ -113,6 +113,25 @@
   </tbody>
 </table>
 </div>
+<div class = "table-responsive">
+<table class="table table-sm">
+  <thead>
+    <tr>
+      
+      <th>Grand Totals</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+
+    <tr ng-repeat = "total in totals">
+        <td>{{total | currency}}</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
 <br>
 <br>
 <div class ="col-sm-12 details2">

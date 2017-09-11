@@ -184,7 +184,9 @@ var $section = $('.mainshoeview');
                                                         User.getShoppingBag(data.data.username).then(function(data){
 
                                                             checkoutData[4] = data.data.user.shoppingbag;
-                                                            console.log(checkoutData);
+                                                            var grandtotal= $window.localStorage.getItem('grandTotal');
+                                                            //checkoutData[4].push(grandtotal);
+                                                           console.log(checkoutData);
                                                         User.addOrdersToUser(checkoutData).then(function(data){
 
                                                             if(data.data.success){

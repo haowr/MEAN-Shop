@@ -1103,6 +1103,7 @@ app.post('/api/addorderstouser', function(req,res){
                 orders.orders.push(req.body[4][i]);
 
            }
+           //orders.totalaftercoupon= req.body[5];
 
            User.findOneAndUpdate({username: req.body[3]}, {$set:{orders: orders.orders}}, {new:true},function(err,user){
 

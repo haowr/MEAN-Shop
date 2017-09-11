@@ -6,7 +6,7 @@ app.config(function(){
     console.log("profile controller loaded and initialized...");
 })
 
-app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope){
+app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window){
 /*
 var names = 
 Shop.getMensShoe()
@@ -21,7 +21,9 @@ $scope.lovesLength;
 $scope.loveObjectArray = [];
 $scope.loveObjects= [];
 $scope.allShoes;
-
+$scope.grandTotal = $window.localStorage.getItem('grandTotal');
+console.log($scope.grandTotal);
+$scope.totals = [];
    User.getProducts().then(function(data){
 
     console.log(data.data.user.products);
@@ -106,7 +108,13 @@ $scope.allShoes;
             
 
         }
-        console.log($scope.orders);
+        $scope.totals.push($scope.grandTotal);
+        //$scope.totals = [];
+                        var unique = $scope.totals.filter(function(elem, index, self) {
+                        return index == self.indexOf(elem);
+                })    
+                $scope.totals = unique;  
+        console.log($scope.totals);
         
 
     });
