@@ -144,6 +144,58 @@ $scope.openOrder = function(){
         
 
     });
+    $scope.showModal= function(option){
+         $scope.choiceMade = false;
+         $scope.modalHeader = undefined;
+         $scope.modalBody = undefined;
+         $scope.hideButton = false;
+         if(option === 1){
+                scope.modalHeader = "Timeout Warning";
+                scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
+                $("#myModal").modal({backdrop: "static"});
+                    $timeout(function() {
+                        if (!scope.choiceMade) scope.endSession(); // If no choice is made after 10 seconds, select 'no' for them
+                    }, 10000);
+
+         }else if (option ===2){
+         scope.hideButton=true;
+         scope.modalHeader = "Logging Out...";
+         $("#myModal").modal({backdrop: "static"});
+         for(var i =0; i< $rootScope.personalMyLoves.length; i++){
+             $window.localStorage.removeItem($rootScope.personalMyLoves[i]);
+         }
+         $timeout(function(){
+            $window.localStorage.clear();
+            $rootScope.heartss = 0;
+            $rootScope.cartItems = 0;
+            Auth.logout();
+            
+            $location.path('/');
+            hideModal();
+            $route.reload();
+
+         },2000)
+         //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";
+         //scope.choiceMade = false;
+        }else if(option === 3){
+            $("#myModal").modal({backdrop: "static"});
+
+
+        }
+
+        //$timeout(function(){
+         ////   if(!scope.choiceMade){
+                
+         //       hideModal();
+//}
+
+
+       // },5000);
+
+
+
+     };
+
     $scope.removeOneLove = function(index){
 
        

@@ -348,6 +348,10 @@ $rootScope.checkEmail = function(emailListData){
          },2000)
          //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";
          //scope.choiceMade = false;
+        }else if(option === 3){
+            $("#myModal").modal({backdrop: "static"});
+
+
         }
 
         //$timeout(function(){
