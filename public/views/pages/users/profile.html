@@ -14,13 +14,14 @@
     <tr>
         <th>Username</th>
         <th>Email</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td>{{main.username}}</td>
-        <td>{{main.useremail}}</td>
-        <td>****************</td>
+        <td class ="secondarytextsimple">{{main.username}}</td>
+        <td class ="secondarytextsimple">{{main.useremail}}</td>
+        <td class ="secondarytextsimple">****************</td>
     </tr>
     </tbody>
 </table>
@@ -95,19 +96,32 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Total</th>
+      <th>Date</th>
       <th></th>
+      <th></th>
+            <th></th>
+      <th></th>
+     
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="order in orders track by $index">
             
-            <td><a href="/shop/mens/{{order.name}}"><p>{{order.name}}</p></a></td>
-            <td>{{order.amt}}</td>
-            <td>{{order.price | currency}}</td>
-            <td>{{order.price*order.amt | currency}}
+            <td><a href="/shop/mens/{{order.name}}"><p class ="secondarytextsimple">{{order.name}}</p></a></td>
+            <td class ="secondarytextsimple">{{order.amt}}</td>
+            <td class ="secondarytextsimple">{{order.price | currency}}</td>
+            <td class ="secondarytextsimple">{{order.price*order.amt | currency}}</td>
+            <td class ="secondarytextsimple">{{order.timestamp}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
             <td>
               <button ng-click = "removeOrder($index);"class = "btn btn-submit">Remove</button>
             </td>
+    </tr>
+    <tr ng-repeat = "total in totals">
+        <td>{{total | currency}}</td>
     </tr>
 
   </tbody>

@@ -99,22 +99,35 @@ $scope.totals = [];
               //  $scope.loves.push(data.data.user.loves[i]);
 
             //}
-
+            console.log(data.data.user.orders);
         for(var i= 0; i<data.data.user.orders.length; i++){
 
             $scope.orders.push(data.data.user.orders[i]);
-
+            //$scope.orders[i].timestamp= 
+            /*var d= new Date();
+            console.log(d.getFullYear());
+            console.log(d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2));
+*/
 
             
 
         }
-        $scope.totals.push($scope.grandTotal);
+        User.getTotalsFromUser($scope.whoisthis).then(function(data){
+
+            console.log(data.data);
+            console.log(data.data.history.totalhistory);
+            $scope.totals = data.data.history.totalhistory;
+          
+            //$scope.order.push(data.data.history.totalhistory);
+
+        })
+        //$scope.totals.push($scope.grandTotal);
         //$scope.totals = [];
-                        var unique = $scope.totals.filter(function(elem, index, self) {
-                        return index == self.indexOf(elem);
-                })    
-                $scope.totals = unique;  
-        console.log($scope.totals);
+                       // var unique = $scope.totals.filter(function(elem, index, self) {
+                        //return index == self.indexOf(elem);
+                //})    
+               // $scope.totals = unique;  
+       // console.log($scope.totals);
         
 
     });

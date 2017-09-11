@@ -144,6 +144,17 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.post('/api/addorderstouser',order);
 
   }
+  //User.addTotalToUser(user,total);
+  userFactory.addTotalToUser = function(user,total){
+
+    return $http.put('/api/addtotaltouser/'+user+'/'+total);
+
+  }
+  //User.getTotalsFromUser(user);
+  userFactory.getTotalsFromUser = function(user){
+
+    return $http.put('/api/gettotalsfromuser/'+user);
+  }
   //User.sendEmail(email);
   userFactory.sendEmail = function(email){
 

@@ -175,7 +175,7 @@ var $section = $('.mainshoeview');
 
                                                 Auth.getUser().then(function(data){
                                                         var order = {};
-                                                       
+                                                        var username = data.data.username;
                                                        // console.log(checkoutArray);
                                                         console.log(data);
                                                         console.log(order);
@@ -185,13 +185,22 @@ var $section = $('.mainshoeview');
 
                                                             checkoutData[4] = data.data.user.shoppingbag;
                                                             var grandtotal= $window.localStorage.getItem('grandTotal');
-                                                            //checkoutData[4].push(grandtotal);
-                                                           console.log(checkoutData);
-                                                        User.addOrdersToUser(checkoutData).then(function(data){
+                                                            var d= new Date();
+                                                            var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+                                                            checkoutData.push(timestamp);
+                                                            console.log(grandtotal);
+                                                            console.log(username);
+                                                            console.log(checkoutData);
+                                                                
+                                                            User.addTotalToUser(username, grandtotal).then(function(data){
 
+                                                                console.log(data.data);
+                                                                console.log(data.data.message);
+                                                                User.addOrdersToUser(checkoutData).then(function(data){
+                                                                        console.log(data.data);
                                                             if(data.data.success){
                                                                 $window.localStorage.removeItem('checkoutArrayy');
-                                                        User.clearShoppingBag(data.data.username).then(function(data){
+                                                                    User.clearShoppingBag(data.data.username).then(function(data){
 
                                                         console.log(data.data);
                                                 //$rootScope.cartItems = data.data.user.shoppingbag;
@@ -211,7 +220,10 @@ var $section = $('.mainshoeview');
 
                                                             }
 
-                                                        })
+                                                        });
+
+                                                            });
+                                                           
 
                                                         })
                       

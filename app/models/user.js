@@ -79,6 +79,7 @@ var UserSchema = new Schema({
     totalaftercoupon:{type:Number},
     shippingchoice:{type:String},
     orders:{type:Array},
+    totalhistory:{type:Array},
     loves: Array
 
 

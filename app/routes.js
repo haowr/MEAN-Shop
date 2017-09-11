@@ -791,7 +791,7 @@ app.post('/api/addtoshoppingbag', function(req,res){
 
 });
 
-app.put('/api/addtotaltouser/:user/:newtotal',function(req,res){
+/*app.put('/api/addtotaltouser/:user/:newtotal',function(req,res){
 
      User.findOneAndUpdate({username: req.params.user},{$set:{totalaftercoupon:req.params.newtotal}},{new:true},function(err,user){
         if(err) throw err;
@@ -803,6 +803,7 @@ app.put('/api/addtotaltouser/:user/:newtotal',function(req,res){
      });
 
 });
+*/
 app.put('/api/addshippingchoicetouser/:username/:shippingChoice',function(req,res){
 
     User.findOneAndUpdate({username: req.params.username},{$set:{shippingchoice: req.params.shippingChoice}},{new:true},function(err,user){
@@ -1083,14 +1084,44 @@ app.post('/api/checkout', function(req,res){
 
 
 });
+app.put('/api/addtotaltouser/:user/:total', function(req,res){
+
+    User.findOneAndUpdate({username: req.params.user}, {$push:{totalhistory: req.params.total}}, {new:true}, function(err, userupdated){
+
+        if (err) throw err;
+        if(!userupdated){
+            res.json({success: false, message: "The User was not found..."});
+        }else{
+            res.json({success:true, message: "User found and updated...", userupdated:userupdated});
+        }
+
+
+
+    });
+
+
+
+});
+
+app.put('/api/gettotalsfromuser/:user',function(req,res){
+
+    User.findOne({username:req.params.user}).select('totalhistory').exec(function(err,history){
+
+        if(err)throw err;
+        if(!history){
+            res.json({success:false, message:"History not found..."});
+        }else{
+            res.json({success: true, message: "History found and updated...", history:history});
+        }
+
+
+    });
+
+});
 app.post('/api/addorderstouser', function(req,res){
 
-    console.log(req.body);
-    var separatedOrders = [];
-    for(var i =  0; i <req.body[4].length;i++){
+    console.log(req.body[3]);
 
-        
-    }
     User.findOne({username: req.body[3]}).select('orders').exec(function(err,orders){
 
         if(err)throw err;
@@ -1099,11 +1130,12 @@ app.post('/api/addorderstouser', function(req,res){
         }else{
            // res.json({success: true, message: "Here you go sir!", orders:orders})
            for(var i = 0; i <req.body[4].length; i++){
-
+                req.body[4][i].timestamp= req.body[5];
                 orders.orders.push(req.body[4][i]);
 
            }
-           //orders.totalaftercoupon= req.body[5];
+           //orders.orders.push(req.body[5]);
+
 
            User.findOneAndUpdate({username: req.body[3]}, {$set:{orders: orders.orders}}, {new:true},function(err,user){
 
