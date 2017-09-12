@@ -3,9 +3,8 @@
 <br>
 
 <div class = "row">
-    <div class = "col-sm-3">
-    </div>
-    <div class = "col-sm-6">
+
+    <div class = "col-sm-12">
                 <div class = "page-header">
                      <h1 class = "myprofiletitle">User Login</h1>
                 </div>
@@ -16,16 +15,19 @@
                     <label>Password</label>
                     <input  ng-disabled="main.disabled"class="form-control"type="password" placeholder="password" ng-model="main.loginData.password"/>
                     <button ng-disabled="main.disabled"class="btn btn-submit"type="submit">Login</button>
-                    <div class = "reset">
-                        <a href ="/resetusername"><button ng-disabled="main.disabled"class="btn btn-default" type="button">Forgot Username</button></a>
-                        <a href ="/resetpassword"><button ng-disabled="main.disabled"class="btn btn-default" type="button">Forgot Password</button></a> 
-                    </div>            
+          
                 </form>
-<br>
+                
+                    
+                        <a href ="/resetusername"><button ng-disabled="main.disabled"class="btn btn-submit" type="button">Forgot Username</button></a>
+                        <a href ="/resetpassword"><button ng-disabled="main.disabled"class="btn btn-submitdarker" type="button">Forgot Password</button></a> 
+                   
+    
+        <br>
 
                 <div class="jumbotron text-center" ng-show="main.loading">
 
-                    <span class="glyphicon glyphicon-repeat spin"></span>
+                    <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
                     <p>loading...</p>
 
                 </div>
@@ -38,7 +40,6 @@
                 <div class="row show-hide-message"ng-show="main.errorMsg">
                 <div class="alert alert-danger">{{main.errorMsg}}&nbsp <a href="/resend" ng-show="main.expired"><button class="btn btn-default">Resend activation link...</button> </a></div>
                 </div>
-    <div class = "col-sm-3">
-    </div>
+    
     </div>
 </div>

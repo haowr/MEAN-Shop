@@ -309,7 +309,7 @@ $rootScope.checkEmail = function(emailListData){
          // Function to expire session and logout (activated when user presses 'no)
     $scope.endSession = function() {
         scope.choiceMade = true; // Set to true to stop 10-second check in option 1
-        hideModal(); // Hide modal
+       // hideModal(); // Hide modal
         // After 1 second, activate modal option 2 (log out)
         $timeout(function() {
             showModal(2); // logout user
