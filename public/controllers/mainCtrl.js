@@ -323,7 +323,7 @@ $rootScope.checkEmail = function(emailListData){
          $rootScope.areYouSure = false;
          if(option === 1){
                 $rootScope.modalHeader = "Timeout Warning";
-                $scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
+                $rootScope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
                 $("#myModal").modal({backdrop: "static"});
                     $timeout(function() {
                         if (!$scope.choiceMade) $scope.endSession(); // If no choice is made after 10 seconds, select 'no' for them
