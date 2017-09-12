@@ -1278,7 +1278,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
 
                    }else{
                        
-                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '6m'});
+                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '3m'});
                        res.json({success: true, message:'User authenticated', token: token});
                    }
 

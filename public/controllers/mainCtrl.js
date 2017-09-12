@@ -308,7 +308,7 @@ $rootScope.checkEmail = function(emailListData){
 
          // Function to expire session and logout (activated when user presses 'no)
     $scope.endSession = function() {
-        scope.choiceMade = true; // Set to true to stop 10-second check in option 1
+        $scope.choiceMade = true; // Set to true to stop 10-second check in option 1
        // hideModal(); // Hide modal
         // After 1 second, activate modal option 2 (log out)
         $timeout(function() {
@@ -317,12 +317,12 @@ $rootScope.checkEmail = function(emailListData){
     };
      var  showModal= function(option){
          $scope.choiceMade = false;
-         $scope.modalHeader = undefined;
-         $scope.modalBody = undefined;
-         $scope.hideButton = false;
-         $scope.areYouSure = false;
+         $rootScope.modalHeader = undefined;
+         $rootScope.modalBody = undefined;
+         $rootScope.hideButton = false;
+         $rootScope.areYouSure = false;
          if(option === 1){
-                $scope.modalHeader = "Timeout Warning";
+                $rootScope.modalHeader = "Timeout Warning";
                 $scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
                 $("#myModal").modal({backdrop: "static"});
                     $timeout(function() {
@@ -523,8 +523,8 @@ $rootScope.checkEmail = function(emailListData){
     };
     //console.log("testing registration controller");
 
-     scope.renewSession = function(){
-        scope.choiceMade = true;
+     $rootScope.renewSession = function(){
+        $scope.choiceMade = true;
         User.renewSession(scope.username).then(function(data){
             console.log(data);
             if(data.data.success){
@@ -540,7 +540,7 @@ $rootScope.checkEmail = function(emailListData){
     };
 
      scope.endSession = function(){
-         scope.choiceMade = true;
+         $scope.choiceMade = true;
          hideModal();
          $timeout(function(){
             showModal(2);
