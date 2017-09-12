@@ -86,16 +86,16 @@
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class = "dropdown-menu">
-                    <li><a href="#" ng-click = "changeQty('1');">1</a></li>
-                    <li><a href="#" ng-click = "changeQty('2');">2</a></li>
-                    <li><a href="#" ng-click = "changeQty('3');">3</a></li>
-                    <li><a href="#" ng-click = "changeQty('4');">4</a></li>
-                    <li><a href="#" ng-click = "changeQty('5');">5</a></li>
-                    <li><a href="#" ng-click = "changeQty('6');">6</a></li>
-                    <li><a href="#" ng-click = "changeQty('7');">7</a></li>
-                    <li><a href="#" ng-click = "changeQty('8');">8</a></li>
-                    <li><a href="#" ng-click = "changeQty('9');">9</a></li>
+               <ul class = "dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li class ="dropdown-item" ng-click = "changeQty('1');">1</li>
+                    <li class ="dropdown-item"  ng-click = "changeQty('2');">2</li>
+                    <li class ="dropdown-item"   ng-click = "changeQty('3');">3</li>
+                    <li class ="dropdown-item"   ng-click = "changeQty('4');">4</li>
+                    <li class ="dropdown-item" ng-click = "changeQty('5');">5</li>
+                    <li class ="dropdown-item"  ng-click = "changeQty('6');">6</li>
+                    <li class ="dropdown-item"   ng-click = "changeQty('7');">7</li>
+                    <li class ="dropdown-item"   ng-click = "changeQty('8');">8</li>
+                    <li class ="dropdown-item"   ng-click = "changeQty('9');">9</li>
            
                 </ul>
             </div>
@@ -108,9 +108,9 @@
                 </button>
                 
                 <ul class = "dropdown-menu">
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('S');">S</a></li>
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('M');">M</a></li>
-                    <li><a href="#" ng-model="checkout.size"ng-click = "changeSize('L');">L</a></li>
+                    <li ng-model="checkout.size"ng-click = "changeSize('S');">S</li>
+                    <li ng-model="checkout.size"ng-click = "changeSize('M');">M</li>
+                    <li ng-model="checkout.size"ng-click = "changeSize('L');" >L</li>
            
                 </ul>
                 <br>
