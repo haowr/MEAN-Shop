@@ -63,6 +63,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
         Auth.getUser().then(function(data){
 
             console.log(data.data.user);
+            $scope.currentUser = data.data.username;
             User.getUserProfile(data.data.username).then(function(data){
 
                 console.log(data.data.user.totalaftercoupon);
