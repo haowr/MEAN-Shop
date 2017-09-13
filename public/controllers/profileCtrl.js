@@ -188,6 +188,7 @@ $scope.openOrder = function(){
             console.log("here");
             $rootScope.hideButton=true;
             $rootScope.areYouSure =true;
+            $rootScope.showButton = false;
             $rootScope.modalHeader = "Are You Sure...";
             $rootScope.modalBody = "Items Deleted From Your Order History Are Unretrievable!";    
 

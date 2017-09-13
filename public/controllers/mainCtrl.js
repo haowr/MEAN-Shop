@@ -40,6 +40,8 @@
      $scope.emailAdded = false;
      $rootScope.opacityOn =false;
      $rootScope.opacityOn2 =false;
+     $rootScope.showButton = false;
+     $rootScope.areYouSure = false;
     var changeTitle = function(){
         console.log("changeTitle has run..");
         $rootScope.title = "HOJ | A House Of Jewels";
@@ -321,7 +323,9 @@ $rootScope.checkEmail = function(emailListData){
          $rootScope.modalBody = undefined;
          $rootScope.hideButton = false;
          $rootScope.areYouSure = false;
+         $rootScope.showButton = false;
          if(option === 1){
+                $rootScope.showButton = true;
                 $rootScope.modalHeader = "Timeout Warning";
                 $rootScope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";    
                 $("#myModal").modal({backdrop: "static"});
@@ -330,7 +334,11 @@ $rootScope.checkEmail = function(emailListData){
                     }, 10000);
 
          }else if (option ===2){
-         $scope.hideButton=true;
+         $rootScope.showButton = false;
+         $rootScope.hideButton=true;
+         //$rootScope.areYouSure = true;
+         
+         
          $scope.modalHeader = "Logging Out...";
          $("#myModal").modal({backdrop: "static"});
          for(var i =0; i< $rootScope.personalMyLoves.length; i++){
@@ -341,9 +349,9 @@ $rootScope.checkEmail = function(emailListData){
             $rootScope.heartss = 0;
             $rootScope.cartItems = 0;
             Auth.logout();
-            
-            $location.path('/');
             hideModal();
+            $location.path('/');
+            
             $route.reload();
 
          },2000)
@@ -351,6 +359,7 @@ $rootScope.checkEmail = function(emailListData){
          //scope.choiceMade = false;
    }else if(option === 3){
             console.log("here");
+            $rootScope.showButton = false;
             $rootScope.hideButton=true;
             $rootScope.areYouSure =true;
             $rootScope.modalHeader = "Are You Sure...";

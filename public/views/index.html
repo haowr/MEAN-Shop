@@ -140,12 +140,13 @@
         <h4 class="modal-title">{{modalHeader}}</h4>
       </div>
       <div class="modal-body">
-        <p>{{modalBody}}</p>
+        <center><p>{{modalBody}}</p>
         <div ng-show="hideButton"class="dizzy-gillespie"></div>
+        </center>
       </div>
       <div class="modal-footer">
-        <button type="button" ng-hide="hideButton || areYouSure"ng-click="renewSession();"class="btn btn-default" data-dismiss="modal">Yes</button>
-        <button type="button" ng-hide="hideButton || areYouSure"ng-click ="endSession();" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button" ng-show="showButton"ng-click="renewSession();"class="btn btn-default" data-dismiss="modal">Yes</button>
+        <button type="button" ng-show="showButton"ng-click ="endSession();" class="btn btn-danger" data-dismiss="modal">No</button>
         <button type="button" ng-show="areYouSure"ng-click ="hideModal();" class="btn btn-submit" data-dismiss="modal">No</button>
         <button type="button" ng-show="areYouSure"ng-click ="removeOrder($index);" class="btn btn-submitdarker" data-dismiss="modal">Yes</button>
 

@@ -1638,7 +1638,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                     res.json({success: false, message:"User was not found..."})
 
                 }else{
-                  var newToken = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '24h'});
+                  var newToken = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '5m'});
                   res.json({success: true, token:newToken});
                 }
 
