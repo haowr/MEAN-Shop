@@ -80,7 +80,11 @@ var UserSchema = new Schema({
     shippingchoice:{type:String},
     orders:{type:Array},
     totalhistory:{type:Array},
+    billingdetails:{type:Object},
+    shippingdetails:{type:Object},
+    ccdetails:{type:Object},
     loves: Array
+
 
 
 });

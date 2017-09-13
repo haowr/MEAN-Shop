@@ -144,6 +144,24 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.post('/api/addorderstouser',order);
 
   }
+  //User.addYourShippingDetails(shipping);
+  userFactory.addYourShippingDetails = function(shipping){
+
+    return $http.post('/api/addyourshippingdetails',shipping);
+
+  }
+    //User.addYourCCDetails(cc);
+  userFactory.addYourCCDetails = function(cc){
+
+    return $http.post('/api/addyourccdetails',cc);
+
+  }
+  //User.addYourBillingDetails(billing);
+  userFactory.addYourBillingDetails = function(billing){
+
+    return $http.post('/api/addyourbillingdetails',billing);
+
+  }
   //User.addTotalToUser(user,total);
   userFactory.addTotalToUser = function(user,total){
 

@@ -26,6 +26,13 @@ console.log($scope.grandTotal);
 $scope.totals = [];
 $scope.myLovesReady = true;
 $scope.openOrderr = false;
+$scope.addBillingDetails = false;
+$scope.wouldYouLikeToAddBillingDetails = false;
+$scope.addShippingDetails = false;
+$scope.wouldYouLikeToAddShippingDetails = false;
+$scope.addCCDetails = false;
+$scope.wouldYouLikeToAddShippingDetails = false;
+$scope.savedCongratulations = false;
 $rootScope.showButton = false;
 $rootScope.showButtonRemoveLove = false;
 
@@ -61,8 +68,16 @@ $scope.openOrder = function(){
             })*/
             console.log(data.data.user);
             console.log(data.data.user.loves);
+            console.log(data.data.user.detailssaved);
+            if(data.data.user.detailssaved){
+                $scope.notSaved = false;
+                $scope.saved = true;
+            }else{
+                $scope.notSaved = true;
+                $scope.saved = false;
+            }
             $scope.loves = data.data.user.loves;
-            $scope.myLovesReady = false;
+            
 
             $scope.lovesLength = $scope.loves.length;
             console.log($scope.loves);
@@ -97,6 +112,7 @@ $scope.openOrder = function(){
 
                                 console.log("I love "+$scope.loveObjects[j].name);
                                 $scope.loveObjectArray.push($scope.loveObjects[j]);
+                                $scope.myLovesReady = false;
     
                             }
                     }
@@ -226,7 +242,90 @@ $scope.openOrder = function(){
 
 
      };
+     $scope.yourBillingFunc = function(yourDetails,valid){
+         console.log(yourDetails);
+         yourDetails.username = $scope.currentUser;
+         console.log($scope.currentUser);
+         User.addYourBillingDetails(yourDetails).then(function(data){
+            console.log(data.data);
+            if(data.data.success){
+                $scope.wouldYouLikeToAddShippingDetails = true;
+            }
+            
 
+         })
+     }
+     
+     $scope.addShippingButton = function(answer){
+         console.log(answer);
+         if(answer == 1){
+            $scope.wouldYouLikeToAddShippingDetails = false;
+            $scope.addBillingDetails = false;
+            $scope.addShippingDetails = true;
+         }else{
+             $scope.wouldYouLikeToAddShippingDetails = false;
+             $scope.addBillingDetails = false;
+         }
+
+
+     }
+     $scope.storeDetails = function(answer){
+         if(answer == 1){
+            $scope.addBillingDetails = true;
+            $scope.saved = false;
+            $scope.notSaved = false;
+
+         }else{
+            $scope.addBillingDetails = false
+            $scope.saved = false;
+            $scope.notSaved = false;
+         }
+
+
+     }
+          $scope.addCCButton = function(answer){
+         console.log(answer);
+         if(answer == 1){
+            $scope.wouldYouLikeToAddCCDetails = false;
+            $scope.addBillingDetails = false;
+            $scope.addShippingDetails = false;
+            $scope.addCCDetails = true;
+         }else{
+             $scope.wouldYouLikeToAddShippingDetails = false;
+             $scope.addBillingDetails = false;
+             $scope.addShippingDetails = false;
+         }
+
+
+     }
+          $scope.yourShippingFunc = function(yourDetails,valid){
+         console.log(yourDetails);
+         yourDetails.username = $scope.currentUser;
+         console.log($scope.currentUser);
+         User.addYourShippingDetails(yourDetails).then(function(data){
+            console.log(data.data);
+            if(data.data.success){
+                $scope.wouldYouLikeToAddCCDetails = true;
+                
+            }
+            
+
+         })
+     }
+          $scope.yourCCFunc = function(yourDetails,valid){
+         console.log(yourDetails);
+         yourDetails.username = $scope.currentUser;
+         console.log($scope.currentUser);
+         User.addYourCCDetails(yourDetails).then(function(data){
+            console.log(data.data);
+            if(data.data.success){
+                $scope.savedCongratulations = true;
+                $scope.addCCDetails = false;
+
+            }
+            
+         })
+     }
     $scope.removeOneLove = function(index){
 
        

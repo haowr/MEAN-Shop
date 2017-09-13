@@ -390,6 +390,9 @@ width: 500px !important;
   border-top: 1px solid black;
 
 }
+#orderhistorystyling{
+  border-bottom : 1px solid black;
+}
 .orderconfirmationtitlediv{
 
   font-family:'Bellefair'
@@ -1083,7 +1086,11 @@ opacity:0;
 #myModal{
   z-index: 1000000;
 }
-
+#loveLoader{
+  
+  color:#586368;
+  font-size:20px;
+}
 
 #myBtn {
     opacity:0; /* Hidden by default */

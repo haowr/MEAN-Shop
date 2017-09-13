@@ -506,6 +506,54 @@ app.put('/api/thumbnails', function(req,res){
     });
 
 });
+app.post('/api/addyourbillingdetails', function(req,res){
+    console.log(req.body);
+    console.log(req.body.username);
+    User.findOneAndUpdate({username: req.body.username}, {$set:{billingdetails:req.body}}, {new:true}, function(err, user){
+        if(err) throw err;
+        if(!user){
+            res.json({sucess: false, message: "User not found, so not updated..."});
+        }else{
+            res.json({success: true, message: "User found and updated!", user:user});
+        }
+
+
+    });
+});
+app.post('/api/addyourshippingdetails', function(req,res){
+
+    User.findOneAndUpdate({username: req.body.username}, {$set:{shippingdetails:req.body}}, {new:true}, function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success:false, message:"User not found so not updated.."});
+        
+        }else{
+            res.json({success: true, message: "User found and updated...", user:user});
+        }
+
+
+
+    });
+
+
+});
+app.post('/api/addyourccdetails', function(req, res){
+
+    User.findOneAndUpdate({username: req.body.username}, {$set:{ccdetails:req.body}}, {new:true}, function(err, user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success:false, message:"User not found so not updated.."});
+        
+        }else{
+            res.json({success: true, message: "User found and updated...", user:user});
+        }
+
+
+
+    });
+})
 app.put('/api/addlove/:love/:name', function(req,res){
     console.log(req.params.love);
     console.log(req.params.name);
@@ -1278,7 +1326,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
 
                    }else{
                        
-                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '3m'});
+                      var token = jwt.sign({ username: user.username, email: user.email },secret,{ expiresIn: '24h'});
                        res.json({success: true, message:'User authenticated', token: token});
                    }
 
