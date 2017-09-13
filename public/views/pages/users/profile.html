@@ -1,7 +1,5 @@
 <div class = "container container-fluid">
-<div class = "page-header">
-<!--   <center> <h1>Hello ({{ main.username }})</h1></center>-->
-</div>
+
 
 <br>
 
@@ -31,9 +29,9 @@
     <div class = "page-header">
         <center><h4 class = "mylovestitle">My Loves</h4></center>
     </div>
+
      <div class ="row" ng-repeat="love in loveObjectArray track by $index">
 <div class = "col-sm-12">
-   
       <div class=" row "> <!-- thumbnailholder-->
       <div class = "col-sm-3">
            <a href = "/shop/mens/{{love.name}}"> <h2 class = "mylovesname"> 
@@ -65,8 +63,12 @@
 <center><span class="fa-stack fa-3x">
     <i class="fa fa-heart fa-stack-1x"></i>
     <i class="fa fa-bolt fa-stack-1x fa-inverse"></i>
+
 </span>
+
 </center>
+   <center> <i id ="loveLoader"ng-show = "myLovesReady" class="fa fa-spinner fa-spin fa-3x fa-fw"></i></center>
+
 </div>
 <!--<center><button class = "btn btn-submit"ng-click="clearLoves();">Clear My Loves</button></center>-->
 <br>
@@ -159,46 +161,5 @@
 <br>
 <div class ="col-sm-12 details2">
 </div>
-<div class = "row" ng-repeat = "order in orders track by $index">
-
-    
-
-
-       <!--
-        <center><div class = "row orderhistorystyling">
-            <div class = "col-sm-2 ">
-                <img ng-src="{{order.image}}">
-            </div>
-            <div class ="col-sm-2 ">
-                <h3 >Name</h3>
-               <p class = "secondarytext" > {{order.name}}</p>
-            </div>
-            <div class ="col-sm-2">
-                <h3 >Qty</h3>
-                <p class = "secondarytext"> {{order.amt}}</p>
-            </div>
-            <div  class ="col-sm-2">
-                <h3 >Price</h3>
-                <p class = "secondarytext">  {{order.price | currency}} </p>
-            </div>
-            <div class ="col-sm-2">
-                <h3>Total</h3>
-                <p class = "secondarytext"> {{order.price | currency}}</p>
-            </div>
-                        <div class ="col-sm-2">
-                <h3>Total</h3>
-                <button ng-click = "removeOrder($index);"class = "btn btn-submit">Remove</button>
-            </div>
-        </div></center>
-        <br>
-        <br>
-        
-    </div>
-    <div class = "col-sm-6">
-        
-
-    </div>
--->
-
 
 </div>

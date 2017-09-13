@@ -24,7 +24,11 @@ $scope.allShoes;
 $scope.grandTotal = $window.localStorage.getItem('grandTotal');
 console.log($scope.grandTotal);
 $scope.totals = [];
+$scope.myLovesReady = true;
 $scope.openOrderr = false;
+$rootScope.showButton = false;
+$rootScope.showButtonRemoveLove = false;
+
 $scope.openOrder = function(){
 
     if($scope.openOrderr){
@@ -58,6 +62,8 @@ $scope.openOrder = function(){
             console.log(data.data.user);
             console.log(data.data.user.loves);
             $scope.loves = data.data.user.loves;
+            $scope.myLovesReady = false;
+
             $scope.lovesLength = $scope.loves.length;
             console.log($scope.loves);
             console.log($scope.lovesLength)
@@ -191,6 +197,17 @@ $scope.openOrder = function(){
             $rootScope.showButton = false;
             $rootScope.modalHeader = "Are You Sure...";
             $rootScope.modalBody = "Items Deleted From Your Order History Are Unretrievable!";    
+
+            $("#myModal").modal({backdrop: "static"});
+
+
+        }else if(option === 4){
+            console.log("here");
+            $rootScope.hideButton=true;
+            $rootScope.areYouSure =true;
+            $rootScope.showButtonRemoveLove = true;
+            $rootScope.modalHeader = "Are You Sure...?";
+            $rootScope.modalBody = "Click On The Heart Of The Item You Love, To Re-add to Your Loves!";    
 
             $("#myModal").modal({backdrop: "static"});
 

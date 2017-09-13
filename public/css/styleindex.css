@@ -1080,6 +1080,10 @@ opacity:0;
 
     font-family: 'Bellefair';  
 }
+#myModal{
+  z-index: 1000000;
+}
+
 
 #myBtn {
     opacity:0; /* Hidden by default */
