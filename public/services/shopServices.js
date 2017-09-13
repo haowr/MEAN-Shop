@@ -64,6 +64,10 @@ app.factory('Shop', function($http){
     shopFactory.stripeCheckout = function(checkoutData){
         return $http.post('/api/stripecheckout',checkoutData);
     }
+        //Shop.stripeCheckout2(checkoutData);
+    shopFactory.stripeCheckout2 = function(checkoutData){
+        return $http.post('/api/stripecheckout2',checkoutData);
+    }
     //Shop.incrementHearts(shoename);
     shopFactory.incrementHearts = function(shoename){
         return $http.put('/api/incrementhearts/'+ shoename);

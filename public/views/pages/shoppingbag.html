@@ -11,15 +11,16 @@
                 <!--<a href="/shop"><p>continue-shopping</p></a>-->
             </div>
             <div class = "col-sm-8 shoppingbagtitle">
-                <h3 id = "shoppingbagstyling">Shopping Bag</h3>
+                <h3 id = "shoppingbagtitlestyling">Shopping Bag</h3>
 
                 <div class ="pull-left">
                 <p>Need help?</p>
-                <p> Please, <a href ='/faq'>Visit the FAQ</p>
+                <p> Please, <a href ='/faq'>Visit the FAQ</a></p>
 
                 <!--<button ng-show="shoppingBagShoes.length > 0"class = "btn btn-submit"><a href="shop/checkout">Begin Checkout</a></button>-->
-                <button class = "btn btn-submit"><a href="/shop">Continue Shopping</a></button>
-
+                <form action="/shop">
+                <button type= "submit" class = "btn btn-submit">Continue Shopping</button>
+                </form>
                 </div>
   
                 
@@ -64,23 +65,22 @@
 
                 </div>
             </div>
-            <div  ng-show ="shoppingBagShoes.length > 0"class = "row  " ng-repeat="shoe in shoppingBagShoes track by $index">
+            <div  ng-show ="shoppingBagShoes.length > 0"class = "row  "  ng-repeat="shoe in shoppingBagShoes track by $index">
 
-                <div class= "col-sm-2">
+                <div class= "col-sm-2" >
                    <a href = "/shop/mens/{{shoe.name}}"> <img  class ="img-fluid"ng-src="{{shoe.image}}"></a>
                 </div>
-                <div class= "col-sm-2">
+                <div class= "col-sm-2 "  >
                     <p id= "shopdescription">{{shoe.description  |limitTo:25}}...</p>
                 </div>
-                <div class= "col-sm-2">
-                    <p>{{shoe.available}}</p>
+                <div class= "col-sm-2" >
                     <p>{{shoe.price | currency}}</p>
 
                 </div>
-                <div class= "col-sm-2">
-                    
+                <div class= "col-sm-2" >
+                    <p>{{shoe.price * shoe.amt | currency}}</p>
                 </div>
-                <div class= "col-sm-2">
+                <div class= "col-sm-2" >
                     
                     <p><i ng-click="increaseQuantity($index,shoe.amt);"class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp{{shoe.amt}}&nbsp<i ng-click="reduceQuantity($index,shoe.amt);" class="fa fa-minus-square-o " aria-hidden="true"></i></p>
                     
@@ -94,11 +94,12 @@
             </div>
             <br>
             <div class = "row emptycartstyling" ng-show = "shoppingBagShoes.length >0 ">
-                <br>
+                
                 <div class ="col-sm-12">
                     <button ng-show="shoppingBagShoes.length > 0" ng-click ="clearShoppingBag();"class = "btn btn-submit"> Clear Cart</button>
 
                 </div>
+                <br>
             </div>
                 <br>
                <div class ="row"> 
@@ -178,11 +179,17 @@
                 </div>
                 <div class = "row">
                     <div class = "col-sm-12">
-                        <button ng-show="beginCheckout"class = "btn btn-submit btn-fader"><a href="/shop/checkout">Begin Checkout</a></button>
+                        <form action= "/shop/checkout">
+                        <button type="submit" ng-show="beginCheckout"class = "btn btn-submit btn-fader">Begin Checkout</button>
+                        </form>
                     </div>
                 </div>
                 <br>
                 <br>
+
+                <br>
+                <div class = "row">
+                <div class = "col-sm-12 details2">
+                </div>
+                </div>
                </div>
-            </div>
-</div>

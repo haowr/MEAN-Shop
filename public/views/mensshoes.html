@@ -80,7 +80,7 @@
 
          
             
-            <div class = "btn-group ">
+            <div class = "btn-group btn-group-sm ">
                 <button type ="button" class = "btn btn-primary">Qty&nbsp</button>
                 <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <!-- <span class = "caret"></span>-->
@@ -101,7 +101,7 @@
             </div>
                         <form name= "checkoutForm" id="sizeformstyling"ng-submit="checkoutFunc(checkout);" class = "btn-group btn-group-sm form-inline">
                 <button type ="button" class = "btn btn-primary">Size</button>
-                <br>
+                
                 <button type ="button" class = "btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
@@ -113,8 +113,7 @@
                     <li ng-model="checkout.size"ng-click = "changeSize('L');" >L</li>
            
                 </ul>
-                <br>
-                <br>
+                
                  <button type ="submit" class = "btn btn-submit" >Submit</button>
             </form>
                         <div class = "row">

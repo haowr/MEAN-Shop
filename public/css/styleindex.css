@@ -381,6 +381,11 @@ width: 500px !important;
 .mylovestitle{
   font-family:'Bellefair';
 }
+#shoppingbagstyling{
+
+  border-bottom: 1px solid #586368;
+
+}
 .orderhistorytitle{
 
    font-family:'Bellefair'
@@ -1074,7 +1079,7 @@ opacity:0;
     border-bottom: 1px solid black;
 
 }
-#shoppingbagstyling{
+#shoppingbagtitlestyling{
   
     font-family: 'Bellefair';
 

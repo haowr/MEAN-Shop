@@ -135,8 +135,8 @@
    <center> <h1 class = "bellefair"> Hey {{currentUser}}, it appears your details aren't stored...</h1>
             <h1 class = "bellefair"> Would You Like To Store Your Details? </h1>
             <p>Storing you details will allow your payment and shipping details to be automatically filled out during checkout... </p>
-            <button class = "btn btn-submit">Yes</button>
-            <button class = "btn btn-submit">No</button>
+            <button class = "btn btn-submit" ng-click="storeDetails(1);">Yes</button>
+            <button class = "btn btn-submit" ng-click = "storeDetails(2);">No</button>
                                                         </center>
     </div>
 </div>
@@ -234,7 +234,7 @@
                     </div>
                     
                     <div class="form-group countryselectsizing">
-                            <div ng-show="country == 'Canada'">
+                            <div >
                                 <label for="sel1">Province:</label>
                                 <select ng-model="yourBillingFormData.province" name="province"class="form-control" id="sel1" required >
                                     <option>Alberta</option>

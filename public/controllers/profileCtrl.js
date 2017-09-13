@@ -137,6 +137,7 @@ $scope.openOrder = function(){
         for(var i= 0; i<data.data.user.orders.length; i++){
 
             $scope.orders.push(data.data.user.orders[i]);
+            
             //$scope.orders[i].timestamp= 
             /*var d= new Date();
             console.log(d.getFullYear());
@@ -146,12 +147,14 @@ $scope.openOrder = function(){
             
 
         }
+        console.log($scope.orders);
         User.getTotalsFromUser($scope.whoisthis).then(function(data){
 
             console.log(data.data);
             console.log(data.data.history.totalhistory);
             $scope.totals = data.data.history.totalhistory;
             console.log($scope.totals);
+            
           
             //$scope.order.push(data.data.history.totalhistory);
 

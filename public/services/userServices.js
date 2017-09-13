@@ -144,6 +144,12 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.post('/api/addorderstouser',order);
 
   }
+    //User.addOrdertoUser(order);
+  userFactory.addOrdersToUser2 = function(order){
+
+    return $http.post('/api/addorderstouser2',order);
+
+  }
   //User.addYourShippingDetails(shipping);
   userFactory.addYourShippingDetails = function(shipping){
 

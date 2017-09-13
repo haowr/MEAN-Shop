@@ -1068,6 +1068,7 @@ app.post('/api/stripecheckout', function(req,res){
    // order.ccsecuritycode = req.body[2].securitycode;
     order.ccgrandtotal = req.body[2].grandTotal;
 */
+console.log(req.body);
 
 var stripe = require("stripe")(
   "sk_test_ht6NVhB9nETXLvHM8lC6KXVL"
@@ -1090,6 +1091,61 @@ stripe.charges.create({
 });
 
 });
+
+app.post('/api/stripecheckout2', function(req,res){
+/*
+    var order = new Order();
+    order.billingcountry = req.body[0].country;
+    order.billingfirstname = req.body[0].name;
+    order.billinglastname = req.body[0].lastname;
+    order.billingstreet = req.body[0].streetaddress;
+    order.billingstreet2 = req.body[0].streetaddress2;
+    order.billingapt = req.body[0].apt;
+    order.billingcity = req.body[0].city;
+    order.billingprovince = req.body[0].province;
+    order.billingphonenumber = req.body[0].phonenumber;
+    order.billingpostalcode = req.body[1].postalcode;
+    order.shippingcountry = req.body[1].country;
+    order.shippingfirstname = req.body[1].name;
+    order.shippinglastname = req.body[1].lastname;
+    order.shippingstreet = req.body[1].streetaddress;
+    order.shippingstreet2 = req.body[1].streetaddress2;
+    order.shippingapt = req.body[1].apt;
+    order.shippingcity = req.body[1].city;
+    order.shippingprovince = req.body[1].province;
+    order.shippingphonenumber = req.body[1].phonenumber;
+    order.shippingpostalcode = req.body[1].postalcode;
+    order.cccardname = req.body[2].cardname;
+    order.ccstripetoken = req.body[2].stripetoken;
+    //order.cccardnumber = req.body[2].cardnumber;
+    //order.ccexpmonth = req.body[2].expmonth;
+    //order.ccexpyear = req.body[2].expyear;
+   // order.ccsecuritycode = req.body[2].securitycode;
+    order.ccgrandtotal = req.body[2].grandTotal;
+*/
+console.log(req.body);
+
+var stripe = require("stripe")(
+  "sk_test_ht6NVhB9nETXLvHM8lC6KXVL"
+  
+);
+
+stripe.charges.create({
+  amount: req.body[3].grandTotal,
+  currency: "usd",
+  source: req.body[3].stripeToken, // obtained with Stripe.js
+  description: "Charge for charlotte.johnson@example.com"
+}, function(err, charge) {
+  // asynchronously called
+  if(err){
+      res.json({success: false , message: err.message});
+  }else{
+      res.json({success: true, message:"Charge successful!", charge:charge});
+  }
+
+});
+});
+
 app.post('/api/checkout', function(req,res){
 
     console.log(req.body);
@@ -1134,6 +1190,8 @@ app.post('/api/checkout', function(req,res){
 });
 app.put('/api/addtotaltouser/:user/:total', function(req,res){
 
+    console.log(req.params.user);
+    console.log(req.params.total);
     User.findOneAndUpdate({username: req.params.user}, {$push:{totalhistory: req.params.total}}, {new:true}, function(err, userupdated){
 
         if (err) throw err;
@@ -1198,24 +1256,50 @@ app.post('/api/addorderstouser', function(req,res){
         }
     })
 
-   /* User.findOneAndUpdate({username: req.body[3]}, {$push:{orders: req.body[4]}},{new:true},function(err,user){
-        if (err) throw err;
-        if(!user){
-            res.json({success:false, message:"User not found.."});
+
+
+});
+app.post('/api/addorderstouser2', function(req,res){
+    console.log("addorderstouser");
+    console.log(req.body);
+    console.log(req.body[3]);
+    console.log(req.body[4][0]);
+    console.log(req.body[0]);
+    console.log("username");
+    console.log(req.body[0].username);
+
+
+    User.findOne({username: req.body[0].username}).select('orders').exec(function(err,orders){
+
+        if(err)throw err;
+        if(!orders){
+            res.json({success:false, message: "No orders amigo.."});
         }else{
+           // res.json({success: true, message: "Here you go sir!", orders:orders})
+           for(var i = 0; i <req.body[4].length; i++){
+                req.body[4][i].timestamp= req.body[6];
+                orders.orders.push(req.body[4][i]);
 
-            res.json({success: true, message: "User Found And Updated..", user: user, req: req.body[4]});
+           }
+           //orders.orders.push(req.body[5]);
 
+
+           User.findOneAndUpdate({username: req.body[0].username}, {$set:{orders: orders.orders}}, {new:true},function(err,user){
+
+                if(err)throw err;
+                if(!user){
+                    res.json({success: false, message: "User not found..."});
+                }else{
+                    res.json({success: true, message:"User Found And Updated..", user:user,grandtotal:req.body[2].grandTotal});
+                }
+
+           })
         }
-
-
-
-
     })
-*/
 
-})
 
+
+});
 app.post('/api/pages', function(req,res){
 
     console.log(req.body);
