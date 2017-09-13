@@ -8,7 +8,7 @@ console.log("checkoutController loaded and initialized...");
 
 });
 
-app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,User){
+app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Shop,Auth,User){
     $scope.country="Canada";
     $scope.expmonth = "Jan";
     $scope.expyear = "2017";
@@ -32,6 +32,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
     $scope.addNewShippingAddress = false;
     $scope.checkoutDataa=[];
     $scope.shippingFormDataa=[];
+    $scope.storedFormData = [];
     $scope.creditFormDataa = [];
     $scope.finalCheckoutData =[];
     $rootScope.finalCheckoutData =[];
@@ -47,6 +48,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
     $scope.startCheckout = false;
     $scope.checkoutPhase = true;
     $scope.paymentLoading = false;
+    $scope.wouldYouLikeToUse = false;
 
     $scope.creditCardDataAdded= false;
 
@@ -64,6 +66,12 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
             User.getUserProfile(data.data.username).then(function(data){
 
                 console.log(data.data.user.totalaftercoupon);
+                if(data.data.user.detailssaved){
+                    $scope.wouldYouLikeToUse = true;
+                }
+                $scope.storedFormData.push(data.data.user.billingdetails);
+                $scope.storedFormData.push(data.data.user.shippingdetails);
+                $scope.storedFormData.push(data.data.user.ccdetails);
                 $scope.grandTotal = $window.localStorage.getItem('grandTotal');              
                  $scope.shoppingBagShoes = data.data.user.shoppingbag;
                 for(var i = 0; i<$scope.shoppingBagShoes.length; i++){
@@ -186,6 +194,16 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,Shop,Auth,Use
             }else{
                 $scope.expmonth = "December";
             }
+    }
+    $scope.oneClickCheckout = function(answer){
+
+        if(answer == 1){
+            $location.path('/shop/checkout/oneclick');
+
+        }else{
+            $scope.startCheckout = true;
+            $scope.wouldYouLikeToUse = false;
+        }
     }
     $scope.addShippingAddress = function(){
         $scope.addNewShippingAddress = true;

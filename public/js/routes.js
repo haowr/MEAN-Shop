@@ -68,6 +68,13 @@ app.config(function($routeProvider,$locationProvider){
 
 
     })
+    .when('/shop/checkout/oneclick',{
+        templateUrl: '../views/pages/oneclick.html',
+        controller: 'checkoutCtrl',
+        controllerAs: 'checkout',
+        authenticated: true
+
+    })
     .when('/faq',{
 
         templateUrl:'../views/pages/faq.html',
