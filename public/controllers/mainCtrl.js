@@ -52,7 +52,18 @@
 
             $rootScope.title = "Login";
         }
+        $interval(function(){
 
+            if($rootScope.currentIndex === 0){
+                $rootScope.currentIndex = 1;
+            }else if($rootScope.currentIndex === 1){
+                $rootScope.currentIndex = 2;
+            }else{
+                $rootScope.currentIndex =0;
+            }
+            
+
+        },2000);
         $rootScope.setCurrentSlideIndexAdd = function () {
             console.log( $rootScope.currentIndex);
             $rootScope.opacityOn = true;
@@ -61,7 +72,7 @@
             }else if($rootScope.currentIndex === 1){
                 $rootScope.currentIndex = 2;
             }else{
-                $rootScope.currentIndex =2;
+                $rootScope.currentIndex =0;
             }
             
             $timeout(function(){
@@ -76,7 +87,7 @@
             }else if($rootScope.currentIndex === 1){
                 $rootScope.currentIndex = 0;
             }else{
-                $rootScope.currentIndex =0;
+                $rootScope.currentIndex =2;
             }
             $timeout(function(){
               $rootScope.opacityOn2 = false;

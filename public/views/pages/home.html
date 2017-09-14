@@ -13,19 +13,21 @@
             </div>
         </div>
           <div class ="container container-fluid">
-        <div class = "row">
+        
 
             <div class = "col-sm-12">
-                <img ng-class = "{arrowFade: opacityOn2}"class = "pull-right " src="../img/next-leftL.gif" ng-click="setCurrentSlideIndexSubtract();">
-                <!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->
-               <center> <img ng-repeat="slide in slides"class="slide img-fluid"
-                 ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}"></center>
-                                 <img ng-class = "{arrowFade: opacityOn}"class ="pull-left "src="../img/next-rightL.gif" ng-click="setCurrentSlideIndexAdd();">
+                
+                    
+                    <img ng-class = "{arrowFade: opacityOn2}"class = "pull-left img-fluid" src="../img/next-leftL.gif" ng-click="setCurrentSlideIndexSubtract();">
+                    <!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->
+                        <center> <a href="/shop"><img ng-repeat="slide in slides"class="slide img-fluid"
+                                ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}"></a></center>
+                                 <img ng-class = "{arrowFade: opacityOn}"class ="pull-right img-fluid "src="../img/next-rightL.gif" ng-click="setCurrentSlideIndexAdd();">
 
                 
-            </div>
+                
 
-        </div>
+            </div>
         <div class = "row">
             <div class = "col-sm-12">
                 <center><h3 id ="whatsnewtitle">What's New?</h3></center>

@@ -7,34 +7,30 @@ app.config(function(){
 })
 
 app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window){
-/*
-var names = 
-Shop.getMensShoe()
-*/
 
- $scope.user ;
- $scope.whoisthis;
- $scope.currentUser;
-$scope.orders =[];
-$scope.loves=[];
-$scope.lovesLength;
-$scope.loveObjectArray = [];
-$scope.loveObjects= [];
-$scope.allShoes;
-$scope.grandTotal = $window.localStorage.getItem('grandTotal');
-console.log($scope.grandTotal);
-$scope.totals = [];
-$scope.myLovesReady = true;
-$scope.openOrderr = false;
-$scope.addBillingDetails = false;
-$scope.wouldYouLikeToAddBillingDetails = false;
-$scope.addShippingDetails = false;
-$scope.wouldYouLikeToAddShippingDetails = false;
-$scope.addCCDetails = false;
-$scope.wouldYouLikeToAddShippingDetails = false;
-$scope.savedCongratulations = false;
-$rootScope.showButton = false;
-$rootScope.showButtonRemoveLove = false;
+    $scope.user ;
+    $scope.whoisthis;
+    $scope.currentUser;
+    $scope.orders =[];  
+    $scope.loves=[];
+    $scope.lovesLength;
+    $scope.loveObjectArray = [];
+    $scope.loveObjects= [];
+    $scope.allShoes;
+    $scope.grandTotal = $window.localStorage.getItem('grandTotal');
+    console.log($scope.grandTotal);
+    $scope.totals = [];
+    $scope.myLovesReady = true;
+    $scope.openOrderr = false;
+    $scope.addBillingDetails = false;
+    $scope.wouldYouLikeToAddBillingDetails = false;
+    $scope.addShippingDetails = false;
+    $scope.wouldYouLikeToAddShippingDetails = false;
+    $scope.addCCDetails = false;
+    $scope.wouldYouLikeToAddShippingDetails = false;
+    $scope.savedCongratulations = false;
+    $rootScope.showButton = false;
+    $rootScope.showButtonRemoveLove = false;
 
 $scope.openOrder = function(){
 
@@ -156,16 +152,8 @@ $scope.openOrder = function(){
             console.log($scope.totals);
             
           
-            //$scope.order.push(data.data.history.totalhistory);
 
         })
-        //$scope.totals.push($scope.grandTotal);
-        //$scope.totals = [];
-                       // var unique = $scope.totals.filter(function(elem, index, self) {
-                        //return index == self.indexOf(elem);
-                //})    
-               // $scope.totals = unique;  
-       // console.log($scope.totals);
         
 
     });
@@ -333,18 +321,18 @@ $scope.openOrder = function(){
     $scope.removeOneLove = function(index){
 
        
-
+        console.log(index);
         User.removeLove($scope.currentUser,$scope.loveObjectArray[index].name).then(function(data){
            console.log($scope.currentUser);
             console.log(data.data);
                     Shop.decrementHearts($scope.loveObjectArray[index].name).then(function(data){
 
             console.log(data.data);
-             $scope.loveObjectArray.splice($scope.loveObjectArray[index],1);
+            
              $rootScope.heartss = $scope.loveObjectArray.length;
 
         })
-
+ $scope.loveObjectArray.splice(index,1);
 
         })
 

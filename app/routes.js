@@ -39,17 +39,7 @@ var client = nodemailer.createTransport({
         pass: "5613111111"
     }
 });
-  /* var client = nodemailer.createTransport({
-        service: 'Zoho',
-        auth: {
-            user: 'cruiserweights@zoho.com', // Your email address
-            pass: 'PAssword123!@#' // Your password
-        },
-        tls: { rejectUnauthorized: false }
-    });
-*/
 
-//var admin 
 var heart = 8;
 var id ="";
 var secret= "haileselassie";
@@ -1584,12 +1574,10 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
         });
     });
         app.put('/api/resetpassword', function(req,res){
-            console.log(req.params.username);
+            
             User.findOne({username: req.body.username}).select('username active email name resettoken').exec(function(err,user){
 
                 if(err) throw err;
-
-
                 if(!user){
                    res.json({success: false, message: 'User could not be found...'+err});
 
@@ -1609,9 +1597,9 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                             var email = {
                                 from: 'Localhost Staff, cruiserweights@zoho.com',
                                 to: user.email,
-                                subject: 'Localhost Username Request',
-                                text: 'Hello ' + user.name + ', You recently requested a password reset link. Please use this link below to reset your password:"http://localhost:8888/reset/"'+user.resettoken,
-                                html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a password reset link. Please click on the link below to reset your password:<br> <a href="http://localhost:8888/reset/'+user.resettoken+'">"http://localhost:8888/reset/"</a>' 
+                                subject: 'Ohrha Password Reset',
+                                text: 'Hello ' + user.name + ', You recently requested a password reset link. Please use this link below to reset your password:"http://localhost:8080/reset/"'+user.resettoken,
+                                html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a password reset link. Please click on the link below to reset your password:<br> <a href="http://localhost:8080/reset/'+user.resettoken+'">"http://localhost:8080/reset/"</a>' 
                             };
 
                             // Function to send e-mail to user
@@ -1681,7 +1669,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                             var email = {
                                 from: 'Localhost Staff, cruiserweights@zoho.com',
                                 to: user.email,
-                                subject: 'Localhost Username Request',
+                                subject: 'Ohrha...(Password Reset Success)',
                                 text: 'Hello ' + user.name + ', This e-mail is to notify you that your password has recently been reset!',
                                 html: 'Hello<strong> ' + user.name + '</strong>,<br><br>This e-mail is to notify you that your password has recently been reset!' 
                             };

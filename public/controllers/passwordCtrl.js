@@ -47,7 +47,7 @@
     });
 
 
-    app.controller('resetCtrl',function(User,$routeParams,$scope){
+    app.controller('resetCtrl',function(User,$routeParams,$scope,$timeout,$location){
 
         scope = this;
         scope.hide = true;

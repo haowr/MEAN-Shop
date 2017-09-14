@@ -1,9 +1,9 @@
 <br>
 <br>
-<div class = "row text-center">
-    <div class ="col-sm-3">
-    </div>
-    <div class ="col-sm-6">
+<div class = "container container-fluid">
+<div class = "row ">
+
+    <div class ="col-sm-12">
 <div class = "page-header">
     <h1 class = "myprofiletitle">User Registration</h1>
 </div>
@@ -33,7 +33,7 @@
             <li>Must be at least 3 characters and no longer than 25 each...</li>
         </ul>
     </div>
-                        <div class="col-md-12">
+                        
                             <div class="form-group">
                                 <!-- Email Div -->
                                 <div ng-class="{ 'has-success':(regForm.email.$valid && !regForm.email.$pristine && !register.emailInvalid), 'has-error':(!regForm.email.$valid && !regForm.email.$pristine) || (!regForm.email.$valid && regForm.$submitted) || register.emailInvalid }">
@@ -51,7 +51,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                      
     <div ng-class="{ 'has-success': (regForm.firstPassword.$valid && !regForm.firstPassword.$pristine), 'has-error':(!regForm.firstPassword.$valid && !regForm.firstPassword.$pristine)|| (!regForm.firstPassword.$valid && regForm.$submitted) }"> 
         <label>Password</label>
         <input ng-disabled="register.disabled"class="form-control"type="password" name="firstPassword" placeholder="password" ng-model="firstPassword" ng-pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d]).{8,35}$/" ng-minLength="8" ng-maxLength="35"required/>
@@ -107,6 +107,6 @@
     <div class="alert alert-danger">{{register.errorMsg}}</div>
 </div>
 </div>
-<div class ="col-sm-3">
-    </div>
+
+</div>
 </div>

@@ -615,7 +615,7 @@ border: solid 1px black;
   text-decoration: underline;
 }
 /* The starting CSS styles for the enter animation */
-.slide.ng-enter {
+/*.slide.ng-enter {
   width:100%;
   transition:1s linear all;
   opacity:0;
@@ -624,6 +624,7 @@ border: solid 1px black;
  
   opacity:1;
 }
+*/
 .heartsizer{
   font-size: 13px;
 }
