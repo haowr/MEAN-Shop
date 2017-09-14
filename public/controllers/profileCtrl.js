@@ -174,8 +174,9 @@ $scope.openOrder = function(){
                  $("#myModal").modal('hide');
 
     }
-    $scope.showModal= function(option){
+    $scope.showModal= function(option,index){
         console.log(option);
+        $rootScope.index = index;
          $scope.choiceMade = false;
          $scope.areYouSure = false;
          $scope.modalHeader = undefined;
@@ -352,15 +353,16 @@ $scope.openOrder = function(){
     $rootScope.removeOrder = function(index){
 
         console.log($scope.currentUser);
+        console.log(index);
         User.removeOneOrder($scope.currentUser,index).then(function(data){
       
 
-            console.log(data.data.order);
+             console.log(data.data.order);
              console.log($scope.orders);
-             console.log(index);
+             
              //$scope.orders.splice(index,1);
-           //$scope.orders = data.data.order.orders;
-            //console.log(data.data.)
+             //$scope.orders = data.data.order.orders;
+             //console.log(data.data.)
             console.log($scope.orders);
             $scope.orders= data.data.order.orders;
 
