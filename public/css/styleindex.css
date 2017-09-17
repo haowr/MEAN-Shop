@@ -823,6 +823,10 @@ margin-top:200px;
 .formstyling.ng-hide {
   opacity: 0;
 }
+.underline{
+  text-decoration: underline;
+  
+}
 
 .btn-fader.ng-hide{
  opacity:0;

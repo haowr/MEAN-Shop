@@ -63,7 +63,7 @@
             }
             
 
-        },2000);
+        },6000);
         $rootScope.setCurrentSlideIndexAdd = function () {
             console.log( $rootScope.currentIndex);
             $rootScope.opacityOn = true;
@@ -268,8 +268,8 @@ $rootScope.checkEmail = function(emailListData){
                $rootScope.emailMsg = false;
            }else{
                $rootScope.checkingEmail = false;
-              $rootScope.emailInvalid = true;
-              $rootScope.emailMsg = "You're already signed up!";
+               $rootScope.emailInvalid = true;
+               $rootScope.emailMsg = "You're already signed up!";
               $timeout(function(){
 
                 $rootScope.emailMsg = false;

@@ -231,7 +231,8 @@ var $section = $('.mainshoeview');
                                                 })
 
                                         }else{
-
+                                            console.log(checkoutData[0].name);
+                                            $window.localStorage.setItem('guestName', checkoutData[0].name);
                                             User.sendEmail(checkoutData[0].email).then(function(data){
                                                     console.log(data.data.message);
                                                     $window.localStorage.removeItem('checkoutArrayy');
@@ -371,6 +372,7 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
                                                 Auth.getUser().then(function(data){
                                                         var order = {};
                                                         var username = data.data.username;
+                                                        
                                                        // console.log(checkoutArray);
                                                         console.log(data);
                                                         console.log(order);
@@ -429,6 +431,8 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
 
                                             User.sendEmail(checkoutData[0].email).then(function(data){
                                                     console.log(data.data.message);
+                                                    console.log(checkoutData[0].name);
+                                                    $window.localStorage('guestName', checkoutData[0].name);
                                                     $window.localStorage.removeItem('checkoutArrayy');
                                                    // $window.localStorage.setItem('checkoutArray',JSON.stringify([]));
                                                      $timeout(function(){

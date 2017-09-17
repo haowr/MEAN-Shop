@@ -10,22 +10,22 @@
                 </div>
                 <form ng-submit="main.doLogin(loginData);">
                     
-                    <label>Username</label>
+                    <label>Username:</label>
                     <input ng-disabled="main.disabled"class="form-control"type="text" placeholder="username" ng-model="main.loginData.username"/>
-                    <label>Password</label>
+                    <label>Password:</label>
                     <input  ng-disabled="main.disabled"class="form-control"type="password" placeholder="password" ng-model="main.loginData.password"/>
                     <div class = "row">
-                        <div class = "col-sm-6">
+                        <div class = "col-sm-9">
                             <button ng-disabled="main.disabled"class="btn btn-submit"type="submit">Login</button>
 
                         </div>
-                        <div class = "col-sm-3 pull-right">
+                        <div class = "col-sm-3 ">
                             <a href ="/resetusername"><button ng-disabled="main.disabled"class="btn btn-submit" type="button">Forgot Username</button></a>
+                            <a href ="/resetpassword"><button ng-disabled="main.disabled"class="btn btn-submitdarker" type="button">Forgot Password</button></a> 
 
                         </div>
-                        <div class = "col-sm-3">
-                            <a href ="/resetpassword"><button ng-disabled="main.disabled"class="btn btn-submitdarker" type="button">Forgot Password</button></a> 
-                        </div>
+                    </div>
+                    
                 </form>
                 
                     

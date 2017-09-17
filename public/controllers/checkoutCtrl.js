@@ -375,12 +375,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
 
     $scope.finalCheckout= function(){
 
-        
-             /* Shop.checkout($scope.finalCheckoutData).then(function(data){
 
-                console.log(data.data);
-
-            });*/
               Shop.stripeCheckout($scope.finalCheckoutData).then(function(data){
                     console.log(data.data.charge);
 

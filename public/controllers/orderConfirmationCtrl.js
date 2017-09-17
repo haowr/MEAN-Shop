@@ -43,6 +43,7 @@
        }else{
 
         $scope.isLoggedIn = false;
+        $scope.currentUser = $window.localStorage.getItem('guestName');
         $scope.lastOrder = JSON.parse($window.localStorage.getItem('checkoutArray'));
         $window.localStorage.setItem('checkoutArray',JSON.stringify([]));
         $rootScope.cartItems =0;

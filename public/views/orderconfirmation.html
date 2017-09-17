@@ -12,8 +12,8 @@
             </div>
             <div class = "col-sm-12 ">
                 <center><h2 class = "orderconfirmationtitle">Congratulations!<i class="fa fa-pagelines" aria-hidden="true"></i></h3></center>
-                <center><p ng-show="isLoggedIn">Your Order Has Been Received, Added To Your <a href = "/profile">Order History</a> And Is Being Processed...</p></center>
-                <center><p ng-show="!isLoggedIn">It Appears You Don't Have An Account...Please <a href = "/register">Create</a>One And Store Future Purchases In Your Order History</p><br>
+                <center><p ng-show="isLoggedIn">Hey, {{currentUser}},Your Order Has Been Received, Added To Your <a href = "/profile">Order History</a> And Is Being Processed...</p></center>
+                <center><p ng-show="!isLoggedIn">Hey, {{currentUser}}, It Appears You Don't Have An Account...<a class = "underline"href = "/register">Create</a> One To Store Future Purchases In Your Order History, And Gain Access To "One-Click" Checkout!</p><br>
                         <p ng-show="!isLoggedIn">For Now, The Details Of Your Order Has Been Delivered To The Email Address You Provided...</p>
                 </center>
 
