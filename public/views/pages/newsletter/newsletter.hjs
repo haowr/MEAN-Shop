@@ -73,12 +73,17 @@
                          <table class = "row">
                                <tr>
                                 <th class = "small-12 large 12 first columns">
-                                  <center><h1 class = "maintitlewelcome inline-block">Welcome</h1></center>
-                                  <center><h2 class ="inline-block">Aglo</h2></center>
+                                  <center><h1 class = "maintitlewelcome inline-block">Thank-you for your order, {{name}}!</h1></center>
+                                  <center><p class ="inline-block">Your Taxes,${{tax}}</p></center>
+                                  <center><p class ="inline-block">Your Total,${{grandtotal}}</p></center>
+                                  <center><p class ="inline-block">Your order is being processed</p></center>
+
                                 
                                 </th>
                               
                             </tr>
+                            <tr>
+                           
                     </table>
                      <table class = "row">
                             <tr>
@@ -91,10 +96,10 @@
                                <tr>
                                    
                                 <th class = "small-12 large-12 first columns ">
-                                  <img class = "inline-block  facebook"src="https://image.ibb.co/bwfRG5/facebookicon.png" alt="facebookicon" border="0" />
-                                    <img class = "inline-block  twitter" src="https://image.ibb.co/eXMNpQ/twitteericon.png" alt="twitteericon" border="0">
-                                  <img class = "inline-block instagram" src="https://image.ibb.co/fXXTUQ/instagramicon.png" alt="instagramicon" border="0">
-                                   <img class = "inline-block  tumblr" src="https://image.ibb.co/h0jxOk/tumblricon.png" alt="tumblricon" border="0">
+                                  <a href= "#"><img class = "inline-block  facebook"src="https://image.ibb.co/bwfRG5/facebookicon.png" alt="facebookicon" border="0" /></a>
+                                    <a href= "#"><img class = "inline-block  twitter" src="https://image.ibb.co/eXMNpQ/twitteericon.png" alt="twitteericon" border="0"></a>
+                                  <a href="instagram.com/houseofjewelsboutique"><img class = "inline-block instagram" src="https://image.ibb.co/fXXTUQ/instagramicon.png" alt="instagramicon" border="0"></a>
+                                   <a href= "#"><img class = "inline-block  tumblr" src="https://image.ibb.co/h0jxOk/tumblricon.png" alt="tumblricon" border="0"></a>
 
                                 </th>
                            

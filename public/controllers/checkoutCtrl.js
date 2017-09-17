@@ -49,6 +49,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
     $scope.checkoutPhase = true;
     $scope.paymentLoading = false;
     $scope.wouldYouLikeToUse = false;
+    $scope.tax;
 
     $scope.creditCardDataAdded= false;
 
@@ -262,6 +263,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
         console.log($scope.grandTotal);
         if(checkoutData.province == "Alberta"){
             $scope.totalAfterTax =$scope.grandTotal + ( $scope.grandTotal * $scope.alberta);
+            $scope.tax = scope.grandTotal * $scope.alberta;
             $scope.showGrandTotal=true;
             console.log($scope.alberta);
             console.log($scope.grandTotal);
@@ -269,31 +271,41 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
         }else if(checkoutData.province == "British Columbia"){
            
             $scope.totalAfterTax = $scope.grandTotal + ( $scope.grandTotal * $scope.britishColumbia);
+            $scope.tax = scope.grandTotal * $scope.britishColumbia;
+
             $scope.showGrandTotal=true;
             console.log($scope.totalAfterTax);
         }else if(checkoutData.province == "Saskatchewan"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.saskatchewan);
+            $scope.tax = $scope.grandTotal * $scope.saskatchewan;           
             $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Manitoba"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.manitoba);
+            $scope.tax = $scope.grandTotal * $scope.manitoba;            
             $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Quebec"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.quebec);
+            $scope.tax = $scope.grandTotal * $scope.quebec;
             $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Ontario"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.ontario);
+            $scope.tax = $scope.grandTotal * $scope.ontario;
             $scope.showGrandTotal=true;
         }else if(checkoutData.province == "New Brunswick"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newBrunswick);
+            $scope.tax = $scope.grandTotal * $scope.newBrunswick;
             $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Newfoundland"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newFoundland);
+            $scope.tax = $scope.grandTotal * $scope.newFoundland;
             $scope.showGrandTotal=true;
         }else if(checkoutData.province == "Nova Scotia"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.novaScotia);
+            $scope.tax = $scope.grandTotal * $scope.novaScotia;
             $scope.showGrandTotal=true;
         }else {
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.nwT);
+            $scope.tax = $scope.grandTotal * $scope.nwT;
             $scope.showGrandTotal=true;
         }
         
@@ -317,6 +329,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
         console.log($scope.grandTotal);
         if($scope.storedFormData[0].province == "Alberta"){
             $scope.totalAfterTax =$scope.grandTotal + ( $scope.grandTotal * $scope.alberta);
+            $scope.tax = Number($scope.grandTotal * $scope.alberta).toFixed(2);
             $scope.showGrandTotal=true;
             console.log($scope.alberta);
             console.log($scope.grandTotal);
@@ -324,34 +337,44 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
         }else if($scope.storedFormData[0].province == "British Columbia"){
            
             $scope.totalAfterTax = $scope.grandTotal + ( $scope.grandTotal * $scope.britishColumbia);
+            $scope.tax = Number($scope.grandTotal * $scope.britishColumbia).toFixed(2);
             $scope.showGrandTotal=true;
             console.log($scope.totalAfterTax);
         }else if($scope.storedFormData[0].province == "Saskatchewan"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.saskatchewan);
+            $scope.tax = Number($scope.grandTotal * $scope.saskatchewan).toFixed(2);
             $scope.showGrandTotal=true;
         }else if($scope.storedFormData[0].province == "Manitoba"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.manitoba);
+            $scope.tax = Number($scope.grandTotal * $scope.manitoba).toFixed(2);
             $scope.showGrandTotal=true;
         }else if($scope.storedFormData[0].province == "Quebec"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.quebec);
+            $scope.tax = Number($scope.grandTotal * $scope.quebec).toFixed(2);
             $scope.showGrandTotal=true;
         }else if($scope.storedFormData[0].province == "Ontario"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.ontario);
+            $scope.tax = Number($scope.grandTotal * $scope.ontario).toFixed(2);
             $scope.showGrandTotal=true;
         }else if($scope.storedFormData[0].province == "New Brunswick"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newBrunswick);
+            $scope.tax = Number($scope.grandTotal * $scope.newBrunswick).toFixed(2);
             $scope.showGrandTotal=true;
         }else if($scope.storedFormData[0].province == "Newfoundland"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.newFoundland);
+            $scope.tax = Number($scope.grandTotal * $scope.newFoundland).toFixed(2);
             $scope.showGrandTotal=true;
         }else if($scope.storedFormData[0].province == "Nova Scotia"){
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.novaScotia);
+            $scope.tax = Number($scope.grandTotal * $scope.novaScotia).toFixed(2);
             $scope.showGrandTotal=true;
         }else {
             $scope.totalAfterTax =$scope.grandTotal+ ( $scope.grandTotal * $scope.nwT);
+            $scope.tax = Number($scope.grandTotal * $scope.nwT).toFixed(2);
             $scope.showGrandTotal=true;
         }
        $window.localStorage.setItem('grandTotal', $scope.totalAfterTax);
+       $window.localStorage.setItem('tax', $scope.tax);
         console.log($scope.totalAfterTax);
         $location.path('/shop/checkout/oneclick');
     };

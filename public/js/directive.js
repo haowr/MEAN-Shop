@@ -84,6 +84,8 @@ var $section = $('.mainshoeview');
                 'addCreditCardFunc': '&',
                 'finalCheckoutData':'=',
                 'totalAfterTax': '=',
+                'taxX': '=',
+                'grandTotal': '=',
                 'paymentLoading': '='
             },
             link: function(scope,elem,attrs,formCtrl, $rootScope){
@@ -188,6 +190,8 @@ var $section = $('.mainshoeview');
                                                             var d= new Date();
                                                             var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
                                                             checkoutData.push(timestamp);
+                                                            var tax=$window.localStorage.getItem('tax');
+                                                            checkoutData.push(tax);
                                                             console.log(grandtotal);
                                                             console.log(username);
                                                             console.log(checkoutData);
@@ -206,8 +210,10 @@ var $section = $('.mainshoeview');
                                                 //$rootScope.cartItems = data.data.user.shoppingbag;
 
                                                         });
+                                                                console.log(checkoutData[0].email);
+                                                                var grndtotal= checkoutData[2].grandTotal / 100;
 
-                                                                User.sendEmail(checkoutData[0].email).then(function(data){
+                                                                User.sendEmail(checkoutData[0].email,checkoutData[0].name,grndtotal,checkoutData[6]).then(function(data){
 
                                                                         console.log(data.data.message);
 
@@ -233,17 +239,12 @@ var $section = $('.mainshoeview');
                                         }else{
                                             console.log(checkoutData[0].name);
                                             $window.localStorage.setItem('guestName', checkoutData[0].name);
-                                            User.sendEmail(checkoutData[0].email).then(function(data){
-                                                    console.log(data.data.message);
-                                                    $window.localStorage.removeItem('checkoutArrayy');
-                                                   // $window.localStorage.setItem('checkoutArray',JSON.stringify([]));
-                                                     $timeout(function(){
-                                                                        $location.path('/shop/orderconfirmation');
+                                            var grndtotal= checkoutData[2].grandTotal / 100;
+                                             User.sendEmail(checkoutData[0].email,checkoutData[0].name,grndtotal,checkoutData[6]).then(function(data){
 
-                                                        },2000);
-                                                    
+                                                                        console.log(data.data.message);
 
-                                            })
+                                                                });
                                         }
                                 }
 
@@ -271,6 +272,7 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
                 'addCreditCardFunc': '&',
                 'finalCheckoutData':'=',
                 'totalAfterTax': '=',
+                'taxX': '=',
                 'paymentLoading': '=',
                 'storedFormData': '=',
                 'grandTotal': '='
@@ -278,11 +280,13 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
             link: function(scope,elem,attrs,formCtrl, $rootScope){
                 //On click
                 console.log(formCtrl);
-
+                
+                console.log();
                 $(elem).submit(function(event){
                 console.log(scope.storedFormData);
-                
+                scope.taxX=$window.localStorage.getItem('tax');
                 scope.totalAfterTax = $window.localStorage.getItem('grandTotal');
+                var tax = scope.taxX;
                 console.log(scope.totalAfterTax);
 
                     Stripe.setPublishableKey('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
@@ -385,6 +389,7 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
                                                             var d= new Date();
                                                             var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
                                                             checkoutData.push(timestamp);
+                                                            checkoutData.push(tax);
                                                             console.log(grandtotal);
                                                             console.log(username);
                                                             console.log(checkoutData);
@@ -403,8 +408,16 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
                                                 //$rootScope.cartItems = data.data.user.shoppingbag;
 
                                                         });
+                                                                console.log(checkoutData[0].email);
+                                                                var images =[];
+                                                               /* for(var i = 0; i < checkoutData[4].length; i++){
+                                                                        images.push(checkoutData[4][i].image);  
 
-                                                                User.sendEmail(checkoutData[0].email).then(function(data){
+                                                                }
+                                                                console.log(images);*/
+                                                                var grndtotal= checkoutData[3].grandTotal / 100;
+                                                                console.log(checkoutData[3].grandTotal);
+                                                                User.sendEmail(checkoutData[0].email,checkoutData[0].name,grndtotal,checkoutData[7]).then(function(data){
 
                                                                         console.log(data.data.message);
 

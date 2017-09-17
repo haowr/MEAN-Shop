@@ -19,7 +19,7 @@ var Hogan = require('hogan.js');
 var fs = require('fs'); // node's baked in file-system module;
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport'); 
-var template = fs.readFileSync('./public/views/pages/newsletter/newsletter2.html', 'utf-8');
+var template = fs.readFileSync('./public/views/pages/newsletter/newsletter2.hjs', 'utf-8');
 var compiledTemplate = Hogan.compile(template);
 
 //get file (email template);
@@ -694,8 +694,8 @@ app.put('/api/removeemail/:email/', function(req,res){
 
 
 });
-app.put('/api/sendemail/:email',function(req,res){
-
+app.put('/api/sendemail/:email/:username/:grandtotal/:tax',function(req,res){
+    console.log(req.params.grandtotal);
 
     var email = {
 
@@ -703,7 +703,7 @@ app.put('/api/sendemail/:email',function(req,res){
         to: req.params.email,
         subject: 'Order Confirmation',
         text:'',
-        html: compiledTemplate.render()
+        html: compiledTemplate.render({name:req.params.username, grandtotal: req.params.grandtotal,tax:req.params.tax})
     };
                        // Function to send e-mail to user
                     client.sendMail(email, function(err, info) {

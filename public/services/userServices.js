@@ -180,9 +180,9 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/gettotalsfromuser/'+user);
   }
   //User.sendEmail(email);
-  userFactory.sendEmail = function(email){
+  userFactory.sendEmail = function(email,username,grandtotal,tax){
 
-    return $http.put('/api/sendemail/'+email);
+    return $http.put('/api/sendemail/'+email+'/'+username+'/'+grandtotal+'/'+tax);
 
   }
   //User.increaseAdminHearts(ohrha); MIGHT NOT USE
