@@ -6,10 +6,10 @@
         <div class="col-sm-6">
 
             <div class="page-header">
-                <h1>Reset Username</h1>
+                <h1 class = "myprofiletitle">Reset Username</h1>
             </div>
             <form name="userForm" ng-submit="username.sendUsername(userData, userForm.$valid);" novalidate>
-                <label>Email</label>
+                <label>Email:</label>
                 <input ng-disabled="username.disabled" class="form-control" type="text" name="email" ng-model="username.userData.email" required/>
                 <button ng-disabled="username.disabled" class="btn btn-submit" type="submit">Submit</button>
             </form>
