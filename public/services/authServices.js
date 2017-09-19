@@ -50,6 +50,9 @@ var authFactory = {};
     AuthToken.setToken();
     $window.localStorage.removeItem('myLoves');
     $window.localStorage.removeItem('cookieHearts');
+    $window.localStorage.removeItem('grandTotal');
+    $window.localStorage.removeItem('tax');
+    $window.localStorage.removeItem('shippingChoice');
  };
  return authFactory;
 

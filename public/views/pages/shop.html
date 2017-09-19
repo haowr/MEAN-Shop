@@ -1,76 +1,69 @@
 
- 
-<div ng-show= "loadme">
+<div ng-show="loadme">
     <br>
-    
 
 
-<!--<p>{{order}}</p>-->
-<!--<div ng-show = "shoes.loading" class = "jumbotron text-center">
 
-    <span class = "glyphicon glyphicon-spin repeat"></span>
-    <p>Loading...</p>
 
-</div>
--->
+    <div class="container container-fluid">
+        <div class="page-header">
+            <h1 class="myprofiletitle">Welcome to the shop</h1>
+        </div>
+        <div class="navbar-form">
 
-<div class= "container">
-        <div class = "page-header" >
-    <h1 class = "myprofiletitle">Welcome to the shop</h1>
-    </div>
-    <div class = "navbar-form">
-        
-            <button type="button" class = 'btn btn-submit'>Search</button>
-            <div class = "btn-group">
-                <button type ="button" class = "btn btn-submit">Sort by</button>
-                <button type ="button" class = "btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class='btn btn-submit'>Search</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-submit">Sort by</button>
+                <button type="button" class="btn btn-submit dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    <!-- <span class = "caret"></span>-->
                     <span class = "sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class = "dropdown-menu">
-                    <li><a href="#" ng-click = "sortOrder('-price');">Price-Highest</a></li>
-                    <li><a href="#" ng-click = "sortOrder('price');">Price-Lowest</a></li>
-                    <li><a href="#" ng-click = "sortOrder('name');">Name</a></li>
-           
+                <ul class="dropdown-menu">
+                    <li><a href="#" ng-click="sortOrder('-price');">Price-Highest</a></li>
+                    <li><a href="#" ng-click="sortOrder('price');">Price-Lowest</a></li>
+                    <li><a href="#" ng-click="sortOrder('name');">Name</a></li>
+
                 </ul>
             </div>
         </div>
+    </div>
+    <br>
+    <br>
+
+    <center>
+        <div infinite-scroll="loadMoreo()" infinite-scroll-distance="0.1" class="container container-fluid ">
+
+
+            <div class="landing " ng-repeat="shoe in shoes | orderBy: order track by $index ">
+                <strong><h1 class = "pull-left myprofiletitle"> {{shoe.name}}</h1></strong>
+                <p class="pull-right myprofiletitle" id="shopprice">{{shoe.price | currency}}</p>
+                <br>
+                <p id="shophearts" class="pull-right myprofiletitle"> <i class="fa fa-heart-o" id="shophearticon" aria-hidden="true"></i> {{shoe.hearts}}</p>
+                <br>
+
+                <landing-gallery></landing-gallery>
+
+                <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
+
+
+            </div>
+
+        </div>
+    </center>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class = "container container-fluid">
+    <div class="row">
+        <div class="col-sm-12 details2">
+        </div>
+    </div>
 </div>
 <br>
 <br>
-
-<center>
-<div infinite-scroll = "loadMoreo()"  infinite-scroll-distance ="0.1" class = "container container-fluid ">
-
-
-        <div class = "landing " ng-repeat="shoe in shoes | orderBy: order track by $index " >
-            <strong><h1 class = "pull-left myprofiletitle"> {{shoe.name}}</h1></strong>
-            <p class = "pull-right myprofiletitle" id = "shopprice">{{shoe.price | currency}}</p>
-            <br>
-            <p id ="shophearts"class = "pull-right myprofiletitle"> <i class="fa fa-heart-o" id="shophearticon" aria-hidden="true"></i> {{shoe.hearts}}</p>
-            <br>
-
-            <landing-gallery></landing-gallery>
-            
-           <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
-
-
-        </div>
-
-        </div>
-</center>
-<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
 </div>
-        
-
-   

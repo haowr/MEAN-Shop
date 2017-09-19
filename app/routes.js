@@ -19,8 +19,22 @@ var Hogan = require('hogan.js');
 var fs = require('fs'); // node's baked in file-system module;
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport'); 
-var template = fs.readFileSync('./public/views/pages/newsletter/newsletter2.hjs', 'utf-8');
+var template = fs.readFileSync('./public/views/pages/newsletter/newemailinline.hjs', 'utf-8');
+var emaillistwelcome = fs.readFileSync('./public/views/pages/newsletter/emaillistwelcome.hjs','utf-8');
+var accountactivate = fs.readFileSync('./public/views/pages/newsletter/accountactivate.hjs','utf-8');
+var accountactivated = fs.readFileSync('./public/views/pages/newsletter/accountactivated.hjs','utf-8');
+var resetusername = fs.readFileSync('./public/views/pages/newsletter/resetusername.hjs','utf-8');
+
+var resetpassword = fs.readFileSync('./public/views/pages/newsletter/resetpassword.hjs','utf-8');
+
+
 var compiledTemplate = Hogan.compile(template);
+var emailListWelcomeEmail = Hogan.compile(emaillistwelcome);
+var accountActivateEmail = Hogan.compile(accountactivate);
+var accountActivatedEmail = Hogan.compile(accountactivated);
+var resetUsername = Hogan.compile(resetusername);
+var resetPassword = Hogan.compile(resetpassword);
+
 
 //get file (email template);
 //complile template;
@@ -114,7 +128,8 @@ module.exports = function(app){// passed when we required the routes.js file in 
                             to: user.email,
                             subject: 'Activation Link Request',
                             text: 'Hello ' + user.name + ', You recently requested a new account activation link. Please click on the following link to complete your activation: https://immense-dusk-71112.herokuapp.com/activate/' + user.temporarytoken,
-                            html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a new account activation link. Please click on the link below to complete your activation:<br><br><a href="http://localhost:8888/activate/' + user.temporarytoken + '">http://localhost:8888/activate/</a>'
+                            //html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a new account activation link. Please click on the link below to complete your activation:<br><br><a href="http://localhost:8080/activate/' + user.temporarytoken + '">http://localhost:8888/activate/</a>',
+                            html: accountActivateEmail.render({user: user.name, temporarytoken: user.temporarytoken})
                         };
 
                     // Function to send e-mail to user
@@ -387,18 +402,7 @@ app.put('/api/hearts',function(req,res){
 });
 
 app.put('/api/removeoneorder/:username/:index', function(req,res){
-/*
-    User.findOneAndUpdate({username: req.params.username}, {$pull:{orders:orders[req.params.index]}},{new:true},function(err,orders){
 
-        if(err) throw err;
-        if(!order){
-            res.json({success: false, message:"No orders found..."});
-        }else{
-            res.json({success: true, message:"Your orders, sir...", orders:orders});
-        }
-
-
-    })*/
 
     User.findOne({username: req.params.username}).select('orders').exec(function(err, order){
         if(err) throw err;
@@ -694,6 +698,28 @@ app.put('/api/removeemail/:email/', function(req,res){
 
 
 });
+app.put('/api/sendemailemaillist/:email', function(req,res){
+
+    var email = {
+        from: 'admin@hoj.com',
+        to: req.params.email,
+        subject: 'Welcome to Email List',
+        text:'',
+        html: emailListWelcomeEmail.render()
+
+    };
+        client.sendMail(email, function(err, info){
+
+            if(err){
+                console.log(err);
+            }else{
+                console.log(info);
+            }
+
+        })
+
+
+})
 app.put('/api/sendemail/:email/:username/:grandtotal/:tax',function(req,res){
     console.log(req.params.grandtotal);
 
@@ -727,21 +753,7 @@ app.put('/api/addtoemaillist/:email',function(req,res){
                         res.json({success: false,message:"Email Entry Failed..."});
                     }else{
                         
-                        var email = {
-                            from: 'A House Of Jewels, admin@hoj.com',
-                            to: req.params.email,
-                            subject: 'Welcome to The House Of Jewels Email List',
-                            text: '',
-                            html: compiledTemplate.render({firstName:'Zill'})
-                        }; 
-                                            // Function to send e-mail to user
-                    client.sendMail(email, function(err, info) {
-                        if (err) {
-                            console.log(err); // If error in sending e-mail, log to console/terminal
-                        } else {
-                            console.log(info); // Log confirmation to console
-                        }
-                    });
+                
                     res.json({success: true, message: "Email entry Save Success...",emaillist:emaillist});
                     }
 
@@ -1510,8 +1522,9 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                             to: user.email,
                             subject: 'Localhost Account Activated',
                             text: 'Hello ' + user.name + ', Your account has ben successfully activated!',
-                            html: 'Hello<strong> ' + user.name + '</strong>,<br><br>Your account has been successfully activated!'
-                        };
+                           // html: 'Hello<strong> ' + user.name + '</strong>,<br><br>Your account has been successfully activated!'
+                           html: accountActivatedEmail.render({user: user.name})
+                     };
 
                     // Function to send e-mail to user
                     client.sendMail(email, function(err, info) {
@@ -1555,7 +1568,8 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                         to: user.email,
                         subject: 'Localhost Username Request',
                         text: 'Hello ' + user.name + ', You recently requested your username. Please save it in your files: ' + user.username,
-                        html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested your username. Please save it in your files: ' + user.username
+                        //html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested your username. Please save it in your files: ' + user.username
+                        html: resetUsername.render({user:user.name})
                     };
 
                     // Function to send e-mail to user
@@ -1597,10 +1611,11 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                             var email = {
                                 from: 'Localhost Staff, cruiserweights@zoho.com',
                                 to: user.email,
-                                subject: 'Ohrha Password Reset',
+                                subject: 'Password Reset',
                                 text: 'Hello ' + user.name + ', You recently requested a password reset link. Please use this link below to reset your password:"http://localhost:8080/reset/"'+user.resettoken,
-                                html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a password reset link. Please click on the link below to reset your password:<br> <a href="http://localhost:8080/reset/'+user.resettoken+'">"http://localhost:8080/reset/"</a>' 
-                            };
+                                //html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested a password reset link. Please click on the link below to reset your password:<br> <a href="http://localhost:8080/reset/'+user.resettoken+'">"http://localhost:8080/reset/"</a>' 
+                                html: resetPassword.render({user: user.name, resettoken: user.resettoken})
+                        };
 
                             // Function to send e-mail to user
                             client.sendMail(email, function(err, info) {

@@ -308,7 +308,8 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
             $scope.tax = $scope.grandTotal * $scope.nwT;
             $scope.showGrandTotal=true;
         }
-        
+          $scope.tax = Number($scope.tax).toFixed(2);
+          $window.localStorage.setItem('tax', $scope.tax);
         }else{
             $scope.errorMsg = "Please properly complete form...";
             $scope.invalid = true;

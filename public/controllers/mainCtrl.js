@@ -233,7 +233,7 @@
                  $scope.joinOurEmailList= false;
                 if(data.data.success){
                     
-                    
+                    User.sendEmailEmailList(emailListData.email);
                    
                     $timeout(function(){
                         $scope.emailAdded = true;
@@ -492,11 +492,23 @@ $rootScope.checkEmail = function(emailListData){
 
             console.log(data.data.success);
             console.log(data.data.message);
+            Auth.getUser().then(function(data){
+
+                console.log(data.data);
+                User.getShoppingBag(data.data.username).then(function(data){
+
+                        console.log(data.data);
+                        console.log(data.data.user.shoppingbag.length);
+                        $rootScope.cartItems = data.data.user.shoppingbag.length;
+
+                });
+
+            });
             
             if(data.data.success){
                 //CREATE SUCCESS MESSAGE
                 //REDIRECT TO HOMEPAGE  
-            
+                
                 scope.loading= false;
                 scope.successMsg= data.data.message + '...Redirecting';
                 $timeout(function(){
