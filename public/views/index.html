@@ -1,162 +1,166 @@
 <!DOCTYPE html>
-<html ng-app = "store" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>
-        <head ng-cloak>
-          <title ng-bind="title">HOJ | A House Of Jewels</title>
-        <base href="/">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-         <meta name="theme-color" content="#ffbbbc"/>
-         <link rel="manifest" href = "manifest.json">
-         <link rel=icon href="../img/favicon.png">
-        <script src="https://use.fontawesome.com/b397913843.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<html ng-app="store" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>
 
-        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-        <script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+<head ng-cloak>
+  <title ng-bind="title">HOJ | A House Of Jewels</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffbbbc" />
+  <link rel="manifest" href="manifest.json">
+  <link rel=icon href="../img/favicon.png">
+  <script src="https://use.fontawesome.com/b397913843.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+    crossorigin="anonymous">
 
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-        <!--<script src="../js/bootstrap.min.js" type="text/javascript"></script>-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
-        <script type ="text/javascript" src="../js/angular.js"></script>
-        <script type ="text/javascript" src="../js/angular-route.js"></script>
-        <script type ="text/javascript" src="../js/angular-animate.js"></script>
-        <script type='text/javascript' src='../js/ngInfiniteScroll.js'></script>
-        <!--<script type ='text/javascript' src='../js/angular-payments.js'></script>-->
-        <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>-->
-        <script type ="text/javascript" src="../js/app.js"></script>
-        <script type ="text/javascript" src="../js/routes.js"></script>
-        
-                                                  
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+  <!--<script src="../js/bootstrap.min.js" type="text/javascript"></script>-->
 
-        
-        
-        <script type ="text/javascript" src="../controllers/userCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/mainCtrl.js"></script>
-        <script type ="text/javascript" src= "../controllers/emailerCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/productCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/usernameeCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/passwordCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/managementCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/profileCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/shoppingBagCtrl.js"></script>
-        <script type ="text/javascript" src ="../controllers/checkoutCtrl.js"></script>
-        <script type ="text/javascript" src="../controllers/orderConfirmationCtrl.js"></script>
-        <script type ="text/javascript" src="../controllers/faqCtrl.js"></script>
-        <!--<script type ="text/javascript" src ="../controllers/editCtrl.js"></script>-->
-        <script type ="text/javascript" src ="../services/userServices.js"></script>
-        <script type ="text/javascript" src ="../services/authServices.js"></script>
-        <script type ="text/javascript" src="../services/mainServices.js"></script>
-        <script type ="text/javascript" src="../services/shopServices.js"></script>
-        <script type ="text/javascript" src="../controllers/mensCtrl.js"></script>
-        <script type ="text/javascript" src="../services/cookieServices.js"></script>
-        <script type ="text/javascript" src="../services/heartServices.js"></script>
-        <script type ="text/javascript" src="../services/emailServices.js"></script>
-
-        <script type ="text/javascript" src="../js/directive.js"></script>
-        <script src="https://js.stripe.com/v2/"></script>
-       <!-- <script type = "text/javascript" src ="../js/neckout.js"></script>-->
-       <!-- <script type = "text/javascript" src= "../js/jquery.elevatezoom.js"></script>-->
-        	<script src="../js/panzoom.js"></script>
-          <script src="../js/jquerylogic.js"></script>
-	
-        <!--<script src="https://checkout.stripe.com/checkout.js"></script>-->
-        
-       <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
-        <!--<link rel="stylesheet" href = "../css/bootstrap.min.css" type = "text/css">-->
-        <link rel="stylesheet" href = "../fonts/glyphicons-halflings-regular.ttf" type = "text/css">
-        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Bellefair|Spectral" rel="stylesheet">
-        <link rel ="stylesheet" href= "../css/animate.css" type="text/css">
-        <link rel ="stylesheet" href= "../css/style.css" type="text/css">
-        <link href="../css/zoomPan.css" rel="stylesheet" type="text/css">
-
-        
-        <link rel="stylesheet" href  ="../css/main.css" type ="text/css">
-        <link rel="stylesheet" href = "../css/styleindex.css" type ="text/css">
+  <script type="text/javascript" src="../js/angular.js"></script>
+  <script type="text/javascript" src="../js/angular-route.js"></script>
+  <script type="text/javascript" src="../js/angular-animate.js"></script>
+  <script type='text/javascript' src='../js/ngInfiniteScroll.js'></script>
+  <!--<script type ='text/javascript' src='../js/angular-payments.js'></script>-->
+  <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>-->
+  <script type="text/javascript" src="../js/app.js"></script>
+  <script type="text/javascript" src="../js/routes.js"></script>
 
 
 
-      <!--  <script type ="text/javascript" src="./js/main.js"></script>-->
-        
-    </head>
 
-<nav class ="navbar navbar-toggleable-md navbar-light bg-faded">
-	
-	
-  <button class = "navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls ="navbarNavDropdown" aria-expanded="false" aria-label = "Toggle navigation">
+
+  <script type="text/javascript" src="../controllers/userCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/mainCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/emailerCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/productCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/usernameeCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/passwordCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/managementCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/profileCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/shoppingBagCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/checkoutCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/orderConfirmationCtrl.js"></script>
+  <script type="text/javascript" src="../controllers/faqCtrl.js"></script>
+  <!--<script type ="text/javascript" src ="../controllers/editCtrl.js"></script>-->
+  <script type="text/javascript" src="../services/userServices.js"></script>
+  <script type="text/javascript" src="../services/authServices.js"></script>
+  <script type="text/javascript" src="../services/mainServices.js"></script>
+  <script type="text/javascript" src="../services/shopServices.js"></script>
+  <script type="text/javascript" src="../controllers/mensCtrl.js"></script>
+  <script type="text/javascript" src="../services/cookieServices.js"></script>
+  <script type="text/javascript" src="../services/heartServices.js"></script>
+  <script type="text/javascript" src="../services/emailServices.js"></script>
+
+  <script type="text/javascript" src="../js/directive.js"></script>
+  <script src="https://js.stripe.com/v2/"></script>
+  <!-- <script type = "text/javascript" src ="../js/neckout.js"></script>-->
+  <!-- <script type = "text/javascript" src= "../js/jquery.elevatezoom.js"></script>-->
+  <script src="../js/panzoom.js"></script>
+  <script src="../js/jquerylogic.js"></script>
+
+  <!--<script src="https://checkout.stripe.com/checkout.js"></script>-->
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+  <!--<link rel="stylesheet" href = "../css/bootstrap.min.css" type = "text/css">-->
+  <link rel="stylesheet" href="../fonts/glyphicons-halflings-regular.ttf" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair|Spectral" rel="stylesheet">
+  <link rel="stylesheet" href="../css/animate.css" type="text/css">
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
+  <link href="../css/zoomPan.css" rel="stylesheet" type="text/css">
+
+
+  <link rel="stylesheet" href="../css/main.css" type="text/css">
+  <link rel="stylesheet" href="../css/styleindex.css" type="text/css">
+
+
+
+  <!--  <script type ="text/javascript" src="./js/main.js"></script>-->
+
+</head>
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     
   </button>
-  <div class = "navbar-header">
-  <a class="navbar-brand center" id="nbrand" href ="/"> (HOJ)</a>
+  <div class="navbar-header">
+    <a class="navbar-brand center" id="nbrand" href="/"> (HOJ)</a>
   </div>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class = "navbar-nav">
-      <li class ="nav-item active">
-        <a class ="nav-link " id="hover" href="/shop">Shop<span class = "sr-only"(current)> </span></a>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link " id="hover" href="/shop">Shop<span class = "sr-only"(current)> </span></a>
       </li>
-      <li class ="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href ="#" id="navbarDropdownMenuLink" data-toggle = "dropdown" aria-haspopup="true" aria-expanded = "false">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Menu
-        </a> 
+        </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a ng-show="!main.isLoggedIn" class="dropdown-item" href="/register">Register</a>
           <a ng-show="main.isLoggedIn && main.authorized" class="dropdown-item" href="/management">Management</a>
-          <a ng-show="!main.isLoggedIn" class="dropdown-item"ng-click="chgTitle();" href="/login">Login</a>
+          <a ng-show="!main.isLoggedIn" class="dropdown-item" ng-click="chgTitle();" href="/login">Login</a>
           <a ng-show="main.isLoggedIn" class="dropdown-item" href="#" ng-click="main.logout();">Logout</a>
-          <a class="dropdown-item" href ="/about">About</a>
-           </li>
-        </div>
-           <li><a ng-show="main.isLoggedIn" class="nav-link navbar-right" id="hover" href="/profile"> Hello&nbsp({{ main.username }})</a></li>
-           <li ><a class ="nav-link navbar-right " id= 'hover' ng-click ="$route.reload();" href = "/profile">My&nbspLoves:&nbsp{{heartss}}</a></li>
-           <li ><a class ="nav-link navbar-right" id= 'hover' ng-click ="$route.reload();" href = "/shop/shoppingbag"><i class ="fa fa-shopping-bag" aria-hidden="true">&nbsp{{cartItems}}</i></a></li>
-      </ul>
-       
-        </div>
-         
+          <a class="dropdown-item" href="/about">About</a>
+      </li>
+      </div>
+      <li><a ng-show="main.isLoggedIn" class="nav-link navbar-right" id="hover" href="/profile"> Hello&nbsp({{ main.username }})</a></li>
+      <li><a class="nav-link navbar-right " id='hover' ng-click="$route.reload();" href="/profile">My&nbspLoves:&nbsp{{heartss}}</a></li>
+      <li><a class="nav-link navbar-right" id='hover' ng-click="$route.reload();" href="/shop/shoppingbag"><i class ="fa fa-shopping-bag" aria-hidden="true">&nbsp{{cartItems}}</i></a></li>
+    </ul>
+
+  </div>
+
 
   </div>
 </nav>
 
 <body>
 
-<!--<div class = "container theme-showcase">-->
- <div ng-view></div>
+  <!--<div class = "container theme-showcase">-->
+  <div ng-view></div>
 
 
+<div class = "container container-fluid">
+  <div id="myModal" class="modal" role="dialog">
+    <!-- removed fade class and it started working.. -->
+    <div class="modal-dialog">
 
- <div id="myModal" class="modal" role="dialog"> <!-- removed fade class and it started working.. -->
-  <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" ng-click="endSession()" ng-show="!areYouSure" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" ng-click="hideModal();" ng-show="areYouSure" class="close" data-dismiss="modal">&times;</button>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button"ng-click="endSession()" ng-show="!areYouSure"class="close" data-dismiss="modal">&times;</button>
-        <button type="button"ng-click="hideModal();" ng-show="areYouSure"class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{modalHeader}}</h4>
+        </div>
+        <div class="modal-body">
+          <center>
+            <p>{{modalBody}}</p>
+            <div ng-show="hideButton" class="dizzy-gillespie"></div>
+          </center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" ng-show="showButtonRemoveLove" ng-click="hideModal();" class="btn btn-submit" data-dismiss="modal">No</button>
+          <button type="button" ng-show="showButtonRemoveLove" ng-click="removeOneLove($index);" class="btn btn-submitdarker" data-dismiss="modal">Yes</button>
+          <button type="button" ng-show="showButton" ng-click="renewSession();" class="btn btn-default" data-dismiss="modal">Yes</button>
+          <button type="button" ng-show="showButton" ng-click="endSession();" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" ng-show="areYouSure" ng-click="hideModal();" class="btn btn-submit" data-dismiss="modal">No</button>
+          <button type="button" ng-show="areYouSure" ng-click="removeOrder(index);" class="btn btn-submitdarker" data-dismiss="modal">Yes</button>
 
-        <h4 class="modal-title">{{modalHeader}}</h4>
+        </div>
       </div>
-      <div class="modal-body">
-        <center><p>{{modalBody}}</p>
-        <div ng-show="hideButton"class="dizzy-gillespie"></div>
-        </center>
-      </div>
-      <div class="modal-footer">
-        <button type="button" ng-show="showButtonRemoveLove"ng-click ="hideModal();" class="btn btn-submit" data-dismiss="modal">No</button>
-        <button type="button" ng-show="showButtonRemoveLove"ng-click="removeOneLove($index);"class="btn btn-submitdarker" data-dismiss="modal">Yes</button>
-        <button type="button" ng-show="showButton"ng-click="renewSession();"class="btn btn-default" data-dismiss="modal">Yes</button>
-        <button type="button" ng-show="showButton"ng-click ="endSession();" class="btn btn-danger" data-dismiss="modal">No</button>
-        <button type="button" ng-show="areYouSure"ng-click ="hideModal();" class="btn btn-submit" data-dismiss="modal">No</button>
-        <button type="button" ng-show="areYouSure"ng-click ="removeOrder(index);" class="btn btn-submitdarker" data-dismiss="modal">Yes</button>
 
-      </div>
     </div>
 
   </div>
-
 </div>
 
 
@@ -164,21 +168,21 @@
 
 
 
-  
- 
-      <!-- load jquery -->
-        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
-      
-        
-      <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
-        
+
+  <!-- load jquery -->
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+
+
+  <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
+
 </body>
 <script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('../serviceworker.js')  //worked when placed in public folder...
-           .then(function() { console.log("Service Worker Registered"); });
-}
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('../serviceworker.js')  //worked when placed in public folder...
+      .then(function () { console.log("Service Worker Registered"); });
+  }
+
 </script>
 
 
