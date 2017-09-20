@@ -357,13 +357,18 @@ width: 500px !important;
   
 }
 .sitemap{
-  border-bottom: 3px solid black;
+  border-bottom: 2px solid black;
   padding-right: 40px;
 }
 .emailsignup{
-  border-bottom: 3px solid black;
+  border-bottom:2px solid black;
   display:inline-block;
   font-size: 20px;
+  
+}
+#mainimage{
+  height:100%;
+  width:100%;
 }
 .deselected{
   display:none;

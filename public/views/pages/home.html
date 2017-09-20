@@ -14,22 +14,24 @@
 
     </div>
 </div>
-<div class="container container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12" id="mainimage">
 
 
-    <div class="col-sm-12">
-
-
-       <!-- <img ng-class="{arrowFade: opacityOn2}" class="pull-left img-fluid" src="../img/next-leftL.gif" ng-click="setCurrentSlideIndexSubtract();">-->
-        <!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->
-        <center> <a href="/shop"><img ng-repeat="slide in slides"class="slide img-fluid"
+            <!-- <img ng-class="{arrowFade: opacityOn2}" class="pull-left img-fluid" src="../img/next-leftL.gif" ng-click="setCurrentSlideIndexSubtract();">-->
+            <!--<center><img ng-src="{{commercials[commercial]}}"class="animate-show" fade-in ></center>-->
+            <center> <a href="/shop"><img ng-repeat="slide in slides"class="slide img-fluid"
                                 ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}"></a></center>
-        <!--<img ng-class="{arrowFade: opacityOn}" class="pull-right img-fluid " src="../img/next-rightL.gif" ng-click="setCurrentSlideIndexAdd();">-->
+            <!--<img ng-class="{arrowFade: opacityOn}" class="pull-right img-fluid " src="../img/next-rightL.gif" ng-click="setCurrentSlideIndexAdd();">-->
 
 
 
 
+        </div>
     </div>
+    <div class="container container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <center>
@@ -37,7 +39,7 @@
             </center>
         </div>
     </div>
-    <div class="row">
+   <!-- <div class="row">
         <div class="col-sm-1">
 
             <center><img src="../img/next-leftL.gif" ng-click="newChange();"></center>
@@ -51,9 +53,9 @@
 
             <center><img src="../img/next-rightL.gif" ng-click="newChangeY();"></center>
         </div>
-    </div>
+    </div>-->
     <div class="row">
-        <div class="col-sm-12 details">
+        <div class="col-sm-12 details2">
 
         </div>
     </div>
@@ -92,7 +94,7 @@
         </div>
         <div class="col-sm-6">
         </div>
-        <div class="col-sm-3 emailsignup pull-right">
+        <div class="col-sm-3 emailsignup ">
             <center>
                 <h4 id="whatsnewtitle">Stay Connected!</h4>
             </center>
@@ -130,7 +132,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn btn-primary">Sign-up!</button>
+                <center><button class="btn btn-primary">Sign-up!</button></center>
 
 
             </form>
