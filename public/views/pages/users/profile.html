@@ -107,7 +107,7 @@
   <tbody>
     <tr ng-repeat="order in orderHistory track by $index">
             
-            <td class ="secondarytextsimple"><a href="/profile/orderdetails/{{$index}}">{{$index+1}}</a></td>
+            <td class ="secondarytextsimple linkdecoration" ><a href="/profile/orderdetails/{{$index}}">{{$index+1}}</a></td>
             <td class ="secondarytextsimple">{{order.items}}</td>
             <td class ="secondarytextsimple">{{order.grandTotal | currency}}</td>
             <td class ="secondarytextsimple">{{order.timestammp}}</td>

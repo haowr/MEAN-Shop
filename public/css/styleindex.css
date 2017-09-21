@@ -366,6 +366,10 @@ width: 500px !important;
   font-size: 20px;
   
 }
+.linkdecoration{
+
+  text-decoration: underline;
+}
 #mainimage{
   height:100%;
   width:100%;

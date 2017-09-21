@@ -18,6 +18,7 @@ app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window,
     $scope.orderHistory = [];
     $scope.ordersDataArray=[];
     $scope.ordersGrouped =[];
+    $scope.orderNumberAsTitle;
     $scope.singleOrder;
     $scope.orderNumber;
     $scope.loves=[];
@@ -43,6 +44,7 @@ app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window,
     var singleOrder = function(route){
 
         $scope.singleOrder = $scope.ordersGrouped[$routeParams.number];
+        $scope.orderNumberAsTitle= Number($routeParams.number) +1;
         console.log($scope.singleOrder);
         console.log("singleOrder has run..");
 
