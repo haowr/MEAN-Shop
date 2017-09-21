@@ -74,8 +74,14 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
                 $scope.storedFormData.push(data.data.user.billingdetails);
                 $scope.storedFormData.push(data.data.user.shippingdetails);
                 $scope.storedFormData.push(data.data.user.ccdetails);
-                $scope.grandTotal = $window.localStorage.getItem('grandTotal');              
+                $scope.grandTotal = $window.localStorage.getItem('grandTotal'); 
+                /*User.addGrandTotalToShoppingBag($scope.currentUser, $scope.grandTotal).then(function(data){
+                    console.log(data.data.user);
+
+                }); 
+                */            
                  $scope.shoppingBagShoes = data.data.user.shoppingbag;
+                 //console.log()
                 for(var i = 0; i<$scope.shoppingBagShoes.length; i++){
 
                       $scope.shoppingBagAmountsArray.push(Number($scope.shoppingBagShoes[i].amt));

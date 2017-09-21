@@ -388,11 +388,30 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
                                                             var grandtotal= $window.localStorage.getItem('grandTotal');
                                                             var d= new Date();
                                                             var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+                                                            var orderHistory = {};
+                                                            orderHistory.timestammp = timestamp;
+                                                            orderHistory.grandTotal = grandtotal;
+                                                            orderHistory.items = checkoutData[4].length;
+                                                            orderHistory.username =username;
+                                                            console.log(orderHistory);
+                                                            User.addOrderHistoryToUser(orderHistory).then(function(data){
+                                                                console.log(data.data);
+                                                            })
                                                             checkoutData.push(timestamp);
                                                             checkoutData.push(tax);
                                                             console.log(grandtotal);
                                                             console.log(username);
                                                             console.log(checkoutData);
+                                                            checkoutData[4][0].timestamp = timestamp;
+                                                            User.addGroupedOrdersToUser(checkoutData[4]).then(function(data){
+
+                                                                    console.log(data.data);
+                                                                    User.increaseOrderNumber(username).then(function(data){
+                                                                        console.log(data.data.user);
+
+                                                                    })
+
+                                                            })
                                                                 
                                                             User.addTotalToUser(username, grandtotal).then(function(data){
 

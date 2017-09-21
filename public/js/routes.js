@@ -39,6 +39,14 @@ app.config(function($routeProvider,$locationProvider){
 
 
     })
+        .when('/profile/orderdetails/:number',{
+            templateUrl: '../views/pages/users/orderdetails.html',
+            controller:'profileCtrl',
+            controllerAs:'profile',
+            authenticated: true
+
+
+        })
         .when('/profile',{
 
         templateUrl: '../views/pages/users/profile.html',

@@ -822,6 +822,105 @@ console.log(req.body.name);
 //console.log(req.body.newitem);
 
 });
+app.put('/api/addgrandtotalshoppingbag/:username/:grandtotal', function(req,res){
+
+    User.findOneAndUpdate({username: req.params.username}, {$push:{shoppingbag: req.params.grandtotal}}, {new:true}, function(err,user){
+
+        if(err) throw err
+        if(!user){
+            res.json({success:false, message:"No user found"});
+        }else{
+            res.json({success:true, message: "User found and updated...",user:user});
+        }
+
+
+
+    })
+})
+app.post('/api/addordersgroupedtouser', function(req,res){
+
+    console.log(req.body);
+    console.log("fgjfj");
+    console.log(req.body[0].username);
+
+    User.findOneAndUpdate({username: req.body[0].username}, {$push:{ordersgrouped: req.body}}, {new:true}, function(err,user){
+
+        if(err)throw err
+        if(!user){
+            res.json({success: false, message: "User not found..."});
+        }else{
+            res.json({success: false, message:"User found and updated.."})
+        }
+
+
+    })
+
+
+
+})
+app.put('/api/getordersgroupedfromuser/:username', function(req,res){
+
+
+    User.findOne({username:req.params.username}).select('ordersgrouped').exec(function(err,ordersgrouped){
+
+        if(err)throw err
+        if(!ordersgrouped){
+            res.json({success:false, message:"User not found"});
+        }else{
+            res.json({success:true,message:"Ordergrouped!;)",ordersgrouped:ordersgrouped});
+        }
+
+
+    })
+
+})
+app.post('/api/addorderhistorytouser',function(req,res){
+
+        User.findOneAndUpdate({username: req.body.username}, {$push:{orderhistory:req.body}},{new:true},function(err,user){
+
+            if(err)throw err;
+                  if(!user){
+            res.json({success:false,message:"User not found"});
+        }else{
+            res.json({success:true, message:"User found..", user:user});
+        }
+
+        })
+
+
+})
+
+app.put('/api/increaseordernumber/:username',function(req,res){
+
+    User.findOneAndUpdate({username: req.params.username}, {$inc:{ordernumber:+1}},{new:true},function(err,user){
+
+        if(err)throw err;
+        if(!user){
+            res.json({success:false,message:"User not found"});
+        }else{
+            res.json({success:true, message:"User found..", user:user});
+        }
+
+
+    })
+
+
+
+})
+app.put('/api/cleartotalsfromuser/:username', function(req,res){
+
+    User.findOneAndUpdate({username: req.params.username}, {$set:{totalhistory:[]}}, {new:true}, function(err,user){
+
+        if(err) throw err
+        if(!user){
+            res.json({success:false, message:"User not found.."});
+        }else{
+            res.json({success:true, message:"User found and updated...", user:user});
+        }
+
+    })
+
+})
 
 app.post('/api/addtoshoppingbag', function(req,res){
 

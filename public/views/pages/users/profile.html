@@ -94,9 +94,9 @@
   <thead>
     <tr>
       
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
+      
+      <th>Order Number</th>
+      <th>Items</th>
       <th>Total</th>
       <th>Date</th>
       <th></th>
@@ -105,22 +105,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="order in orders track by $index">
+    <tr ng-repeat="order in orderHistory track by $index">
             
-            <td><a href="/shop/mens/{{order.name}}"><p class ="secondarytextsimple">{{order.name}}|</p></a></td>
-            <td class ="secondarytextsimple">{{order.amt}}</td>
-            <td class ="secondarytextsimple">{{order.price | currency}}</td>
-            <td class ="secondarytextsimple">{{order.price*order.amt | currency}}</td>
-            <td class ="secondarytextsimple">{{order.timestamp}}</td>
+            <td class ="secondarytextsimple"><a href="/profile/orderdetails/{{$index}}">{{$index+1}}</a></td>
+            <td class ="secondarytextsimple">{{order.items}}</td>
+            <td class ="secondarytextsimple">{{order.grandTotal | currency}}</td>
+            <td class ="secondarytextsimple">{{order.timestammp}}</td>
 
             
             <td>
               <button ng-click = "showModal(3,$index);"class = "btn btn-submit">Remove</button> <!--removeOrder($index);-->
             </td>
     </tr>
-    <tr ng-repeat = "total in totals">
-        <td>{{total | currency}}</td>
-    </tr>
+    <!--<tr >
+        <td>{{orders[orders.length-1]}}</td>
+    </tr>-->
 
   </tbody>
 </table>
@@ -595,34 +594,7 @@
    
 </div>
 </div>
-<!--<div class = "table-responsive">
-<table class="table table-sm">
-  <thead>
-    <tr>
-      
-      <th>Grand Totals</th>
 
-    </tr>
-  </thead>
-  <tbody>
-
-
-    <tr ng-repeat = "total in totals">
-        <td>{{total | currency}}</td>
-    </tr>
-
-  </tbody>
-</table>
-</div>
-
-<div class ="col-sm-3 details2 openorderstyling">
-    <button class = "btn btn-submit" ng-click = "openOrder();">open</button>
-    <div ng-show="openOrderr"class ="col-sm-12 " ng-repeat="total in totals track by $index">
-        <p>{{total}}!</p>
-    </div>
-
-</div>
--->
 <br>
 <br>
 <div class ="col-sm-12 details2">

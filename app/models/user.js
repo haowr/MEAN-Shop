@@ -83,6 +83,9 @@ var UserSchema = new Schema({
     billingdetails:{type:Object},
     shippingdetails:{type:Object},
     ccdetails:{type:Object},
+    ordersgrouped:{type:Array},
+    ordernumber:{type:Number},
+    orderhistory:{type:Array},
     detailssaved:{type:Boolean},
     loves: Array
 

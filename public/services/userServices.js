@@ -168,12 +168,54 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.post('/api/addyourbillingdetails',billing);
 
   }
+  //User.addGrandTotalToShoppingBag(username,grandtotal);
+  userFactory.addGrandTotalToShoppingBag = function(username,grandtotal){
+
+    return $http.put('/api/addgrandtotalshoppingbag/'+username+'/'+grandtotal);
+
+  }
   //User.addTotalToUser(user,total);
   userFactory.addTotalToUser = function(user,total){
 
     return $http.put('/api/addtotaltouser/'+user+'/'+total);
 
   }
+  //User.clearTotalsFromUser(username);
+  userFactory.clearTotalsFromUser = function(username){
+
+    return $http.put('/api/cleartotalsfromuser/'+username);
+
+  }
+  //User.addGroupedOrdersToUser(username,ordersgrouped);
+  userFactory.addGroupedOrdersToUser = function(ordersgrouped){
+
+
+    return $http.post('/api/addordersgroupedtouser',ordersgrouped);
+
+  }
+  //User.getGroupedOrdersFromUser(username);
+  userFactory.getGroupedOrdersFromUser = function(username){
+
+    return $http.put('/api/getordersgroupedfromuser/'+username);
+
+  }
+  //User.addOrderHistoryToUser(username);
+  userFactory.addOrderHistoryToUser = function(orderhistory){
+    return $http.post('/api/addorderhistorytouser/',orderhistory);
+  }
+  //User.getOrderHistoryFromUser(username);
+  userFactory.getOrderHistoryFromUser = function(username){
+
+    return $http.put('/api/getorderhistoryfromuser/:username');
+
+  }
+  //User.increaseOrderNumber(username);
+  userFactory.increaseOrderNumber= function(username){
+
+    return $http.put('/api/increaseordernumber/'+username);
+
+  }
+  
   //User.getTotalsFromUser(user);
   userFactory.getTotalsFromUser = function(user){
 

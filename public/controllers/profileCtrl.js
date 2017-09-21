@@ -6,12 +6,20 @@ app.config(function(){
     console.log("profile controller loaded and initialized...");
 })
 
-app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window){
+app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window,$routeParams){
 
     $scope.user ;
     $scope.whoisthis;
     $scope.currentUser;
     $scope.orders =[];  
+    $scope.orderWithTotal = {};
+    $scope.orderData = {};
+    $scope.orderArray = [];
+    $scope.orderHistory = [];
+    $scope.ordersDataArray=[];
+    $scope.ordersGrouped =[];
+    $scope.singleOrder;
+    $scope.orderNumber;
     $scope.loves=[];
     $scope.lovesLength;
     $scope.loveObjectArray = [];
@@ -31,6 +39,14 @@ app.controller('profileCtrl',function(Shop,Auth,User,$scope, $rootScope,$window)
     $scope.savedCongratulations = false;
     $rootScope.showButton = false;
     $rootScope.showButtonRemoveLove = false;
+    console.log($routeParams);
+    var singleOrder = function(route){
+
+        $scope.singleOrder = $scope.ordersGrouped[$routeParams.number];
+        console.log($scope.singleOrder);
+        console.log("singleOrder has run..");
+
+    }
 
 $scope.openOrder = function(){
 
@@ -65,6 +81,7 @@ $scope.openOrder = function(){
             console.log(data.data.user);
             console.log(data.data.user.loves);
             console.log(data.data.user.detailssaved);
+            $scope.orderNumber = data.data.user.ordernumber;
             if(data.data.user.detailssaved){
                 $scope.notSaved = false;
                 $scope.saved = true;
@@ -134,22 +151,75 @@ $scope.openOrder = function(){
 
             $scope.orders.push(data.data.user.orders[i]);
             
-            //$scope.orders[i].timestamp= 
-            /*var d= new Date();
-            console.log(d.getFullYear());
-            console.log(d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2));
-*/
 
-            
 
         }
+        for(var i = 0; i <data.data.user.orderhistory.length; i ++){
+
+            $scope.orderHistory.push(data.data.user.orderhistory[i]);
+
+        }
+        for(var i = 0; i < data.data.user.ordersgrouped.length; i ++){
+
+            $scope.ordersGrouped.push(data.data.user.ordersgrouped[i]);
+
+        }
+        
+        console.log($scope.orderHistory);
+        singleOrder($routeParams.number);
+        //$scope.orderData.
         console.log($scope.orders);
         User.getTotalsFromUser($scope.whoisthis).then(function(data){
 
             console.log(data.data);
             console.log(data.data.history.totalhistory);
+
             $scope.totals = data.data.history.totalhistory;
+
+            User.getGroupedOrdersFromUser($scope.whoisthis).then(function(data){
+
+                console.log(data.data);
+                console.log(data.data.ordersgrouped.ordersgrouped);
+                for(var i =0; i<data.data.ordersgrouped.ordersgrouped.length; i++){
+
+                    $scope.orderData.timestamp = $scope.orders[0].timestamp;
+                     $scope.orderData.items = data.data.ordersgrouped.ordersgrouped[$scope.orderNumber].length;
+                    $scope.orderData.number = $scope.orderNumber;
+                    $scope.orderData.grandTotal =  $scope.totals;
+                                $scope.ordersDataArray.push($scope.orderData);
+
+                   
+                }
+
+            })
+
+            console.log($scope.orderData);
+            console.log($scope.orderData.number);
+          /*  if($scope.orderData.number == undefined){
+                $scope.orderArray = [];
+                
+            }else{
+*/
+          //$scope.orderArray.push($scope.orderData);
+            //$scope.orderData.number = $scope.orderArray.length;
+            //$scope.orderArray.splice($scope.orderArray.indexOf($scope.orderArray.length-1),1);
+            //$scope.orderArray.push($scope.orderData);
+            //console.log($scope.orderArray[0].grandTotal);
+            console.log($scope.ordersDataArray);
+            //$scope.orderData={};
+            
+  
+            
+            //$scope.orders.push(data.data.history.totalhistory);
+            //User.clearTotalsFromUser($scope.whoisthis).then(function(data){
+
+
+              ///  console.log(data.data.user);
+           // })
             console.log($scope.totals);
+            //$scope.orders.push(data.d)
+
+            
             
           
 
