@@ -191,25 +191,50 @@ var $section = $('.mainshoeview');
                                                             var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
                                                             checkoutData.push(timestamp);
                                                             var tax=$window.localStorage.getItem('tax');
+                                                           // checkoutData.push(tax);
+                                                            console.log(grandtotal);
+                                                            console.log(username);
+                                                            console.log(checkoutData);
+                                                                                                                        var orderHistory = {};
+                                                            orderHistory.timestammp = timestamp;
+                                                            orderHistory.grandTotal = grandtotal;
+                                                            orderHistory.items = checkoutData[4].length;
+                                                            orderHistory.username =username;
+                                                            console.log(orderHistory);
+                                                            User.addOrderHistoryToUser(orderHistory).then(function(data){
+                                                                console.log(data.data);
+                                                            })
+                                                            checkoutData.push(timestamp);
                                                             checkoutData.push(tax);
                                                             console.log(grandtotal);
                                                             console.log(username);
                                                             console.log(checkoutData);
+                                                            checkoutData[4][0].timestamp = timestamp;
+                                                            User.addGroupedOrdersToUser(checkoutData[4]).then(function(data){
+
+                                                                    console.log(data.data);
+                                                                    User.increaseOrderNumber(username).then(function(data){
+                                                                        console.log(data.data.user);
+
+                                                                    })
+
+                                                            })
                                                                 
                                                             User.addTotalToUser(username, grandtotal).then(function(data){
 
                                                                 console.log(data.data);
                                                                 console.log(data.data.message);
-                                                                User.addOrdersToUser(checkoutData).then(function(data){
+                                                                User.addOrdersToUser2(checkoutData).then(function(data){
                                                                         console.log(data.data);
-                                                            if(data.data.success){
-                                                                $window.localStorage.removeItem('checkoutArrayy');
+                                                                        if(data.data.success){
+                                                                            $window.localStorage.removeItem('checkoutArrayy');
                                                                     User.clearShoppingBag(data.data.username).then(function(data){
 
                                                         console.log(data.data);
                                                 //$rootScope.cartItems = data.data.user.shoppingbag;
 
                                                         });
+                                                           
                                                                 console.log(checkoutData[0].email);
                                                                 var grndtotal= checkoutData[2].grandTotal / 100;
 

@@ -434,7 +434,7 @@
                     $scope.orderHistory = data.data.user.orderhistory;
                     User.removeOrdersGroupedArrayFromUser($scope.currentUser,index).then(function(data){
 
-                            console.log(data.data.user.ordersgrouped);
+                            console.log(data.data.user.ordersgrouped)
                     })
                 })
                 /*User.removeOneOrder($scope.currentUser, index).then(function (data) {
