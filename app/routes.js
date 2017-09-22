@@ -874,6 +874,83 @@ app.put('/api/getordersgroupedfromuser/:username', function(req,res){
     })
 
 })
+app.put('/api/removeordersgroupedfromuser/:username/:indexoforder/:index', function(req,res){
+
+    console.log(req.params.username);
+    console.log(req.params.index);
+    User.findOne({username:req.params.username}).select('ordersgrouped').exec(function(err,ordersgrouped){
+
+        if(err)throw err;
+        if(!ordersgrouped){
+            res.json({success: false, message:"orderhistory not found..."});
+
+        }else{
+            //res.json({success: true, message: "Here is your orderhistory..", orderhistory:orderhistory});
+            //console.log(orderhistory);
+            console.log(ordersgrouped.ordersgrouped);
+            ordersgrouped.ordersgrouped[req.params.indexoforder].splice(req.params.index,1);
+            User.findOneAndUpdate({username:req.params.username},{$set:{ordersgrouped:ordersgrouped.ordersgrouped}},{new:true}, function(err,user){
+
+                if(err) throw err;
+                if(!user){
+                    res.json({success:false, message:"user not found..."});
+                }else{
+                    res.json({success:true, message:"user found and updated...", user:user});
+                }
+
+            })
+            
+        }
+
+    })
+
+})
+app.put('/api/removeordersgroupedarrayfromuser/:username/:index', function(req,res){
+
+   User.findOne({username:req.params.username}).select('ordersgrouped').exec(function(err,ordersgrouped){
+
+        if(err)throw err;
+        if(!ordersgrouped){
+            res.json({success: false, message:"orderhistory not found..."});
+
+        }else{
+            //res.json({success: true, message: "Here is your orderhistory..", orderhistory:orderhistory});
+            //console.log(orderhistory);
+            console.log(ordersgrouped.ordersgrouped);
+            ordersgrouped.ordersgrouped.splice(req.params.index,1);
+            User.findOneAndUpdate({username:req.params.username},{$set:{ordersgrouped:ordersgrouped.ordersgrouped}},{new:true}, function(err,user){
+
+                if(err) throw err;
+                if(!user){
+                    res.json({success:false, message:"user not found..."});
+                }else{
+                    res.json({success:true, message:"user found and updated...", user:user});
+                }
+
+            })
+            
+        }
+
+    })
+
+
+})
+app.put('/api/clearordersgroupedfromuser/:username', function(req,res){
+
+    User.findOneAndUpdate({username:req.params.username}, {$set:{ordersgrouped:[]}}, {new:true}, function(err,user){
+
+        if(err) throw err;
+        if(!user){
+            res.json({success:false, message:"user not found"});
+        }else{
+            res.json({success: true, message: "User found and updated", user:user});
+        }
+
+
+    })
+
+
+})
 app.post('/api/addorderhistorytouser',function(req,res){
 
         User.findOneAndUpdate({username: req.body.username}, {$push:{orderhistory:req.body}},{new:true},function(err,user){
@@ -907,6 +984,38 @@ app.put('/api/increaseordernumber/:username',function(req,res){
 
 
 })
+app.put('/api/removeorderhistoryfromuser/:username/:index', function(req,res){
+
+    console.log(req.params.username);
+    console.log(req.params.index);
+    User.findOne({username:req.params.username}).select('orderhistory').exec(function(err,orderhistory){
+
+        if(err)throw err;
+        if(!orderhistory){
+            res.json({success: false, message:"orderhistory not found..."});
+
+        }else{
+            //res.json({success: true, message: "Here is your orderhistory..", orderhistory:orderhistory});
+            console.log(orderhistory);
+            console.log(orderhistory.orderhistory);
+            orderhistory.orderhistory.splice(req.params.index,1);
+            User.findOneAndUpdate({username:req.params.username},{$set:{orderhistory:orderhistory.orderhistory}},{new:true}, function(err,user){
+
+                if(err) throw err;
+                if(!user){
+                    res.json({success:false, message:"user not found..."});
+                }else{
+                    res.json({success:true, message:"user found and updated...", user:user});
+                }
+
+            })
+            
+        }
+
+    })
+
+})
+
 app.put('/api/cleartotalsfromuser/:username', function(req,res){
 
     User.findOneAndUpdate({username: req.params.username}, {$set:{totalhistory:[]}}, {new:true}, function(err,user){

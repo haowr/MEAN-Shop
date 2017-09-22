@@ -207,14 +207,15 @@
                             <label>Street Address:</label>
                             <br>
                             <input type = "textarea" name ="streetaddress" ng-model="yourBillingFormData.streetaddress"  placeholder="Street Address..." required></input>
-                            <ul class ="help-block" ng-show=" (!yourBillingForm.streetaddress.$pristine && yourBillingForm.streetaddress.$error.minlength) || (!yourBillingForm.streetaddress.$pristine && yourBillingForm.streetaddress.$error.maxlength)">
+                            <ul class ="help-block" ng-show="(!yourBillingForm.streetaddress.$pristine && yourBillingForm.streetaddress.$error.minlength) || (!yourBillingForm.streetaddress.$pristine && yourBillingForm.streetaddress.$error.maxlength)">
                                 <li>Please enter adddress..</li>
                             </ul>
                     </div>
+
                     <div ng-class="{ 'has-success': (!yourBillingForm.streetaddress2.$pristine || yourBillingForm.streetaddress2.$pristine )}" class = "form-group">
                             <label>Street Address 2:</label>
                             <br>
-                            <input type = "textarea" name ="streetaddress2" ng-model="yourBillingFormData.streetaddress2"  placeholder="Street Address 2(optional)..." required></input>
+                            <input type = "textarea" name ="streetaddress2" ng-model="yourBillingFormData.streetaddress2"  placeholder="Street Address 2(optional)..." ></input>
 
                     </div>
                     <div ng-class="{ 'has-success': (yourBillingForm.apt.$valid && !yourBillingForm.apt.$pristine), 'has-error':(!yourBillingForm.apt.$valid && !yourBillingForm.apt.$pristine)|| (!yourBillingForm.apt.$valid && yourBillingForm.$submitted) }"class =" form-group">
@@ -310,12 +311,13 @@
                                 </select>
                             </div>
                     </div>
-                    <div ng-class="{ 'has-success': (yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine), 'has-error':(!yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine)|| (!yourBillingForm.postalcode.$valid && yourBillingForm.$submitted) }"ng-show="country == 'Canada'"class = "form-group">
+                    <div ng-class="{ 'has-success': (yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine), 'has-error':(!yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine)|| (!yourBillingForm.postalcode.$valid && yourBillingForm.$submitted) }"class = "form-group">
                             <label>Postal Code:</label>
                             <br>
-                            <input type= "textarea" ng-model="yourBillingFormData.postalcode" name="postalcode" placeholder="Postal Code..." required ></input>
+                            <input type= "textarea" ng-model="yourBillingFormData.postalcode" name="postalcode" ng-pattern="/[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ] ?[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]/" placeholder="Postal Code..." required ></input>
                              <ul class ="help-block" ng-show=" (!yourBillingForm.postalcode.$pristine && !yourBillingForm.postalcode.$valid) ">
                                 <li>Please Enter Postal Code..</li>
+                                <div ng-show="!yourBillingForm.postalcode.$valid"><li>Please Enter Postal Code..</li></div>
                             </ul>
                     </div>
                     <div ng-class="{ 'has-success': (yourBillingForm.zipcode.$valid && !yourBillingForm.zipcode.$pristine), 'has-error':(!yourBillingForm.zipcode.$valid && !yourBillingForm.zipcode.$pristine)|| (!yourBillingForm.zipcode.$valid && yourBillingForm.$submitted) }"ng-show="country == 'United States'"class = "form-group">
@@ -504,7 +506,7 @@
                                 </select>
                             </div>
                     </div>
-                    <div ng-class="{ 'has-success': (yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine), 'has-error':(!yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine)|| (!yourBillingForm.postalcode.$valid && yourBillingForm.$submitted) }"ng-show="country == 'Canada'"class = "form-group">
+                    <div ng-class="{ 'has-success': (yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine), 'has-error':(!yourBillingForm.postalcode.$valid && !yourBillingForm.postalcode.$pristine)|| (!yourBillingForm.postalcode.$valid && yourBillingForm.$submitted) }"class = "form-group">
                             <label>Postal Code:</label>
                             <br>
                             <input type= "textarea" ng-model="yourShippingFormData.postalcode" name="postalcode" placeholder="Postal Code..." required ></input>

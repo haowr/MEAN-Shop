@@ -199,6 +199,24 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/getordersgroupedfromuser/'+username);
 
   }
+  //User.removeOrdersGroupedFromUser(username,index);
+  userFactory.removeOrdersGroupedFromUser = function(username, indexoforder,index){
+
+    return $http.put('/api/removeordersgroupedfromuser/'+username+'/'+indexoforder+'/'+index);
+
+  }
+    //User.removeOrdersGroupedFromUser(username,index);
+  userFactory.removeOrdersGroupedArrayFromUser = function(username, index){
+
+    return $http.put('/api/removeordersgroupedarrayfromuser/'+username+'/'+index);
+
+  }
+  //User.clearOrdersGroupedFromUser(username);
+  userFactory.clearOrdersGroupedFromUser = function(username){
+
+    return $http.put('/api/clearordersgroupedfromuser/'+username);
+
+  }
   //User.addOrderHistoryToUser(username);
   userFactory.addOrderHistoryToUser = function(orderhistory){
     return $http.post('/api/addorderhistorytouser/',orderhistory);
@@ -207,6 +225,12 @@ app.factory('User', function($http){  //a way to organize the code..
   userFactory.getOrderHistoryFromUser = function(username){
 
     return $http.put('/api/getorderhistoryfromuser/:username');
+
+  }
+  //User.removeOrderHistoryFromUser(username,index);
+  userFactory.removeOrderHistoryFromUser = function(username,index){
+
+    return $http.put('/api/removeorderhistoryfromuser/'+username+'/'+index);
 
   }
   //User.increaseOrderNumber(username);
