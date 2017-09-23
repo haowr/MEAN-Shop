@@ -92,6 +92,9 @@ var $section = $('.mainshoeview');
                 //On click
                 console.log(formCtrl);
                 $(elem).submit(function(event){
+                                    scope.taxX=$window.localStorage.getItem('tax');
+                scope.totalAfterTax = $window.localStorage.getItem('grandTotal');
+                var tax = scope.taxX;
                     Stripe.setPublishableKey('pk_test_aE3UDuxFXzcslBrNanFIIi6Q');
                     $('#charge-error').addClass('hidden');
                     $('#charge-error').empty();
@@ -185,17 +188,11 @@ var $section = $('.mainshoeview');
                                                         checkoutData.push([]);
                                                         User.getShoppingBag(data.data.username).then(function(data){
 
-                                                            checkoutData[4] = data.data.user.shoppingbag;
+                                                           checkoutData[4] = data.data.user.shoppingbag;
                                                             var grandtotal= $window.localStorage.getItem('grandTotal');
                                                             var d= new Date();
                                                             var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
-                                                            checkoutData.push(timestamp);
-                                                            var tax=$window.localStorage.getItem('tax');
-                                                           // checkoutData.push(tax);
-                                                            console.log(grandtotal);
-                                                            console.log(username);
-                                                            console.log(checkoutData);
-                                                                                                                        var orderHistory = {};
+                                                            var orderHistory = {};
                                                             orderHistory.timestammp = timestamp;
                                                             orderHistory.grandTotal = grandtotal;
                                                             orderHistory.items = checkoutData[4].length;
@@ -224,6 +221,7 @@ var $section = $('.mainshoeview');
 
                                                                 console.log(data.data);
                                                                 console.log(data.data.message);
+                                                                console.log(checkoutData);
                                                                 User.addOrdersToUser2(checkoutData).then(function(data){
                                                                         console.log(data.data);
                                                                         if(data.data.success){
@@ -234,15 +232,21 @@ var $section = $('.mainshoeview');
                                                 //$rootScope.cartItems = data.data.user.shoppingbag;
 
                                                         });
-                                                           
                                                                 console.log(checkoutData[0].email);
-                                                                var grndtotal= checkoutData[2].grandTotal / 100;
+                                                                var images =[];
+                                                               /* for(var i = 0; i < checkoutData[4].length; i++){
+                                                                        images.push(checkoutData[4][i].image);  
 
-                                                                User.sendEmail(checkoutData[0].email,checkoutData[0].name,grndtotal,checkoutData[6]).then(function(data){
+                                                                }
+                                                                console.log(images);*/
+                                                                var grndtotal= checkoutData[3].grandTotal / 100;
+                                                                console.log(checkoutData[3].grandTotal);
+                                                                User.sendEmail(checkoutData[0].email,checkoutData[0].name,grndtotal,checkoutData[7]).then(function(data){
 
                                                                         console.log(data.data.message);
 
                                                                 });
+
                                                                 $timeout(function(){
                                                                         $location.path('/shop/orderconfirmation');
 
