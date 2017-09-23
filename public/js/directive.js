@@ -144,7 +144,7 @@
 
                             };
                             var checkoutData = scope.finalCheckoutData;
-                            //checkoutData.push(ccData);
+                            checkoutData.push(ccData);
                             console.log(checkoutData);
                             Shop.stripeCheckout(checkoutData).then(function (data) {
                                 console.log(data.data);
