@@ -257,8 +257,13 @@
                                         User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, checkoutData[6]).then(function (data) {
 
                                             console.log(data.data.message);
-
+                                            
+                                                      
                                         });
+                                          $timeout(function () {
+                                                                $location.path('/shop/orderconfirmation');
+
+                                                            }, 2000);
                                     }
                                 }
 
