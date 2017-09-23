@@ -159,7 +159,7 @@ var $section = $('.mainshoeview');
 
                         };
                         var checkoutData = scope.finalCheckoutData;
-                        checkoutData.push(ccData);
+                        //checkoutData.push(ccData);
                         console.log(checkoutData);
                         Shop.stripeCheckout(checkoutData).then(function(data){
                                 console.log(data.data);
@@ -435,10 +435,10 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
                                                             User.addGroupedOrdersToUser(checkoutData[4]).then(function(data){
 
                                                                     console.log(data.data);
-                                                                    User.increaseOrderNumber(username).then(function(data){
-                                                                        console.log(data.data.user);
+                                                                   // User.increaseOrderNumber(username).then(function(data){
+                                                                   //     console.log(data.data.user);
 
-                                                                    })
+                                                                    //})
 
                                                             })
                                                                 
@@ -446,7 +446,7 @@ app.directive('stripeCheckoutJqueryOneClick',function(Auth,Shop,User,$location,$
 
                                                                 console.log(data.data);
                                                                 console.log(data.data.message);
-                                                                User.addOrdersToUser2(checkoutData).then(function(data){
+                                                                User.addOrdersToUser(checkoutData).then(function(data){
                                                                         console.log(data.data);
                                                                         if(data.data.success){
                                                                             $window.localStorage.removeItem('checkoutArrayy');

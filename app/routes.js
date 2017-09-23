@@ -1438,7 +1438,7 @@ app.post('/api/addorderstouser', function(req,res){
 
     console.log(req.body[3]);
 
-    User.findOne({username: req.body[3]}).select('orders').exec(function(err,orders){
+    User.findOne({username: req.body[4][0].username}).select('orders').exec(function(err,orders){
 
         if(err)throw err;
         if(!orders){
@@ -1453,7 +1453,7 @@ app.post('/api/addorderstouser', function(req,res){
            //orders.orders.push(req.body[5]);
 
 
-           User.findOneAndUpdate({username: req.body[3]}, {$set:{orders: orders.orders}}, {new:true},function(err,user){
+           User.findOneAndUpdate({username: req.body[4][0].username}, {$set:{orders: orders.orders}}, {new:true},function(err,user){
 
                 if(err)throw err;
                 if(!user){
