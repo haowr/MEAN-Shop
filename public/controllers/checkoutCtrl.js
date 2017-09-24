@@ -109,7 +109,7 @@ app.controller('checkoutCtrl', function($scope, $rootScope,$window,$location,Sho
         console.log($scope.shoppingBagShoes.length);
         for(var i =0; i< $scope.shoppingBagShoes.length; i++ ){
             //console.log($scope.shoppingBagShoes[0].amt);
-            $scope.orderItemsArray.push($scope.shoppingBagShoes[i].amt);
+            $scope.orderItemsArray.push(Number($scope.shoppingBagShoes[i].amt));
 
         }
 
