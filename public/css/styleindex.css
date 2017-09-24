@@ -152,6 +152,9 @@ opacity:0;
 
 
 }
+.hojadborder{
+  border:1px solid black;
+}
 .fa-heart{
 /*position:absolute;*/
 
