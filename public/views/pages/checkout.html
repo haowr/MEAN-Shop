@@ -25,7 +25,7 @@
             </div>
             <div class = "col-sm-4"> 
                 
-                <div ng-show="wouldYouLikeToUse && shoppingBagShoes.length >0">
+                <div id = "oneclickid"ng-show="wouldYouLikeToUse && shoppingBagShoes.length >0">
                     
                     <center><h4 class = "bellefair">Hey, {{currentUser}} Your Details Are Stored... Would You like to Use One Click Checkout?</h4>
                             <button class = "btn btn-submit" ng-click ="checkOutFunc2();">Yes</button><button class = "btn btn-submit" ng-click = "oneClickCheckout(2);">No</button>
