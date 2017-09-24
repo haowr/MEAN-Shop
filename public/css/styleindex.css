@@ -858,6 +858,13 @@ margin-top:200px;
 #oneclickid.ng-hide-remove{
   transition: all linear 0.25s;
 }
+#orderhistoryid.ng-hide{
+ opacity:0;
+}
+#orderhistoryid.ng-hide-add,
+#orderhistoryid.ng-hide-remove{
+  transition: all linear 0.25s;
+}
 #emailadded.ng-hide{
  opacity:0;
 }

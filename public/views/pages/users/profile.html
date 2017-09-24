@@ -112,7 +112,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="order in orderHistory track by $index">
+                <tr id="orderhistoryid"ng-repeat="order in orderHistory track by $index">
 
                     <td class="secondarytextsimple linkdecoration"><a href="/profile/orderdetails/{{$index}}">{{$index+1}}</a></td>
                     <td class="secondarytextsimple">{{order.items}}</td>

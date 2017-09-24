@@ -438,6 +438,7 @@
                 <h3> Payment</h3>
                 <div ng-show="paymentLoading">
                     <center><h3>LOADING</h3></center>
+                    <center> <i id="loveLoader"  class="fa fa-spinner fa-spin fa-3x fa-fw secondarytextsimple"></i></center>
                 </div>
                 <div id = "charge-error"class = "alert alert-danger hidden">
 
@@ -480,6 +481,10 @@
                       </div>
                       <button  class = "btn btn-submit" type="submit">Submit</button>
                       <p id = "formerrorstyling" ng-show="invalid">{{errorMsg}}</p>
+                                      <div ng-show="paymentLoading">
+                    
+                    <center> <i id="loveLoader"  class="fa fa-spinner fa-spin fa-3x fa-fw secondarytextsimple"></i></center>
+                </div>
                       
                 </div>
             </form>
@@ -558,8 +563,7 @@
                      <p class = "billingaddressstylingp">Phone Number:<span class="secondarytextaddresses"> {{shippingFormDataa[0].phonenumber}}</span></p>
                     </div>
 
-            <div class = "col-sm-12 details2">
-            </div>
+           
             <br>
             <br>
                   
@@ -567,10 +571,18 @@
                         </div>
                             
                     </div>
-                  
+                    <br>
+            
+            <br>
+            <br>
+                   <div class = "col-sm-12 details2">
+            </div>
                   </div>
+           
               </div>
 
         </div>
+        
 </div>
+       
 </div>
