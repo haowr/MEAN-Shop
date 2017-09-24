@@ -856,7 +856,7 @@ margin-top:200px;
 }
 #oneclickid.ng-hide-add,
 #oneclickid.ng-hide-remove{
-  transition: all linear 0.1s;
+  transition: all linear 0.25s;
 }
 #emailadded.ng-hide{
  opacity:0;
