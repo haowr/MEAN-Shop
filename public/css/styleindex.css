@@ -32,12 +32,12 @@ li.small-image img{
   width: 100%;
 }
 
-/*img{
-  max-width: 230px;
-  max-height: 230px;
+img{
+ 
+  min-height: 100%;
   
 }
-*/
+
 .list-group-item{
 
   display:inline-block;
