@@ -27,7 +27,7 @@
                 
                 <div id = "oneclickid"ng-show="wouldYouLikeToUse && shoppingBagShoes.length >0">
                     
-                    <center><h4 class = "bellefair">Hey, {{currentUser}} Your Details Are Stored... Would You like to Use One Click Checkout?</h4>
+                    <center><h4 class = "bellefair">Hey, {{currentUser}}!</h4><p> Your Details Are Stored... Would You like to Use One Click Checkout?</p>
                             <button class = "btn btn-submit" ng-click ="checkOutFunc2();">Yes</button><button class = "btn btn-submit" ng-click = "oneClickCheckout(2);">No</button>
                     </center>
 
@@ -479,6 +479,7 @@
                             </ul> 
                       </div>
                       <button  class = "btn btn-submit" type="submit">Submit</button>
+                      <p id = "formerrorstyling" ng-show="invalid">{{errorMsg}}</p>
                       
                 </div>
             </form>
@@ -508,12 +509,12 @@
                                      
                                     
                             </div>
-                                                <div class = "row">
+                          <!--                     <div class = "row">
                            <div class ="col-sm-12">
                                
                                 <center><p id = "formerrorstyling" ng-show="invalid">{{errorMsg}}</p></center>
                             </div>
-                    </div>
+                    </div>-->
                  </div>
                  <br>
                  <!--<div ng-show="showGrandTotal"class = "col-sm-12 pull-left grandtotalstyling" ng-cloak>
