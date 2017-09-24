@@ -8,6 +8,7 @@
         </div>
            <div class="col-sm-12 details">
         </div>
+    </div>
 <div class="container container-fluid">
 
      
@@ -18,15 +19,15 @@
         </div>
         <div class="col-sm-12 ">
             <center>
-                <h2 class="orderconfirmationtitle">Congratulations!<i class="fa fa-pagelines" aria-hidden="true"></i></h3>
+                <h2 class="orderconfirmationtitle">Congratulations!<i class="fa fa-pagelines" aria-hidden="true"></i></h2>
             </center>
             <center>
                 <p ng-show="isLoggedIn">Hey, {{currentUser}},Your Order Has Been Received, Added To Your <a class ="linkdecoration"href="/profile"><strong>Order History</strong></a> And
                     Is Being Processed...</p>
-                </p>You Will Be Notified By E-Mail When Your Order Is Shipped!</p>
+                <p>You Will Be Notified By E-Mail When Your Order Is Shipped!</p>
             </center>
             <center>
-                <p ng-show="!isLoggedIn">Hey, {{currentUser}}, It Appears You Don't Have An Account...<a class="underline" href="/register">Create</a>                    One To Store Future Purchases In Your Order History, And Gain Access To "One-Click" Checkout!</p><br>
+                <p ng-show="!isLoggedIn">Hey, {{currentUser}}, It Appears You Don't Have An Account...<a class="underline" href="/register">Create</a>  One To Store Future Purchases In Your Order History, And Gain Access To "One-Click" Checkout!</p><br>
                 <p ng-show="!isLoggedIn">For Now, The Details Of Your Order Has Been Delivered To The Email Address You Provided...</p>
             </center>
 
@@ -41,10 +42,8 @@
 
         </div>
 
-    </div>
+    
 
-
-</div>
 <div ng-show="lastOrder.length > 0 " class="row">
     <div class="col-sm-12">
         <center>
@@ -116,11 +115,14 @@
                         <p> ...to recieve 10% off, House Of Jewels News, And In-Store Sales!!!</p>
                     </div>
                 </center>
+ <form name="emailSignup" ng-submit="addToEmailList(emailListData, emailSignup.$valid);" novalidate>
+
+
                 <div class="form-group">
                     <!-- Email Div -->
                     <div ng-class="{ 'has-success':(emailSignup.email.$valid && !emailSignup.email.$pristine && !emailInvalid), 'has-error':(!emailSignup.email.$valid && !emailSignup.email.$pristine) || (!emailSignup.email.$valid && emailSignup.$submitted) || emailInvalid }">
                         <!-- Email Input -->
-                        <label>Email:</label>
+                        <center><label id="emailcodetitlestyling">Email:</label></center>
                         <input ng-disabled="disabled" class="form-control" type="text" name="email" placeholder="E-mail *" ng-model="emailListData.email"
                             ng-minlength="3" ng-maxlength="40" ng-pattern="/^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/"
                             ng-blur="checkEmail(emailSignupData);" required>
@@ -136,7 +138,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn btn-primary">Sign-up!</button>
+                <center><button class="btn btn-primary">Sign-up!</button></center>
 
 
             </form>
@@ -149,7 +151,7 @@
 </div>
 
 
-</div>
+
 <br>
 <div class="row">
 
@@ -160,7 +162,7 @@
 
 
     </div>
-    <div class="col-sm-12 details">
+    <div class="col-sm-12 details2">
     </div>
 
 </div>
