@@ -31,13 +31,13 @@ li.small-image{
 li.small-image img{
   width: 100%;
 }
-
+/*
 img{
- 
+  min-width:100%;
   min-height: 100%;
   
 }
-
+*/
 .list-group-item{
 
   display:inline-block;
