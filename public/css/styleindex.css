@@ -4,7 +4,22 @@
   margin: 0 auto;
 }
 */
+/*@media only screen and (max-device-width: 700px) {
 
+    #hojad{
+
+      width:90px;
+      height:640px;
+
+    }
+    	div#shoesidepanel {
+			background-image: url(../public/img/hojad.gif);
+			height: 93px;
+			position: relative;
+		}
+	
+	}
+*/
 body{
   color:black;
 }
