@@ -22,8 +22,10 @@
             { image: "../img/ADS.jpg", description: "Image 01" },
             { image: "../img/DSG.jpg", description: "Image 02" }
         ];
+        $rootScope.commercial =  [];
+
         $rootScope.currentIndex = 0;
-        $rootScope.commercial = 0;
+        //$rootScope.commercial = 0;
         $rootScope.myLoves = [];
         $rootScope.personalMyLoves = [];
         $rootScope.usernamey;
@@ -42,6 +44,28 @@
         $rootScope.opacityOn2 = false;
         $rootScope.showButton = false;
         $rootScope.areYouSure = false;
+        $scope.i = 0;
+        $interval(function(){
+            
+           console.log("i ran!");
+            if($scope.i == 0){
+               // commercial.shift();
+                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                $scope.i =1;
+                console.log($scope.i);
+            }else if($scope.i == 1){
+                $rootScope.commercial.shift();
+                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                $scope.i=2;
+                console.log($scope.i);
+            }else if($scope.i == 2){
+                $rootScope.commercial.shift();
+                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                $scope.i  = 0;
+                console.log($scope.i);
+            }
+
+        },4000);
 
         var changeTitle = function () {
             console.log("changeTitle has run..");

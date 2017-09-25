@@ -402,9 +402,16 @@ width: 500px !important;
 
   text-decoration: underline;
 }
+/*
 #mainimage{
   height:100%;
   width:100%;
+}
+*/
+.imagefade{
+
+
+
 }
 .deselected{
   display:none;
@@ -874,6 +881,13 @@ margin-top:200px;
 }
 .btn-fader.ng-hide-add,
 .btn-fader.ng-hide-remove{
+  transition: all linear 0.5s;
+}
+#imagefade.ng-hide{
+ opacity:0;
+}
+#imagefade.ng-hide-add,
+#imagefade.ng-hide-remove{
   transition: all linear 0.5s;
 }
 #joinourmailingliststyling.ng-hide{
