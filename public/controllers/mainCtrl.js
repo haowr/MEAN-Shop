@@ -22,7 +22,7 @@
             { image: "../img/ADS.jpg", description: "Image 01" },
             { image: "../img/DSG.jpg", description: "Image 02" }
         ];
-        $rootScope.commercial =  [];
+        $rootScope.commercial =  ["../img/SummerSale.jpg"];
 
         $rootScope.currentIndex = 0;
         //$rootScope.commercial = 0;
@@ -46,11 +46,11 @@
         $rootScope.areYouSure = false;
         $scope.i = 0;
         $interval(function(){
-            
+            //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
            console.log("i ran!");
             if($scope.i == 0){
                // commercial.shift();
-                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
                 $scope.i =1;
                 console.log($scope.i);
             }else if($scope.i == 1){

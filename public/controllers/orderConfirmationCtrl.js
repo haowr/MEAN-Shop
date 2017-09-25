@@ -10,10 +10,11 @@
 
     });
 
-    app.controller('orderConfirmationCtrl', function($window,$scope,Auth,Email,User,$rootScope){
+    app.controller('orderConfirmationCtrl', function($window,$scope,Auth,Email,User,$rootScope,$timeout){
 
         $scope.isLoggedIn= false;
         $scope.currentUser;
+        $scope.emailAdded=false;
         
         console.log($scope.lastOrder);
 
@@ -59,8 +60,20 @@
         $rootScope.EmailListEmail = emailListData;
 
         if(valid){
+            $scope.emailAdded= true;
+            console.log($scope.emailAdded);
+            
             Email.addToMailList(emailListData.email).then(function(data){
-
+                console.log(data.data);
+                if(data.data.success){
+                    User.sendEmailEmailList(emailListData.email).then(function(data){
+                        console.log(data.data);
+                    })
+                    
+                    $timeout(function(){
+                        $scope.emailAdded=false;
+                    },3000);
+                }
                 console.log(data.data.message);
                 console.log(data.data);
             });

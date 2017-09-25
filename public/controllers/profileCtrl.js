@@ -128,8 +128,7 @@
 
                             }
                         }
-
-
+                      
 
                     }
                     var unique = $scope.loveObjectArray.filter(function (elem, index, self) {
@@ -137,14 +136,15 @@
                     })
                     $scope.loveObjectArray = unique;
                     $rootScope.heartss = $scope.loveObjectArray.length;
+                      console.log($scope.loveObjectArray.length);
 
+                        if($scope.loveObjectArray.length == 0){
+                            $scope.myLovesReady = false;
+                        }
 
                 });
-                //for(var i = 0; i < data.data.user.loves; i ++){
-
-                //  $scope.loves.push(data.data.user.loves[i]);
-
-                //}
+               
+               
                 console.log(data.data.user.orders);
                 for (var i = 0; i < data.data.user.orders.length; i++) {
 
