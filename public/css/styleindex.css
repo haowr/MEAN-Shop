@@ -539,6 +539,7 @@ body {
   border-radius: 5px;
   animation: loader 3s ease-in infinite, spin 1s linear infinite;
   margin:auto;
+  outline: 1px solid transparent;
 }
 .dizzy-gillespie::before {
   filter: saturate(0.3);
@@ -553,6 +554,7 @@ body {
   border: 40px solid transparent;
   border-radius: 5px;
   animation: loader 2s ease-in infinite reverse, spin 0.8s linear infinite reverse;
+  outline: 1px solid transparent;
 }
 .dizzy-gillespie::after {
   display: block;
@@ -565,6 +567,7 @@ body {
   width:20px;
   border-radius: 20px;
   background-color: white;
+  outline: 1px solid transparent;
 }
 @keyframes loader {
   0% {border-bottom-color:transparent;border-top-color:#114357}
