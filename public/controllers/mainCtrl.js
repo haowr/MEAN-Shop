@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module("mainController", ['authServices', 'mainServices', 'userServices', 'infinite-scroll', 'heartServices', 'shopServices', 'emailServices']);
+    var app = angular.module("mainController", ['authServices', 'mainServices', 'userServices','titleServices', 'infinite-scroll', 'heartServices', 'shopServices', 'emailServices']);
 
     app.config(function () {
 
@@ -42,9 +42,12 @@
         $rootScope.opacityOn2 = false;
         $rootScope.showButton = false;
         $rootScope.areYouSure = false;
+
         var changeTitle = function () {
             console.log("changeTitle has run..");
+            
             $rootScope.title = "HOJ | A House Of Jewels";
+            console.log($rootScope.title);
 
         }
         //changeTitle();
