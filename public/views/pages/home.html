@@ -70,13 +70,9 @@
                         <p>Faq</p>
                     </a>
                 </li>
+
                 <li>
-                    <a href="#">
-                        <p>Order Tracking</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="/returns">
                         <p>Return Policy</p>
                     </a>
                 </li>
@@ -91,23 +87,29 @@
                     </a>
                 </li>
             </ul>
-
+<br>
+<br>
+<br>
         </div>
         <div class="col-sm-6">
         </div>
         <div class="col-sm-3 emailsignup ">
             <center>
+
                 <h4 id="whatsnewtitle">Stay Connected!</h4>
             </center>
             <center>
-                <p ng-show="emailLoading" id="emailloading">"LOADING.."</p>
+                
+                <p ng-show="emailLoading && !emailEntryFailed" id="emailloading"class= "secondarytext">"LOADING.."</p>
+                <p ng-show="emailEntryFailed"class= "secondarytext">"You've Already Been Added To The List!"</p>
+                <p ng-show="invalidEmail"class= "secondarytext">"Invaid E-mail..."</p>
             </center>
 
             <center>
-                <p ng-show="joinOurEmailList" id="emailadded">"Join Our Maillist To Receive 10% Off Coupon Code, And Early Bird Savings!"</p>
+                <p ng-show="joinOurEmailList" id="emailadded" class = "secondarytext">"Join Our Maillist To Receive 10% Off Coupon Code, And Early Bird Savings!"</p>
             </center>
             <center>
-                <p ng-show="emailAdded" id="joinourmailingliststyling">"Email Added, Check Your Inbox For Confirmation..."</p>
+                <p ng-show="emailAdded" id="joinourmailingliststyling"class= "secondarytext">"Email Added, Check Your Inbox For Confirmation..."</p>
             </center>
 
             <form name="emailSignup" ng-submit="addToEmailList(emailListData, emailSignup.$valid);" novalidate>
@@ -125,12 +127,12 @@
                         <p class="help-block" ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.required) || (emailSignup.$submitted && emailSignup.email.$error.required)">This field is required</p>
                         <span ng-show="checkingEmail && emailSignup.email.$valid" class="glyphicon glyphicon-repeat"></span>
                         <p class="help-block" ng-show="emailMsg && !emailSignup.email.$error.required && emailSignup.email.$valid">{{ emailMsg }}</p>
-                        <ul ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.pattern) || (!emailSignup.email.$pristine && emailSignup.email.$error.minlength) || (!emailSignup.email.$pristine && emailSignup.email.$error.maxlength)"
+                        <!--<ul ng-show="(!emailSignup.email.$pristine && emailSignup.email.$error.pattern) || (!emailSignup.email.$pristine && emailSignup.email.$error.minlength) || (!emailSignup.email.$pristine && emailSignup.email.$error.maxlength)"
                             class="help-block">
                             <li>Must contain "@"</li>
                             <li>Must not contain any special characters</li>
                             <li>Must be at least 3 characters but no more than 25</li>
-                        </ul>
+                        </ul>-->
                     </div>
                 </div>
                 <center><button class="btn btn-primary">Sign-up!</button></center>

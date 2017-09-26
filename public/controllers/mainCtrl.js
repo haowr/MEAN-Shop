@@ -38,12 +38,15 @@
         $scope.translate = 0;
         $scope.translateY = 0;
         $scope.emailLoading = false;
+        $scope.emailEntryFailed = false;
+        $scope.invalidEmail = false;
         $scope.joinOurEmailList = true;
         $scope.emailAdded = false;
         $rootScope.opacityOn = false;
         $rootScope.opacityOn2 = false;
         $rootScope.showButton = false;
         $rootScope.areYouSure = false;
+
         $scope.i = 0;
         $interval(function(){
             //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
@@ -250,7 +253,7 @@
             console.log("form submitted");
             console.log(valid);
             console.log(emailListData);
-            console.log(emailListData.email);
+            //nsole.log(emailListData.email);
             $rootScope.EmailListEmail = emailListData;
 
             if (valid) {
@@ -274,10 +277,25 @@
                         }, 2500);
 
 
+                    }else{
+                        $scope.emailLoading = false;
+                        $scope.emailEntryFailed = true;
+                        $timeout(function(){
+
+                            $scope.emailEntryFailed = false;
+                            $scope.joinOurEmailList = true;
+
+                        },2500);
                     }
                     console.log(data.data.message);
                     console.log(data.data);
                 });
+            }else{
+                $scope.invalidEmail = true;
+                $timeout(function(){
+                    $scope.invalidEmail = false;
+                    
+                },2000);
             }
 
         };

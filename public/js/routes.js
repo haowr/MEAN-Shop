@@ -113,6 +113,14 @@ app.config(function($routeProvider,$locationProvider){//Only providers in config
         controllerAs: 'faq'
 
     })
+    .when('/returns',{
+
+        templateUrl:'../views/pages/returns.html',
+        
+        name:"HOJ | Returns"
+        
+
+    })
     .when('/shop/checkout',{
         templateUrl: '../views/pages/checkout.html',
         controller: 'checkoutCtrl',

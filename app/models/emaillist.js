@@ -4,9 +4,10 @@ var Schema = mongoose.Schema;
 var EmailListSchema = new Schema({
 
     name: String,
-    username: String,
+    username: {type:String, unique:true},
     email:String,
     emaillist: Array
+    
 
 
 });

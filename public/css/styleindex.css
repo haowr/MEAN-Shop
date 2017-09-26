@@ -395,7 +395,7 @@ width: 500px !important;
 .emailsignup{
   border-bottom:2px solid black;
   display:inline-block;
-  font-size: 20px;
+  
   
 }
 .linkdecoration{
@@ -478,6 +478,9 @@ width: 500px !important;
 
   display:inline-block;
 
+}
+#sideblockreturns{
+  border:2px solid black;
 }
 .faqheader{
 
@@ -580,6 +583,9 @@ body {
   0% {transform: rotate(0deg)}
   100% {transform: rotate(-360deg)}
 }
+.dizzywrapper{
+  outline: 1px solid transparent;
+}
 #list-wrapper{
 max-height: 800px;
 overflow-y: scroll;
@@ -602,6 +608,7 @@ border: solid 1px black;
   transform-origin: 0 0;
   
 }
+
 #whatsnew{
   height: 350px;
   width: 1000px;
