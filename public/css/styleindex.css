@@ -1172,6 +1172,9 @@ opacity:0;
 
     font-family: 'Bellefair';  
 }
+#paymentloading{
+  border:1px solid black;
+}
 #myModal{
   z-index: 1000000;
 }

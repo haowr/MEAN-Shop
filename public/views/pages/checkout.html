@@ -436,10 +436,10 @@
                     <div ng-show="ccPhase"class = "col-sm-8 formstyling">
              <form stripe-checkout-jquery add-credit-card-func="addCreditCardFunc(creditFormData, creditForm.$valid);" final-checkout-data="finalCheckoutData" total-after-tax="totalAfterTax" tax-x="tax" grand-total="grandTotal"  payment-loading="paymentLoading"name = "creditForm"  id="ccFormReqValidation" novalidate>
                 <h3> Payment</h3>
-                <div ng-show="paymentLoading">
+                <!--<div ng-show="paymentLoading">
                     <center><h3>LOADING</h3></center>
                     <center> <i id="loveLoader"  class="fa fa-spinner fa-spin fa-3x fa-fw secondarytextsimple"></i></center>
-                </div>
+                </div>-->
                 <div id = "charge-error"class = "alert alert-danger hidden">
 
                 </div>
@@ -488,8 +488,8 @@
                       
                 </div>
             </form>
-                            <div ng-show="paymentLoading">
-                    <center><h3>LOADING</h3></center>
+                            <div id="paymentloading"ng-show="paymentLoading">
+                    <center><h3 class = "secondarytext">LOADING</h3></center>
                     <center> <i id="loveLoader"  class="fa fa-spinner fa-spin fa-3x fa-fw secondarytextsimple"></i></center>
                 </div>
             </div>
