@@ -1175,6 +1175,10 @@ opacity:0;
 #paymentloading{
   border:1px solid black;
 }
+#fullcartstyling{
+  border-top:1px solid black;
+  border-bottom:1px solid black;
+}
 #myModal{
   z-index: 1000000;
 }

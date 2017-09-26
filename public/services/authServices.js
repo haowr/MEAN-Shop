@@ -8,7 +8,7 @@ console.log("Testing Auth Services");
 
 });
 
-app.factory('Auth', function($http, AuthToken,$window){  //a way to organize the code..
+app.factory('Auth', function($http, AuthToken,$window,$q){  //a way to organize the code..
 //Auth.create(regData);
 var authFactory = {};
  authFactory.login = function(loginData){

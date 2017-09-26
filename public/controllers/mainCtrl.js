@@ -188,7 +188,11 @@
             Auth.getUser().then(function (data) {
 
                 console.log(data.data);
-                User.getUserProfile(data.data.username).then(function (data) {
+                if(!data.data.success){  //JUST ADDED THIS SEPT 26th
+                    Auth.logout();
+                }else{
+                    
+                              User.getUserProfile(data.data.username).then(function (data) {
                     console.log(data.data.user.loves.length);
 
                     var unique = data.data.user.loves.filter(function (elem, index, self) {
@@ -198,7 +202,10 @@
                     console.log($rootScope.personalMyLoves);
                     $rootScope.heartss = $rootScope.personalMyLoves.length;
                     $rootScope.cartItems = data.data.user.shoppingbag.length;
-                })
+                });
+
+                }
+      
 
             });
 
