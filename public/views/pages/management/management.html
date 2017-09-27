@@ -65,7 +65,6 @@
         <div class="alert alert-success">{{management.successMsg}}</div>
 
     </div>
-    <center><i id="managementloader" ng-show="emailList.length<1" class="fa fa-spinner fa-spin fa-3x fa-fw"></i></center>
 
     <div class="row">
         <div class="col-sm-12">
@@ -104,7 +103,41 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><button class="btn btn-submit" ng-click="removeEmail(email);">Remove</button></td>
+                    <td><button class="btn btn-sm btn-submit" ng-click="removeEmail(email);">Remove</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<div class = "row">
+    <div class = "col-sm-12">
+                    <center>
+                <h4 class="bellefair">Store Order History</h4>
+            </center>
+    </div>
+</div>
+    <div class="table-responsive">
+        <table class="table table-sm table-inverse">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Order #</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="store in storeHistory track by $index">
+                    <td>{{store.username}}</td>
+                    <td>{{$index + 1}}</td>
+                    <td>{{store.items}}</td>
+                    <td>{{store.grandTotal | currency}}</td>
+                    <td>{{store.timestammp}}</td>
+                    <td><i class="fa fa-times" ng-click="removeEmail(email);"></i></td>
+                    <!--<button ng-click="showModal(3,$index);" class="btn btn-submit">Remove</button>-->
+
 
                 </tr>
             </tbody>

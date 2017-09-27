@@ -86,6 +86,8 @@ var UserSchema = new Schema({
     ordersgrouped:{type:Array},
     ordernumber:{type:Number},
     orderhistory:{type:Array},
+    storeorders:{type:Array},
+    storehistory:{type:Array},
     detailssaved:{type:Boolean},
     loves: Array
 

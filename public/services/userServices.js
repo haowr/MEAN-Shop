@@ -199,6 +199,19 @@ app.factory('User', function($http){  //a way to organize the code..
     return $http.put('/api/getordersgroupedfromuser/'+username);
 
   }
+  //User.addGroupedOrderToAdmin(ordersgrouped);
+  userFactory.addGroupedOrdersToAdmin = function(ordersgrouped){
+
+    return $http.post('/api/addgroupedorderstoadmin/',ordersgrouped);
+
+  }
+  //User.getStoreOrdersForAdmin(ohrha);
+  userFactory.getStoreOrdersForAdmin= function(admin){
+
+    return $http.put('/api/getstoreordersforadmin/'+admin);
+
+  }
+
   //User.removeOrdersGroupedFromUser(username,index);
   userFactory.removeOrdersGroupedFromUser = function(username, indexoforder,index){
 
@@ -220,6 +233,18 @@ app.factory('User', function($http){  //a way to organize the code..
   //User.addOrderHistoryToUser(username);
   userFactory.addOrderHistoryToUser = function(orderhistory){
     return $http.post('/api/addorderhistorytouser/',orderhistory);
+  }
+  //User.addStoreHistoryToAdmin(orderhistory);
+  userFactory.addStoreHistoryToAdmin = function(orderhistory){
+
+    return $http.post('/api/addstorehistorytoadmin/',orderhistory);
+
+  }
+  //User.getStoreHistoryForAdmin(admin);
+  userFactory.getStoreHistoryForAdmin = function(admin){
+
+    return $http.put('/api/getstorehistoryforadmin/'+admin);
+
   }
   //User.getOrderHistoryFromUser(username);
   userFactory.getOrderHistoryFromUser = function(username){

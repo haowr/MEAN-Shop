@@ -745,7 +745,19 @@ app.put('/api/sendemail/:email/:username/:grandtotal/:tax',function(req,res){
 
 })
 app.put('/api/addtoemaillist/:email',function(req,res){
+               /* var email = new Email();
+                email.name = 'emaillist';
+                emaillist = [];
+                email.save(function(err){
 
+                    if(err){
+                        res.json({success: false, message:"New email creation failed..."});
+                    }else{
+                        res.json({success: true, message: "New Email Creation Success"});
+                    }
+
+                })
+                */
                 Email.findOneAndUpdate({name:'emaillist'},{$push:{emaillist: req.params.email}},{new:true},function(err, emaillist){
 
                     if(err) throw err;
@@ -836,6 +848,62 @@ app.put('/api/addgrandtotalshoppingbag/:username/:grandtotal', function(req,res)
 
 
     })
+})
+app.post('/api/addgroupedorderstoadmin', function(req,res){
+
+    User.findOneAndUpdate({username: "ohrha"}, {$push:{storeorders:req.body}},{new:true},function(err, user){
+
+        if(err)throw err
+        if(!user){
+            res.json({success: false, message: "Admin not found"});
+        }else{
+            res.json({success: true, message:"Admin found and updated..."});
+        }
+
+    })
+
+})
+app.post('/api/addstorehistorytoadmin/', function(req,res){
+
+    User.findOneAndUpdate({username: "ohrha"}, {$push:{storehistory:req.body}}, {new:true}, function(err,user){
+
+        if(err)throw err
+        if(!user){
+            res.json({success: false, message: "Admin not found"});
+        }else{
+            res.json({success: true, message: "Admin found and updated...", user:user});
+        }
+
+    })
+
+})
+app.put('/api/getstoreordersforadmin/:admin', function(req,res){
+
+    User.findOne({username:req.params.admin}).select('storeorders').exec(function(err,storeorders){
+        if(err)throw err
+        if(!storeorders){
+            res.json({success:false, message:"Store orders not found..."});
+        }else{
+            res.json({success:true, message:"Store orders found and being delivered..", storeorders:storeorders});
+        }
+
+
+    })
+
+})
+app.put('/api/getstorehistoryforadmin/:admin', function(req,res){
+
+    User.findOne({username:req.params.admin}).select('storehistory').exec(function(err,storehistory){
+        if(err)throw err
+        if(!storehistory){
+            res.json({success:false, message:"Store orders not found..."});
+        }else{
+            res.json({success:true, message:"Store orders found and being delivered..", storehistory:storehistory});
+        }
+
+
+    })
+
 })
 app.post('/api/addordersgroupedtouser', function(req,res){
 

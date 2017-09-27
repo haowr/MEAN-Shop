@@ -127,9 +127,59 @@
             return $rootScope.currentIndex === index;
         };
 
-    
+        Shop.getAllShoes().then(function (data) {
+
+            console.log(data.data.allshoes);
+            console.log(data.data.allshoes[0].perspectives[1]);
+
+            for (var i = 0; i < data.data.allshoes.length; i++) {
+                $scope.whatsNewThumbs.push(data.data.allshoes[i].perspectives[1]);
+
+            }
+            console.log($scope.whatsNewThumbs);
+
+        });
+
+        /*Auth.getUser().then(function(data){
+                       console.log(data.data.username);
+                        //scope.username = data.data.username;
+                        $rootScope.usernamey = data.data.username;
+                        //scope.useremail= data.data.email;
+                        scope.loadme= true;
+       
+                        User.getLoves($rootScope.usernamey).then(function(data){
+                           console.log(data.data.message);
+                           console.log(data.data.loves);
+                           var unique = data.data.loves.loves.filter(function(elem, index, self) {
+                               return index == self.indexOf(elem);
+                           });
+                           $rootScope.personalMyLoves = unique;
+                           //$rootScope.personalMyLoves = data.data.loves.loves;
+                           //$scope.looper.personalMyLoves = data.data.loves.loves;
+                          console.log($rootScope.personalMyLoves);
+                          console.log(data.data.loves.loves);
+                        });
+        });
+            
+        */
+        //$window.localStorage.removeItem('myLoves');
+
+
 
         $rootScope.EmailListEmail;
+
+        $rootScope.localStorageMyLovesString = $window.localStorage.getItem('myLoves');// retrieves myLoves from local storage as string....
+        console.log($rootScope.localStorageMyLovesString);
+
+        if ($rootScope.localStorageMyLovesString != null) {
+            $rootScope.myLovesStringSplit = $rootScope.localStorageMyLovesString.split(",");// splits string into an array, with each shoe at its own index. Or returns shoe at zero index if one seperator exists..
+
+            var unique = $rootScope.myLovesStringSplit.filter(function (elem, index, self) {
+                return index == self.indexOf(elem);
+            });
+
+            $rootScope.myLoves = unique;
+        }
 
 
         console.log($rootScope.myLoves);
@@ -194,7 +244,18 @@
 
 
 
-  
+        //console.log($rootScope.myLovesSeparated);
+        //$rootScope.myLovesSeparated.slice($rootScope.myLovesSeparated.indexOf(""),1);
+        //console.log($rootScope.myLovesSeparated);
+
+        /* if($scope.myLoves[0]== ""){
+             $scope.shoeThumbs = [];
+         }else{
+         $scope.shoeThumbs.push(data.data.thumbnails[0].thumbnail);
+         $scope.shoeThumbs.push(data.data.thumbnails[1].thumbnail);
+         }
+     });
+ */
         $scope.addToEmailList = function (emailListData, valid) {
 
             console.log("form submitted");
@@ -402,7 +463,7 @@
                     scope.useremail = data.data.email;
                     scope.loadme = true;
 
-                   /* User.getLoves($rootScope.usernamey).then(function (data) {
+                    User.getLoves($rootScope.usernamey).then(function (data) {
                         console.log(data.data.message);
                         console.log(data.data.loves);
                         var unique = data.data.loves.loves.filter(function (elem, index, self) {
@@ -415,7 +476,7 @@
                         $rootScope.heartss = $rootScope.personalMyLoves.length;
                         console.log($rootScope.personalMyLoves);
                         console.log(data.data.loves.loves);
-                    });*/
+                    });
                     console.log($rootScope.personalMyLoves);
                     Shop.getThumbnails().then(function (data) {
 

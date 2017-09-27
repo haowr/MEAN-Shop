@@ -252,8 +252,31 @@
 
                                     } else {
                                         console.log(checkoutData[0].name);
+                                        console.log(checkoutData);
                                         $window.localStorage.setItem('guestName', checkoutData[0].name);
                                         var grndtotal = checkoutData[2].grandTotal / 100;
+                                        var d = new Date();
+                                        var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+                                        checkoutData[0].timeStamp= timestamp;
+                                        checkoutData[0].items =scope.finalCheckoutData.length;
+                                        var orderHistory = {};
+                                        orderHistory.username = checkoutData[0].name;
+                                        orderHistory.items= scope.finalCheckoutData.length;
+                                        orderHistory.timestammp = timestamp;
+                                        orderHistory.grandTotal = grndtotal;
+                                        console.log(orderHistory);
+                                        var checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
+                                        checkoutArray[0].timestamp =timestamp;
+                                        console.log(checkoutArray);
+                                        User.addStoreHistoryToAdmin(orderHistory).then(function(data){
+                                                    //console.log(data.data);
+                                                User.addGroupedOrdersToAdmin(checkoutArray).then(function(data){
+
+                                                   console.log(data.data);
+
+                                                })
+
+                                        })
                                         User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, checkoutData[6]).then(function (data) {
 
                                             console.log(data.data.message);
@@ -404,6 +427,7 @@
                                             User.getShoppingBag(data.data.username).then(function (data) {
 
                                                 checkoutData[4] = data.data.user.shoppingbag;
+                                                console.log(checkoutData[4]);
                                                 var grandtotal = $window.localStorage.getItem('grandTotal');
                                                 var d = new Date();
                                                 var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
@@ -416,12 +440,17 @@
                                                 User.addOrderHistoryToUser(orderHistory).then(function (data) {
                                                     console.log(data.data);
                                                 })
+                                                User.addStoreHistoryToAdmin(orderHistory).then(function(data){
+                                                    console.log(data.data);
+
+                                                })
                                                 checkoutData.push(timestamp);
                                                 checkoutData.push(tax);
                                                 console.log(grandtotal);
                                                 console.log(username);
                                                 console.log(checkoutData);
                                                 checkoutData[4][0].timestamp = timestamp;
+                                                checkoutData[4][0].grandTotal = grandtotal;
                                                 User.addGroupedOrdersToUser(checkoutData[4]).then(function (data) {
 
                                                     console.log(data.data);
@@ -429,6 +458,11 @@
                                                     //     console.log(data.data.user);
 
                                                     //})
+
+                                                })
+                                                User.addGroupedOrdersToAdmin(checkoutData[4]).then(function(data){
+
+                                                    console.log(data.data);
 
                                                 })
 

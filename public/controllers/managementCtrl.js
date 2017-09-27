@@ -21,6 +21,8 @@
         scope.errorMsg = false;
         scope.searchLimit = 0;
         $scope.emailList = [];
+        $scope.storeOrders =[];
+        $scope.storeHistory;
         //$scope.shoes;
 
 function getUsers(){
@@ -29,7 +31,21 @@ function getUsers(){
         
         User.getUsers().then(function(data){
             if(data.data.success){
+                console.log(data.data.users);
                 if(data.data.permission == 'admin' || data.data.permission == 'moderator'){
+                    User.getStoreHistoryForAdmin("ohrha").then(function(data){
+                        console.log(data.data);
+                        $scope.storeHistory = data.data.storehistory.storehistory;
+                        console.log($scope.storeHistory);
+                        User.getStoreOrdersForAdmin("ohrha").then(function(data){
+
+                        console.log(data.data);
+                        $scope.storeOrders = data.data.storeorders;
+
+                        })
+
+                    })
+
                     scope.users = data.data.users;
                     scope.loading = false;
                     scope.accessDenied = false;
