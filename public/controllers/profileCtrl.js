@@ -18,6 +18,7 @@
         $scope.orderHistory = [];
         $scope.ordersDataArray = [];
         $scope.ordersGrouped = [];
+        $scope.ordersGrouped2 = [];
         $scope.orderNumberAsTitle;
         $scope.singleOrder;
         $scope.orderNumber;
@@ -49,6 +50,30 @@
             console.log("singleOrder has run..");
 
         }
+        User.getGroupedOrdersFromUser($routeParams.username).then(function (data) {
+              User.getStoreOrdersForAdmin("ohrha").then(function(){
+
+                console.log(data.data);
+               
+                $scope.ordersGrouped2= data.data.ordersgrouped.ordersgrouped;
+                console.log($scope.ordersGrouped2);
+
+              })
+                        console.log(data.data);
+                        console.log(data.data.ordersgrouped.ordersgrouped);
+                        console.log($scope.singleOrder);
+                        for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
+
+                           // $scope.orderData.timestamp = $scope.orders[0].timestamp;
+                           // $scope.orderData.items = data.data.ordersgrouped.ordersgrouped[$scope.orderNumber].length;
+                            //$scope.orderData.number = $scope.orderNumber;
+                           // $scope.orderData.grandTotal = $scope.totals;
+                            $scope.ordersDataArray.push(data.data.ordersgrouped.ordersgrouped[i]);
+
+
+                        }
+                      console.log($scope.ordersDataArray);
+                    })
 
         $scope.openOrder = function () {
 

@@ -1,32 +1,33 @@
+<div class = "container container-fluid">
+<br>
 <div class = "page-header">
-    <h1>Search Engine</h1>
+    <center><h4 class = "myprofiletitle">Search Engine</h4></center>
 </div>
 
 
 <!-- Input for filter -->
-<div class = "navbar-form">
 
-    <div class = "form-group">
-        <input type= "text" name="searchByUsername" class= "form-control" placeholder= "search for..." ng-model="searchByUsername">
-        <button type = "button"class = "btn btn-primary">Username</button>
-        <br>
-        <input type= "text" name="searchByEmail" class= "form-control" placeholder= "search for..." ng-model="searchByEmail">
-        <button type = "button"class = "btn btn-primary">E-mail</button>
-        <br>
-        <input type= "text" name="searchByName" class= "form-control" placeholder= "search for..." ng-model="searchByName">
-        <button type = "button"class = "btn btn-primary">Name</button>
-    </div>
 
-</div>
-<br>
 <div class="navbar-form">
-    <button type="button" ng-click="management.advancedSearch(searchByUsername, searchByEmail, searchByName);" class="btn btn-default">Search</button>
+    <form name = "searchForm" ng-submit="management.advancedSearch(searchByUsername, searchByEmail, searchByName)">
+        <div class = "form-group">
+        <input type= "text" name="searchByUsername" class= "form-control" placeholder= "Username..." ng-model="searchByUsername">
+        <!--<button type = "button"class = "btn btn-primary">Username</button>-->
+        <br>
+        <input type= "text" name="searchByEmail" class= "form-control" placeholder= "E-mail..." ng-model="searchByEmail">
+        <!--<button type = "button"class = "btn btn-primary">E-mail</button>-->
+        <br>
+        <input type= "text" name="searchByName" class= "form-control" placeholder= "Name..." ng-model="searchByName">
+        <!--<button type = "button"class = "btn btn-primary">Name</button>-->
+    </div>
+    <button type="submit"  class="btn btn-md btn-submit">Search</button>
+    </form>
     <br>
     <br>
     <!-- Sort Order Dropdown Menu -->
     <div class="btn-group">
-        <button type="button" class="btn btn-danger">Sort by</button>
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-submitdarker">Sort by</button>
+        <button type="button" class="btn btn-submitdarker dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
         </button>
@@ -43,19 +44,20 @@
 
 
 <div ng-show="management.searchLimit === undefined">
-    <p><strong>Results:</strong>{{( management.users | filter: advancedSearchFilter | limitTo: management.searchLimit ).length }}</p>
+    <p>Results:{{( management.users | filter: advancedSearchFilter | limitTo: management.searchLimit ).length }}</p>
 </div>
 <div ng-show="management.sort">
-     <p><strong>Sorted by: </strong>{{management.sort}}</p>   
+     <p>Sorted by: {{management.sort}}</p>   
 </div>
 
-<br>
+
 
 <div class= "panel panel-primary">
     <div class = "panel-heading">
-        <strong>User Management</strong>
+        <center><h4 class = "myprofiletitle">User Management</h4></center>
     </div>
-    <table class = "table">
+    <div class ="table-responsive">
+    <table class = "table table-sm">
         <tr>
             <th>Name</th>
             <th>Username</th>
@@ -66,11 +68,12 @@
             <td>{{person.username}}</td>
             <td>{{person.email}}</td>
             <td>
-               <a href="/edit/{{person._id}}"> <button ng-show='management.editAccess' type="button" class = "btn btn-info">Edit</button></a>
-                <button ng-show='management.deleteAccess' ng-click ="management.deleteUser(person.username);" type="button" class = "btn btn-danger">Delete</button>
+               <a href="/edit/{{person._id}}"> <button ng-show='management.editAccess' type="button" class = "btn btn-sm btn-submit">Edit</button></a>
+                <button ng-show='management.deleteAccess' ng-click ="management.deleteUser(person.username);" type="button" class = "btn btn-sm btn-submitdarker">Delete</button>
             </td>
         </tr>
     </table>
+    </div>
 </div>
 
 
@@ -87,5 +90,5 @@
 </div>
 
 
-
+</div>
 

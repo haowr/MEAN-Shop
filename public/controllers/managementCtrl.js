@@ -23,6 +23,7 @@
         $scope.emailList = [];
         $scope.storeOrders =[];
         $scope.storeHistory;
+        $scope.inventory = [];
         //$scope.shoes;
 
 function getUsers(){
@@ -36,11 +37,21 @@ function getUsers(){
                     User.getStoreHistoryForAdmin("ohrha").then(function(data){
                         console.log(data.data);
                         $scope.storeHistory = data.data.storehistory.storehistory;
+
                         console.log($scope.storeHistory);
                         User.getStoreOrdersForAdmin("ohrha").then(function(data){
 
-                        console.log(data.data);
+                        console.log(data.data.storeorders.storeorders);
+                        for (var i = 0; i<data.data.storeorders.storeorders.length; i++){
+
+                            for( var j =0; j<data.data.storeorders.storeorders[i].length; j++){
+
+                                $scope.inventory.push(data.data.storeorders.storeorders[i][j]);
+
+                            }
+                        }
                         $scope.storeOrders = data.data.storeorders;
+                        console.log($scope.inventory);
 
                         })
 
@@ -83,6 +94,7 @@ function getUsers(){
 };
 getUsers();
 
+    
     $scope.removeEmail = function(email){
 
         Email.removeEmail(email).then(function(data){
@@ -212,6 +224,8 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
     scope.phase2 = false;
     scope.phase3 = false;
     scope.phase4 = false;
+
+
 
     User.getUser($routeParams.id).then(function(data){
 

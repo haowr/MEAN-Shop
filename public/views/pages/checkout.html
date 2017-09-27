@@ -11,7 +11,7 @@
             </div>
 
             <div class = "col-sm-8 shoppingbagtitle">
-                <a href="#"><p>continue-shopping</p></a>
+                <br>
                 <h3 id ="checkouttitlestyling">Checkout</h3>
 
                 
@@ -24,11 +24,12 @@
               
             </div>
             <div class = "col-sm-4"> 
+                <br>
                 
                 <div id = "oneclickid"ng-show="wouldYouLikeToUse && shoppingBagShoes.length >0">
                     
                     <center><h4 class = "bellefair">Hey, {{currentUser}}!</h4><p> Your Details Are Stored... Would You like to Use One Click Checkout?</p>
-                            <button class = "btn btn-submit" ng-click ="checkOutFunc2();">Yes</button><button class = "btn btn-submit" ng-click = "oneClickCheckout(2);">No</button>
+                            <button class = "btn btn-sm btn-submit" ng-click ="checkOutFunc2();">Yes</button>&nbsp<button class = "btn btn-sm btn-submit" ng-click = "oneClickCheckout(2);">No</button>
                     </center>
 
                 </div>

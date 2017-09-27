@@ -131,10 +131,44 @@
             <tbody>
                 <tr ng-repeat="store in storeHistory track by $index">
                     <td>{{store.username}}</td>
-                    <td>{{$index + 1}}</td>
+                    <td><a href = "/profile/orderdetails/{{store.username}}/{{$index}}">{{$index + 1}}</a></td>
                     <td>{{store.items}}</td>
                     <td>{{store.grandTotal | currency}}</td>
                     <td>{{store.timestammp}}</td>
+                    <td><i class="fa fa-times" ng-click="removeEmail(email);"></i></td>
+                    <!--<button ng-click="showModal(3,$index);" class="btn btn-submit">Remove</button>-->
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class = "row">
+    <div class = "col-sm-12">
+                    <center>
+                <h4 class="bellefair">Outgoing Inventory</h4>
+            </center>
+    </div>
+</div>
+        <div class="table-responsive">
+        <table class="table table-sm table-inverse">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Order #</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in inventory ">
+                    <td>{{item.name}}</td>
+                    <td><a href = "/profile/orderdetails/{{store.username}}/{{$index}}">{{$index + 1}}</a></td>
+                    <td>{{item.items}}</td>
+                    <td>{{item.grandTotal | currency}}</td>
+                    <td>{{item.timestammp}}</td>
                     <td><i class="fa fa-times" ng-click="removeEmail(email);"></i></td>
                     <!--<button ng-click="showModal(3,$index);" class="btn btn-submit">Remove</button>-->
 

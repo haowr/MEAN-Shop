@@ -186,6 +186,10 @@
                                                 User.addOrderHistoryToUser(orderHistory).then(function (data) {
                                                     console.log(data.data);
                                                 })
+                                                User.addStoreHistoryToAdmin(orderHistory).then(function(data){
+                                                    console.log(data.data);
+
+                                                })
                                                 checkoutData.push(timestamp);
                                                 checkoutData.push(tax);
                                                 console.log(grandtotal);
@@ -199,6 +203,11 @@
                                                         console.log(data.data.user);
 
                                                     })
+
+                                                })
+                                                User.addGroupedOrdersToAdmin(checkoutData[4]).then(function(data){
+
+                                                    console.log(data.data);
 
                                                 })
 
@@ -224,9 +233,9 @@
 
                                                              }
                                                              console.log(images);*/
-                                                            var grndtotal = checkoutData[3].grandTotal / 100;
+                                                            var grndtotal = checkoutData[2].grandTotal / 100;
                                                             console.log(checkoutData[3].grandTotal);
-                                                            User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, checkoutData[7]).then(function (data) {
+                                                            User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, checkoutData[6]).then(function (data) {
 
                                                                 console.log(data.data.message);
 

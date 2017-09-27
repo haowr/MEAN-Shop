@@ -50,22 +50,22 @@
         $scope.i = 0;
         $interval(function(){
             //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
-           console.log("i ran!");
+           //console.log("i ran!");
             if($scope.i == 0){
                // commercial.shift();
                 //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
                 $scope.i =1;
-                console.log($scope.i);
+                //console.log($scope.i);
             }else if($scope.i == 1){
                 $rootScope.commercial.shift();
                 $rootScope.commercial.push($rootScope.commercials[$scope.i]);
                 $scope.i=2;
-                console.log($scope.i);
+                //console.log($scope.i);
             }else if($scope.i == 2){
                 $rootScope.commercial.shift();
                 $rootScope.commercial.push($rootScope.commercials[$scope.i]);
                 $scope.i  = 0;
-                console.log($scope.i);
+               // console.log($scope.i);
             }
 
         },4000);
