@@ -124,6 +124,7 @@
 
         $scope.startCheckoutFunc = function () {
             console.log($scope.checkoutFormData);
+            console.log($scope);
             $scope.startCheckout = true;
             $scope.wouldYouLikeToUse = false;
             if (Auth.isLoggedIn()) {
