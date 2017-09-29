@@ -128,6 +128,7 @@
             $scope.startCheckout = true;
             $scope.wouldYouLikeToUse = false;
             if (Auth.isLoggedIn()) {
+                            console.log($scope.checkoutForm);
 
                 User.getUserProfile($scope.currentUser).then(function (data) {
 
