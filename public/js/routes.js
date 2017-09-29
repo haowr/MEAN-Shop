@@ -130,6 +130,15 @@ console.log("routes.js loaded");
 
 
             })
+            .when('/contact', {
+
+                templateUrl: '../views/pages/contact.html',
+
+                name: "HOJ | Contact"
+
+
+            })
+
             .when('/shop/checkout', {
                 templateUrl: '../views/pages/checkout.html',
                 controller: 'checkoutCtrl',

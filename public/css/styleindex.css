@@ -434,6 +434,11 @@ width: 500px !important;
   border-bottom: 1px solid #586368;
 
 }
+#loginloading{
+
+  background-color:#fff1ef;
+
+}
 .orderhistorytitle{
 
    font-family:'Bellefair'

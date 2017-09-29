@@ -109,7 +109,26 @@ UserSchema.pre('save',function(next){
 
     });
 });
+/**UserSchema.pre('findOneAndUpdate', function(next){
 
+   var securitycode = this;
+    //console.log(securitycode.tree);
+    console.log(securitycode.getUpdate());
+    var details = securitycode.getUpdate();
+    console.log(details.$set);
+ //this.findOneAndUpdate({}, { password: bcrypt.hash(this.getUpdate().$set.password) });
+ if(details.$set.ccdetails){
+     bcrypt.hash(details.$set.ccdetails.securitycode,null,null, function(err,hash){
+        if(err) return next(err);
+        details.$set.ccdetails.securitycode = hash;
+        next();
+         });
+ }else{
+     next();
+ }
+
+})
+8*/
 // Attach some mongoose hooks 
 UserSchema.plugin(titlize, {
   paths: [ 'name' ] // Array of paths 

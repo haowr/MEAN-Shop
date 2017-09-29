@@ -47,6 +47,9 @@ function getUsers(){
                             for( var j =0; j<data.data.storeorders.storeorders[i].length; j++){
 
                                 $scope.inventory.push(data.data.storeorders.storeorders[i][j]);
+                                /*for (var k = 0; k<data.data.storeorders.storeorders[i][j].length;k++){
+                                    $scope.inventory.push(data.data.storeorders.storeorders[i][j][k]);
+                                }*/
 
                             }
                         }

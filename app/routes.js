@@ -533,7 +533,7 @@ app.post('/api/addyourshippingdetails', function(req,res){
 
 });
 app.post('/api/addyourccdetails', function(req, res){
-
+    var securitycode = req.body;
     User.findOneAndUpdate({username: req.body.username}, {$set:{ccdetails:req.body}}, {new:true}, function(err, user){
 
         if(err) throw err;

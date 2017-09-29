@@ -76,7 +76,7 @@
                     $scope.storedFormData.push(data.data.user.ccdetails);
                     $scope.grandTotal = $window.localStorage.getItem('grandTotal');
                     $scope.shoppingBagShoes = data.data.user.shoppingbag;
-                    
+
                     for (var i = 0; i < $scope.shoppingBagShoes.length; i++) {
 
                         $scope.shoppingBagAmountsArray.push(Number($scope.shoppingBagShoes[i].amt));
@@ -123,9 +123,35 @@
 
 
         $scope.startCheckoutFunc = function () {
-
+            console.log($scope.checkoutFormData);
             $scope.startCheckout = true;
             $scope.wouldYouLikeToUse = false;
+            if (Auth.isLoggedIn()) {
+
+                User.getUserProfile($scope.currentUser).then(function (data) {
+
+                    console.log(data.data.user.billingdetails);
+                    console.log($scope.checkoutFormData);
+                    $scope.checkoutFormData.country = "Canada";
+                    $scope.checkoutFormData.name = data.data.user.billingdetails.name;
+                    $scope.checkoutFormData.lastname = data.data.user.billingdetails.lastname;
+                    $scope.checkoutFormData.apt = data.data.user.billingdetails.apt;
+                    $scope.checkoutFormData.city = data.data.user.billingdetails.city;
+                    $scope.checkoutFormData.phonenumber = data.data.user.billingdetails.phonenumber;
+                    $scope.checkoutFormData.email = data.data.user.billingdetails.email;
+                    $scope.checkoutFormData.postalcode = data.data.user.billingdetails.postalcode;
+                    $scope.checkoutFormData.streetaddress = data.data.user.billingdetails.streetaddress;
+                    $scope.checkoutFormData.streetaddress2 = data.data.user.billingdetails.streetaddress2;
+                    
+                    /* if (data.data.user.detailssaved) {
+                         //$scope.wouldYouLikeToUse = true;
+                     }
+                     */
+                });
+
+
+
+            };
         }
 
         $scope.selectCountry = function (number) {
@@ -212,7 +238,32 @@
         $scope.addShippingAddress = function () {
             $scope.addNewShippingAddress = true;
             $scope.useBillingAddressSelected = false;
+                        if (Auth.isLoggedIn()) {
 
+                User.getUserProfile($scope.currentUser).then(function (data) {
+
+                    //console.log(data.data.user.billingdetails);
+                    //console.log($scope.checkoutFormData);
+                    $scope.checkoutFormData.country = "Canada";
+                    $scope.checkoutFormData.name = data.data.user.shippingdetails.name;
+                    $scope.checkoutFormData.lastname = data.data.user.shippingdetails.lastname;
+                    $scope.checkoutFormData.apt = data.data.user.shippingdetails.apt;
+                    $scope.checkoutFormData.city = data.data.user.shippingdetails.city;
+                    $scope.checkoutFormData.phonenumber = data.data.user.shippingdetails.phonenumber;
+                    $scope.checkoutFormData.email = data.data.user.shippingdetails.email;
+                    $scope.checkoutFormData.postalcode = data.data.user.shippingdetails.postalcode;
+                    $scope.checkoutFormData.streetaddress = data.data.user.shippingdetails.streetaddress;
+                    $scope.checkoutFormData.streetaddress2 = data.data.user.shippingdetails.streetaddress2;
+                    
+                    /* if (data.data.user.detailssaved) {
+                         //$scope.wouldYouLikeToUse = true;
+                     }
+                     */
+                });
+
+
+
+            };
             console.log($scope.addNewShippingAddress);
 
         };
@@ -250,6 +301,9 @@
                console.log(data.data);
 
            });*/
+        console.log($scope);
+        console.log($scope.checkoutForm);
+        console.log($scope.$$childHead);
         $scope.checkOutFunc = function (checkoutData, valid) {
             console.log(checkoutData);
             console.log(valid);

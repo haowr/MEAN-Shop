@@ -60,28 +60,22 @@
     <center>
         <div ng-show="lastOrder.length > 0" class="row  " ng-repeat="last in lastOrder">
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <a href="/shop/mens/{{last.name}}"> <img  class ="img-fluid"ng-src="{{last.image}}"></a>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <p id="shopdescription">{{last.description |limitTo:25}}</p>
             </div>
-            <div class="col-sm-2">
 
-
-            </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <p>{{last.price}}</p>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
 
                 <p>{{last.amt}}</p>
 
             </div>
-            <div class="col-sm-2">
-                <!--<button  ng-click ="removeOneItem($index);"class = "btn btn-submit"> <a href = "/shop/shoppingbag">Remove</a></button>-->
-                <!--<p>{{shoe.price * shoe.amt| currency}}</p>-->
-            </div>
+
         </div>
     </center>
     <div class="row emptycartstyling" ng-show="shoppingBagShoes.length >0 ">
