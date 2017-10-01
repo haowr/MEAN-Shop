@@ -133,7 +133,7 @@
                 User.getUserProfile($scope.currentUser).then(function (data) {
 
                     console.log(data.data.user.billingdetails);
-                    console.log($scope.checkoutFormData);
+                    console.log($scope);
                     $scope.checkoutFormData.country = "Canada";
                     $scope.checkoutFormData.name = data.data.user.billingdetails.name;
                     $scope.checkoutFormData.lastname = data.data.user.billingdetails.lastname;
