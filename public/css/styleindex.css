@@ -755,7 +755,7 @@ transition:0.5s;
 color:#586368;
 transition:0.5s;
    right:200px;
-      font-size:30px;
+      font-size:25px;
      
      padding-right:20px;
      
@@ -768,7 +768,7 @@ transition:0.5s;
 
 transition:0.5s;
    right:200px;
-      font-size:30px;
+      font-size:25px;
           opacity:1;
     color:black;
     
@@ -788,7 +788,7 @@ transition:0.5s;
 }
 @media only screen and (max-width: 500px){ 
    .clothing{
-     
+     transition:0.5s;
     position:absolute;
     top:20px;
     left:80px;
@@ -801,7 +801,7 @@ transition:0.5s;
    }
 
    .jewels{
-     
+     transition:0.5s;
      position:absolute;
      top:20px;
      left:286px;
@@ -812,7 +812,7 @@ transition:0.5s;
       
    }
    .logo{
-    
+    transition:0.5s;
      display:inline-block;
    }
    .shop{
@@ -822,7 +822,7 @@ transition:0.5s;
 }
 @media only screen and (max-width: 375px){ 
    .clothing{
-     
+     transition:0.5s;
     position:absolute;
     top:20px;
     left:80px;
@@ -835,7 +835,7 @@ transition:0.5s;
    }
 
    .jewels{
-     
+     transition:0.5s;
      position:absolute;
      top:20px;
      left:248px;
@@ -846,17 +846,18 @@ transition:0.5s;
       
    }
    .logo{
-    
+    transition:0.5s;
      display:inline-block;
    }
    .shop{
+     transition:0.5s;
      border:1px solid black;
      height: 50px;;
    }
 }
 @media only screen and (max-width: 360px){ 
    .clothing{
-     
+     transition:0.5s;
     position:absolute;
     top:20px;
     left:60px;
@@ -869,7 +870,7 @@ transition:0.5s;
    }
 
    .jewels{
-     
+     transition:0.5s;
      position:absolute;
      top:20px;
      left:254px;
@@ -880,17 +881,18 @@ transition:0.5s;
       
    }
    .logo{
-    
+    transition:0.5s;
      display:inline-block;
    }
    .shop{
+     transition:0.5s;
      border:1px solid black;
      height: 50px;;
    }
 }
 @media only screen and (max-width: 320px){ 
    .clothing{
-     
+     transition:0.5s;
     position:absolute;
     top:20px;
     left:60px;
@@ -903,7 +905,7 @@ transition:0.5s;
    }
 
    .jewels{
-     
+     transition:0.5s;
      position:absolute;
      top:20px;
      left:220px;
@@ -914,10 +916,12 @@ transition:0.5s;
       
    }
    .logo{
-    
+    transition:0.5s;
      display:inline-block;
    }
    .shop{
+
+     transition:0.5s;
      border:1px solid black;
      height: 50px;;
    }
