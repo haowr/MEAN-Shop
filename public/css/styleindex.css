@@ -713,6 +713,9 @@ border: solid 1px black;
   color:#586368;
 
 }
+.inline-block{
+  display:inline-block
+}
 .secondarytextsimple{
   color:#586368;
 }
