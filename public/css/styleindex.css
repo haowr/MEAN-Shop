@@ -717,19 +717,140 @@ border: solid 1px black;
 @media only screen and (max-width: 500px){ 
    .clothing{
      
-  
+    position:absolute;
+    top:20px;
+    left:80px;
+    font-size:18px;
     
-    float:left;
+    padding-left:10px;
+   
+
    /* display:inline-block;*/
    }
 
    .jewels{
      
+     position:absolute;
+     top:20px;
+     left:286px;
+      font-size:18px;
+     
+     padding-right:20px;
+     
       
-     float:right;
-     /* display:inline-block;*/
+   }
+   .logo{
+    
+     display:inline-block;
+   }
+   .shop{
+     border:1px solid black;
+     height: 50px;;
    }
 }
+@media only screen and (max-width: 375px){ 
+   .clothing{
+     
+    position:absolute;
+    top:20px;
+    left:80px;
+    font-size:18px;
+    
+    padding-left:10px;
+   
+
+   /* display:inline-block;*/
+   }
+
+   .jewels{
+     
+     position:absolute;
+     top:20px;
+     left:248px;
+      font-size:18px;
+     
+     padding-right:20px;
+     
+      
+   }
+   .logo{
+    
+     display:inline-block;
+   }
+   .shop{
+     border:1px solid black;
+     height: 50px;;
+   }
+}
+@media only screen and (max-width: 360px){ 
+   .clothing{
+     
+    position:absolute;
+    top:20px;
+    left:60px;
+    font-size:18px;
+    
+    padding-left:10px;
+   
+
+   /* display:inline-block;*/
+   }
+
+   .jewels{
+     
+     position:absolute;
+     top:20px;
+     left:254px;
+      font-size:18px;
+     
+     padding-right:20px;
+     
+      
+   }
+   .logo{
+    
+     display:inline-block;
+   }
+   .shop{
+     border:1px solid black;
+     height: 50px;;
+   }
+}
+@media only screen and (max-width: 320px){ 
+   .clothing{
+     
+    position:absolute;
+    top:20px;
+    left:60px;
+    font-size:18px;
+    
+    padding-left:10px;
+   
+
+   /* display:inline-block;*/
+   }
+
+   .jewels{
+     
+     position:absolute;
+     top:20px;
+     left:220px;
+      font-size:18px;
+     
+     padding-right:20px;
+     
+      
+   }
+   .logo{
+    
+     display:inline-block;
+   }
+   .shop{
+     border:1px solid black;
+     height: 50px;;
+   }
+}
+
 /*
 .clothing{
 
@@ -748,11 +869,8 @@ display:inline-block;
 .inline-block{
   display:inline-block
 }
-.logo{
 
 
-
-}
 .secondarytextsimple{
   color:#586368;
 }
