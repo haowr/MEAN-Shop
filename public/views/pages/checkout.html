@@ -116,7 +116,7 @@
                       <div ng-class="{ 'has-success': (checkoutForm.name.$valid && !checkoutForm.name.$pristine), 'has-error':(!checkoutForm.name.$valid && !checkoutForm.name.$pristine)|| (!checkoutForm.name.$valid && checkoutForm.$submitted) }"class = "form-group">
                             <label>First Name:</label>
                             <br>
-                            <input    type = "textarea" name = "name" ng-model="checkoutFormData.name"placeholder="Name..."ng-minLength="3" ng-maxLength="20"required ></input>
+                            <input type = "textarea" name = "name" ng-model="checkoutFormData.name"placeholder="Name..."ng-minLength="3" ng-maxLength="20"required ></input>
                             <ul class ="help-block" ng-show=" (!checkoutForm.name.$pristine && checkoutForm.name.$error.minlength) || (!checkoutForm.name.$pristine && checkoutForm.name.$error.maxlength)">
                                 <li>First Name must be between 3 and 20 characters long..</li>
                             </ul>
@@ -307,7 +307,7 @@
                             <label>First Name:</label>
                            
                             <br>
-                            <input class = "form-control"   type = "textarea" name = "name" ng-model="shippingFormData.name"placeholder="Name..."ng-minLength="3" ng-maxLength="20" required></input>
+                            <input    type = "textarea" name = "name" ng-model="shippingFormData.name"placeholder="Name..."ng-minLength="3" ng-maxLength="20" required></input>
                       </div>
                       <div ng-class="{ 'has-success': (shippingForm.lastname.$valid && !shippingForm.lastname.$pristine), 'has-error':(!shippingForm.lastname.$valid && !shippingForm.lastname.$pristine)|| (!shippingForm.lastname.$valid && shippingForm.$submitted) }" class = "form-group">
                             <label>Last Name:</label>
