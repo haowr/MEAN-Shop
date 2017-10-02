@@ -713,8 +713,36 @@ border: solid 1px black;
   color:#586368;
 
 }
+@media only screen and (max-width: 500px){ 
+   .clothing{
+     
+    float: left;
+   }
+
+   .jewels{
+     
+      float: right;
+   }
+}
+
+.clothing{
+
+margin-right:80px;
+
+
+}
+.jewels{
+ margin-left:80px;
+}
+
+
 .inline-block{
   display:inline-block
+}
+.logo{
+
+
+
 }
 .secondarytextsimple{
   color:#586368;
