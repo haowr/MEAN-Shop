@@ -186,7 +186,7 @@
                                                 User.addOrderHistoryToUser(orderHistory).then(function (data) {
                                                     console.log(data.data);
                                                 })
-                                                User.addStoreHistoryToAdmin(orderHistory).then(function(data){
+                                                User.addStoreHistoryToAdmin(orderHistory).then(function (data) {
                                                     console.log(data.data);
 
                                                 })
@@ -205,7 +205,7 @@
                                                     })
 
                                                 })
-                                                User.addGroupedOrdersToAdmin(checkoutData[4]).then(function(data){
+                                                User.addGroupedOrdersToAdmin(checkoutData[4]).then(function (data) {
 
                                                     console.log(data.data);
 
@@ -266,36 +266,36 @@
                                         var grndtotal = checkoutData[2].grandTotal / 100;
                                         var d = new Date();
                                         var timestamp = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
-                                        checkoutData[0].timeStamp= timestamp;
-                                        checkoutData[0].items =scope.finalCheckoutData.length;
+                                        checkoutData[0].timeStamp = timestamp;
+                                        checkoutData[0].items = scope.finalCheckoutData.length;
                                         var orderHistory = {};
                                         orderHistory.username = checkoutData[0].name;
-                                        orderHistory.items= scope.finalCheckoutData.length;
+                                        orderHistory.items = scope.finalCheckoutData.length;
                                         orderHistory.timestammp = timestamp;
                                         orderHistory.grandTotal = grndtotal;
                                         console.log(orderHistory);
                                         var checkoutArray = JSON.parse($window.localStorage.getItem('checkoutArray'));
-                                        checkoutArray[0].timestamp =timestamp;
+                                        checkoutArray[0].timestamp = timestamp;
                                         console.log(checkoutArray);
-                                        User.addStoreHistoryToAdmin(orderHistory).then(function(data){
-                                                    //console.log(data.data);
-                                                User.addGroupedOrdersToAdmin(checkoutArray).then(function(data){
+                                        User.addStoreHistoryToAdmin(orderHistory).then(function (data) {
+                                            //console.log(data.data);
+                                            User.addGroupedOrdersToAdmin(checkoutArray).then(function (data) {
 
-                                                   console.log(data.data);
+                                                console.log(data.data);
 
-                                                })
+                                            })
 
                                         })
                                         User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, checkoutData[6]).then(function (data) {
 
                                             console.log(data.data.message);
-                                            
-                                                      
-                                        });
-                                          $timeout(function () {
-                                                                $location.path('/shop/orderconfirmation');
 
-                                                            }, 2000);
+
+                                        });
+                                        $timeout(function () {
+                                            $location.path('/shop/orderconfirmation');
+
+                                        }, 2000);
                                     }
                                 }
 
@@ -314,6 +314,43 @@
         }
 
     });
+    app.directive('backToTopJquery', function ($window, $document) {
+
+
+        return {
+
+            restrict: 'A',
+            link: function (scope) {
+                
+                scope.backToTopJquery = function(){
+                    console.log("hello");
+                   // console.log($document);
+                   // console.log($window);
+                                   // When the user scrolls down 20px from the top of the document, show the button
+               window.onscroll = function () { scrollFunction() };
+
+                function scrollFunction() {
+                   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("myBtn").style.opacity = 100;
+                    } else {
+                       document.getElementById("myBtn").style.opacity = 0;
+                       document.getElementById("myBtn").style.backgroundColor = "#ffbbbc";
+                   }
+                }
+                                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0; // For Chrome, Safari and Opera 
+                    document.documentElement.scrollTop = 0; // For IE and Firefox
+               }
+                
+ 
+
+
+            }
+            }
+        }
+
+    })
     app.directive('stripeCheckoutJqueryOneClick', function (Auth, Shop, User, $location, $window, $timeout, $rootScope) {
 
         return {
@@ -449,7 +486,7 @@
                                                 User.addOrderHistoryToUser(orderHistory).then(function (data) {
                                                     console.log(data.data);
                                                 })
-                                                User.addStoreHistoryToAdmin(orderHistory).then(function(data){
+                                                User.addStoreHistoryToAdmin(orderHistory).then(function (data) {
                                                     console.log(data.data);
 
                                                 })
@@ -469,7 +506,7 @@
                                                     //})
 
                                                 })
-                                                User.addGroupedOrdersToAdmin(checkoutData[4]).then(function(data){
+                                                User.addGroupedOrdersToAdmin(checkoutData[4]).then(function (data) {
 
                                                     console.log(data.data);
 
