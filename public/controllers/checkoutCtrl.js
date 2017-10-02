@@ -32,6 +32,7 @@
         $scope.addNewShippingAddress = false;
         $scope.checkoutDataa = [];
         $scope.checkoutFormData = {};
+        $scope.shippingFormData = {};
         $scope.shippingFormDataa = [];
         $scope.storedFormData = [];
         $scope.creditFormDataa = [];
@@ -248,16 +249,17 @@
 
                     //console.log(data.data.user.billingdetails);
                     //console.log($scope.checkoutFormData);
-                    $scope.checkoutFormData.country = "Canada";
-                    $scope.checkoutFormData.name = data.data.user.shippingdetails.name;
-                    $scope.checkoutFormData.lastname = data.data.user.shippingdetails.lastname;
-                    $scope.checkoutFormData.apt = data.data.user.shippingdetails.apt;
-                    $scope.checkoutFormData.city = data.data.user.shippingdetails.city;
-                    $scope.checkoutFormData.phonenumber = data.data.user.shippingdetails.phonenumber;
-                    $scope.checkoutFormData.email = data.data.user.shippingdetails.email;
-                    $scope.checkoutFormData.postalcode = data.data.user.shippingdetails.postalcode;
-                    $scope.checkoutFormData.streetaddress = data.data.user.shippingdetails.streetaddress;
-                    $scope.checkoutFormData.streetaddress2 = data.data.user.shippingdetails.streetaddress2;
+                    $scope.shippingFormData.country = "Canada";
+                    $scope.shippingFormData.name = data.data.user.shippingdetails.name;
+                    $scope.shippingFormData.lastname = data.data.user.shippingdetails.lastname;
+                    $scope.shippingFormData.apt = data.data.user.shippingdetails.apt;
+                    $scope.shippingFormData.city = data.data.user.shippingdetails.city;
+                    $scope.shippingFormData.phonenumber = data.data.user.shippingdetails.phonenumber;
+                    $scope.shippingFormData.email = data.data.user.shippingdetails.email;
+                    $scope.shippingFormData.postalcode = data.data.user.shippingdetails.postalcode;
+                    $scope.shippingFormData.streetaddress = data.data.user.shippingdetails.streetaddress;
+                    $scope.shippingFormData.streetaddress2 = data.data.user.shippingdetails.streetaddress2;
+                    $scope.shippingFormData.province = data.data.user.shippingdetails.province;
                     
                     /* if (data.data.user.detailssaved) {
                          //$scope.wouldYouLikeToUse = true;
