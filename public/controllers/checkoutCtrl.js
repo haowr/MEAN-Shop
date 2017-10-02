@@ -31,6 +31,7 @@
         $scope.shipPhase = false;
         $scope.addNewShippingAddress = false;
         $scope.checkoutDataa = [];
+        $scope.checkoutFormData = {};
         $scope.shippingFormDataa = [];
         $scope.storedFormData = [];
         $scope.creditFormDataa = [];
