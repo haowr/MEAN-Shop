@@ -145,6 +145,7 @@
                     $scope.checkoutFormData.postalcode = data.data.user.billingdetails.postalcode;
                     $scope.checkoutFormData.streetaddress = data.data.user.billingdetails.streetaddress;
                     $scope.checkoutFormData.streetaddress2 = data.data.user.billingdetails.streetaddress2;
+                    $scope.checkoutFormData.province = data.data.user.billingdetails.province;
                     
                     /* if (data.data.user.detailssaved) {
                          //$scope.wouldYouLikeToUse = true;
