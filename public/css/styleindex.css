@@ -713,6 +713,58 @@ border: solid 1px black;
   color:#586368;
 
 }
+#unactivatedheart{
+
+  /*box-shadow: 1px 1px 2px #586368;*/
+
+
+
+}
+#unactivatedheart:hover{
+  
+  font-size:17px;
+  /*box-shadow: 2px 2px 2.5px #586368;*/
+  
+
+}
+#activatedheart{
+
+  box-shadow: 1px 1px 2px #586368;
+
+}
+#activatedheart:hover{
+
+box-shadow: 2px 2px 2.5px #586368;
+  
+
+}
+#totalhearts{
+
+position:absolute;
+left:40px;
+
+}
+.openbox{
+
+    box-shadow: 1px 1px 2px #586368;
+
+
+}
+.openbox:hover{
+   box-shadow: 2px 2px 3px #586368;
+}
+.closebox{
+    width:30px;
+    height:25px;
+    box-shadow: 1px 1px 2px #586368;
+
+}
+.closebox:hover{
+    
+    top:2px;
+    box-shadow: 2px 2px 3px #586368;
+
+}
 
 @media only screen and (min-width: 510px){ 
 
@@ -810,7 +862,7 @@ transition:0.5s;
     opacity:1;
     color:black;
     
-    left:164px;
+    left:134px;
     font-size:25px;
     
     padding-left:10px;
@@ -823,11 +875,13 @@ transition:0.5s;
      
    display:inline-block;
    position:absolute;
-       opacity:0.8;
-color:#586368;
-transition:0.5s;
+   opacity:0.8;
+   color:#586368;
+   transition:0.5s;
    right:149px;
       font-size:25px;
+      box-shadow: 5px 5px 5px #586368;
+      
      
      padding-right:20px;
      
@@ -837,8 +891,9 @@ transition:0.5s;
      
    display:inline-block;
    position:absolute;
-
+box-shadow: 7px 7px 10px #586368;
 transition:0.5s;
+bottom:-3px;
    right:149px;
       font-size:25px;
           opacity:1;
