@@ -735,15 +735,22 @@ border: solid 1px black;
 
 }
 .boxshadow{
-  box-shadow: 1px 1px 2px #586368;
 }
 .boxshadow:hover{
- box-shadow: 2px 2px 2.5px #586368;
 }
 .socialmediaboxes{
   height: 30px;
   width:30px;
   display:inline-block;
+    box-shadow: 1px 1px 2px #586368;
+
+}
+.socialmediaboxes:hover{
+  height: 30px;
+  width:30px;
+  display:inline-block;
+ box-shadow: 2px 2px 2.5px #586368;
+
 }
 .socialmediabuttons{
   
