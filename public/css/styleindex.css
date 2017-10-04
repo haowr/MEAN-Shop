@@ -941,8 +941,8 @@ transition:0.1s;
    position:absolute;
    opacity:0.8;
    color:#586368;
-   transition:0.1s;
-   bottom:-10px;
+  /* transition:0.1s;
+   bottom:-10px;*/
    right:149px;
       font-size:25px;
       /*box-shadow: 2px 2px 2px #586368;*/
@@ -951,7 +951,8 @@ transition:0.1s;
     /* border-top:0.1px solid #586368;
      border-left:0.1px solid #586368;*/
      padding-right:20px;
-     
+  
+    
       
    }
       /*.jewels:hover{
@@ -976,18 +977,21 @@ bottom:-5px;
    display:inline-block;
    position:absolute;
    opacity:1;
-   transition:0.1s;
+   
    color:#586368;
-   bottom:-11px;
+   /*bottom:-11px;*/
    right:149px;
       font-size:25px;
       /*box-shadow: 4px 4px 3px #586368;*/
-          box-shadow: 2px 2px 1px #586368;
+         /* box-shadow: 2px 2px 1px #586368;*/
 
       
      
      padding-right:20px;
-     
+        -webkit-transform: translateY(2%);
+			transform: translateY(2%);
+	transition: transform 50ms linear;
+  
      
       
    }
