@@ -808,14 +808,54 @@ button:focus {outline:0;}
   border:none;
   box-shadow: 3px 3px 3px #586368;
 }
+/*
 #shoplink{
   background-color:white;
 }
-/*.nav-link{
-  background-color:white;
-  /*box-shadow: 3px 3px 2px #586368;*/
-/*}
 */
+#profilelink{
+  background-color:white;
+  box-shadow: 2px 2px 1px #586368;
+}
+#loveslink{
+  background-color:white;
+  box-shadow: 2px 2px 1px #586368;
+}
+
+#menulink{
+color:black;
+  
+}
+/*
+.dropdown-toggle::after {
+    display:none
+}
+*/
+/*
+#menulink:hover{
+  background-color:white;
+  color:black;
+  
+}
+#menulink:active{
+  background-color:white;
+  color:black;
+  
+}
+*/
+
+.nav-link{
+  font-family:'Muli';
+  text-decoration:none;
+  opacity:0.8;
+  /*box-shadow: 3px 3px 2px #586368;*/
+}
+.nav-link:hover{
+  font-family:'Muli';
+  
+  opacity:1;
+}
+
 /*@media only screen and (min-width: 510px){ 
 
     .clothing{
@@ -1738,7 +1778,7 @@ opacity:1;
 }
 .navbar .navbar-brand:hover,
 .navbar .navbar-brand:focus {
-  color: #ecf0f1;
+  color: black;
 }
 .navbar .navbar-text {
   color: #ecf0f1;
