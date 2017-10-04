@@ -989,8 +989,8 @@ color:#586368;
     
 color:#586368;
 
-       -webkit-transform: translateY(2%);
-			transform: translateY(2%);
+       -webkit-transform: translateY(-2%);
+			transform: translateY(-2%);
 	transition: transform 10ms linear;
   opacity:1;
 
