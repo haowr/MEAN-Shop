@@ -85,9 +85,9 @@
                 <h4 class="bellefair">E-mail List</h4>
             </center>
 
-            <span class="sr-only">Loading...</span>
+           <!-- <span class="sr-only">Loading...</span>-->
             <center>
-                <p ng-show="emailList.length < 0" class="secondarytext">(No Entries...)</p>
+                <p ng-show="emailList.length < 1" class="secondarytext">(No Entries...)</p>
             </center>
 
         </div>
@@ -98,16 +98,21 @@
     <div class="table-responsive">
         <table class="table table-sm table-inverse">
             <tbody>
-                <tr ng-repeat="email in emailList track by $index">
-                    <td>{{email}}</td>
+                <tr dir-paginate="email in emailList|itemsPerPage:5 track by $index">
+                    <td>{{email.email}}</td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><button class="btn btn-sm btn-submit" ng-click="removeEmail(email);">Remove</button></td>
+                    <td><button class="btn btn-sm btn-submit" ng-click="removeEmail(email.email,$index);">Remove</button></td>
 
                 </tr>
             </tbody>
         </table>
+          <dir-pagination-controls
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -129,7 +134,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="store in storeHistory track by $index">
+                <tr dir-paginate="store in storeHistory|itemsPerPage:5 track by $index" pagination-id="orders">
                     <td>{{store.username}}</td>
                     <td><a href="/profile/orderdetails/{{store.username}}/{{$index}}">{{$index + 1}}</a></td>
                     <td>{{store.items}}</td>
@@ -142,6 +147,11 @@
                 </tr>
             </tbody>
         </table>
+                  <dir-pagination-controls pagination-id="orders"
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -164,7 +174,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="item in inventory ">
+                <tr dir-paginate="item in inventory|itemsPerPage:5 " pagination-id="i">
                     <td>{{$index + 1}}</td>
                     <td>{{item.name}}</td>
 
@@ -178,6 +188,11 @@
                 </tr>
             </tbody>
         </table>
+                          <dir-pagination-controls pagination-id="i"
+       max-size="5"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
     </div>
     <div class="col-sm-12 details2">
     </div>

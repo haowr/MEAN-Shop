@@ -1,6 +1,6 @@
 (function(){
 
-    var app = angular.module('managementController',['userServices','emailServices']);
+    var app = angular.module('managementController',['userServices','emailServices','angularUtils.directives.dirPagination']);
 
     app.config(function(){
 
@@ -69,12 +69,13 @@ function getUsers(){
                         Email.getEmailList().then(function(data){
 
 
-                            //console.log(data.data.emails);
-                            for(var i = 0; i< data.data.emails[0].emaillist.length; i++){
+                            console.log(data.data.emails);
+                            $scope.emailList = data.data.emails;
+                            //for(var i = 0; i< data.data.emails.emails.length; i++){
 
-                                $scope.emailList.push(data.data.emails[0].emaillist[i]);
-                            }
-                            console.log($scope.emailList);
+                               // $scope.emailList.push(data.data.emails.emails[0].emaillist[i]);
+                            //}
+                            //console.log($scope.emailList);
 
                         });
 
@@ -98,14 +99,17 @@ function getUsers(){
 getUsers();
 
     
-    $scope.removeEmail = function(email){
+    $scope.removeEmail = function(email,index){
 
         Email.removeEmail(email).then(function(data){
 
 
-            console.log(data.data.emails.emaillist);
-            $scope.emailList = data.data.emails.emaillist;
+            //console.log(data.data.emails.emaillist);
+            if(data.data.success){
+                $scope.emailList.splice(index);
 
+            }
+            
 
         })
 

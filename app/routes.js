@@ -668,7 +668,17 @@ app.put('/api/findlove/:user/:love', function(req,res){
 })
 app.put('/api/getemaillist/', function(req, res){
 
-    Email.find({name:"emaillist"}).select("emaillist").exec(function(err, emails){
+     Email.find({}, function(err, emails){
+
+        if(err) throw err;
+        if(!emails){
+            res.json({success: false, message: "Email List Retrieval Failed..."});
+        }else{
+            res.json({success: true, message: "Here Are The Requested Emails...", emails:emails});
+        }
+
+     });
+    /*Email.find({name:"emaillist"}).select("emaillist").exec(function(err, emails){
 
         if(err) throw err;
         if(!emails){
@@ -679,9 +689,20 @@ app.put('/api/getemaillist/', function(req, res){
 
 
     });
+    */
+});
 app.put('/api/removeemail/:email/', function(req,res){
+    Email.remove({email:req.params.email}, function(err,email){
 
-    Email.findOneAndUpdate({name:"emaillist"},{$pull:{emaillist:req.params.email}},{new:true}, function(err, emails){
+        if (err)throw err;
+        if(!email){
+            res.json({success:false, message:"Email Removal Failed"});
+        }else{
+            res.json({success:true, message:"Email Removal Successful"});
+        }
+
+    });
+    /*Email.findOneAndUpdate({name:"emaillist"},{$pull:{emaillist:req.params.email}},{new:true}, function(err, emails){
 
         if(err) throw err;
         if(!emails){
@@ -691,13 +712,13 @@ app.put('/api/removeemail/:email/', function(req,res){
             res.json({success:true, message: "Email Removed From List...", emails:emails});
         }
     });
-
-
-
-})
+*/
 
 
 });
+
+
+
 app.put('/api/sendemailemaillist/:email', function(req,res){
 
     var email = {
@@ -745,20 +766,21 @@ app.put('/api/sendemail/:email/:username/:grandtotal/:tax',function(req,res){
 
 })
 app.put('/api/addtoemaillist/:email',function(req,res){
-               /* var email = new Email();
-                email.name = 'emaillist';
-                emaillist = [];
+                var email = new Email();
+                email.email = req.params.email;
+                //emaillist = [];
                 email.save(function(err){
 
                     if(err){
-                        res.json({success: false, message:"New email creation failed..."});
+                        console.log(err);
+                        res.json({success: false, message:"You're Added To The List!..."});
                     }else{
-                        res.json({success: true, message: "New Email Creation Success"});
+                        res.json({success: true, message: "Success!"});
                     }
 
-                })
-                */
-                Email.findOneAndUpdate({name:'emaillist'},{$push:{emaillist: req.params.email}},{new:true},function(err, emaillist){
+                });
+                
+                /*Email.findOneAndUpdate({name:'emaillist'},{$push:{emaillist: req.params.email}},{new:true},function(err, emaillist){
 
                     if(err) throw err;
                     if(!emaillist){
@@ -771,6 +793,7 @@ app.put('/api/addtoemaillist/:email',function(req,res){
 
 
                 } );
+                */
             /*
                 var emailentry = new Email();
                 emailentry.name = "emaillist";
