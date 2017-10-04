@@ -929,7 +929,8 @@ transition:0.1s;
       font-size:25px;
       box-shadow: 2px 2px 2px #586368;
       
-     
+    /* border-top:0.1px solid #586368;
+     border-left:0.1px solid #586368;*/
      padding-right:20px;
      
       
