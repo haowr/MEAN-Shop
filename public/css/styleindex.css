@@ -944,7 +944,7 @@ transition:0.5s;
      
     position:absolute;
     display:inline-block;
-
+    opacity:1;
     
     left:134px;
     font-size:25px;
@@ -952,7 +952,7 @@ transition:0.5s;
      box-shadow: 3px 3px 2px #586368;
      bottom:-10px;
     padding-left:10px;
-    opacity:0.8;
+    
 color:#586368;
 
 
@@ -978,7 +978,7 @@ color:#586368;
      
     position:absolute;
     display:inline-block;
-
+    opacity:1;
     
     left:134px;
     font-size:25px;
