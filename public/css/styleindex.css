@@ -794,10 +794,18 @@ left:40px;
     box-shadow: 2px 2px 3px #586368;
 
 }
+.btn-primary:focus{
+  outline:0;
+}
+button:focus {outline:0;}
+
 .emaillistbutton{
   box-shadow: 2px 2px 2px #586368;
+  border:none;
+  
 }
 .emaillistbutton:active{
+  border:none;
   box-shadow: 3px 3px 3px #586368;
 }
 
@@ -884,6 +892,7 @@ transition:0.5s;
     left:134px;
     font-size:25px;
      box-shadow: 2px 2px 2px #586368;
+     bottom:-10px;
     padding-left:10px;
     opacity:0.8;
 color:#586368;
@@ -915,6 +924,7 @@ transition:0.1s;
     
     left:134px;
     font-size:25px;
+    bottom:-7px;
      box-shadow: 4px 4px 3px #586368;
     padding-left:10px;
     opacity:1;
