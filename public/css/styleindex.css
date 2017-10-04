@@ -882,6 +882,7 @@ transition:0.5s;
     opacity:0.8;
 color:#586368;
 transition:0.5s;
+
    /* display:inline-block;*/
    }
    .clothing:hover{
@@ -906,10 +907,10 @@ transition:0.5s;
    position:absolute;
    opacity:0.8;
    color:#586368;
-   transition:0.5s;
+   transition:0.1s;
    right:149px;
       font-size:25px;
-      box-shadow: 5px 5px 5px #586368;
+      box-shadow: 2px 2px 2px #586368;
       
      
      padding-right:20px;
@@ -920,7 +921,7 @@ transition:0.5s;
      
    display:inline-block;
    position:absolute;
-box-shadow: 7px 7px 10px #586368;
+box-shadow: 5px 5px 4px #586368;
 transition:0.5s;
 bottom:-3px;
    right:149px;
@@ -930,6 +931,23 @@ bottom:-3px;
     
      
      padding-right:20px;
+     
+      
+   }
+         .jewels:active{
+     
+   display:inline-block;
+   position:absolute;
+   opacity:0.8;
+   color:#586368;
+   bottom:0px;
+   right:149px;
+      font-size:25px;
+      box-shadow: 2px 2px 2px #586368;
+      
+     
+     padding-right:20px;
+     
      
       
    }
