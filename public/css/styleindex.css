@@ -795,7 +795,7 @@ left:40px;
 
 }
 
-@media only screen and (min-width: 510px){ 
+/*@media only screen and (min-width: 510px){ 
 
     .clothing{
      
@@ -811,7 +811,7 @@ left:40px;
 color:#586368;
 transition:0.5s;
    /* display:inline-block;*/
-   }
+  /* }
    .clothing:hover{
      
     position:absolute;
@@ -826,7 +826,7 @@ transition:0.5s;
    
 
    /* display:inline-block;*/
-   }
+  /* }
 
    .jewels{
      
@@ -866,7 +866,7 @@ transition:0.5s;
      border:1px solid black;
      height: 50px;;
    }
-}
+}*/
 @media only screen and (min-width: 568px){ 
 
     .clothing{
@@ -885,7 +885,7 @@ transition:0.1s;
 
    /* display:inline-block;*/
    }
-   .clothing:hover{
+  /* .clothing:hover{
      
     position:absolute;
     display:inline-block;
@@ -900,7 +900,7 @@ transition:0.1s;
    
 
    /* display:inline-block;*/
-   }
+  /* }*/
   .clothing:active{
      
     position:absolute;
@@ -909,7 +909,7 @@ transition:0.1s;
     
     left:134px;
     font-size:25px;
-     box-shadow: 2px 2px 2px #586368;
+     box-shadow: 4px 4px 3px #586368;
     padding-left:10px;
     opacity:1;
 color:#586368;
@@ -935,7 +935,23 @@ transition:0.1s;
      
       
    }
+      /*.jewels:hover{
+     
+   display:inline-block;
+   position:absolute;
+box-shadow: 4px 4px 3px #586368;
+transition:0.1s;
+bottom:-5px;
+   right:149px;
+      font-size:25px;
+          opacity:1;
+    color:black;
     
+     
+     padding-right:20px;
+     
+      
+   }*/
          .jewels:active{
      
    display:inline-block;
