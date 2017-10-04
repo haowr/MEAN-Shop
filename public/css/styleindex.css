@@ -935,14 +935,14 @@ transition:0.1s;
      
       
    }
-      .jewels:hover{
+      /*.jewels:hover{
      
    display:inline-block;
    position:absolute;
 box-shadow: 4px 4px 3px #586368;
 transition:0.1s;
 /*bottom:-5px;*/
-   right:149px;
+   /*right:149px;
       font-size:25px;
           opacity:1;
     color:black;
@@ -951,17 +951,18 @@ transition:0.1s;
      padding-right:20px;
      
       
-   }
+   }*/
          .jewels:active{
      
    display:inline-block;
    position:absolute;
-   opacity:1;
+   opacity:0.1;
+   transition:0.1s;
    color:#586368;
    /*bottom:-10px;*/
    right:149px;
       font-size:25px;
-      box-shadow: 2px 2px 2px #586368;
+      box-shadow: 4px 4px 3px #586368;
       
      
      padding-right:20px;
