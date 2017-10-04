@@ -941,8 +941,8 @@ transition:0.1s;
    position:absolute;
 box-shadow: 4px 4px 3px #586368;
 transition:0.1s;
-/*bottom:-5px;*/
-   /*right:149px;
+bottom:-5px;
+   right:149px;
       font-size:25px;
           opacity:1;
     color:black;
@@ -956,7 +956,7 @@ transition:0.1s;
      
    display:inline-block;
    position:absolute;
-   opacity:0.1;
+   opacity:1;
    transition:0.1s;
    color:#586368;
    /*bottom:-10px;*/
