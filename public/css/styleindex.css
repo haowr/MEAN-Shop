@@ -794,6 +794,12 @@ left:40px;
     box-shadow: 2px 2px 3px #586368;
 
 }
+.emaillistbutton{
+  box-shadow: 2px 2px 2px #586368;
+}
+.emaillistbutton:active{
+  box-shadow: 3px 3px 3px #586368;
+}
 
 /*@media only screen and (min-width: 510px){ 
 
