@@ -808,7 +808,14 @@ button:focus {outline:0;}
   border:none;
   box-shadow: 3px 3px 3px #586368;
 }
-
+#shoplink{
+  background-color:white;
+}
+/*.nav-link{
+  background-color:white;
+  /*box-shadow: 3px 3px 2px #586368;*/
+/*}
+*/
 /*@media only screen and (min-width: 510px){ 
 
     .clothing{
@@ -883,6 +890,16 @@ transition:0.5s;
 }*/
 @media only screen and (min-width: 568px){ 
 
+  .shoplink{
+
+    box-shadow: 3px 3px 2px #586368;
+
+  }
+    .shoplink:active{
+
+    box-shadow: 2px 2px 1px #586368;
+    transition:1s;
+  }
     .clothing{
      
     position:absolute;
@@ -897,7 +914,7 @@ transition:0.5s;
     padding-left:10px;
     opacity:0.8;
 color:#586368;
-transition:0.1s;
+
 
    /* display:inline-block;*/
    }
@@ -925,13 +942,17 @@ transition:0.1s;
     
     left:134px;
     font-size:25px;
-    bottom:-11px;
+    
     box-shadow: 2px 2px 1px #586368;
     /* box-shadow: 4px 4px 3px #586368;*/
     padding-left:10px;
-    opacity:1;
+    
 color:#586368;
-transition:0.1s;
+
+       -webkit-transform: translateY(2%);
+			transform: translateY(2%);
+	transition: transform 10ms linear;
+  opacity:1;
 
    /* display:inline-block;*/
    }
@@ -951,6 +972,7 @@ transition:0.1s;
     /* border-top:0.1px solid #586368;
      border-left:0.1px solid #586368;*/
      padding-right:20px;
+     
   
     
       
@@ -983,15 +1005,14 @@ bottom:-5px;
    right:149px;
       font-size:25px;
       /*box-shadow: 4px 4px 3px #586368;*/
-         /* box-shadow: 2px 2px 1px #586368;*/
+          box-shadow: 2px 2px 1px #586368;
 
       
      
-     padding-right:20px;
         -webkit-transform: translateY(2%);
 			transform: translateY(2%);
-	transition: transform 50ms linear;
-  
+	transition: transform 10ms linear;
+ 
      
       
    }
