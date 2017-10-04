@@ -740,6 +740,15 @@ border: solid 1px black;
 .boxshadow:hover{
  box-shadow: 2px 2px 2.5px #586368;
 }
+.socialmediaboxes{
+  height: 30px;
+  width:30px;
+  display:inline-block;
+}
+.socialmediabuttons{
+  
+  padding-top:3px;
+}
 #activatedheart{
 
   box-shadow: 1px 1px 2px #586368;
