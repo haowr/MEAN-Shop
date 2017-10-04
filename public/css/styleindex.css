@@ -935,23 +935,7 @@ transition:0.1s;
      
       
    }
-      /*.jewels:hover{
-     
-   display:inline-block;
-   position:absolute;
-box-shadow: 4px 4px 3px #586368;
-transition:0.1s;
-bottom:-5px;
-   right:149px;
-      font-size:25px;
-          opacity:1;
-    color:black;
     
-     
-     padding-right:20px;
-     
-      
-   }*/
          .jewels:active{
      
    display:inline-block;
