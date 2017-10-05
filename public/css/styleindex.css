@@ -353,7 +353,7 @@ border: 1px solid black;
 
 .details{
   border-top: 3px solid black;
-  display:block;
+  display:inline-block;
 }
 .details2{
   border-top: 2px solid black;
