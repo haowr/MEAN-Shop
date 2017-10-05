@@ -369,6 +369,9 @@ box-shadow:2px 2px 2px #586368;
 
 
 }
+#quantitybutton{
+  box-shadow:1px 1px 1px #586368;
+}
 .detailo.ng-hide{
  opacity:0;
 }
