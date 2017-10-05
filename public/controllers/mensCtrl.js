@@ -12,6 +12,7 @@
     console.log('"'+$routeParams.name+'"');
     
     //$rootScope.title = $routeParams.name;
+    $scope.loadmemensshoe = false;
     $scope.shoppingCartNumber=0;
     $scope.imageIndex = 0;
     $scope.size = "S";
@@ -62,6 +63,7 @@
             $scope.currentUser = data.data.username;
             User.getUserProfile(data.data.username).then(function(data){
                 console.log(data.data.user.loves.length);
+               
             
                 var unique = data.data.user.loves.filter(function(elem, index, self) {
                     return index == self.indexOf(elem);
@@ -75,6 +77,7 @@
                         $rootScope.heartactivated = true;
                         $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart);
                         console.log($rootScope.heartactivated);
+                        $scope.loadmemensshoe= true;
                     }else{
                         $rootScope.heartactivated = false;
                         $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);

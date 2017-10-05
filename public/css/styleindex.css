@@ -384,6 +384,13 @@ box-shadow:2px 2px 2px #586368;
 .detailo.ng-hide-remove{
   transition: all linear 0.2s;
 }
+.loadmemensshoe.ng-hide{
+ opacity:0;
+}
+.loadmemensshoe.ng-hide-add,
+.loadmemensshoe.ng-hide-remove{
+  transition: all linear 0.2s;
+}
 .loadme.ng-hide{
  opacity:0;
 }
