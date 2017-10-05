@@ -396,7 +396,7 @@ box-shadow:2px 2px 2px #586368;
 }
 .loadme.ng-hide-add,
 .loadme.ng-hide-remove{
-  transition: all linear 0.2s;
+  transition: all linear 0.8s;
 }
 .detailspanel{
   border:1px solid black;
