@@ -613,6 +613,16 @@
         }
 
     });
+    
+    app.directive('landingGalleryShop', function () {
+
+        return {
+
+            restrict: 'E',
+            templateUrl: '../views/directives/landing-gallery-shop.html'
+        }
+
+    });
 
 
 }());

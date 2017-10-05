@@ -54,6 +54,24 @@ console.log(hearto);
 		}
 
 	});
+	
+    app.directive('landingGalleryShop',function(){
+
+
+		return{
+
+			restrict: 'E',
+			templateUrl:'../views/landing-gallery-shop.html',
+					controller: function() {
+    	this.imageIndex = 0;
+    	this.currentImageChange = function(imageNumber) {
+      	console.log(imageNumber);
+      	this.imageIndex = imageNumber || 0;
+    	};},
+		controllerAs: 'gallery'
+		}
+
+	});
 	app.directive('landingPage',function(){
 
 		return{

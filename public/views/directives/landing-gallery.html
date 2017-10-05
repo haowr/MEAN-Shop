@@ -4,7 +4,7 @@
           <li>
             <center> <a href="/shop/mens/{{shoe.name}}"><img  class = "landing-gallery img-fluid" ng-src="{{shoe.shoecolor[gallery.imageIndex]}}"/></a></center>
           </li>
-          <li class = "small-image  thumbnail" ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
+          <li class = "small-image  thumbnail" id="thumbnail"ng-repeat="s in shoe.colors" ng-click="gallery.currentImageChange($index)">
              <img ng-src="{{s}}"/>
           </li>
         </ul>
