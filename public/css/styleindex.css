@@ -154,6 +154,7 @@ opacity:0;
 
 }
 .hojadborder{
+  display:none;
   border:1px solid black;
 }
 .fa-heart{
@@ -937,8 +938,13 @@ transition:0.5s;
 
 
 }
+
+
 @media only screen and (min-width: 568px){ 
 
+  .hojadborder{
+  display:inline-block;
+  }
   .shoplink{
 
     box-shadow: 3px 3px 2px #586368;
