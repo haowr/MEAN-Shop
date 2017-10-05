@@ -26,6 +26,9 @@ body{
   color:black;
   margin:0;
 }
+.ngview{
+  width:100%;
+}
 a {
   color: #00000f;
 }
