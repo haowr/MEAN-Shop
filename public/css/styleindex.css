@@ -929,6 +929,7 @@ transition:0.5s;
 .showmenunavbar{
   display:none;
 }
+
 @media only screen and (max-width: 991px){
 
   .showhamburger{
@@ -944,8 +945,20 @@ transition:0.5s;
 #hojad2{
   display:none;
 }
+#buttonsmall{
+  display:none;
+}
+#buttonmedium{
+  display:inline-block;
+}
 @media only screen and (min-width: 568px){ 
 
+  #buttonmedium{
+    display:none
+  }
+  #buttonsmall{
+    display:inline-block;
+  }
   .hojadborder{
   display:inline-block;
   box-shadow: 2px 2px 2px #586368;
