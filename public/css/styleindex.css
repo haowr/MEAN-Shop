@@ -100,6 +100,7 @@ img{
   border: 0;
   /*margin-right: 25px;*/
   min-height: 50px;
+  border:1px solid black;
 }
 
 .img-thumbnails .thumbnail:last-child {
@@ -228,6 +229,7 @@ font-family:'Muli';
 }
 .thumbnail{
   display:inline-block;
+  border:1px solid black;
 
 }
 .image {
@@ -844,17 +846,7 @@ color:black;
 }
 */
 
-.nav-link{
-  font-family:'Muli';
-  text-decoration:none;
-  opacity:0.8;
-  /*box-shadow: 3px 3px 2px #586368;*/
-}
-.nav-link:hover{
-  font-family:'Muli';
-  
-  opacity:1;
-}
+
 
 /*@media only screen and (min-width: 510px){ 
 
@@ -928,6 +920,23 @@ transition:0.5s;
      height: 50px;;
    }
 }*/
+.showhamburger{
+  display:inline-block;
+}
+.showmenunavbar{
+  display:none;
+}
+@media only screen and (max-width: 991px){
+
+  .showhamburger{
+    display:none;
+  }
+  .showmenunavbar{
+    display:inline-block;
+  }
+
+
+}
 @media only screen and (min-width: 568px){ 
 
   .shoplink{
@@ -940,11 +949,12 @@ transition:0.5s;
     box-shadow: 2px 2px 1px #586368;
     transition:1s;
   }
+  
     .clothing{
      
     position:absolute;
     display:inline-block;
-    opacity:1;
+    /*opacity:1;*/
     
     left:134px;
     font-size:25px;
@@ -974,7 +984,35 @@ color:#586368;
 
    /* display:inline-block;*/
   /* }*/
-  .clothing:active{
+    .clothing::after{
+     
+    position:absolute;
+    display:inline-block;
+    opacity:0;
+    
+    left:134px;
+    font-size:25px;
+    
+    box-shadow: 1px 1px 1px black;
+    /* box-shadow: 4px 4px 3px #586368;*/
+    padding-left:10px;
+    
+color:#586368;
+transition: opacity 0.3s ease-in-out;
+       /*-webkit-transform: translateY(3%);
+			transform: translateY(3%);
+      
+	transition: transform 10ms linear;
+  opacity:1;
+*/
+   /* display:inline-block;*/
+   }
+   /* Transition to showing the bigger shadow on hover */
+.clothing:hover::after {
+  opacity: 1;
+  
+}
+ /* .clothing:active{
      
     position:absolute;
     display:inline-block;
@@ -983,9 +1021,9 @@ color:#586368;
     left:134px;
     font-size:25px;
     
-    box-shadow: 1.5px 1.5px 1px #586368;
+    box-shadow: 2px 2px 1px #586368;
     /* box-shadow: 4px 4px 3px #586368;*/
-    padding-left:10px;
+   /* padding-left:10px;
     
 color:#586368;
 
@@ -995,7 +1033,23 @@ color:#586368;
   opacity:1;
 
    /* display:inline-block;*/
-   }
+  /* }*/
+  .make-it-fast {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Pre-render the bigger shadow, but hide it */
+.make-it-fast::after {
+  box-shadow: 10 10px 15px red;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Transition to showing the bigger shadow on hover */
+.make-it-fast:hover::after {
+  opacity: 1;
+}
+
    .jewels{
      
    display:inline-block;
