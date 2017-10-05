@@ -24,6 +24,7 @@
 
 body{
   color:black;
+  margin:0;
 }
 a {
   color: #00000f;
@@ -545,7 +546,7 @@ width: 500px !important;
 $c1: #114357;
 $c2: #826C75;
 $c3: #F29492;
-/*
+
 body {
   height: 100vh;
   display: flex;
@@ -554,7 +555,6 @@ body {
   background-color: white;
   overflow: hidden;
 }
-*/
 .dizzy-gillespie {
   filter: saturate(3);
   width: 0.1px;
