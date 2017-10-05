@@ -21,19 +21,7 @@
 	}
 */
 
-.hojad2{
-   display: none;
-}
 
-@media only screen and (max-width: 700px){ 
-   .hojad{
-     display: none;
-   }
-
-   .hojad2{
-     display: inline-block;
-   }
-}
 body{
   color:black;
 }
@@ -939,11 +927,16 @@ transition:0.5s;
 
 }
 
-
+#hojad2{
+  display:none;
+}
 @media only screen and (min-width: 568px){ 
 
   .hojadborder{
   display:inline-block;
+  }
+  #hojad2{
+    display:inline-block;
   }
   .shoplink{
 
