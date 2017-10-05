@@ -13,6 +13,7 @@
     
     //$rootScope.title = $routeParams.name;
     $scope.loadmemensshoe = false;
+    $scope.loadme2 = false;
     $scope.shoppingCartNumber=0;
     $scope.imageIndex = 0;
     $scope.size = "S";
@@ -77,7 +78,8 @@
                         $rootScope.heartactivated = true;
                         $window.localStorage.setItem($routeParams.name,$scope.addCookieHeart);
                         console.log($rootScope.heartactivated);
-                        $scope.loadmemensshoe= true;
+                       
+                        console.log("loadme@!!!!");
                     }else{
                         $rootScope.heartactivated = false;
                         $window.localStorage.setItem($routeParams.name,$scope.removeCookieHeart);
@@ -114,12 +116,13 @@
 
     Shop.getMensShoe($routeParams.name).then(function(data){
         $scope.mensShoe = data.data.allshoe[0];
-        $scope.loadme=true;
+        
         $rootScope.totalHearts = data.data.allshoe[0].hearts;
         console.log(data.data.allshoe);
         console.log("SCOPEHEARTACTIVATED");
         console.log($scope.mensShoe.hearts);
         console.log($scope.mensShoe.heartactivated);
+        $scope.loadme2 = true;
     });
 
     $scope.checkoutFunc= function(){
@@ -437,6 +440,7 @@
                                         console.log(data.data.allshoe);
                                         console.log($scope.mensShoe.hearts);
                                         $rootScope.totalHearts = data.data.allshoe[0].hearts;
+                                       
         
                                 });
 

@@ -400,7 +400,7 @@
                     scope.username = data.data.username;
                     $rootScope.usernamey = data.data.username;
                     scope.useremail = data.data.email;
-                    scope.loadme = true;
+                    //scope.loadme = true;
 
                    /* User.getLoves($rootScope.usernamey).then(function (data) {
                         console.log(data.data.message);
