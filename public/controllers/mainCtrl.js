@@ -46,9 +46,8 @@
         $rootScope.opacityOn2 = false;
         $rootScope.showButton = false;
         $rootScope.areYouSure = false;
-        $timeout(function(){
-            $scope.loadme = true;
-                },1000);        $scope.i = 0;
+
+        $scope.i = 0;
         $interval(function(){
             //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
            //console.log("i ran!");
@@ -401,7 +400,7 @@
                     scope.username = data.data.username;
                     $rootScope.usernamey = data.data.username;
                     scope.useremail = data.data.email;
-                   
+                    scope.loadme = true;
 
                    /* User.getLoves($rootScope.usernamey).then(function (data) {
                         console.log(data.data.message);
