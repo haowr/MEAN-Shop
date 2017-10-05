@@ -34,7 +34,7 @@
     <center>
         <div infinite-scroll="loadMoreo()" infinite-scroll-distance="0.1" class="container container-fluid ">
 
-            <div class = "col-sm-12">
+            
             <div class="landing " ng-repeat="shoe in shoes | orderBy: order track by $index ">
                 <h1 class = "pull-left myprofiletitle"> {{shoe.name}}</h1>
                 <p class="pull-right bellefair " id="shopprice">{{shoe.price | currency}}</p>
@@ -48,7 +48,7 @@
 
 
             </div>
-            </div>
+            
         </div>
     </center> <!-- onclick="topFunction()" -->
     <button back-to-top-jquery ng-click="topFunction();" id="myBtn" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
