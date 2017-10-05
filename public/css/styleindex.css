@@ -687,7 +687,10 @@ border: solid 1px black;
 #sizeformstyling{
 
   height:40px;
-
+  
+}
+.buttonshadow{
+  box-shadow:1px 1px 1px #586368;
 }
 .shoplinkstyling{
   text-decoration: underline;
