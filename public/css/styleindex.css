@@ -89,6 +89,8 @@ img{
   /*margin-right: 25px;*/
   min-height: 50px;
   border:1px solid black;
+  box-shadow:2px 2px 2px #586368;
+
 }
 
 .img-thumbnails .thumbnail:last-child {
@@ -182,7 +184,7 @@ margin-right:30px;
 }
 p{
 font-size:100%;
-font-family:'Muli';
+/*font-family:'Muli';*/
 
 }
 h4{
@@ -367,6 +369,13 @@ border:1px solid black;
 }
 .detailo.ng-hide-add,
 .detailo.ng-hide-remove{
+  transition: all linear 0.2s;
+}
+.loadme.ng-hide{
+ opacity:0;
+}
+.loadme.ng-hide-add,
+.loadme.ng-hide-remove{
   transition: all linear 0.2s;
 }
 .detailspanel{
@@ -1585,6 +1594,7 @@ margin-top:200px;
 
 display: inline-block;
 border-top: 1px solid #586368;
+box-shadow:2px 2px 2px #586368;
 
 }
 

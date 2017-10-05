@@ -107,7 +107,9 @@
                         $scope.shoes = $scope.allShoes;
                         //$scope.shoesPaginated = data.data.shoes[0].pages;
                         //console.log($scope.shoesPaginated);
-                        $scope.loadme = true;
+                        // $scope.loadme = true;
+                        getPages();
+                       
                     } else {
                         console.log("Something went wrong getting shoe filepaths...");
                         console.log(data.data.message);
@@ -126,9 +128,10 @@
             Shop.getPages().then(function (data) {
                 console.log(data.data.page);
                 $scope.shoesPaginated = data.data.page;
+                 $scope.loadme = true;
             });
         };
-        getPages();
+        
 
         $scope.heartAdderShop = function (shoename, shoeindex) {
 
@@ -246,6 +249,8 @@
         // this.imageIndex = imageNumber || 0;
         //};
 
+
     });
+    
 
 }());
