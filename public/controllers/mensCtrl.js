@@ -129,7 +129,7 @@
             $scope.loadme2 = true;
             console.log($scope.mensShoe);
 
-        },200);
+        },1000);
         
     });
 

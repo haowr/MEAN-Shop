@@ -399,9 +399,7 @@ box-shadow:2px 2px 2px #586368;
 }
 .loadme2.ng-hide-add,
 .loadme2.ng-hide-remove{
-   -moz-transition:all linear 1s;
-  -o-transition:all linear 1s;
-  -webkit-transition:all linear 1s;
+ 
 
 
   transition: all linear 0.8s;
