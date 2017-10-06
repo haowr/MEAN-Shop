@@ -390,6 +390,7 @@ box-shadow:2px 2px 2px #586368;
 }
 .loadme.ng-hide-add,
 .loadme.ng-hide-remove{
+  
   transition: all linear 0.3s;
 }
 
@@ -998,6 +999,7 @@ transition:0.5s;
     display:inline-block;
   }
 */
+
   .shoplink{
 
     box-shadow: 3px 3px 2px #586368;

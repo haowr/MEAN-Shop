@@ -440,9 +440,11 @@
 
                             scope.authorized = true;
                             scope.loadme = true;
+                            console.log("getPermission admin mod true scope.loadme has run");
                         } else {
                             scope.authorized = false;
                             scope.loadme = true;
+                            console.log("getPermission scope.loadme has run");
                         }
 
                     });
@@ -459,6 +461,7 @@
                 scope.username = "";
                 scope.isLoggedIn = false;
                 scope.loadme = true;
+                console.log("user is not logged in loadme has run...");
             }
 
 
