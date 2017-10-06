@@ -112,6 +112,8 @@
    
   
  
+ //var getShoes = function(){
+
  
 
     Shop.getMensShoe($routeParams.name).then(function(data){
@@ -122,9 +124,12 @@
         console.log("SCOPEHEARTACTIVATED");
         console.log($scope.mensShoe.hearts);
         console.log($scope.mensShoe.heartactivated);
+        console.log("loadme2 is running!");
         $scope.loadme2 = true;
     });
 
+ 
+ 
     $scope.checkoutFunc= function(){
        // console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
        if($scope.amt == 0){

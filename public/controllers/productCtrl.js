@@ -128,6 +128,7 @@
             Shop.getPages().then(function (data) {
                 console.log(data.data.page);
                 $scope.shoesPaginated = data.data.page;
+                console.log("loadme is running!")
                  $scope.loadme = true;
             });
         };
