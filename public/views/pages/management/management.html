@@ -139,7 +139,7 @@
                     <td><a href="/profile/orderdetails/{{store.username}}/{{$index}}">{{$index + 1}}</a></td>
                     <td>{{store.items}}</td>
                     <td>{{store.grandTotal | currency}}</td>
-                    <td>{{store.timestammp}}</td>
+                    <td style="word-wrap:break-word">{{store.timestammp}}</td>
                     <td><i class="fa fa-times" ng-click="removeEmail(email);"></i></td>
                     <!--<button ng-click="showModal(3,$index);" class="btn btn-submit">Remove</button>-->
 
