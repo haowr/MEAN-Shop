@@ -764,6 +764,10 @@ border: solid 1px black;
   
 
 }
+#pricetitle{
+
+  box-shadow:2px 2px 2px #586368;
+}
 .boxshadow{
   box-shadow: 2px 2px 2px #586368;
 }
