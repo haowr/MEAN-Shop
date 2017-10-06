@@ -1354,6 +1354,7 @@ display:inline-block;
 }
 #itemdescription{
 text-decoration:underline;
+box-shadow:2px 2px 2px #586368;
 }
 #shippingandreturnsstyling{
   text-decoration:underline;
