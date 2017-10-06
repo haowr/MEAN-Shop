@@ -1442,6 +1442,9 @@ text-decoration:underline;
 .panzoom{
  height: 100%;
 }
+.zoomicons{
+  font-size:20px;
+}
 #pan-when-zoomed{
 
   border-top: 1px solid black;
