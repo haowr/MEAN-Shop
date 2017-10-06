@@ -54,10 +54,10 @@
     $scope.checkoutArray=[];
     $scope.newAdminProducts=[];
     $scope.adminProducts;
-    $scope.happy=[{name: "Ras", size: "M", amt: "1", price: "322.00", description: "The head of our creations. The perfection of the way"}];
-    console.log(JSON.stringify($scope.happy));
+    //$scope.happy=[{name: "Ras", size: "M", amt: "1", price: "322.00", description: "The head of our creations. The perfection of the way"}];
+    //console.log(JSON.stringify($scope.happy));
 
-    if(Auth.isLoggedIn()){
+   /* if(Auth.isLoggedIn()){
 
         Auth.getUser().then(function(data){
             console.log(data.data.username);
@@ -129,7 +129,7 @@
     });
 
  */
- 
+ /*
     $scope.checkoutFunc= function(){
        // console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
        if($scope.amt == 0){
@@ -196,7 +196,8 @@
             console.log(data.data);
 
         });
-        */
+        *//*
+
         console.log("button pressed");
         console.log($scope.size);
         console.log($scope.amt);
@@ -276,7 +277,7 @@
         */
 
 
-    };
+    
    /* Heart.isActivated($routeParams).then(function(data){
 
         console.log("heartActivated "+data.data.success);
@@ -290,7 +291,7 @@
 
     });
     */
-
+/*
     var changeTitle = function(){
 
         $rootScope.title ="HOJ | "+ $routeParams.name;
@@ -346,6 +347,7 @@
 
 
     };
+    */
     $scope.heartAdder = function(shoename){
 
         console.log("new button press");

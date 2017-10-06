@@ -125,7 +125,11 @@
         console.log($scope.mensShoe.hearts);
         console.log($scope.mensShoe.heartactivated);
         console.log("loadme2 is running!");
-        $scope.loadme2 = true;
+        //$timeout(function(){
+            $scope.loadme2 = true;
+
+        //},2000);
+        
     });
 
  
