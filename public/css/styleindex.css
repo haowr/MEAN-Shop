@@ -764,6 +764,9 @@ border: solid 1px black;
   
 
 }
+.detailostyling{
+  padding-left: 12px;
+}
 #pricetitle{
 
   box-shadow:2px 2px 2px #586368;
