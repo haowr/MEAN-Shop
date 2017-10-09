@@ -1195,6 +1195,7 @@ bottom:-5px;
    }
    .searchresultsp{
      display:block;
+    
     /* position:absolute;
      top:30px;
      border:1px solid black;
@@ -1420,6 +1421,9 @@ bottom:-5px;
 */
 }
 @media only screen and (max-width: 500px){ 
+  #search{
+    display:none;
+  }
    .clothing{
      transition:0.5s;
     position:absolute;
