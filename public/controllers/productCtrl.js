@@ -35,7 +35,33 @@
         $scope.hearts = 1;
         scope.hearts = false;
         $scope.loadme = false;
+       /* $scope.searchEl= document.querySelector("#input");
+        $scope.labelEl = document.querySelector("#label");
 
+        
+    // register clicks and toggle classes
+    $scope.labelEl.addEventListener("click",function(){
+        if (classie.has($scope.searchEl,"focus")) {
+            classie.remove($scope.searchEl,"focus");
+            classie.remove($scope.labelEl,"active");
+        } else {
+            classie.add($scope.searchEl,"focus");
+            classie.add($scope.labelEl,"active");
+        }
+    });
+
+    // register clicks outisde search box, and toggle correct classes
+    document.addEventListener("click",function(e){
+        var clickedID = e.target.id;
+        if (clickedID != "search-terms" && clickedID != "search-label") {
+            if (classie.has($scope.searchEl,"focus")) {
+                classie.remove($scope.searchEl,"focus");
+                classie.remove($scope.labelEl,"active");
+            }
+        }
+    });
+        console.log($scope.searchEl);
+        */
         $scope.load = function () {
 
             console.log("$scope.load works!");

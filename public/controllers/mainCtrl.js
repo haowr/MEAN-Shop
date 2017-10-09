@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module("mainController", ['authServices', 'mainServices', 'userServices','titleServices', 'infinite-scroll', 'heartServices', 'shopServices', 'emailServices']);
+    var app = angular.module("mainController", ['authServices', 'mainServices', 'userServices', 'titleServices', 'infinite-scroll', 'heartServices', 'shopServices', 'emailServices']);
 
     app.config(function () {
 
@@ -22,7 +22,7 @@
             { image: "../img/ADS.jpg", description: "Image 01" },
             { image: "../img/DSG.jpg", description: "Image 02" }
         ];
-        $rootScope.commercial =  ["../img/SummerSale.jpg"];
+        $rootScope.commercial = ["../img/SummerSale.jpg"];
 
         $rootScope.currentIndex = 0;
         //$rootScope.commercial = 0;
@@ -30,7 +30,7 @@
         $rootScope.personalMyLoves = [];
         $rootScope.usernamey;
         $scope.shoeThumbs = [];
-
+        $scope.allShoes = [];
         $scope.looper = {};
         $scope.whatsNewThumbs = [];
         $scope.longAd = ["../img/longad80.jpg"];
@@ -46,33 +46,69 @@
         $rootScope.opacityOn2 = false;
         $rootScope.showButton = false;
         $rootScope.areYouSure = false;
-
+        $scope.openSearchVar = false;
+        $scope.openSearchVar2 = false;
+        $scope.searchQuery ="R";
         $scope.i = 0;
-        $interval(function(){
-            //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
-           //console.log("i ran!");
-            if($scope.i == 0){
-               // commercial.shift();
-                //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
-                $scope.i =1;
-                //console.log($scope.i);
-            }else if($scope.i == 1){
-                $rootScope.commercial.shift();
-                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
-                $scope.i=2;
-                //console.log($scope.i);
-            }else if($scope.i == 2){
-                $rootScope.commercial.shift();
-                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
-                $scope.i  = 0;
-               // console.log($scope.i);
+
+        Shop.getAllShoes().then(function(data){
+
+
+            console.log(data.data);
+            $scope.allShoesIndex=data.data.allshoes;
+            console.log($scope.allShoesIndex);
+
+        });
+        $scope.openSearch = function (choice,query) {
+            console.log(choice);
+            console.log(query);
+            if (choice && $scope.openSearchVar) {
+                //$scope.openSearchVar = false;
+        
+                $scope.openSearchVar2 = false;
+                $scope.openSearchVar = false;
+                $scope.searchQuery = query;
+                console.log($scope.openSearchVar);
+            } else if (choice && !$scope.openSearchVar) {
+
+                $scope.openSearchVar = true;
+
+                
+                        $timeout(function(){
+                              $scope.openSearchVar2 = true;
+
+                },1000);
+              
+                console.log($scope.openSearchVar);
             }
 
-        },4000);
+
+        }
+        $interval(function () {
+            //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
+            //console.log("i ran!");
+            if ($scope.i == 0) {
+                // commercial.shift();
+                //$rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                $scope.i = 1;
+                //console.log($scope.i);
+            } else if ($scope.i == 1) {
+                $rootScope.commercial.shift();
+                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                $scope.i = 2;
+                //console.log($scope.i);
+            } else if ($scope.i == 2) {
+                $rootScope.commercial.shift();
+                $rootScope.commercial.push($rootScope.commercials[$scope.i]);
+                $scope.i = 0;
+                // console.log($scope.i);
+            }
+
+        }, 4000);
 
         var changeTitle = function () {
             console.log("changeTitle has run..");
-            
+
             $rootScope.title = "HOJ | A House Of Jewels";
             console.log($rootScope.title);
 
@@ -127,7 +163,7 @@
             return $rootScope.currentIndex === index;
         };
 
-    
+
 
         $rootScope.EmailListEmail;
 
@@ -138,25 +174,25 @@
             Auth.getUser().then(function (data) {
 
                 console.log(data.data);
-                if(!data.data.username){  //JUST ADDED THIS SEPT 26th
+                if (!data.data.username) {  //JUST ADDED THIS SEPT 26th
                     console.log("logout has run...");
                     Auth.logout();
-                }else{
-                    
-                              User.getUserProfile(data.data.username).then(function (data) {
-                    console.log(data.data.user.loves.length);
+                } else {
 
-                    var unique = data.data.user.loves.filter(function (elem, index, self) {
-                        return index == self.indexOf(elem);
+                    User.getUserProfile(data.data.username).then(function (data) {
+                        console.log(data.data.user.loves.length);
+
+                        var unique = data.data.user.loves.filter(function (elem, index, self) {
+                            return index == self.indexOf(elem);
+                        });
+                        $rootScope.personalMyLoves = unique;
+                        console.log($rootScope.personalMyLoves);
+                        $rootScope.heartss = $rootScope.personalMyLoves.length;
+                        $rootScope.cartItems = data.data.user.shoppingbag.length;
                     });
-                    $rootScope.personalMyLoves = unique;
-                    console.log($rootScope.personalMyLoves);
-                    $rootScope.heartss = $rootScope.personalMyLoves.length;
-                    $rootScope.cartItems = data.data.user.shoppingbag.length;
-                });
 
                 }
-      
+
 
             });
 
@@ -194,7 +230,6 @@
 
 
 
-  
         $scope.addToEmailList = function (emailListData, valid) {
 
             console.log("form submitted");
@@ -224,25 +259,25 @@
                         }, 2500);
 
 
-                    }else{
+                    } else {
                         $scope.emailLoading = false;
                         $scope.emailEntryFailed = true;
-                        $timeout(function(){
+                        $timeout(function () {
 
                             $scope.emailEntryFailed = false;
                             $scope.joinOurEmailList = true;
 
-                        },2500);
+                        }, 2500);
                     }
                     console.log(data.data.message);
                     console.log(data.data);
                 });
-            }else{
+            } else {
                 $scope.invalidEmail = true;
-                $timeout(function(){
+                $timeout(function () {
                     $scope.invalidEmail = false;
-                    
-                },2000);
+
+                }, 2000);
             }
 
         };
@@ -387,7 +422,7 @@
 
             }
 
-  
+
         };
 
         $rootScope.$on('$routeChangeStart', function () {
@@ -402,20 +437,20 @@
                     scope.useremail = data.data.email;
                     //scope.loadme = true;
 
-                   /* User.getLoves($rootScope.usernamey).then(function (data) {
-                        console.log(data.data.message);
-                        console.log(data.data.loves);
-                        var unique = data.data.loves.loves.filter(function (elem, index, self) {
-                            return index == self.indexOf(elem);
-                        });
-                        console.log(unique);
-                        $rootScope.personalMyLoves = unique;
-                        //$rootScope.personalMyLoves = data.data.loves.loves;
-                        //$scope.looper.personalMyLoves = data.data.loves.loves;
-                        $rootScope.heartss = $rootScope.personalMyLoves.length;
-                        console.log($rootScope.personalMyLoves);
-                        console.log(data.data.loves.loves);
-                    });*/
+                    /* User.getLoves($rootScope.usernamey).then(function (data) {
+                         console.log(data.data.message);
+                         console.log(data.data.loves);
+                         var unique = data.data.loves.loves.filter(function (elem, index, self) {
+                             return index == self.indexOf(elem);
+                         });
+                         console.log(unique);
+                         $rootScope.personalMyLoves = unique;
+                         //$rootScope.personalMyLoves = data.data.loves.loves;
+                         //$scope.looper.personalMyLoves = data.data.loves.loves;
+                         $rootScope.heartss = $rootScope.personalMyLoves.length;
+                         console.log($rootScope.personalMyLoves);
+                         console.log(data.data.loves.loves);
+                     });*/
                     console.log($rootScope.personalMyLoves);
                     Shop.getThumbnails().then(function (data) {
 
@@ -491,22 +526,22 @@
 
                 console.log(data.data.success);
                 console.log(data.data.message);
-             
+
                 if (data.data.success) {
                     //CREATE SUCCESS MESSAGE
                     //REDIRECT TO HOMEPAGE  
-                       Auth.getUser().then(function (data) {
-
-                    console.log(data.data);
-                    User.getShoppingBag(data.data.username).then(function (data) {
+                    Auth.getUser().then(function (data) {
 
                         console.log(data.data);
-                        console.log(data.data.user.shoppingbag.length);
-                        $rootScope.cartItems = data.data.user.shoppingbag.length;
+                        User.getShoppingBag(data.data.username).then(function (data) {
+
+                            console.log(data.data);
+                            console.log(data.data.user.shoppingbag.length);
+                            $rootScope.cartItems = data.data.user.shoppingbag.length;
+
+                        });
 
                     });
-
-                });
 
 
                     scope.loading = false;

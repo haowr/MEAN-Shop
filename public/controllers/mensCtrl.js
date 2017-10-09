@@ -40,6 +40,8 @@
     $scope.noQty = false;
     $scope.newHeartValue=false;
     $scope.addedToCart = false;
+    $scope.searchOpened = false;
+    $scope.searchClosed = true;
     $scope.itemAddedToCart;
     $scope.zoomValue =0;
     //$rootScope.heartActivated= false;
@@ -133,8 +135,17 @@
         
     });
 
- 
- 
+/*
+  $scope.openSearch = function(choice){
+    console.log(choice);
+        if(choice == "true"){
+        $scope.openSearch = true;
+        }else{
+        $scope.openSearch = false;
+        }
+
+  }
+ */
     $scope.checkoutFunc= function(){
        // console.log(JSON.parse($window.localStorage.getItem('checkoutArray')));
        if($scope.amt == 0){
