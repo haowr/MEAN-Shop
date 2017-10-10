@@ -59,6 +59,19 @@
             console.log($scope.allShoesIndex);
 
         });
+        $scope.closeResults = function(){
+
+            $scope.openSearchVar2 = false;
+                $timeout(function(){
+                              $scope.openSearchVar = false;
+
+                },1000);
+            console.log("closeResults");
+
+        };
+        $scope.doSearch= function(query){
+            $scope.searchQuery = query;
+        }
         $scope.openSearch = function (choice,query) {
             console.log(choice);
             console.log(query);
@@ -66,11 +79,16 @@
                 //$scope.openSearchVar = false;
         
                 $scope.openSearchVar2 = false;
-                $scope.openSearchVar = false;
+                //$scope.openSearchVar = false;
+                $scope.shopSearch.$$element[0][0].value = "";
                 $scope.searchQuery = query;
+                                    $timeout(function(){
+                              $scope.openSearchVar = false;
+
+                },1000);
                 console.log($scope.openSearchVar);
             } else if (choice && !$scope.openSearchVar) {
-
+                $scope.shopSearch.$$element[0][0].value = "";
                 $scope.openSearchVar = true;
 
                 
