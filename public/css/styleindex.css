@@ -1713,6 +1713,7 @@ bottom:-5px;
     top:60px;
     right:1%;*/
      width:100%;
+     padding-left:30px;
      height:200px;
      z-index:50000;
      overflow-y:auto;
