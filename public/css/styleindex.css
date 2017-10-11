@@ -1069,7 +1069,6 @@ transition:0.5s;
      height:200px;
      z-index:50000;
      overflow-y:auto;
-     padding-left:30px;
      transition:1s;
    }
 #searchresults:hover{
@@ -1710,10 +1709,10 @@ bottom:-5px;
         opacity:0.4;
         box-shadow: 2px 2px 2px #586368;
         color:#586368;
-    /*position:absolute;
-    top:60px;
-    right:1%;*/
-     width:100%;
+    position:absolute;
+    
+    left:14%;
+     width:300px;
      padding-left:30px;
      height:200px;
      z-index:50000;
