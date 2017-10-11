@@ -1120,7 +1120,7 @@ transition:0.5s;
    .searchinputclosed{
      display:inline-block;
     position:absolute;
-    top:160px;
+    top:155px;
     left:16%;
       padding-left:30px;
    }
