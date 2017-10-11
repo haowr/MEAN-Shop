@@ -965,9 +965,261 @@ transition:0.5s;
 .showmenunavbar{
   display:none;
 }
+@media only screen and (min-width: 991px){
 
+ #search{
+    display:inline-block;
+  }
+
+      #search{
+    display:inline-block;
+  }
+   .searchinput{
+    /* position:absolute;
+     top:17px;
+     left:700px;*/
+     position:absolute;
+     top:17px;
+     right:1%;
+     width:400px;
+     transition:1s;
+     outline:none;
+    /* z-index:55000;*/
+   }
+   .searchinputclosed{
+     position:absolute;
+     top:17px;
+     right:1%;
+     width:0px;
+     opacity:0;
+     transition:.5s;
+   }
+   .searchlabel{
+    /* border:1px solid black;*/
+     position:absolute;
+     font-size:17px;
+     width:40px;
+     height:30px;
+     top:15px;
+     right:19%;
+   }
+    .searchlabelclose{
+    /* border:1px solid black;*/
+   display:none;
+     position:absolute;
+     font-size:17px;
+     width:40px;
+     height:30px;
+     top:15px;
+     right:19%;
+   }
+   #searchlabel:hover{
+    /* position:absolute;
+     top:9px;
+     height:30px;
+     width:40px;
+     font-size: 22px;
+     transition:0.2s;*/
+     color:black;
+     
+   }
+      #searchlabel:active{
+    /* border:1px solid black;*/
+     /*position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;*/
+     color:black;
+   }
+   .searchlabelmoved{
+     
+     position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;
+     transition:1s;
+     opacity:1;
+     outline:none;
+
+   }
+   #searchicon{
+     padding-top:5px;
+   }
+   /*
+   #searchimage{
+
+    border:1px solid black;
+
+   }
+   */
+      #searchresults{
+        /*-color:#fff1ef;*/
+        background-color:white;
+        opacity:0.4;
+        box-shadow: 2px 2px 2px #586368;
+        color:#586368;
+    position:absolute;
+    top:60px;
+    right:1%;
+     width:400px;
+     height:200px;
+     z-index:50000;
+     overflow-y:auto;
+     transition:1s;
+   }
+#searchresults:hover{
+      
+        opacity:1;
+        transition:1s;
+   }
+   .searchresultsp{
+   
+    
+    /* position:absolute;
+     top:30px;
+     border:1px solid black;
+     color:black;
+     opacity:1;
+     z-index:55000;*/
+   }
+   
+   #searchresults.ng-hide{
+ opacity:0;
+}
+#searchresults.ng-hide-add,
+#searchresults.ng-hide-remove{
+ 
+  transition: all linear 0.5s;
+}
+
+}
 @media only screen and (max-width: 991px){
 
+
+      #search{
+    display:inline-block;
+  }
+   .searchinput{
+    /* position:absolute;
+     top:17px;
+     left:700px;*/
+     position:absolute;
+     top:17px;
+     right:1%;
+     width:400px;
+     transition:1s;
+     outline:none;
+    /* z-index:55000;*/
+   }
+   .searchinputclosed{
+     position:absolute;
+     top:17px;
+     right:1%;
+     width:0px;
+     opacity:0;
+     transition:.5s;
+   }
+   .searchlabel{
+    /* border:1px solid black;*/
+     position:absolute;
+     font-size:17px;
+     width:40px;
+     height:30px;
+     top:15px;
+     right:19%;
+   }
+    .searchlabelclose{
+    /* border:1px solid black;*/
+   display:none;
+     position:absolute;
+     font-size:17px;
+     width:40px;
+     height:30px;
+     top:15px;
+     right:19%;
+   }
+   #searchlabel:hover{
+    /* position:absolute;
+     top:9px;
+     height:30px;
+     width:40px;
+     font-size: 22px;
+     transition:0.2s;*/
+     color:black;
+     
+   }
+      #searchlabel:active{
+    /* border:1px solid black;*/
+     /*position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;*/
+     color:black;
+   }
+   .searchlabelmoved{
+     
+     position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;
+     transition:1s;
+     opacity:1;
+     outline:none;
+
+   }
+   #searchicon{
+     padding-top:5px;
+   }
+   /*
+   #searchimage{
+
+    border:1px solid black;
+
+   }
+   */
+      #searchresults{
+        /*-color:#fff1ef;*/
+        background-color:white;
+        opacity:0.4;
+        box-shadow: 2px 2px 2px #586368;
+        color:#586368;
+    position:absolute;
+    top:60px;
+    right:1%;
+     width:400px;
+     height:200px;
+     z-index:50000;
+     overflow-y:auto;
+     transition:1s;
+   }
+#searchresults:hover{
+      
+        opacity:1;
+        transition:1s;
+   }
+   .searchresultsp{
+   
+    
+    /* position:absolute;
+     top:30px;
+     border:1px solid black;
+     color:black;
+     opacity:1;
+     z-index:55000;*/
+   }
+   
+   #searchresults.ng-hide{
+ opacity:0;
+}
+#searchresults.ng-hide-add,
+#searchresults.ng-hide-remove{
+ 
+  transition: all linear 0.5s;
+}
   .showhamburger{
     display:none;
   }
@@ -975,6 +1227,7 @@ transition:0.5s;
     display:inline-block;
   }
 
+ 
 
 }
 
@@ -1013,9 +1266,7 @@ transition:0.5s;
     display:inline-block;
   }
 */
-  #search{
-    display:inline-block;
-  }
+
   .shoplink{
 
     box-shadow: 3px 3px 2px #586368;
@@ -1151,80 +1402,7 @@ bottom:-5px;
      border:1px solid black;
      height: 50px;;
    }
-   .searchinput{
-     position:absolute;
-     top:17px;
-     left:70%;
-     width:400px;
-     transition:1s;
-     outline:none;
-     z-index:55000;
-   }
-   .searchinputclosed{
-     position:absolute;
-     top:17px;
-     left:99%;
-     width:0px;
-     opacity:0;
-     transition:.5s;
-   }
-   #searchlabel{
-    /* border:1px solid black;*/
-     position:absolute;
-     width:40px;
-     height:30px;
-     top:17px;
-     right:407px;
-   }
-   #searchicon{
-     padding-top:5px;
-   }
-   /*
-   #searchimage{
-
-    border:1px solid black;
-
-   }
-   */
-      #searchresults{
-        /*-color:#fff1ef;*/
-        background-color:white;
-        opacity:0.4;
-        box-shadow: 2px 2px 2px #586368;
-        color:#586368;
-    position:absolute;
-    top:60px;
-    right:0px;
-     width:400px;
-     height:200px;
-     z-index:50000;
-     overflow-y:auto;
-     transition:1s;
-   }
-#searchresults:hover{
-      
-        opacity:1;
-        transition:1s;
-   }
-   .searchresultsp{
-   
-    
-    /* position:absolute;
-     top:30px;
-     border:1px solid black;
-     color:black;
-     opacity:1;
-     z-index:55000;*/
-   }
-   
-   #searchresults.ng-hide{
- opacity:0;
-}
-#searchresults.ng-hide-add,
-#searchresults.ng-hide-remove{
  
-  transition: all linear 0.5s;
-}
 .hidden-submit {
     border: 0 none;
     height: 0;

@@ -48,55 +48,84 @@
         $rootScope.areYouSure = false;
         $scope.openSearchVar = false;
         $scope.openSearchVar2 = false;
-        $scope.searchQuery ="R";
+        $scope.searchIcon = true;
+        $scope.searchQuery = "R";
         $scope.i = 0;
 
-        Shop.getAllShoes().then(function(data){
+        Shop.getAllShoes().then(function (data) {
 
 
             console.log(data.data);
-            $scope.allShoesIndex=data.data.allshoes;
+            $scope.allShoesIndex = data.data.allshoes;
             console.log($scope.allShoesIndex);
+            $timeout(function () {
+                scope.loadme = true;
+                console.log("scope.loadme");
+
+            }, 2000);
 
         });
-        $scope.closeResults = function(){
-
+        $scope.closeResults = function () {
+        console.log("searchiconmadefalse")
+            $scope.searchIcon=true;
             $scope.openSearchVar2 = false;
-                $timeout(function(){
-                              $scope.openSearchVar = false;
+                 $timeout(function () {
+               
+                
 
-                },1000);
+            }, 500);
+
+            $timeout(function () {
+                 //$scope.searchIcon = true;
+                $scope.openSearchVar = false;
+                
+
+            }, 1000);
             console.log("closeResults");
 
         };
-        $scope.doSearch= function(query){
+        $scope.doSearch = function (query) {
             $scope.searchQuery = query;
         }
-        $scope.openSearch = function (choice,query) {
+        $scope.openSearch = function (choice, query) {
             console.log(choice);
             console.log(query);
             if (choice && $scope.openSearchVar) {
                 //$scope.openSearchVar = false;
-        
+                console.log("firstcase");
                 $scope.openSearchVar2 = false;
+                //$scope.searchIcon = true;
                 //$scope.openSearchVar = false;
                 $scope.shopSearch.$$element[0][0].value = "";
                 $scope.searchQuery = query;
-                                    $timeout(function(){
-                              $scope.openSearchVar = false;
+                $timeout(function () {
+                    $scope.openSearchVar = false;
 
-                },1000);
+
+                }, 1000);
                 console.log($scope.openSearchVar);
             } else if (choice && !$scope.openSearchVar) {
                 $scope.shopSearch.$$element[0][0].value = "";
-                $scope.openSearchVar = true;
 
-                
-                        $timeout(function(){
-                              $scope.openSearchVar2 = true;
+                $timeout(function () {
+                    $scope.openSearchVar = true;
 
-                },1000);
-              
+                    // $scope.searchIcon = true;
+                }, 400);
+
+                $timeout(function () {
+                    $scope.openSearchVar2 = true;
+
+                    //$scope.searchIcon = false;
+                }, 1000);
+               /* $timeout(function () {
+                    // $scope.openSearchVar2 = true;
+                    console.log("searchIconon");
+                    $scope.searchIcon = false;
+
+                }, 1400);*/
+                $scope.searchIcon = false;
+
                 console.log($scope.openSearchVar);
             }
 
@@ -492,11 +521,11 @@
                         if (data.data.permission == "admin" || data.data.permission == "moderator") {
 
                             scope.authorized = true;
-                            scope.loadme = true;
+                            //scope.loadme = true;
                             console.log("getPermission admin mod true scope.loadme has run");
                         } else {
                             scope.authorized = false;
-                            scope.loadme = true;
+                            //scope.loadme = true;
                             console.log("getPermission scope.loadme has run");
                         }
 
@@ -513,7 +542,7 @@
                 console.log('Failure: User is not logged in.')
                 scope.username = "";
                 scope.isLoggedIn = false;
-                scope.loadme = true;
+                // scope.loadme = true;
                 console.log("user is not logged in loadme has run...");
             }
 

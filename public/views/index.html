@@ -29,11 +29,6 @@
   <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js"></script>-->
   <script type="text/javascript" src="../js/app.js"></script>
   <script type="text/javascript" src="../js/routes.js"></script>
-
-
-
-
-
   <script type="text/javascript" src="../controllers/userCtrl.js"></script>
   <script type="text/javascript" src="../controllers/mainCtrl.js"></script>
   <script type="text/javascript" src="../controllers/emailerCtrl.js"></script>
@@ -49,7 +44,6 @@
   <!--<script type ="text/javascript" src ="../controllers/editCtrl.js"></script>-->
   <script type="text/javascript" src="../services/userServices.js"></script>
   <script type="text/javascript" src="../services/titleServices.js"></script>
-
   <script type="text/javascript" src="../services/authServices.js"></script>
   <script type="text/javascript" src="../services/mainServices.js"></script>
   <script type="text/javascript" src="../services/shopServices.js"></script>
@@ -130,11 +124,11 @@
         <form id="search" name="shopSearch" ng-submit="doSearch(shopSearch.$$element[0][0].value);" novalidate>
           
           <div id="label">
-            <label for="searchItems" id="searchlabel"  ng-show="!openSearchVar"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <center><i class = "fa fa-search"  id="searchicon"aria-hidden="true"></i></center></label>
-            <label for="searchItems" id="searchlabel"  ng-show="openSearchVar" ng-click="closeResults();"> <center><i class = "fa fa-times"  id="searchicon"aria-hidden="true"></i></center></label>
+            <label for="searchItems" class = "secondarytextsimple searchlabel" ng-class="{'searchlabelmoved':openSearchVar}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <center><i class = "fa fa-search"  id="searchicon"aria-hidden="true"></i></center></label>
+            <label for="searchItems" class = "secondarytextsimple searchlabel"  ng-class="{'searchlabelmoved':!searchIcon}" ng-show="!searchIcon" ng-click="closeResults();"> <center><i class = "fa fa-times"  id="searchicon"aria-hidden="true"></i></center></label>
 
             <input type="textarea" name="searchItems" ng-blur="closeResults()"ng-class="{'searchinput':openSearchVar, 'searchinputclosed':!openSearchVar}" model="shopSearch.searchItems"
-              placeholder="Search Here...">
+              placeholder="Press Enter To Search...">
               <div class ="hidden-submit">
               <input type = "submit"style="display:none">
               </div>
