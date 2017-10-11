@@ -978,21 +978,23 @@ transition:0.5s;
     /* position:absolute;
      top:17px;
      left:700px;*/
-     position:absolute;
+     /*position:absolute;
      top:17px;
-     right:1%;
-     width:400px;
+     right:1%;*/
+     width:80px;
      transition:1s;
      outline:none;
+     padding-left:30px;
     /* z-index:55000;*/
    }
    .searchinputclosed{
-     position:absolute;
+     /*position:absolute;
      top:17px;
      right:1%;
      width:0px;
      opacity:0;
-     transition:.5s;
+     transition:.5s;*/
+      padding-left:30px;
    }
    .searchlabel{
     /* border:1px solid black;*/
@@ -1111,15 +1113,17 @@ transition:0.5s;
      width:400px;*/
      transition:1s;
      outline:none;
+     padding-left:30px;
     /* z-index:55000;*/
    }
    .searchinputclosed{
-     position:absolute;
+    /* position:absolute;
      top:17px;
      right:1%;
      width:0px;
      opacity:0;
-     transition:.5s;
+     transition:.5s;*/
+      padding-left:30px;
    }
    .searchlabel{
     /* border:1px solid black;*/
@@ -1199,6 +1203,7 @@ transition:0.5s;
      z-index:50000;
      overflow-y:auto;
      transition:1s;
+     padding-left:30px;
    }
 #searchresults:hover{
       
@@ -1622,16 +1627,18 @@ bottom:-5px;
      right:1%;
      width:400px;*/
      transition:1s;
+     padding-left:30px;
      outline:none;
     /* z-index:55000;*/
    }
    .searchinputclosed{
-     position:absolute;
+     /*position:absolute;
      top:17px;
      right:1%;
      width:0px;
      opacity:0;
-     transition:.5s;
+     transition:.5s;*/
+     padding-left:30px;
    }
    .searchlabel{
      display:inline-block;
@@ -1676,11 +1683,11 @@ bottom:-5px;
    }
    .searchlabelmoved{
      
-     position:absolute;
+     /*position:absolute;
      width:40px;
      height:30px;
      top:17px;
-     right:407px;
+     right:407px;*/
      transition:1s;
      opacity:1;
      outline:none;
