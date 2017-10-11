@@ -1040,8 +1040,8 @@ transition:0.5s;
      position:absolute;
      width:40px;
      height:30px;
-     top:17px;
-     right:407px;
+    top:155px;
+    left:6%;
      transition:1s;
      opacity:1;
      outline:none;
@@ -1110,7 +1110,8 @@ transition:0.5s;
      left:700px;*/
      display:inline-block;
      position:absolute;
-     
+     top:155px;
+    left:16%;    
      width:400px;
      transition:1s;
      outline:none;
@@ -1622,9 +1623,8 @@ bottom:-5px;
      top:17px;
      left:700px;*/
     position:absolute;
-     top:140px;
-     left:9%;
-     
+    top:155px;
+    left:16%;
      display:inline-block;
      transition:1s;
      padding-left:30px;
@@ -1655,6 +1655,7 @@ bottom:-5px;
     .searchlabelclose{
     /* border:1px solid black;*/
    display:inline-block;
+   
      position:absolute;
      font-size:17px;
      width:40px;
@@ -1683,9 +1684,10 @@ bottom:-5px;
    .searchlabelmoved{
      display:inline-block;
      position:absolute;
-    
+     top:155px;
+    left:6%;
      
-     left:6%;
+    
      
      transition:1s;
      opacity:1;
