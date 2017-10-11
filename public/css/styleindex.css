@@ -1120,8 +1120,8 @@ transition:0.5s;
    .searchinputclosed{
      display:inline-block;
     position:absolute;
-    top:140px;
-    left:18%;
+    top:150px;
+    left:16%;
       padding-left:30px;
    }
    .searchlabel{
