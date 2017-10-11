@@ -114,13 +114,12 @@
           <a ng-show="!main.isLoggedIn" class="dropdown-item" ng-click="chgTitle();" href="/login">Login</a>
           <a ng-show="main.isLoggedIn" class="dropdown-item" href="#" ng-click="main.logout();">Logout</a>
           <a class="dropdown-item" href="/about">About</a>
+        </div>
       </li>
       <li class="nav-item active">
         <a class="nav-link " id="hover" href="/shop">Shop<span class = "sr-only"(current)> </span></a>
       </li>
-
-      </div>
-      <li class="nav-link navbar-right ">
+            <li class="nav-item active ">
         <form id="search" name="shopSearch" ng-submit="doSearch(shopSearch.$$element[0][0].value);" novalidate>
           
           <div id="label">
@@ -141,18 +140,13 @@
 
           </div>
 
-          <div id="searchbox">
 
-          </div>
-<!--
-          <div id="input">
-            <input type="textarea" name="searchItems" ng-class="{'searchinput':openSearchVar}" model="shopSearch.searchItems" placeholder="Search Here...">
-
-          </div>
--->
 
         </form>
       </li>
+
+      </div>
+
       <li><a ng-show="main.isLoggedIn" class="nav-link navbar-right" href="/profile"> Hello,&nbsp({{ main.username }}).</a></li>
       <li><a class="nav-link navbar-right " ng-click="$route.reload();" href="/profile">My&nbspLoves:&nbsp{{heartss}}</a></li>
       <li><a class="nav-link navbar-right" id='hover' ng-click="$route.reload();" href="/shop/shoppingbag"><i class ="fa fa-shopping-bag"id="shoppingbagicon" aria-hidden="true">&nbsp{{cartItems}}</i></a></li>

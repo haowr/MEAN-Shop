@@ -1105,10 +1105,10 @@ transition:0.5s;
     /* position:absolute;
      top:17px;
      left:700px;*/
-     position:absolute;
+     /*position:absolute;
      top:17px;
      right:1%;
-     width:400px;
+     width:400px;*/
      transition:1s;
      outline:none;
     /* z-index:55000;*/
@@ -1123,22 +1123,26 @@ transition:0.5s;
    }
    .searchlabel{
     /* border:1px solid black;*/
-     position:absolute;
+    /* position:absolute;
      font-size:17px;
      width:40px;
      height:30px;
      top:15px;
-     right:19%;
+     right:19%;*/
+     padding-top:10px;
+     padding-left:20px;
    }
     .searchlabelclose{
     /* border:1px solid black;*/
-   display:none;
+  /* display:none;
      position:absolute;
      font-size:17px;
      width:40px;
      height:30px;
      top:15px;
-     right:19%;
+     right:19%;*/
+         padding-top:10px;
+     padding-left:20px;
    }
    #searchlabel:hover{
     /* position:absolute;
@@ -1161,7 +1165,7 @@ transition:0.5s;
    }
    .searchlabelmoved{
      
-     position:absolute;
+     /*position:absolute;
      width:40px;
      height:30px;
      top:17px;
@@ -1169,7 +1173,7 @@ transition:0.5s;
      transition:1s;
      opacity:1;
      outline:none;
-
+*/
    }
    #searchicon{
      padding-top:5px;
@@ -1187,9 +1191,9 @@ transition:0.5s;
         opacity:0.4;
         box-shadow: 2px 2px 2px #586368;
         color:#586368;
-    position:absolute;
+    /*position:absolute;
     top:60px;
-    right:1%;
+    right:1%;*/
      width:400px;
      height:200px;
      z-index:50000;
@@ -1403,14 +1407,7 @@ bottom:-5px;
      height: 50px;;
    }
  
-.hidden-submit {
-    border: 0 none;
-    height: 0;
-    width: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
+
   /* 
    #search{
 
@@ -1612,9 +1609,132 @@ bottom:-5px;
 */
 }
 @media only screen and (max-width: 500px){ 
-  #search{
-    display:none;
+
+      #search{
+    display:inline-block;
   }
+   .searchinput{
+    /* position:absolute;
+     top:17px;
+     left:700px;*/
+    /* position:absolute;
+     top:17px;
+     right:1%;
+     width:400px;*/
+     transition:1s;
+     outline:none;
+    /* z-index:55000;*/
+   }
+   .searchinputclosed{
+     position:absolute;
+     top:17px;
+     right:1%;
+     width:0px;
+     opacity:0;
+     transition:.5s;
+   }
+   .searchlabel{
+     display:inline-block;
+    /* border:1px solid black;*/
+    /* position:absolute;
+     font-size:17px;
+     width:40px;
+     height:30px;
+     top:15px;
+     right:19%;*/
+     
+    
+   }
+    .searchlabelclose{
+    /* border:1px solid black;*/
+   display:none;
+     position:absolute;
+     font-size:17px;
+     width:40px;
+     height:30px;
+     top:15px;
+     right:19%;
+   }
+   #searchlabel:hover{
+    /* position:absolute;
+     top:9px;
+     height:30px;
+     width:40px;
+     font-size: 22px;
+     transition:0.2s;*/
+     color:black;
+     
+   }
+      #searchlabel:active{
+    /* border:1px solid black;*/
+     /*position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;*/
+     color:black;
+   }
+   .searchlabelmoved{
+     
+     position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;
+     transition:1s;
+     opacity:1;
+     outline:none;
+
+   }
+   #searchicon{
+     padding-top:5px;
+   }
+   /*
+   #searchimage{
+
+    border:1px solid black;
+
+   }
+   */
+      #searchresults{
+        /*-color:#fff1ef;*/
+        background-color:white;
+        opacity:0.4;
+        box-shadow: 2px 2px 2px #586368;
+        color:#586368;
+    /*position:absolute;
+    top:60px;
+    right:1%;*/
+     width:400px;
+     height:200px;
+     z-index:50000;
+     overflow-y:auto;
+     transition:1s;
+   }
+#searchresults:hover{
+      
+        opacity:1;
+        transition:1s;
+   }
+   .searchresultsp{
+   
+    
+    /* position:absolute;
+     top:30px;
+     border:1px solid black;
+     color:black;
+     opacity:1;
+     z-index:55000;*/
+   }
+   
+   #searchresults.ng-hide{
+ opacity:0;
+}
+#searchresults.ng-hide-add,
+#searchresults.ng-hide-remove{
+ 
+  transition: all linear 0.5s;
+}
    .clothing{
      transition:0.5s;
     position:absolute;
