@@ -1069,6 +1069,7 @@ transition:0.5s;
      height:200px;
      z-index:50000;
      overflow-y:auto;
+     padding-left:30px;
      transition:1s;
    }
 #searchresults:hover{
