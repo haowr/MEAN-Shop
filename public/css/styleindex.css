@@ -1631,7 +1631,7 @@ bottom:-5px;
    #label{
      display:inline-block;
      padding-top:10px;
-     padding-left:20px;
+     padding-left:14px;
    }
    .searchlabel{
      display:inline-block;
@@ -1694,7 +1694,7 @@ bottom:-5px;
         color:#586368;
         position:absolute;
         left:54px;
-     width:286px;
+     width:280px;
      padding-left:30px;
      height:200px;
      
