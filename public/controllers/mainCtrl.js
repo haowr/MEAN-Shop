@@ -65,6 +65,26 @@
             }, 2000);
 
         });
+        var clseResults = function(){
+                  console.log("searchiconmadefalse")
+            $scope.searchIcon=true;
+            $scope.openSearchVar2 = false;
+                 $timeout(function () {
+               
+                
+
+            }, 500);
+
+            $timeout(function () {
+                 //$scope.searchIcon = true;
+                $scope.openSearchVar = false;
+                
+
+            }, 1000);
+            console.log("closeResults");
+
+
+        }
         $scope.closeResults = function () {
         console.log("searchiconmadefalse")
             $scope.searchIcon=true;
@@ -523,10 +543,15 @@
                             scope.authorized = true;
                             //scope.loadme = true;
                             console.log("getPermission admin mod true scope.loadme has run");
+                            //closeResults();
+                            clseResults();
+                            
                         } else {
                             scope.authorized = false;
                             //scope.loadme = true;
                             console.log("getPermission scope.loadme has run");
+                           // closeResults();
+                           clseResults();
                         }
 
                     });
@@ -544,7 +569,9 @@
                 scope.isLoggedIn = false;
                 // scope.loadme = true;
                 console.log("user is not logged in loadme has run...");
+                clseResults();
             }
+
 
 
         });
