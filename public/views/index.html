@@ -123,8 +123,8 @@
         <form id="search" name="shopSearch" ng-submit="doSearch(shopSearch.$$element[0][0].value);" novalidate>
           
           <div id="label">
-            <label for="searchItems" class = "secondarytextsimple searchlabel" ng-class="{'searchlabelmoved':openSearchVar}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <center><i class = "fa fa-search"  id="searchicon"aria-hidden="true"></i></center></label>
-            <label for="searchItems" class = "secondarytextsimple searchlabel"  ng-class="{'searchlabelmoved':!searchIcon}" ng-show="!searchIcon" ng-click="closeResults();"> <center><i class = "fa fa-times"  id="searchicon"aria-hidden="true"></i></center></label>
+            <label for="searchItems" class = "secondarytextsimple searchlabel" ng-class="{'searchlabelmoved':openSearchVar}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <center><i class = "fa fa-search"  aria-hidden="true"></i></center></label>
+            <label for="searchItems" class = "secondarytextsimple searchlabel"  ng-class="{'searchlabelmoved':!searchIcon}" ng-show="!searchIcon" ng-click="closeResults();"> <center><i class = "fa fa-times"  aria-hidden="true"></i></center></label>
 
             <input type="textarea" name="searchItems" ng-blur="closeResults()"ng-class="{'searchinput':openSearchVar, 'searchinputclosed':!openSearchVar}" model="shopSearch.searchItems"
               placeholder="Press Enter To Search...">

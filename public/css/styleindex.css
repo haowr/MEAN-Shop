@@ -1038,8 +1038,9 @@ transition:0.5s;
    .searchlabelmoved{
      
      position:absolute;
-     width:40px;
-     height:30px;
+     /*width:40px;
+     height:30px;*/
+     font-size:17px;
     top:155px;
     left:6%;
      transition:1s;
@@ -1168,7 +1169,10 @@ transition:0.5s;
      color:black;
    }
    .searchlabelmoved{
-     
+     position:absolute;
+     top:144px;
+     left:6%;
+     font-size:17px;
      /*position:absolute;
      width:40px;
      height:30px;
@@ -1624,7 +1628,7 @@ bottom:-5px;
      left:700px;*/
     position:absolute;
     top:155px;
-    left:16%;
+    left:12%;
      display:inline-block;
      transition:1s;
      padding-left:30px;
@@ -1643,12 +1647,10 @@ bottom:-5px;
    .searchlabel{
      display:inline-block;
     /* border:1px solid black;*/
-    /* position:absolute;
+     position:absolute;
      font-size:17px;
-     width:40px;
-     height:30px;
-     top:15px;
-     right:19%;*/
+     top:140px;
+     left:6%;
      
     
    }
@@ -1686,6 +1688,7 @@ bottom:-5px;
      position:absolute;
      top:155px;
     left:6%;
+    font-size:17px;
      
     
      
