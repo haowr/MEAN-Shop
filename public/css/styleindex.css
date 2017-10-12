@@ -1693,9 +1693,10 @@ bottom:-5px;
         box-shadow: 2px 2px 2px #586368;
         color:#586368;
         position:absolute;
+        top:185px;
         left:54px;
-     width:280px;
-     padding-left:30px;
+     width:277px;
+     
      height:200px;
      
      overflow-y:auto;
