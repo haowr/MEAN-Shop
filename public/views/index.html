@@ -120,17 +120,17 @@
         <a class="nav-link " id="hover" href="/shop">Shop<span class = "sr-only"(current)> </span></a>
       </li>
             <li class="nav-item active ">
+              
         <form id="search" name="shopSearch" ng-submit="doSearch(shopSearch.$$element[0][0].value);" novalidate>
-          
+        
+         
           <div id="label">
-            <label for="searchItems" class = "secondarytextsimple searchlabel" ng-class="{'searchlabelmoved':openSearchVar}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <center><i class = "fa fa-search"  aria-hidden="true"></i></center></label>
-            <label for="searchItems" class = "secondarytextsimple searchlabel"  ng-class="{'searchlabelmoved':!searchIcon}" ng-show="!searchIcon" ng-click="closeResults();"> <center><i class = "fa fa-times"  aria-hidden="true"></i></center></label>
+            <label for="searchItems" class = "secondarytextsimple searchlabel" ng-class="{'searchlabelmoved':openSearchVar}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <i class = "fa fa-search"  aria-hidden="true"></i></label>
+            <label for="searchItems" class = "secondarytextsimple searchlabel"  ng-class="{'searchlabelmoved':!searchIcon}" ng-show="!searchIcon" ng-click="closeResults();"> <i class = "fa fa-times"  aria-hidden="true"></i></label>
 
-            <input type="textarea" name="searchItems" ng-blur="closeResults()"ng-class="{'searchinput':openSearchVar, 'searchinputclosed':!openSearchVar}" model="shopSearch.searchItems"
+            <input type="textarea" name="searchItems" id="searchinputposition"ng-blur="closeResults()"ng-class="{'searchinput':openSearchVar, 'searchinputclosed':!openSearchVar}" model="shopSearch.searchItems"
               placeholder="Press Enter To Search...">
-              <div class ="hidden-submit">
-              <input type = "submit"style="display:none">
-              </div>
+           
               <div id="searchresults"ng-show="openSearchVar2">
                 <div class ="searchresultsp" ng-repeat="shoe in allShoesIndex|filter: searchQuery track by $index">
                   <img id="searchimage" ng-src="{{shoe.perspectives[1]}}">
@@ -143,6 +143,7 @@
 
 
         </form>
+             
       </li>
 
       </div>
