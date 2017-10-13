@@ -382,7 +382,7 @@ box-shadow:2px 2px 2px #586368;
 }
 .detailo.ng-hide-add,
 .detailo.ng-hide-remove{
-  transition: all linear 0.2s;
+  transition: all linear 0.1s;
 }
 
 .loadme.ng-hide{
