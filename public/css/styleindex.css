@@ -1172,7 +1172,7 @@ transition:0.5s;
    }
    .searchlabelmoved{
    
-
+font-size:17px;
    }
    #searchicon{
      padding-top:5px;
@@ -1832,7 +1832,7 @@ bottom:-5px;
      color:black;
    }
    .searchlabelmoved{
-   
+   font-size:17px;
 
    }
    #searchicon{
