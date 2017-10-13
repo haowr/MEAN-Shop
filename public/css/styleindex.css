@@ -1146,7 +1146,7 @@ transition:0.5s;
     /* border:1px solid black;*/
    display:inline-block;
    
-   
+    z-index:55000;
      font-size:17px;
     
     
@@ -1171,7 +1171,8 @@ transition:0.5s;
      color:black;
    }
    .searchlabelmoved{
-   
+     display:inline-block;
+   z-index:55000;
 font-size:17px;
    }
    #searchicon{
@@ -1734,7 +1735,7 @@ bottom:-5px;
      top:20px;
      left:198px;
       font-size:18px;
-     
+     width:99px;
      padding-right:20px;
      
       
@@ -1761,6 +1762,7 @@ bottom:-5px;
   
      
     /* z-index:55000;*/
+    display:inline-block;
     transition:1s;
     width:250px;
   opacity:1;
@@ -1789,7 +1791,7 @@ bottom:-5px;
  
    #label{
      display:inline-block;
-     padding-top:10px;
+   
      padding-left:14px;
    }
    .searchlabel{
@@ -1835,9 +1837,9 @@ bottom:-5px;
    font-size:17px;
 
    }
-   #searchicon{
-     padding-top:5px;
-   }
+  #closeicon{
+    width:15.8px;
+  }
    /*
    #searchimage{
 
@@ -1853,8 +1855,8 @@ bottom:-5px;
         color:#586368;
         position:absolute;
         top:188px;
-        left:49px;
-     width:247px;
+        left:52px;
+     width:246px;
      
      height:200px;
      
