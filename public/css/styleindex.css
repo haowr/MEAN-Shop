@@ -1780,6 +1780,7 @@ bottom:-5px;
     transition: 1s;
     width: 0px;
     opacity: 0;
+    z-index:55000;
     
   
   
