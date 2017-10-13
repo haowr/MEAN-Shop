@@ -1098,34 +1098,58 @@ transition:0.5s;
     /* position:absolute;
      top:17px;
      left:700px;*/
-
+  
+     
     /* z-index:55000;*/
+    transition:1s;
+    width:286px;
+  opacity:1;
+  z-index:55000;
    }
    .searchinputclosed{
+     /*position:absolute;
+     top:17px;
+     right:1%;
+     width:0px;
+     opacity:0;
+     transition:.5s;*/
     
-     z-index:55000;
-
+    /*position:absolute;
+    left:60px;*/
+    display:inline-block;
+    transition: 1s;
+    width: 0px;
+    opacity: 0;
+    
+  
+  
+     
+   }
+ 
+   #label{
+     display:inline-block;
+     padding-top:10px;
+     padding-left:14px;
    }
    .searchlabel{
+     display:inline-block;
     /* border:1px solid black;*/
-    /* position:absolute;
+    
      font-size:17px;
-     width:40px;
-     height:30px;
-     top:15px;
-     right:19%;*/
-   
+     z-index:55000;
+     
+     
+     
+    
    }
     .searchlabelclose{
     /* border:1px solid black;*/
-  /* display:none;
-     position:absolute;
+   display:inline-block;
+   
+   
      font-size:17px;
-     width:40px;
-     height:30px;
-     top:15px;
-     right:19%;*/
-  
+    
+    
    }
    #searchlabel:hover{
     /* position:absolute;
@@ -1147,17 +1171,8 @@ transition:0.5s;
      color:black;
    }
    .searchlabelmoved{
+   
 
-     
-     /*position:absolute;
-     width:40px;
-     height:30px;
-     top:17px;
-     right:407px;
-     transition:1s;
-     opacity:1;
-     outline:none;
-*/
    }
    #searchicon{
      padding-top:5px;
@@ -1175,13 +1190,16 @@ transition:0.5s;
         opacity:0.4;
         box-shadow: 2px 2px 2px #586368;
         color:#586368;
-
-     width:286px;
+        position:absolute;
+        top:185px;
+        left:54px;
+     width:277px;
+     
      height:200px;
-     z-index:50000;
+     
      overflow-y:auto;
      transition:1s;
-     padding-left:30px;
+     z-index:55000;
    }
 #searchresults:hover{
       
@@ -1206,7 +1224,7 @@ transition:0.5s;
 #searchresults.ng-hide-remove{
  
   transition: all linear 0.5s;
-}
+}}
   .showhamburger{
     display:none;
   }
@@ -1593,140 +1611,6 @@ bottom:-5px;
 }
 @media only screen and (max-width: 500px){ 
 
-      #search{
-    display:inline-block;
-  }
-   .searchinput{
-    /* position:absolute;
-     top:17px;
-     left:700px;*/
-  
-     
-    /* z-index:55000;*/
-    transition:1s;
-    width:286px;
-  opacity:1;
-  z-index:55000;
-   }
-   .searchinputclosed{
-     /*position:absolute;
-     top:17px;
-     right:1%;
-     width:0px;
-     opacity:0;
-     transition:.5s;*/
-    
-    /*position:absolute;
-    left:60px;*/
-    display:inline-block;
-    transition: 1s;
-    width: 0px;
-    opacity: 0;
-    
-  
-  
-     
-   }
- 
-   #label{
-     display:inline-block;
-     padding-top:10px;
-     padding-left:14px;
-   }
-   .searchlabel{
-     display:inline-block;
-    /* border:1px solid black;*/
-    
-     font-size:17px;
-     z-index:55000;
-     
-     
-     
-    
-   }
-    .searchlabelclose{
-    /* border:1px solid black;*/
-   display:inline-block;
-   
-   
-     font-size:17px;
-    
-    
-   }
-   #searchlabel:hover{
-    /* position:absolute;
-     top:9px;
-     height:30px;
-     width:40px;
-     font-size: 22px;
-     transition:0.2s;*/
-     color:black;
-     
-   }
-      #searchlabel:active{
-    /* border:1px solid black;*/
-     /*position:absolute;
-     width:40px;
-     height:30px;
-     top:17px;
-     right:407px;*/
-     color:black;
-   }
-   .searchlabelmoved{
-   
-
-   }
-   #searchicon{
-     padding-top:5px;
-   }
-   /*
-   #searchimage{
-
-    border:1px solid black;
-
-   }
-   */
-      #searchresults{
-        /*-color:#fff1ef;*/
-        background-color:white;
-        opacity:0.4;
-        box-shadow: 2px 2px 2px #586368;
-        color:#586368;
-        position:absolute;
-        top:185px;
-        left:54px;
-     width:277px;
-     
-     height:200px;
-     
-     overflow-y:auto;
-     transition:1s;
-     z-index:55000;
-   }
-#searchresults:hover{
-      
-        opacity:1;
-        transition:1s;
-   }
-   .searchresultsp{
-   
-    
-    /* position:absolute;
-     top:30px;
-     border:1px solid black;
-     color:black;
-     opacity:1;
-     z-index:55000;*/
-   }
-   
-   #searchresults.ng-hide{
- opacity:0;
-}
-#searchresults.ng-hide-add,
-#searchresults.ng-hide-remove{
- 
-  transition: all linear 0.5s;
-}
    .clothing{
      transition:0.5s;
     position:absolute;
@@ -1867,6 +1751,140 @@ bottom:-5px;
    }
 }
 
+      #search{
+    display:inline-block;
+  }
+   .searchinput{
+    /* position:absolute;
+     top:17px;
+     left:700px;*/
+  
+     
+    /* z-index:55000;*/
+    transition:1s;
+    width:250px;
+  opacity:1;
+  z-index:55000;
+   }
+   .searchinputclosed{
+     /*position:absolute;
+     top:17px;
+     right:1%;
+     width:0px;
+     opacity:0;
+     transition:.5s;*/
+    
+    /*position:absolute;
+    left:60px;*/
+    display:inline-block;
+    transition: 1s;
+    width: 0px;
+    opacity: 0;
+    
+  
+  
+     
+   }
+ 
+   #label{
+     display:inline-block;
+     padding-top:10px;
+     padding-left:14px;
+   }
+   .searchlabel{
+     display:inline-block;
+    /* border:1px solid black;*/
+    
+     font-size:17px;
+     z-index:55000;
+     
+     
+     
+    
+   }
+    .searchlabelclose{
+    /* border:1px solid black;*/
+   display:inline-block;
+   
+   
+     font-size:17px;
+    
+    
+   }
+   #searchlabel:hover{
+    /* position:absolute;
+     top:9px;
+     height:30px;
+     width:40px;
+     font-size: 22px;
+     transition:0.2s;*/
+     color:black;
+     
+   }
+      #searchlabel:active{
+    /* border:1px solid black;*/
+     /*position:absolute;
+     width:40px;
+     height:30px;
+     top:17px;
+     right:407px;*/
+     color:black;
+   }
+   .searchlabelmoved{
+   
+
+   }
+   #searchicon{
+     padding-top:5px;
+   }
+   /*
+   #searchimage{
+
+    border:1px solid black;
+
+   }
+   */
+      #searchresults{
+        /*-color:#fff1ef;*/
+        background-color:white;
+        opacity:0.4;
+       
+        color:#586368;
+        position:absolute;
+        top:185px;
+        left:49px;
+     width:247px;
+     
+     height:200px;
+     
+     overflow-y:auto;
+     transition:1s;
+     z-index:55000;
+   }
+#searchresults:hover{
+      
+        opacity:1;
+        transition:1s;
+   }
+   .searchresultsp{
+   
+    
+    /* position:absolute;
+     top:30px;
+     border:1px solid black;
+     color:black;
+     opacity:1;
+     z-index:55000;*/
+   }
+   
+   #searchresults.ng-hide{
+ opacity:0;
+}
+#searchresults.ng-hide-add,
+#searchresults.ng-hide-remove{
+ 
+  transition: all linear 0.5s;
+}
 /*
 .clothing{
 
