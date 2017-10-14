@@ -1243,7 +1243,7 @@ font-size:17px;
 
 }
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 720px) and (device-height: 1280px) and (orientation: portrait){
 
 
       #search{
