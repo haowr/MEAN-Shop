@@ -965,6 +965,7 @@ transition:0.5s;
 .showmenunavbar{
   display:none;
 }
+
 @media only screen and (min-width: 991px){
 
  #search{
@@ -975,9 +976,11 @@ transition:0.5s;
     display:inline-block;
   }
    .searchinput{
-    /* position:absolute;
+    position:absolute;
      top:17px;
-     left:700px;*/
+     right:0px;
+     width:480px;
+     transition:1s;
      /*position:absolute;
      top:17px;
      right:1%;*/
@@ -986,6 +989,9 @@ transition:0.5s;
    }
    .searchinputclosed{
      display:inline-block;
+     position:absolute;
+     width:00px;
+     top:17px;
      /*position:absolute;
      top:17px;
      right:1%;
@@ -998,6 +1004,9 @@ transition:0.5s;
      display:inline-block;
     outline:none;
     /* border:1px solid black;*/
+    position:absolute;
+    top:23px;
+    right:200px;
    
    }
     .searchlabelclose{
@@ -1034,20 +1043,17 @@ transition:0.5s;
     
      /*width:40px;
      height:30px;*/
-
+          position:absolute;
+    top:24px;
+    right:500px;
+    transition:1s;
+   
 
    }
    #searchicon{
      padding-top:5px;
    }
-   /*
-   #searchimage{
-
-    border:1px solid black;
-
-   }
-   */
-      #searchresults{
+   #searchresults{
         /*-color:#fff1ef;*/
         display: inline-block;
         background-color:white;
@@ -1102,7 +1108,7 @@ transition:0.5s;
      
     /* z-index:55000;*/
     transition:1s;
-    width:286px;
+    width:400px;
   opacity:1;
   z-index:55000;
    }
@@ -1225,7 +1231,7 @@ font-size:17px;
 #searchresults.ng-hide-remove{
  
   transition: all linear 0.5s;
-}}
+}
   .showhamburger{
     display:none;
   }
@@ -1237,28 +1243,7 @@ font-size:17px;
 
 }
 
-/*#hojad2{
-  display:none;
-}*/
-/*
-#buttonsmall{
-  display:none;
-}
-#buttonmedium{
-  display:inline-block;
-}
-*/
-/*@media only screen and (max-width:568px){
 
-  #buttonmedium{
-    display:none
-  }
-  #buttonsmall{
-    display:inline-block;
-  }
-
-}
-*/
 
 @media only screen and (min-width: 568px){ 
 
@@ -1750,9 +1735,7 @@ bottom:-5px;
      border:1px solid black;
      height: 50px;;
    }
-}
-
-      #search{
+    #search{
     display:inline-block;
   }
    .searchinput{
@@ -1888,6 +1871,9 @@ bottom:-5px;
  
   transition: all linear 0.5s;
 }
+}
+
+     
 /*
 .clothing{
 
