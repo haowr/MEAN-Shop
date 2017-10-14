@@ -1249,6 +1249,9 @@ font-size:17px;
       #search{
     display:inline-block;
   }
+    #closeicon{
+    width:15.8px;
+  }
    .searchinput{
     /* position:absolute;
      top:17px;
@@ -1257,7 +1260,7 @@ font-size:17px;
      
     /* z-index:55000;*/
     transition:1s;
-    width:200px;
+    width:250px;
   opacity:1;
   z-index:55000;
    }
