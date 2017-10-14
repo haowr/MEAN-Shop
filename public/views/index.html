@@ -132,10 +132,22 @@
               placeholder="Press Enter To Search..." autocomplete="off" >
            
               <div id="searchresults"ng-show="openSearchVar2">
-                <div class ="searchresultsp" ng-repeat="shoe in allShoesIndex|filter: searchQuery track by $index">
+                <div class ="searchresultsp" ng-repeat="shoe in allShoesIndex|filter: searchQuery as filtered_result  track by $index">
                   <img id="searchimage" ng-src="{{shoe.perspectives[1]}}">
                <a  href="/shop/mens/{{shoe.name}}" class = "bellefair"> {{shoe.name | uppercase}}</a>
+
+
+
+
               </div>
+                         <div ng-show="filtered_result.length== 0">
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+             <center><p class = "bellefair secondarytextsimple">(NO RESULTS)</p></center>
+           </div>
+
               </div>
 
           </div>

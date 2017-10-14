@@ -5,13 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "webpack-dashboard -- node server.js"
   },
   "author": "",
   "dependencies": {
     "angular-payments": "^1.0.7",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.14.1",
+    "compression": "^1.7.1",
     "express": "~4.13.2",
     "feather-icons": "^3.2.2",
     "hogan": "^1.0.2",

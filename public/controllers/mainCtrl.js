@@ -106,6 +106,11 @@
         };
         $scope.doSearch = function (query) {
             $scope.searchQuery = query;
+                            $timeout(function () {
+                    $scope.openSearchVar2 = true;
+
+                    //$scope.searchIcon = false;
+                }, 1000);
         }
         $scope.openSearch = function (choice, query) {
             console.log(choice);
@@ -133,11 +138,7 @@
                     // $scope.searchIcon = true;
                 }, 400);
 
-                $timeout(function () {
-                    $scope.openSearchVar2 = true;
 
-                    //$scope.searchIcon = false;
-                }, 1000);
                /* $timeout(function () {
                     // $scope.openSearchVar2 = true;
                     console.log("searchIconon");
