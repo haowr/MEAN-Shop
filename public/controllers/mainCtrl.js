@@ -520,6 +520,7 @@
                          console.log(data.data.loves.loves);
                      });*/
                     console.log($rootScope.personalMyLoves);
+                    scope.loadme = true;
                     Shop.getThumbnails().then(function (data) {
 
                         console.log(data.data.thumbnails);

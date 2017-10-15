@@ -1005,6 +1005,7 @@ transition:0.5s;
      display:inline-block;
     outline:none;
     /* border:1px solid black;*/
+    
     position:absolute;
     top:17px;
     right:200px;
@@ -1107,6 +1108,7 @@ transition:0.5s;
       #search{
     display:inline-block;
   }
+  
    .searchinput{
     /* position:absolute;
      top:17px;
@@ -1299,7 +1301,7 @@ font-size:17px;
    .searchlabel{
      display:inline-block;
     /* border:1px solid black;*/
-    
+    width:20px;
      font-size:17px;
      z-index:55000;
      
