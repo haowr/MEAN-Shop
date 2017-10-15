@@ -1355,7 +1355,7 @@ font-size:17px;
       #searchresults{
         /*-color:#fff1ef;*/
         background-color:white;
-        opacity:0.4;
+        opacity:1;
         box-shadow: 2px 2px 2px #586368;
         color:#586368;
         position:absolute;
