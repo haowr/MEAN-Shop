@@ -1922,7 +1922,7 @@ bottom:-5px;
     
     /*position:absolute;
     left:60px;*/
-    display:inline-block;
+    display:none;
     transition: 1s;
     width: 0px;
     opacity: 0;
