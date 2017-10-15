@@ -1830,8 +1830,8 @@ bottom:-5px;
    .clothing{
      transition:0.5s;
     position:absolute;
-    top:200px;
-    left:60px;
+    top:20px;
+    left:-40px;
     font-size:18px;
     
     padding-left:10px;
