@@ -8,7 +8,7 @@
 
     });
 
-    app.controller('shoesCtrl', function (Shop, $scope, $rootScope, $window, Heart, Auth, $document) {
+    app.controller('shoesCtrl', function (Shop, $scope, $rootScope, $window, Heart, Auth, $document,$timeout) {
         /*
             var pink =$window.localStorage.getItem('myLoves');
             console.log(pink);
@@ -35,6 +35,8 @@
         $scope.hearts = 1;
         scope.hearts = false;
         $scope.loadme = false;
+        $scope.loadmeShop = false;
+        $scope.shoeLoader = true;
        /* $scope.searchEl= document.querySelector("#input");
         $scope.labelEl = document.querySelector("#label");
 
@@ -153,9 +155,18 @@
 
             Shop.getPages().then(function (data) {
                 console.log(data.data.page);
+                $scope.shoeLoader = false;
+                console.log("shoeloaderfalse");
                 $scope.shoesPaginated = data.data.page;
                 console.log("loadme is running!")
-                 $scope.loadme = true;
+                
+                $timeout(function(){
+                    
+                    
+                    $scope.loadme = true;
+
+                },2000);
+                 
             });
         };
         
