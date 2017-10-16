@@ -1,3 +1,5 @@
+    <div class="container container-fluid">
+
 
 <div class = "loadme" ng-show="loadme">
     <br>
@@ -6,7 +8,6 @@
 
 
 
-    <div class="container container-fluid">
         <div class="page-header">
             <h1 class="myprofiletitle">Welcome to the shop</h1>
         </div>
@@ -33,26 +34,28 @@
     <br>
     <br>
 
-    <center>
-        <div infinite-scroll="loadMoreo()" infinite-scroll-distance="0.1" class="container container-fluid ">
+    
+        <div infinite-scroll="loadMoreo()" infinite-scroll-distance="0.1" >
 
-            
+            <center>
             <div class="landing " ng-repeat="shoe in shoes | orderBy: order track by $index ">
-                <h1 class = "pull-left myprofiletitle"> {{shoe.name}}</h1>
-                <p class="pull-right bellefair " id="shopprice">{{shoe.price | currency}}</p>
-                <br>
-                <p id="shophearts" class="pull-right myprofiletitle"> <i class="fa fa-heart-o" id="shophearticon" aria-hidden="true"></i> {{shoe.hearts}}</p>
-                <br>
-
+                <p class = "pull-left " id ="shopitemtitle"> {{shoe.name | uppercase}}</p>
+               <p class="pull-right bellefair " id="shopprice">{{shoe.price | currency}}</p>
+              <!--  <br>
+                <p class=" myprofiletitle"> <i class="fa fa-heart-o" id="shophearticon" aria-hidden="true"></i> {{shoe.hearts}}</p>
+                <brid="shophearts"pull-right
+                >-->
+               
                 <landing-gallery></landing-gallery>
-
+                
                 <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
 
 
             </div>
             
+            </center>
         </div>
-    </center> <!-- onclick="topFunction()" -->
+    
     <button back-to-top-jquery ng-click="topFunction();" id="myBtn" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
     <br>
     <br>
@@ -61,13 +64,13 @@
     <br>
     <br>
     <br>
-<div class = "container container-fluid">
+
     <div class="row">
-        <div class="col-sm-12 details2">
+        <div class="col-sm-12 details2 detailsfxed">
         </div>
     </div>
 </div>
 <br>
 <br>
 
-</div>
+

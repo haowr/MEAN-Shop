@@ -125,8 +125,8 @@
         
          
           <div id="label">
-            <label for="searchItems" class = " searchlabel" ng-class="{'searchlabelmoved':openSearchVar}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <i class = "fa fa-search"  aria-hidden="true"></i></label>
-            <label for="searchItems" class = " searchlabel"  ng-class="{'searchlabelmoved':!searchIcon}" ng-show="!searchIcon" ng-click="closeResults();"> <i class = "fa fa-times" id='closeicon'  aria-hidden="true"></i></label>
+            <label for="searchItems" class = " searchlabel" ng-class="{'searchlabelmoved':openSearchVar, 'searchlabelloggedin':main.isLoggedIn}" ng-show="searchIcon"ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <i class = "fa fa-search"  aria-hidden="true"></i></label>
+            <label for="searchItems" class = " searchlabel"  ng-class="{'searchlabelmovedloggedin':main.isLoggedIn && !searchIcon,'searchlabelmoved':!searchIcon }" ng-show="!searchIcon" ng-click="closeResults();"> <i class = "fa fa-times" id='closeicon'  aria-hidden="true"></i></label>
 
             <input type="textarea" name="searchItems" ng-blur="closeResults()"ng-class="{'searchinput':openSearchVar, 'searchinputclosed':!openSearchVar}" model="shopSearch.searchItems"
               placeholder="Press Enter To Search..." autocomplete="off" >
