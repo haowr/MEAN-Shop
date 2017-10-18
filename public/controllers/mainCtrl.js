@@ -106,12 +106,13 @@
         };
         $scope.doSearch = function (query) {
             $scope.searchQuery = query;
-                            $timeout(function () {
+              $timeout(function () {
                     $scope.openSearchVar2 = true;
 
                     //$scope.searchIcon = false;
                 }, 1000);
         }
+
         $scope.openSearch = function (choice, query) {
             console.log(choice);
             console.log(query);
@@ -130,6 +131,7 @@
                 }, 1000);
                 console.log($scope.openSearchVar);
             } else if (choice && !$scope.openSearchVar) {
+                
                 $scope.shopSearch.$$element[0][0].value = "";
 
                 $timeout(function () {
@@ -138,13 +140,6 @@
                     // $scope.searchIcon = true;
                 }, 400);
 
-
-               /* $timeout(function () {
-                    // $scope.openSearchVar2 = true;
-                    console.log("searchIconon");
-                    $scope.searchIcon = false;
-
-                }, 1400);*/
                 $scope.searchIcon = false;
 
                 console.log($scope.openSearchVar);

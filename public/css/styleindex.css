@@ -27,7 +27,9 @@ body {
   width: 100%;
   margin: 0;
 }
-
+button{
+  outline:none !important;
+}
 .ngview {
   width: 100%;
 }
@@ -127,6 +129,7 @@ img{
 
 .nav-pills > li.active > a:hover, .btn-primary:hover {
   background: rgba(0, 0, 0, .5);
+  border: 0;
 }
 
 .ng-invalid.ng-dirty {
@@ -791,11 +794,11 @@ body {
 }
 
 #pricetitle {
-  box-shadow: 2px 2px 2px #586368;
+ /* box-shadow: 2px 2px 2px #586368;*/
 }
 
 .boxshadow {
-  box-shadow: 2px 2px 2px #586368;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
 .boxshadow:hover {}
@@ -1001,7 +1004,15 @@ transition:0.5s;
 @media only screen and (min-width: 991px) {
 
 
+  #hojad2{
+    display:inline-block;
+  }
 
+  .hojadborder{
+    display:inline-block;
+    
+  }
+  
   #shopLoader{
   
   
@@ -1047,7 +1058,7 @@ transition:0.5s;
   .searchinput {
     position: absolute;
     top: 17px;
-    right: 0px;
+    right: 10px;
     width: 480px;
     transition: 1s;
     /*position:absolute;
@@ -1058,9 +1069,11 @@ transition:0.5s;
   .searchinputclosed {
     display: inline-block;
     position: absolute;
-    width: 00px;
+    width: 0px;
     top: 17px;
+    right: 10px;
     opacity: 0;
+    transition: 0.4s;
     /*position:absolute;
      top:17px;
      right:1%;
@@ -1075,6 +1088,15 @@ transition:0.5s;
     position: absolute;
     top: 17px;
     right: 200px;
+  }
+  
+  .searchlabelloggedinx{
+        display: inline-block;
+    outline: none;
+    /* border:1px solid black;*/
+    position: absolute;
+    top: 17px;
+    right: 350px;
   }
   .searchlabelloggedin {
     display: inline-block;
@@ -1187,6 +1209,10 @@ transition:0.5s;
 }
 
 @media only screen and (max-width: 991px) {
+
+    #closeicon {
+    width: 15.8px;
+  }
   #search {
     display: inline-block;
   }
@@ -1547,7 +1573,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: -100px;
+    left: 40px;
     font-size: 18px;
     color: black;
     padding-left: 10px;
@@ -1557,9 +1583,10 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 286px;
+    left: 289px;
     font-size: 18px;
     padding-right: 20px;
+    color: black;
   }
   .logo {
     transition: 0.5s;
@@ -1571,15 +1598,41 @@ transition:0.5s;
     ;
   }
 }
+@media only screen and(max-width: 416px){
+
+  .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    font-size: 18px;
+    color: red;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 286px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: red;
+  }
+
+
+
+}
 
 @media only screen and (max-width: 375px) {
   .clothing {
     transition: 0.5s;
     position: absolute;
-    top: 200px;
-    left: -100px;
+    top: 20px;
+    left: 50px;
     font-size: 18px;
     padding-left: 10px;
+    
     /* display:inline-block;*/
   }
   .jewels {
@@ -1589,6 +1642,7 @@ transition:0.5s;
     left: 248px;
     font-size: 18px;
     padding-right: 20px;
+    color: red;
   }
   .logo {
     transition: 0.5s;
@@ -1800,7 +1854,7 @@ display:inline-block;
 
 #itemdescription {
   text-decoration: underline;
-  box-shadow: 2px 2px 2px #586368;
+  /*box-shadow: 2px 2px 2px #586368;*/
 }
 
 #shippingandreturnsstyling {
@@ -1849,6 +1903,8 @@ display:inline-block;
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: #ffbbbc !important;
+  outline:none;
+  border: 0;
 }
 
 .btn-submit {
@@ -1870,6 +1926,8 @@ display:inline-block;
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
   background-color: white !important;
   border: 1px solid black;
+  border-radius: 0px;
+  outline:none;
   color: black;
 }
 
