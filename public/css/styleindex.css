@@ -1609,7 +1609,7 @@ transition:0.5s;
     top: 20px;
     left: 50px;
     font-size: 18px;
-    color: red;
+    color: black;
     padding-left: 10px;
     /* display:inline-block;*/
   }
@@ -1620,7 +1620,7 @@ transition:0.5s;
     left: 286px;
     font-size: 18px;
     padding-right: 20px;
-    color: red;
+    color: black;
   }
 
 
@@ -1645,7 +1645,7 @@ transition:0.5s;
     left: 248px;
     font-size: 18px;
     padding-right: 20px;
-    color: red;
+    color: black;
   }
   .logo {
     transition: 0.5s;
