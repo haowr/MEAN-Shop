@@ -1074,6 +1074,7 @@ transition:0.5s;
     right: 10px;
     opacity: 0;
     transition: 0.4s;
+    display:none;
     /*position:absolute;
      top:17px;
      right:1%;
@@ -1236,6 +1237,7 @@ transition:0.5s;
     /*position:absolute;
     left:60px;*/
     display: inline-block;
+    display:none;
     transition: 1s;
     width: 0px;
     opacity: 0;
@@ -1359,6 +1361,7 @@ transition:0.5s;
     left:60px;*/
     display: inline-block;
     transition: 1s;
+    display:none;
     width: 0px;
     opacity: 0;
   }
