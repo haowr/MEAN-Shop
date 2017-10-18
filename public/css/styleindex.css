@@ -1359,7 +1359,7 @@ transition:0.5s;
      transition:.5s;*/
     /*position:absolute;
     left:60px;*/
-    display: inline-block;
+   
     transition: 1s;
     display:none;
     width: 0px;
