@@ -787,7 +787,7 @@
         $scope.chooseShipping = function (number) {
             if (number == 1) {
                 $scope.shippingChoice = 7.95;
-                if (Auth.isLoggedIn()) {
+               /* if (Auth.isLoggedIn()) {
                     User.addShippingChoiceToUser($scope.currentUser, "1-7 Days Expedited").then(function (data) {
 
                         console.log(data.data.user);
@@ -795,32 +795,32 @@
                     });
 
                 } else {
-
+*/
                     //$scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
                     $window.localStorage.setItem('shippingChoice', 7.95);
 
 
-                }
+               // }
 
 
             } else {
                 $scope.shippingChoice = 15.00;
 
-                if (Auth.isLoggedIn()) {
+               /* if (Auth.isLoggedIn()) {
                     User.addShippingChoiceToUser($scope.currentUser, "2days Xpresspost").then(function (data) {
 
                         console.log(data.data.user);
 
                     });
 
-                } else {
+                } else {*/
 
                     //$scope.shoppingBagShoes = JSON.parse($window.localStorage.getItem('checkoutArray'));
                     $window.localStorage.setItem('shippingChoice', 15.00);
 
 
 
-                }
+                //}
             }
 
             console.log($scope.shippingChoice);

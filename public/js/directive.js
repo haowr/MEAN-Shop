@@ -373,7 +373,8 @@
                 $(elem).submit(function (event) {
                     console.log(scope.storedFormData);
                     scope.taxX = $window.localStorage.getItem('tax');
-                    scope.totalAfterTax = $window.localStorage.getItem('grandTotal');
+                    //scope.totalAfterTax = $window.localStorage.getItem('grandTotal');
+                      scope.totalAfterTax = $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                     var tax = scope.taxX;
                     console.log(scope.totalAfterTax);
 

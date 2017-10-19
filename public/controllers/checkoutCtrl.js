@@ -330,6 +330,8 @@
                     console.log($scope.alberta);
                     console.log($scope.grandTotal);
                     console.log($scope.totalAfterTax);
+                    //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else if (checkoutData.province == "British Columbia") {
 
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.britishColumbia);
@@ -337,41 +339,61 @@
 
                     $scope.showGrandTotal = true;
                     console.log($scope.totalAfterTax);
+                    //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );                    
                 } else if (checkoutData.province == "Saskatchewan") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.saskatchewan);
                     $scope.tax = $scope.grandTotal * $scope.saskatchewan;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else if (checkoutData.province == "Manitoba") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.manitoba);
                     $scope.tax = $scope.grandTotal * $scope.manitoba;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else if (checkoutData.province == "Quebec") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.quebec);
                     $scope.tax = $scope.grandTotal * $scope.quebec;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else if (checkoutData.province == "Ontario") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.ontario);
                     $scope.tax = $scope.grandTotal * $scope.ontario;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else if (checkoutData.province == "New Brunswick") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.newBrunswick);
                     $scope.tax = $scope.grandTotal * $scope.newBrunswick;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal', $scope.totalAfterTax);
                 } else if (checkoutData.province == "Newfoundland") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.newFoundland);
                     $scope.tax = $scope.grandTotal * $scope.newFoundland;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else if (checkoutData.province == "Nova Scotia") {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.novaScotia);
                     $scope.tax = $scope.grandTotal * $scope.novaScotia;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 } else {
                     $scope.totalAfterTax = $scope.grandTotal + ($scope.grandTotal * $scope.nwT);
                     $scope.tax = $scope.grandTotal * $scope.nwT;
                     $scope.showGrandTotal = true;
+                                        //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
                 }
                 $scope.tax = Number($scope.tax).toFixed(2);
                 $window.localStorage.setItem('tax', $scope.tax);
+                                    //0ct192017
+                    $window.localStorage.setItem('showGrandTotal',$scope.totalAfterTax );
             } else {
                 $scope.errorMsg = "Please properly complete form...";
                 $scope.invalid = true;
