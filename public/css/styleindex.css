@@ -1588,6 +1588,9 @@ transition:0.5s;
     padding-left: 10px;
     /* display:inline-block;*/
   }
+    #closeicon {
+    width: 15.8px;
+  }
   .jewels {
     transition: 0.5s;
     position: absolute;
@@ -1628,6 +1631,9 @@ transition:0.5s;
     padding-right: 20px;
     color: black;
   }
+    #closeicon {
+    width: 15.8px;
+  }
 
 
 
@@ -1652,6 +1658,9 @@ transition:0.5s;
     font-size: 18px;
     padding-right: 20px;
     color: black;
+  }
+    #closeicon {
+    width: 15.8px;
   }
   .logo {
     transition: 0.5s;
@@ -1682,6 +1691,9 @@ transition:0.5s;
     left: 254px;
     font-size: 18px;
     padding-right: 20px;
+  }
+    #closeicon {
+    width: 15.8px;
   }
   .logo {
     transition: 0.5s;
