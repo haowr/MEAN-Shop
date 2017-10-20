@@ -2528,6 +2528,9 @@ margin-top:200px;*/
   color: black;
 }
 
+.navbar-nav{
+  -webkit-backface-visibility: hidden;
+}
 .navbar .navbar-text {
   color: #ecf0f1;
 }
