@@ -121,12 +121,7 @@
       </li>
       <li class="nav-item active ">
 
-        
-
-      </li>
-
-  </div>
-<li><form id="search" name="shopSearch" ng-submit="doSearch(shopSearch.$$element[0][0].value);" novalidate>
+        <form id="search" name="shopSearch" ng-submit="doSearch(shopSearch.$$element[0][0].value);" novalidate>
 
 
           <div id="label">
@@ -137,10 +132,10 @@
               'searchlabelmovedloggedin':main.isLoggedIn && !searchIcon }"
               ng-show="!searchIcon && main.isLoggedIn" ng-click="closeResults();"> <center><i class = "fa fa-times" id='closeicon'  aria-hidden="true"></i></center></label>
             <label for="searchItems" class=" searchlabel" ng-class="{'searchlabelmoved':openSearchVar, 'searchlabelloggedin':main.isLoggedIn}"
-              ng-show="searchIcon && !main.isLoggedIn" ng-click="openSearch(true,shopSearch.$$element[0][0].value);"> <i class = "fa fa-search"  aria-hidden="true"></i></label>
+              ng-show="searchIcon && !main.isLoggedIn" ng-click="openSearch(true,shopSearch.$$element[0][0].value);" ng-cloak> <i class = "fa fa-search"  aria-hidden="true"></i></label>
             <label for="searchItems" class=" searchlabel" ng-class="{
               'searchlabelmovedloggedin':!main.isLoggedIn && !searchIcon }"
-              ng-show="!searchIcon && !main.isLoggedIn" ng-click="closeResults();"> <i class = "fa fa-times" id='closeicon'  aria-hidden="true"></i></label>
+              ng-show="!searchIcon && !main.isLoggedIn" ng-click="closeResults();" ng-cloak> <i class = "fa fa-times" id='closeicon'  aria-hidden="true"></i></label>
 
             <input type="textarea" name="searchItems" ng-blur="closeResults()" ng-disabled = "searchIcon"ng-class="{'searchinput':openSearchVar, 'searchinputclosed':!openSearchVar}"
               model="shopSearch.searchItems" placeholder="Press Enter To Search..." autocomplete="off">
@@ -171,7 +166,11 @@
 
 
         </form>
-</li>
+
+      </li>
+
+  </div>
+
   <!--<div id="hellousernamebox"><li><a ng-show="main.isLoggedIn" class="nav-link navbar-right" href="/profile"> Hello,&nbsp({{ main.username }}).</a></li></div>-->
   <li><a class="nav-link navbar-right " ng-click="$route.reload();" href="/profile"><i class = "fa fa-heart"  aria-hidden="true">&nbspx{{heartss}}</i></a></li>
   <li><a class="nav-link navbar-right" id='hover' ng-click="$route.reload();" href="/shop/shoppingbag"><i class ="fa fa-shopping-bag"id="shoppingbagicon" aria-hidden="true">&nbsp{{cartItems}}</i></a></li>
