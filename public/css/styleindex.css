@@ -1734,6 +1734,7 @@ transition:0.5s;
      #closeicon {
     width: 20px;
     display:inline-block;
+    padding-right: 0.5px;
   }
   .clothing {
     transition: 0.5s;
