@@ -1003,6 +1003,7 @@ transition:0.5s;
 
 @media only screen and (min-width: 991px) {
 
+ 
 
   #hojad2{
     display:inline-block;
@@ -1097,6 +1098,7 @@ transition:0.5s;
     /* border:1px solid black;*/
     position: absolute;
     top: 17px;
+    width:20px;
     right: 350px;
   }
   .searchlabelloggedin {
@@ -1104,7 +1106,7 @@ transition:0.5s;
     outline: none;
     /* border:1px solid black;*/
     position: absolute;
-    top: 16px;
+    top: 17px;
     right: 350px;
   }
   #hellousernamebox{
@@ -1164,7 +1166,7 @@ transition:0.5s;
      height:30px;*/
     position: absolute;
     top: 17px;
-    right: 500px;
+    right: 490px;
     transition: 1s;
   }
   .searchlabelmovedloggedin {
@@ -1172,6 +1174,7 @@ transition:0.5s;
      height:30px;*/
     position: absolute;
     top: 17px;
+    width:20px;
     right: 500px;
     transition: 1s;
   }
@@ -1228,6 +1231,7 @@ transition:0.5s;
      top:17px;
      left:700px;*/
     /* z-index:55000;*/
+    display: inline-block;
     transition: 1s;
     width: 400px;
     opacity: 1;
@@ -1370,6 +1374,7 @@ transition:0.5s;
     
     width: 0px;
     opacity: 0;
+    z-index:55000;
   }
   #label {
     display: inline-block;
@@ -1632,7 +1637,7 @@ transition:0.5s;
     color: black;
   }
     #closeicon {
-    width: 15.8px;
+    width: 17px;
   }
 
 
@@ -1659,8 +1664,8 @@ transition:0.5s;
     padding-right: 20px;
     color: black;
   }
-    #closeicon {
-    width: 15.8px;
+  #closeicon {
+    width: 17px;
   }
   .logo {
     transition: 0.5s;
@@ -1685,6 +1690,7 @@ transition:0.5s;
     /* display:inline-block;*/
   }
   .jewels {
+    color:black;
     transition: 0.5s;
     position: absolute;
     top: 20px;
@@ -1692,8 +1698,9 @@ transition:0.5s;
     font-size: 18px;
     padding-right: 20px;
   }
-    #closeicon {
+  #closeicon {
     width: 15.8px;
+    font-size:17px;
   }
   .logo {
     transition: 0.5s;
@@ -1708,6 +1715,10 @@ transition:0.5s;
 }
 
 @media only screen and (max-width: 320px) {
+     #closeicon {
+    width: 20px;
+    display:inline-block;
+  }
   .clothing {
     transition: 0.5s;
     position: absolute;
@@ -1759,7 +1770,7 @@ transition:0.5s;
      transition:.5s;*/
     /*position:absolute;
     left:60px;*/
-    display: none;
+   /* display: none;*/
     transition: 1s;
     width: 0px;
     opacity: 0;
@@ -1772,6 +1783,7 @@ transition:0.5s;
   .searchlabel {
     display: inline-block;
     /* border:1px solid black;*/
+
     font-size: 17px;
     z-index: 55000;
   }
@@ -1779,6 +1791,7 @@ transition:0.5s;
     /* border:1px solid black;*/
     display: inline-block;
     font-size: 17px;
+    z-index: 55000;
   }
   #searchlabel:hover {
     /* position:absolute;
@@ -1798,12 +1811,15 @@ transition:0.5s;
      right:407px;*/
     color: black;
   }
+  .searchlabelloggedin{
+
+    
+
+  }
   .searchlabelmoved {
     font-size: 17px;
   }
-  #closeicon {
-    width: 15.8px;
-  }
+
   /*
    #searchimage{
 
