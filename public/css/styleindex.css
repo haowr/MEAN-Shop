@@ -1698,9 +1698,9 @@ transition:0.5s;
     font-size: 18px;
     padding-right: 20px;
   }
-  #closeicon {
-    width: 15.8px;
-    font-size:17px;
+     #closeicon {
+    width: 20px;
+    display:inline-block;
   }
   .logo {
     transition: 0.5s;
