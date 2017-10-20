@@ -1348,7 +1348,7 @@ transition:0.5s;
     display: inline-block;
   }
   #closeicon {
-    width: 15.8px;
+    width: 20px;
   }
   .searchinput {
     /* position:absolute;
@@ -1377,9 +1377,7 @@ transition:0.5s;
     z-index:55000;
   }
   #label {
-    display: inline-block;
-    padding-top: 10px;
-    padding-left: 14px;
+
   }
   .searchlabel {
     display: inline-block;
