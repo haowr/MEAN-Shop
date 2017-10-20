@@ -1698,22 +1698,14 @@ transition:0.5s;
     font-size: 18px;
     padding-right: 20px;
   }
-    .searchlabel {
-    display: inline-block;
-    /* border:1px solid black;*/
-
-    font-size: 17px;
-    z-index: 55000;
-  }
-  .searchlabelclose {
-    /* border:1px solid black;*/
-    display: inline-block;
-    font-size: 17px;
-    z-index: 55000;
-  }
+  
      #closeicon {
+       font-size: 17px;
     width: 20px;
     display:inline-block;
+  }
+   .searchlabelmoved {
+    font-size: 17px;
   }
   .logo {
     transition: 0.5s;
