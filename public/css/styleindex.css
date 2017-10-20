@@ -1350,7 +1350,7 @@ transition:0.5s;
   #closeicon {
     width: 20px;
     font-size:18px;
-    padding-right: 3px;
+    padding-right: 1.5px;
   }
   .searchinput {
     /* position:absolute;
