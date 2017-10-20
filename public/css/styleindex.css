@@ -1415,10 +1415,10 @@ transition:0.5s;
   .searchlabelmoved {
     display: inline-block;
     z-index: 55000;
-    font-size: 17px;
+    font-size: 18px;
   }
      .searchlabelmovedloggedin {
-    font-size: 17px;
+    font-size: 18px;
     width:20px;
   }
   #searchicon {
