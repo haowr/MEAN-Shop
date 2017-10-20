@@ -1735,7 +1735,7 @@ transition:0.5s;
     width: 20px;
     display:inline-block;
     padding-right: 0.5px;
-    vertical-align: bottom;
+    vertical-align: center;
   }
   .clothing {
     transition: 0.5s;
