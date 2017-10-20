@@ -1417,6 +1417,10 @@ transition:0.5s;
     z-index: 55000;
     font-size: 17px;
   }
+     .searchlabelmovedloggedin {
+    font-size: 17px;
+    width:20px;
+  }
   #searchicon {
     padding-top: 5px;
   }
