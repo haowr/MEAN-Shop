@@ -1776,7 +1776,7 @@ transition:0.5s;
      left:700px;*/
     /* z-index:55000;*/
     display: inline-block;
-    transition: 1s;
+    
     width: 245px;
     opacity: 1;
     z-index: 55000;
@@ -1792,7 +1792,7 @@ transition:0.5s;
     /*position:absolute;
     left:60px;*/
    /* display: none;*/
-    transition: 1s;
+    
     width: 0px;
     opacity: 0;
     z-index: 55000;
@@ -1866,13 +1866,13 @@ transition:0.5s;
     width: 246px;
     height: 200px;
     overflow-y: auto;
-    transition: 1s;
+    
     z-index: 55000;
    backface-visibility: hidden;
   }
   #searchresults:hover {
     opacity: 1;
-    transition: 1s;
+    
     backface-visibility: hidden;
   }
   .searchresultsp {
