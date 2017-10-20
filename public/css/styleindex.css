@@ -1735,7 +1735,7 @@ transition:0.5s;
     width: 20px;
     display:inline-block;
     padding-right: 0.5px;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
     
   }
   .clothing {
@@ -1768,7 +1768,7 @@ transition:0.5s;
   }
   #search {
     display: inline-block;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .searchinput {
     /* position:absolute;
@@ -1780,7 +1780,7 @@ transition:0.5s;
     width: 245px;
     opacity: 1;
     z-index: 55000;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .searchinputclosed {
     /*position:absolute;
@@ -1796,7 +1796,7 @@ transition:0.5s;
     width: 0px;
     opacity: 0;
     z-index: 55000;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   /*
   #label {
@@ -1807,13 +1807,13 @@ transition:0.5s;
   .searchlabel {
     display: inline-block;
     /* border:1px solid black;*/
-    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
     font-size: 17px;
     z-index: 55000;
   }
   .searchlabelclose {
     /* border:1px solid black;*/
-    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
     display: inline-block;
     font-size: 17px;
     z-index: 55000;
@@ -1826,7 +1826,7 @@ transition:0.5s;
      font-size: 22px;
      transition:0.2s;*/
     color: black;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   #searchlabel:active {
     /* border:1px solid black;*/
@@ -1836,16 +1836,16 @@ transition:0.5s;
      top:17px;
      right:407px;*/
     color: black;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .searchlabelloggedin{
 
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 
   }
   .searchlabelmoved {
     font-size: 17px;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   /*
@@ -1868,12 +1868,12 @@ transition:0.5s;
     overflow-y: auto;
     transition: 1s;
     z-index: 55000;
-    -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
   }
   #searchresults:hover {
     opacity: 1;
     transition: 1s;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   .searchresultsp {
     /* position:absolute;
