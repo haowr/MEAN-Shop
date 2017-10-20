@@ -1377,7 +1377,9 @@ transition:0.5s;
     z-index:55000;
   }
   #label {
-
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 14px;
   }
   .searchlabel {
     display: inline-block;
@@ -1695,6 +1697,19 @@ transition:0.5s;
     left: 254px;
     font-size: 18px;
     padding-right: 20px;
+  }
+    .searchlabel {
+    display: inline-block;
+    /* border:1px solid black;*/
+
+    font-size: 17px;
+    z-index: 55000;
+  }
+  .searchlabelclose {
+    /* border:1px solid black;*/
+    display: inline-block;
+    font-size: 17px;
+    z-index: 55000;
   }
      #closeicon {
     width: 20px;
