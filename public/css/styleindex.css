@@ -1793,10 +1793,12 @@ transition:0.5s;
     opacity: 0;
     z-index: 55000;
   }
+  /*
   #label {
     display: inline-block;
     padding-left: 14px;
   }
+  */
   .searchlabel {
     display: inline-block;
     /* border:1px solid black;*/
