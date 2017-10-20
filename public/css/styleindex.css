@@ -1803,12 +1803,13 @@ transition:0.5s;
   .searchlabel {
     display: inline-block;
     /* border:1px solid black;*/
-
+    -webkit-backface-visibility: hidden !important;
     font-size: 17px;
     z-index: 55000;
   }
   .searchlabelclose {
     /* border:1px solid black;*/
+    -webkit-backface-visibility: hidden !important;
     display: inline-block;
     font-size: 17px;
     z-index: 55000;
@@ -2529,7 +2530,7 @@ margin-top:200px;*/
 }
 
 .navbar-nav{
-  -webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden !important;
 }
 .navbar .navbar-text {
   color: #ecf0f1;
