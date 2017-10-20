@@ -1707,6 +1707,10 @@ transition:0.5s;
    .searchlabelmoved {
     font-size: 17px;
   }
+     .searchlabelmovedloggedin {
+    font-size: 17px;
+    width:25px;
+  }
   .logo {
     transition: 0.5s;
     display: inline-block;
