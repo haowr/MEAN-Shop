@@ -1056,33 +1056,7 @@ transition:0.5s;
   #search {
     display: inline-block;
   }
-  .searchinput {
-    position: absolute;
-    top: 17px;
-    right: 10px;
-    width: 480px;
-    transition: 1s;
-    /*position:absolute;
-     top:17px;
-     right:1%;*/
-    /* z-index:55000;*/
-  }
-  .searchinputclosed {
-    display: inline-block;
-    position: absolute;
-    width: 0px;
-    top: 17px;
-    right: 10px;
-    opacity: 0;
-    transition: 0.4s;
-    
-    /*position:absolute;
-     top:17px;
-     right:1%;
-     width:0px;
-     opacity:0;
-     transition:.5s;*/
-  }
+  
   .searchlabel {
     display: inline-block;
     outline: none;
