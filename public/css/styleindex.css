@@ -483,6 +483,7 @@ border: 1px solid black;
 }
 
 .myprofiletitle {
+  display:block;
   font-family: 'Bellefair';
 }
 
@@ -1049,7 +1050,27 @@ transition:0.5s;
     padding-left: 20px;
   }
 
-
+  .searchinput {
+     position:absolute;
+     top:15.4px;
+     right:0px;
+    /* z-index:55000;*/
+    display: inline-block;
+    transition: 1s;
+    width: 400px;
+    opacity: 1;
+    z-index: 55000;
+  }
+  .searchinputclosed {
+     position:absolute;
+     top:15.4px;
+     right:0px;
+    display: inline-block;
+    
+    transition: .5s;
+    width: 0px;
+    opacity: 0;
+  }
   #search {
     display: inline-block;
   }
@@ -1057,13 +1078,15 @@ transition:0.5s;
     display: inline-block;
   }
   
+  
   .searchlabel {
     display: inline-block;
     outline: none;
     /* border:1px solid black;*/
     position: absolute;
-    top: 17px;
-    right: 170px;
+    top: 15.4px;
+    right: 173px;
+    font-size:17px;
   }
   
   .searchlabelloggedinx{
@@ -1071,17 +1094,20 @@ transition:0.5s;
     outline: none;
     /* border:1px solid black;*/
     position: absolute;
-    top: 17px;
+    top: 15.4px;
     width:20px;
     right: 350px;
+    font-size:17px;
   }
   .searchlabelloggedin {
     display: inline-block;
     outline: none;
     /* border:1px solid black;*/
     position: absolute;
-    top: 17px;
+    
+    top: 15.4px;
     right: 350px;
+    font-size:17px;
   }
   #hellousernamebox{
 
@@ -1102,15 +1128,17 @@ transition:0.5s;
     display: none;
     position: absolute;
     font-size: 17px;
+    top: 15.4px;
     width: 40px;
     height: 30px;
-    top: 15px;
-    right: 19%;
+    
+    right: 173px;
   }
   .searchlabelcloseloggedin {
     /* border:1px solid black;*/
     display: none;
     position: absolute;
+    top: 15.4px;
     font-size: 17px;
     width: 40px;
     height: 30px;
@@ -1139,17 +1167,18 @@ transition:0.5s;
     /*width:40px;
      height:30px;*/
     position: absolute;
-    top: 17px;
-    right: 490px;
+    top: 15.4px;
+    
+    right: 405px;
     transition: 1s;
   }
   .searchlabelmovedloggedin {
     /*width:40px;
      height:30px;*/
     position: absolute;
-    top: 17px;
+    top: 15.4px;
     width:20px;
-    right: 500px;
+    right: 400px;
     transition: 1s;
   }
   #searchicon {
