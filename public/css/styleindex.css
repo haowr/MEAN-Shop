@@ -423,14 +423,13 @@ border: 1px solid black;
 }
 
 
-/*
+
 #mainimage{
-  height:100%;
+  height:630px;
   width:100%;
 }
-*/
 
-.imagefade {}
+
 
 .deselected {
   display: none;
@@ -821,6 +820,9 @@ body {
 .socialmediabuttons {
   padding-top: 3px;
 }
+#hellostyling{
+  font-size:17px;
+}
 
 #activatedheart {}
 
@@ -894,7 +896,9 @@ button:focus {
 #search {
   display: none;
 }
-
+.logo{
+  border-radius:0.9%;
+}
 
 /*
 .dropdown-toggle::after {
@@ -1052,7 +1056,7 @@ transition:0.5s;
 
   .searchinput {
      position:absolute;
-     top:15.4px;
+     top:22px;
      right:0px;
     /* z-index:55000;*/
     display: inline-block;
@@ -1063,7 +1067,7 @@ transition:0.5s;
   }
   .searchinputclosed {
      position:absolute;
-     top:15.4px;
+     top:22px;
      right:0px;
     display: inline-block;
     
@@ -1084,7 +1088,7 @@ transition:0.5s;
     outline: none;
     /* border:1px solid black;*/
     position: absolute;
-    top: 15.4px;
+    top: 22px;
     right: 173px;
     font-size:17px;
   }
@@ -1094,9 +1098,9 @@ transition:0.5s;
     outline: none;
     /* border:1px solid black;*/
     position: absolute;
-    top: 15.4px;
+    top: 22px;
     width:20px;
-    right: 350px;
+    right: 300px;
     font-size:17px;
   }
   .searchlabelloggedin {
@@ -1105,8 +1109,8 @@ transition:0.5s;
     /* border:1px solid black;*/
     position: absolute;
     
-    top: 15.4px;
-    right: 350px;
+    top: 22px;
+    right: 300px;
     font-size:17px;
   }
   #hellousernamebox{
@@ -1128,7 +1132,7 @@ transition:0.5s;
     display: none;
     position: absolute;
     font-size: 17px;
-    top: 15.4px;
+    top: 22px;
     width: 40px;
     height: 30px;
     
@@ -1138,11 +1142,11 @@ transition:0.5s;
     /* border:1px solid black;*/
     display: none;
     position: absolute;
-    top: 15.4px;
+    top: 22px;
     font-size: 17px;
     width: 40px;
     height: 30px;
-    top: 15px;
+    top: 22px;
     right: 350px;
   }
   #searchlabel:hover {
@@ -1167,7 +1171,7 @@ transition:0.5s;
     /*width:40px;
      height:30px;*/
     position: absolute;
-    top: 15.4px;
+    top: 22px;
     
     right: 405px;
     transition: 1s;
@@ -1176,7 +1180,7 @@ transition:0.5s;
     /*width:40px;
      height:30px;*/
     position: absolute;
-    top: 15.4px;
+    top: 22px;
     width:20px;
     right: 400px;
     transition: 1s;
@@ -1195,7 +1199,7 @@ transition:0.5s;
     opacity: 0.4;
     box-shadow: 2px 2px 2px #586368;
     color: #586368;
-    width: 480px;
+    width: 400px;
     height: 200px;
     z-index: 55000;
     overflow-y: auto;
@@ -2025,7 +2029,7 @@ display:inline-block;
 }
 
 .zoomicons {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 #pan-when-zoomed {

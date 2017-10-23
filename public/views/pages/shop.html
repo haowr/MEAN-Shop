@@ -48,14 +48,17 @@
 
             <center>
                 <div class="landing " ng-repeat="shoe in shoes | orderBy: order track by $index ">
-                    <p class="pull-left" id="shopitemtitle"> {{shoe.name | uppercase}}</p>
-                      
+                    <p class="pull-left bellefair" id="shopitemtitle">{{shoe.name | uppercase}}|
+                        
+                    </p>
+
                     
-                <p class=" myprofiletitle pull-left"> <i class="fa fa-heart-o"  aria-hidden="true"></i> {{shoe.hearts}}</p>
                
                
                     <landing-gallery></landing-gallery>
                     <p class="pull-right bellefair " id="shopprice">{{shoe.price | currency}}</p>
+                                                           <i class="fa fa-heart-o pull-left " id="shopheart" aria-hidden="true"> {{shoe.hearts}}</i> 
+
                     <!--<p class=" myprofiletitle pull-left"> <i class="fa fa-heart-o" aria-hidden="true"></i> {{shoe.hearts}}</p>
                     -->
                     <!--<button class = "btn btn-inverse" ng-click="loadMoreo()">test</button>-->
