@@ -51,6 +51,7 @@
         $scope.checkoutPhase = true;
         $scope.paymentLoading = false;
         $scope.wouldYouLikeToUse = false;
+        $scope.cardNumberInputDisabled = true;
         $scope.tax;
 
         $scope.creditCardDataAdded = false;
