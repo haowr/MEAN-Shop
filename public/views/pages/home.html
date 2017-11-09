@@ -1,43 +1,87 @@
+<!--
+<script>
+    console.log("script tag working?");
+    const draggable = new Draggable.Draggable(document.querySelectorAll('.logasha'), {
+        draggable: '.logo',
+    });
+    const jewelsz = new Draggable.Draggable(document.querySelectorAll('.jewels'), {
+        draggable: '.jewels'
+    });
+    //console.log(dropbox);
+
+    draggable.on('drag:start', () => console.log('drag:start'));
+    draggable.on('drag:move', () => console.log('drag:move'));
+    draggable.on('drag:stop', function () {
+        console.log('drag:stop');
+
+        //$(".clothes").click();
+        // draggable.cancel();
+
+    });
+    jewelsz.on('drag:over:container', function () {
+        console.log('drag:over:container');
+        $('.logo').css(
+            "display","none"
+        );
+        $(".clothes").click();
+        // draggable.on('drag:stop',function(){
+
+        //   $(".clothes").click();
+
+        //})
+        //draggable.cancel();
+
+    }
+    );
+
+</script>
+-->
 <br>
 <!-- 3 break points added for fixed navigation bar-->
 <div class="container container-fluid">
-<div class="row">
-    <div class="col-sm-12 ">
-        <center>
-            <h2 id="maintitle">THE HOUSE OF JEWELS</h2>
-        </center>
+    <div class="row">
+        <div class="col-sm-12 ">
+            <center>
+                <h2 id="maintitle">THE HOUSE OF JEWELS</h2>
+            </center>
         </div>
-</div>
-<div class ="row">
+    </div>
+    <div class="row">
 
-        <div class = "col-sm-4">
-         
+        <div class="col-sm-4">
+
         </div>
-           
-                <div class = "col-sm-12">
-                  <center>  <a href = "#"><p class = "bellefair clothing">CLOTHES&nbsp</p></a>
-                <img  class = "logo"src="../img/logosm.jpg">
-                 <a  href = "/shop"><p class = " bellefair jewels " >&nbsp&nbsp&nbspJEWELS</p></a></center>
-                 <!-- class = " jewels"-->
-                </div>
-           
-            
-   
-    <div class = "col-sm-4">
-                        
-               
+
+        <div class="col-sm-12 logasha">
+            <center>
+                <a href="#">
+                    <p class="bellefair clothing">CLOTHES&nbsp</p>
+                </a>
+                <img class="logo" src="../img/logosm.jpg">
+                <a class="clothes" href="/shop">
+                    <p class=" bellefair jewels ">&nbsp&nbsp&nbspJEWELS</p>
+                </a>
+            </center>
+            <!-- class = " jewels"-->
+        </div>
+
+
+
+        <div class="col-sm-4">
+
+
+
+        </div>
+
 
     </div>
 
-    
-</div>
+    <div class="row">
+        <div class="col-sm-12 details">
 
-<div class="row">
-    <div class="col-sm-12 details">
-
+        </div>
     </div>
-</div>
-  
+
 
     <div class="row">
 
@@ -54,9 +98,9 @@
 
 
         </div>
-    
-  
-    <!--
+
+
+        <!--
         <div class="col-sm-12">
             <center>
                 <h3 id="whatsnewtitle">What's New?</h3>
@@ -78,13 +122,13 @@
             <center><img src="../img/next-rightL.gif" ng-click="newChangeY();"></center>
         </div>
     </div>-->
-    
+
         <div class="col-sm-12 details2">
 
         </div>
-    
 
-    
+
+
         <div class="col-sm-4 sitemap">
 
             <ul>
@@ -99,16 +143,16 @@
                         <p>Return Policy</p>
                     </a>
                 </li>
-      
+
                 <li>
                     <a href="/contact">
                         <p>Contact Us</p>
                     </a>
                 </li>
             </ul>
-<br>
-<br>
-<br>
+            <br>
+            <br>
+            <br>
         </div>
         <div class="col-sm-4">
         </div>
@@ -118,17 +162,17 @@
                 <h4 id="whatsnewtitle">Stay Connected!</h4>
             </center>
             <center>
-                
-                <p ng-show="emailLoading && !emailEntryFailed" id="emailloading"class= "secondarytext">"LOADING.."</p>
-                <p ng-show="emailEntryFailed"class= "secondarytext">"You've Already Been Added To The List!"</p>
-                <p ng-show="invalidEmail"class= "secondarytext">"Invaid E-mail..."</p>
+
+                <p ng-show="emailLoading && !emailEntryFailed" id="emailloading" class="secondarytext">"LOADING.."</p>
+                <p ng-show="emailEntryFailed" class="secondarytext">"You've Already Been Added To The List!"</p>
+                <p ng-show="invalidEmail" class="secondarytext">"Invaid E-mail..."</p>
             </center>
 
             <center>
-                <p ng-show="joinOurEmailList" id="emailadded" class = "secondarytext">"Join Our Maillist To Receive 10% Off Coupon Code, And Early Bird Savings!"</p>
+                <p ng-show="joinOurEmailList" id="emailadded" class="secondarytext">"Join Our Maillist To Receive 10% Off Coupon Code, And Early Bird Savings!"</p>
             </center>
             <center>
-                <p ng-show="emailAdded" id="joinourmailingliststyling"class= "secondarytext">"Email Added, Check Your Inbox For Confirmation..."</p>
+                <p ng-show="emailAdded" id="joinourmailingliststyling" class="secondarytext">"Email Added, Check Your Inbox For Confirmation..."</p>
             </center>
 
             <form name="emailSignup" ng-submit="addToEmailList(emailListData, emailSignup.$valid);" novalidate>
@@ -158,18 +202,24 @@
 
                 <br>
             </form>
-   
-        </div>
-  
 
-  
-    
+        </div>
+
+
+
+
         <div class='col-sm-9 '>
             <br>
 
-            <div class = "socialmediaboxes boxshadow"><center><a href="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:25px  "class="fa fa-instagram socialmediabuttons" aria-hidden="true"></i></a></center></div>
-            <div class = "socialmediaboxes boxshadow"><center><a href="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:25px "class="fa fa-facebook socialmediabuttons" aria-hidden="true"></i></a></center></div>
-            <div class = "socialmediaboxes boxshadow"><center><a href="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:25px "class="fa fa-twitter socialmediabuttons " aria-hidden="true"></i></a></center></div>
+            <div class="socialmediaboxes boxshadow">
+                <center><a href="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:25px  "class="fa fa-instagram socialmediabuttons" aria-hidden="true"></i></a></center>
+            </div>
+            <div class="socialmediaboxes boxshadow">
+                <center><a href="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:25px "class="fa fa-facebook socialmediabuttons" aria-hidden="true"></i></a></center>
+            </div>
+            <div class="socialmediaboxes boxshadow">
+                <center><a href="https://www.instagram.com/houseofjewelsboutique/"><i style = "font-size:25px "class="fa fa-twitter socialmediabuttons " aria-hidden="true"></i></a></center>
+            </div>
             <br>
         </div>
         <br>
@@ -177,12 +227,12 @@
 
 
         </div>
-    
-    
+
+
         <div class="col-sm-12 details2">
         </div>
-    
-    <br>
-    <br>
-</div>
+
+        <br>
+        <br>
+    </div>
 </div>

@@ -51,7 +51,15 @@
         $scope.searchIcon = true;
         $scope.searchQuery = "R";
         $scope.i = 0;
+/*
+        const draggable = new Draggable(document.querySelectorAll('.logasha'), {
+  draggable: '#logo',
+});
 
+draggable.on('drag:start', () => console.log('drag:start'));
+draggable.on('drag:move',  () => console.log('drag:move'));
+draggable.on('drag:stop',  () => console.log('drag:stop'));
+*/
         Shop.getAllShoes().then(function (data) {
 
 

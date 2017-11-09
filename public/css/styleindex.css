@@ -1042,6 +1042,12 @@ transition:0.5s;
 
     padding-right: 20px;
   }
+  .jewels:hover{
+
+    color:black;
+    transition:.5s;
+
+  }
 
     .clothing {
     display: inline-block;
@@ -1054,6 +1060,12 @@ transition:0.5s;
     font-size: 25px;
 
     padding-left: 20px;
+  }
+    .clothing:hover{
+
+    color:black;
+    transition:.5s;
+
   }
 
   .searchinput {
@@ -1111,9 +1123,9 @@ transition:0.5s;
     /* border:1px solid black;*/
     position: absolute;
     
-    top: 22px;
+    top: 21.5px;
     right: 300px;
-    font-size:17px;
+    font-size:18px;
   }
   #hellousernamebox{
 /*
@@ -1597,6 +1609,51 @@ transition:0.5s;
   
 }
 */
+@media only screen and (max-width: 768px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 550px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+
+@media only screen and (max-width: 736px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 415px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
 @media only screen and (max-width: 732px) {
    .clothing {
     transition: 0.5s;
@@ -1613,7 +1670,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 400px;
+    left: 415px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
@@ -1636,6 +1693,28 @@ transition:0.5s;
     position: absolute;
     top: 20px;
     left: 400px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 568px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 450px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
