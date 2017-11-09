@@ -10,12 +10,12 @@
         </div>
        
         <div class="col-sm-12">
-            <button type="button" ng-click="management.showMore(number);" class="btn btn-sm btn-submit">Apply Filter</button>
+          <!--  <button type="button" ng-click="management.showMore(number);" class="btn btn-sm btn-submit">Apply Filter</button>
             <button type="button" ng-click="management.showAll();" class="btn btn-sm btn-submitdarker">Show All</button>
             <div class="input-group pull-left">
                 <span class="input-group-addon">Results to dislay</span>
                 <input type="text" class="form-control" ng-model="number">
-            </div>
+            </div>-->
         </div>
     </div>
     <br>
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="person in management.users | filter: searchFilter | limitTo: management.limit">
+                <tr dir-paginate="person in management.users|itemsPerPage:2 track by $index " pagination-id="userlist">
                     <td>{{person.name}}</td>
                     <td>{{person.username}}</td>
                     <td>{{person.email}}</td>
@@ -50,6 +50,11 @@
 
             </tbody>
         </table>
+                  <dir-pagination-controls pagination-id ="userlist"
+       max-size="2"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
     </div>
     <div class="row show-hide-message" ng-show="management.showMoreError">
         <div class="alert alert-danger">{{management.showMoreError}}&nbsp </div>
