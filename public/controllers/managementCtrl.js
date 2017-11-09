@@ -4,7 +4,7 @@
 
     app.config(function(){
 
-        console.log("managementController loaded and initialized...");
+        //console.log("managementController loaded and initialized...");
 
     });
 
@@ -32,16 +32,16 @@ function getUsers(){
         
         User.getUsers().then(function(data){
             if(data.data.success){
-                console.log(data.data.users);
+                //console.log(data.data.users);
                 if(data.data.permission == 'admin' || data.data.permission == 'moderator'){
                     User.getStoreHistoryForAdmin("ohrha").then(function(data){
-                        console.log(data.data);
+                        //console.log(data.data);
                         $scope.storeHistory = data.data.storehistory.storehistory;
 
-                        console.log($scope.storeHistory);
+                        //console.log($scope.storeHistory);
                         User.getStoreOrdersForAdmin("ohrha").then(function(data){
 
-                        console.log(data.data.storeorders.storeorders);
+                        //console.log(data.data.storeorders.storeorders);
                         for (var i = 0; i<data.data.storeorders.storeorders.length; i++){
 
                             for( var j =0; j<data.data.storeorders.storeorders[i].length; j++){
@@ -54,7 +54,7 @@ function getUsers(){
                             }
                         }
                         $scope.storeOrders = data.data.storeorders;
-                        console.log($scope.inventory);
+                        //console.log($scope.inventory);
 
                         })
 
@@ -69,13 +69,13 @@ function getUsers(){
                         Email.getEmailList().then(function(data){
 
 
-                            console.log(data.data.emails);
+                            //console.log(data.data.emails);
                             $scope.emailList = data.data.emails;
                             //for(var i = 0; i< data.data.emails.emails.length; i++){
 
                                // $scope.emailList.push(data.data.emails.emails[0].emaillist[i]);
                             //}
-                            //console.log($scope.emailList);
+                            ////console.log($scope.emailList);
 
                         });
 
@@ -104,7 +104,7 @@ getUsers();
         Email.removeEmail(email).then(function(data){
 
 
-            //console.log(data.data.emails.emaillist);
+            ////console.log(data.data.emails.emaillist);
             if(data.data.success){
                 $scope.emailList.splice(index);
 
@@ -136,9 +136,9 @@ getUsers();
         };
 
    scope.deleteUser = function(username){
-        console.log('click');
+        //console.log('click');
         User.deleteUser(username).then(function(data){
-            console.log(data);
+            //console.log(data);
             if(data.data.success){
 
                 getUsers();
@@ -168,7 +168,7 @@ getUsers();
             }
 
         }else{
-            console.log("test");
+            //console.log("test");
             $scope.searchFilter = undefined;
             scope.limit = 0;
         }
@@ -236,7 +236,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
 
     User.getUser($routeParams.id).then(function(data){
 
-            console.log(data);
+            //console.log(data);
             if(data.data.success){
                 $scope.newName = data.data.user.name;
                 $scope.newEmail = data.data.user.email;
@@ -329,7 +329,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
             userObject.name = $scope.newName;
 
             User.editUser(userObject).then(function(data){
-                console.log(data);
+                //console.log(data);
                 if(data.data.success){
                     scope.successMsg = data.data.message;
                     $timeout(function(){
@@ -345,7 +345,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
                     scope.disabled = false;
 
                 }
-                console.log(data);
+                //console.log(data);
             });
 
 
@@ -367,7 +367,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
             userObject._id = scope.currentUser;
             userObject.email = $scope.newEmail;
             User.editUser(userObject).then(function(data){
-                console.log(data);
+                //console.log(data);
                 if(data.data.success){
                     scope.successMsg = data.data.message;
                     $timeout(function(){
@@ -383,7 +383,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
                     scope.disabled = false;
 
                 }
-                console.log(data);
+                //console.log(data);
             });
 
 
@@ -405,7 +405,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
             userObject._id = scope.currentUser;
             userObject.username = $scope.newUsername;
             User.editUser(userObject).then(function(data){
-                console.log(data);
+                //console.log(data);
                 if(data.data.success){
                     scope.successMsg = data.data.message;
                     $timeout(function(){
@@ -421,7 +421,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
                     scope.disabled = false;
 
                 }
-                console.log(data);
+                //console.log(data);
             });
 
 
@@ -446,7 +446,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
             userObject._id = scope.currentUser;
             userObject.permission = newPermission;
             User.editUser(userObject).then(function(data){
-                console.log(data);
+                //console.log(data);
                 if(data.data.success){
                     
                     scope.successMsg = data.data.message;
@@ -478,7 +478,7 @@ app.controller('editCtrl',function($scope, User, $routeParams,$timeout){
                     scope.disabled = false;
 
                 }
-                console.log(data);
+                //console.log(data);
             });
 
 

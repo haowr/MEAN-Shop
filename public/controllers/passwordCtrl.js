@@ -4,7 +4,7 @@
 
     app.config(function(){
 
-        console.log("passwordController loaded and initailized...")
+        //console.log("passwordController loaded and initailized...")
 
     });
 
@@ -19,7 +19,7 @@
             scope.loading=true;
             scope.disabled = true;
 
-            console.log(scope.resetData);
+            //console.log(scope.resetData);
              if(valid){
                 User.sendPassword(scope.resetData).then(function(data){
 
@@ -53,7 +53,7 @@
         scope.hide = true;
 
 
-        console.log($routeParams.token);   
+        //console.log($routeParams.token);   
         
        scope.savePassword = function(regData,valid,confirmed){
            scope.successMsg= false;
@@ -109,14 +109,14 @@
                 scope.hide=false;
                 scope.successMsg="Please enter a new password..."
                 $scope.username = data.data.user.username;
-                console.log($scope.username);
+                //console.log($scope.username);
 
             }else{
                 scope.errorMsg = data.data.message;
 
             }
 
-        console.log(data);
+        //console.log(data);
 
        });
 

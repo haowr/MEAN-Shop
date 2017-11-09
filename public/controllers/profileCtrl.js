@@ -3,7 +3,7 @@
     var app = angular.module('profileController', ['userServices', 'heartServices', 'shopServices', 'authServices',]);
 
     app.config(function () {
-        console.log("profile controller loaded and initialized...");
+        //console.log("profile controller loaded and initialized...");
     })
 
     app.controller('profileCtrl', function (Shop, Auth, User, $scope, $rootScope, $window, $routeParams) {
@@ -28,7 +28,7 @@
         $scope.loveObjects = [];
         $scope.allShoes;
         $scope.grandTotal = $window.localStorage.getItem('grandTotal');
-        console.log($scope.grandTotal);
+        //console.log($scope.grandTotal);
         $scope.totals = [];
         $scope.myLovesReady = true;
         $scope.openOrderr = false;
@@ -41,27 +41,27 @@
         $scope.savedCongratulations = false;
         $rootScope.showButton = false;
         $rootScope.showButtonRemoveLove = false;
-        console.log($routeParams);
+        //console.log($routeParams);
         var singleOrder = function (route) {
 
             $scope.singleOrder = $scope.ordersGrouped[$routeParams.number];
             $scope.orderNumberAsTitle = Number($routeParams.number) + 1;
-            console.log($scope.singleOrder);
-            console.log("singleOrder has run..");
+            //console.log($scope.singleOrder);
+            //console.log("singleOrder has run..");
 
         }
         User.getGroupedOrdersFromUser($routeParams.username).then(function (data) {
               User.getStoreOrdersForAdmin("ohrha").then(function(){
 
-                console.log(data.data);
+                //console.log(data.data);
                
                 $scope.ordersGrouped2= data.data.ordersgrouped.ordersgrouped;
-                console.log($scope.ordersGrouped2);
+                //console.log($scope.ordersGrouped2);
 
               })
-                        console.log(data.data);
-                        console.log(data.data.ordersgrouped.ordersgrouped);
-                        console.log($scope.singleOrder);
+                        //console.log(data.data);
+                        //console.log(data.data.ordersgrouped.ordersgrouped);
+                        //console.log($scope.singleOrder);
                         for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
 
                            // $scope.orderData.timestamp = $scope.orders[0].timestamp;
@@ -72,7 +72,7 @@
 
 
                         }
-                      console.log($scope.ordersDataArray);
+                      //console.log($scope.ordersDataArray);
                     })
 
         $scope.openOrder = function () {
@@ -88,21 +88,21 @@
 
         User.getProducts().then(function (data) {
 
-            console.log(data.data.user.products);
+            //console.log(data.data.user.products);
 
         })
         Auth.getUser().then(function (data) {
 
-            console.log(data.data.username);
+            //console.log(data.data.username);
             $scope.currentUser = data.data.username;
 
             $scope.whoisthis = data.data.username;
             User.getUserProfile($scope.whoisthis).then(function (data) {
 
 
-                console.log(data.data.user);
-                console.log(data.data.user.loves);
-                console.log(data.data.user.detailssaved);
+                //console.log(data.data.user);
+                //console.log(data.data.user.loves);
+                //console.log(data.data.user.detailssaved);
                 $scope.orderNumber = data.data.user.ordernumber;
                 if (data.data.user.detailssaved) {
                     $scope.notSaved = false;
@@ -115,17 +115,17 @@
 
 
                 $scope.lovesLength = $scope.loves.length;
-                console.log($scope.loves);
-                console.log($scope.lovesLength)
+                //console.log($scope.loves);
+                //console.log($scope.lovesLength)
                 $scope.user = data.data.user;
                 Shop.getAllShoes().then(function (data) {
 
-                    console.log(data.data.allshoes);
+                    //console.log(data.data.allshoes);
                     $scope.allShoes = data.data.allshoes;
-                    console.log($scope.allShoes);
-                    console.log($scope.allShoes[0]);
-                    console.log($scope.allShoes.length);
-                    console.log($scope.allShoes[0].name);
+                    //console.log($scope.allShoes);
+                    //console.log($scope.allShoes[0]);
+                    //console.log($scope.allShoes.length);
+                    //console.log($scope.allShoes[0].name);
                     for (var i = 0; i < $scope.allShoes.length; i++) {
 
                         $scope.loveObjects.push({
@@ -135,7 +135,7 @@
                             description: $scope.allShoes[i].description
                         });
 
-                        console.log($scope.loveObjects);
+                        //console.log($scope.loveObjects);
 
 
 
@@ -147,7 +147,7 @@
 
                             if ($scope.loveObjects[j].name == $scope.loves[i]) {
 
-                                console.log("I love " + $scope.loveObjects[j].name);
+                                //console.log("I love " + $scope.loveObjects[j].name);
                                 $scope.loveObjectArray.push($scope.loveObjects[j]);
                                 $scope.myLovesReady = false;
 
@@ -161,7 +161,7 @@
                     })
                     $scope.loveObjectArray = unique;
                     $rootScope.heartss = $scope.loveObjectArray.length;
-                      console.log($scope.loveObjectArray.length);
+                      //console.log($scope.loveObjectArray.length);
 
                         if($scope.loveObjectArray.length == 0){
                             $scope.myLovesReady = false;
@@ -170,7 +170,7 @@
                 });
                
                
-                console.log(data.data.user.orders);
+                //console.log(data.data.user.orders);
                 for (var i = 0; i < data.data.user.orders.length; i++) {
 
                     $scope.orders.push(data.data.user.orders[i]);
@@ -189,21 +189,21 @@
 
                 }
 
-                console.log($scope.orderHistory);
+                //console.log($scope.orderHistory);
                 singleOrder($routeParams.number);
                 //$scope.orderData.
-                console.log($scope.orders);
+                //console.log($scope.orders);
                 User.getTotalsFromUser($scope.whoisthis).then(function (data) {
 
-                    console.log(data.data);
-                    console.log(data.data.history.totalhistory);
+                    //console.log(data.data);
+                    //console.log(data.data.history.totalhistory);
 
                     $scope.totals = data.data.history.totalhistory;
 
                    /* User.getGroupedOrdersFromUser($scope.whoisthis).then(function (data) {
 
-                        console.log(data.data);
-                        console.log(data.data.ordersgrouped.ordersgrouped);
+                        //console.log(data.data);
+                        //console.log(data.data.ordersgrouped.ordersgrouped);
                         for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
 
                             $scope.orderData.timestamp = $scope.orders[0].timestamp;
@@ -217,8 +217,8 @@
 
                     })*/
 
-                    console.log($scope.orderData);
-                    console.log($scope.orderData.number);
+                    //console.log($scope.orderData);
+                    //console.log($scope.orderData.number);
     
                 })
 
@@ -230,7 +230,7 @@
 
             }
             $scope.showModal = function (option, index) {
-                console.log(option);
+                //console.log(option);
                 $rootScope.index = index;
                 $scope.choiceMade = false;
                 $scope.areYouSure = false;
@@ -266,7 +266,7 @@
                     //scope.modalBody = "Your session will expire in 5 minutes... Would you like to keep shopping?";
                     //scope.choiceMade = false;
                 } else if (option === 3) {
-                    console.log("here");
+                    //console.log("here");
                     $rootScope.hideButton = true;
                     $rootScope.areYouSure = true;
                     $rootScope.showButton = false;
@@ -277,7 +277,7 @@
 
 
                 } else if (option === 4) {
-                    console.log("here");
+                    //console.log("here");
                     $rootScope.hideButton = true;
                     $rootScope.areYouSure = true;
                     $rootScope.showButtonRemoveLove = true;
@@ -289,9 +289,9 @@
 
                 }else if (option === 5) {
 
-                console.log("option 5");
+                //console.log("option 5");
                 $rootScope.areYouSure = false;
-                console.log($rootScope.areYouSure);
+                //console.log($rootScope.areYouSure);
                 $rootScope.showButtonRemoveLove = false;
                 $rootScope.hideButton = false;
                 $rootScope.showButton = false;
@@ -316,11 +316,11 @@
 
             };
             $scope.yourBillingFunc = function (yourDetails, valid) {
-                console.log(yourDetails);
+                //console.log(yourDetails);
                 yourDetails.username = $scope.currentUser;
-                console.log($scope.currentUser);
+                //console.log($scope.currentUser);
                 User.addYourBillingDetails(yourDetails).then(function (data) {
-                    console.log(data.data);
+                    //console.log(data.data);
                     if (data.data.success) {
                         $scope.wouldYouLikeToAddShippingDetails = true;
                     }
@@ -330,7 +330,7 @@
             }
 
             $scope.addShippingButton = function (answer) {
-                console.log(answer);
+                //console.log(answer);
                 if (answer == 1) {
                     $scope.wouldYouLikeToAddShippingDetails = false;
                     $scope.addBillingDetails = false;
@@ -357,7 +357,7 @@
 
             }
             $scope.addCCButton = function (answer) {
-                console.log(answer);
+                //console.log(answer);
                 if (answer == 1) {
                     $scope.wouldYouLikeToAddCCDetails = false;
                     $scope.addBillingDetails = false;
@@ -372,11 +372,11 @@
 
             }
             $scope.yourShippingFunc = function (yourDetails, valid) {
-                console.log(yourDetails);
+                //console.log(yourDetails);
                 yourDetails.username = $scope.currentUser;
-                console.log($scope.currentUser);
+                //console.log($scope.currentUser);
                 User.addYourShippingDetails(yourDetails).then(function (data) {
-                    console.log(data.data);
+                    //console.log(data.data);
                     if (data.data.success) {
                         $scope.wouldYouLikeToAddCCDetails = true;
 
@@ -386,11 +386,11 @@
                 })
             }
             $scope.yourCCFunc = function (yourDetails, valid) {
-                console.log(yourDetails);
+                //console.log(yourDetails);
                 yourDetails.username = $scope.currentUser;
-                console.log($scope.currentUser);
+                //console.log($scope.currentUser);
                 User.addYourCCDetails(yourDetails).then(function (data) {
-                    console.log(data.data);
+                    //console.log(data.data);
                     if (data.data.success) {
                         $scope.savedCongratulations = true;
                         $scope.addCCDetails = false;
@@ -402,13 +402,13 @@
             $scope.removeOneLove = function (index) {
 
 
-                console.log(index);
+                //console.log(index);
                 User.removeLove($scope.currentUser, $scope.loveObjectArray[index].name).then(function (data) {
-                    console.log($scope.currentUser);
-                    console.log(data.data);
+                    //console.log($scope.currentUser);
+                    //console.log(data.data);
                     Shop.decrementHearts($scope.loveObjectArray[index].name).then(function (data) {
 
-                        console.log(data.data);
+                        //console.log(data.data);
 
                         $rootScope.heartss = $scope.loveObjectArray.length;
 
@@ -423,27 +423,27 @@
 
                 User.removeOrdersGroupedFromUser($scope.currentUser,$routeParams.number, index).then(function(data){
 
-                    console.log(data.data.user.ordersgrouped);
-                    console.log(data.data.user.ordersgrouped[$routeParams.number].length);
+                    //console.log(data.data.user.ordersgrouped);
+                    //console.log(data.data.user.ordersgrouped[$routeParams.number].length);
                     $scope.singleOrder.splice(index, 1);
                     if(data.data.user.ordersgrouped[$routeParams.number].length == 0){
 
                 User.removeOrderHistoryFromUser($scope.currentUser,$routeParams.number).then(function(data){
 
-                    console.log(data.data.user.orderhistory);
+                    //console.log(data.data.user.orderhistory);
                     
                    // $scope.orderHistory = data.data.user.orderhistory;
                 })
                         User.removeOrdersGroupedArrayFromUser($scope.currentUser,index).then(function(data){
 
-                            console.log(data.data);
+                            //console.log(data.data);
 
                         });
 
                             
                     }
                    // User.getUserProfile($scope.whoisthis).then(function(data){
-                     //   console.log(data.data.user.ordersgrouped);
+                     //   //console.log(data.data.user.ordersgrouped);
                     //})
 
                 })
@@ -451,27 +451,27 @@
             };
             $rootScope.removeOrder = function (index) {
 
-                console.log($scope.currentUser);
-                console.log(index);
+                //console.log($scope.currentUser);
+                //console.log(index);
                 User.removeOrderHistoryFromUser($scope.currentUser,index).then(function(data){
 
-                    console.log(data.data.user.orderhistory);
+                    //console.log(data.data.user.orderhistory);
                     $scope.orderHistory = data.data.user.orderhistory;
                     User.removeOrdersGroupedArrayFromUser($scope.currentUser,index).then(function(data){
 
-                            console.log(data.data.user.ordersgrouped)
+                            //console.log(data.data.user.ordersgrouped)
                     })
                 })
                 /*User.removeOneOrder($scope.currentUser, index).then(function (data) {
 
 
-                    console.log(data.data.order);
-                    console.log($scope.orders);
+                    //console.log(data.data.order);
+                    //console.log($scope.orders);
 
                     //$scope.orders.splice(index,1);
                     //$scope.orders = data.data.order.orders;
-                    //console.log(data.data.)
-                    console.log($scope.orders);
+                    ////console.log(data.data.)
+                    //console.log($scope.orders);
                     $scope.orders = data.data.order.orders;
 
 
@@ -480,10 +480,10 @@
 
             }
             $scope.clearLoves = function () {
-                console.log($scope.currentUser);
+                //console.log($scope.currentUser);
                 User.clearHearts($scope.currentUser).then(function (data) {
 
-                    console.log(data.data.user.loves);
+                    //console.log(data.data.user.loves);
                     $rootScope.heartss = data.data.user.loves.length;
                     $scope.loveObjectArray = data.data.user.loves;
                     $rootScope.heartactivated = false;
@@ -493,11 +493,11 @@
                 })
 
             }
-            console.log($scope.orders);
+            //console.log($scope.orders);
 
         });
 
-        //console.log($scope.whoisthis);
+        ////console.log($scope.whoisthis);
         /*
     */
     });

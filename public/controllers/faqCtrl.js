@@ -10,7 +10,7 @@
     }
     changeTitle();
 
-        console.log("faqCtrl is loaded and initialized...");
+        //console.log("faqCtrl is loaded and initialized...");
     
         $scope.showAnswer = false;
         $scope.showAnswer2 = false;
@@ -18,11 +18,11 @@
         $scope.showAnswer4 = false;
         $scope.showAnswer5 = false;
 
-        console.log($scope.showAnswer);
+        //console.log($scope.showAnswer);
 
         $scope.showAnswerFunc = function(item){
 
-            console.log("button pressed");
+            //console.log("button pressed");
             if(!$scope.showAnswer && item === 1){
 
                 $scope.showAnswer = true;

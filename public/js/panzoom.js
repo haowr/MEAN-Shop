@@ -8,7 +8,7 @@
  */
 
 (function(global, factory) {
-	console.log("panzoom loaded");
+	//console.log("panzoom loaded");
 	// AMD
 	if (typeof define === 'function' && define.amd) {
 		define([ 'jquery' ], function(jQuery) {

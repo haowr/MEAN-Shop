@@ -1,4 +1,4 @@
-console.log("routes.js loaded");
+//console.log("routes.js loaded");
 
 (function () {
 
@@ -16,7 +16,7 @@ console.log("routes.js loaded");
                 resolve: {
                     init: function ($route) {
                         //return function(){
-                        console.log($route.current.$$route.name);
+                        //console.log($route.current.$$route.name);
                         //$rootScope.title = $route.current.$$route.name;
                         //}
                     }
@@ -237,20 +237,20 @@ console.log("routes.js loaded");
     app.run(['$rootScope', 'Auth', '$location', 'User', function ($rootScope, Auth, $location, User, $routeUpdate, $routeParams) {
 
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
-            console.log(Auth.isLoggedIn());
-            console.log(next.$$route.name);
+            //console.log(Auth.isLoggedIn());
+            //console.log(next.$$route.name);
             $rootScope.title = next.$$route.name;
             if (next.$$route !== undefined) {
 
                 if (next.$$route.authenticated == true) {
-                    console.log("Requires authentication!")
+                    //console.log("Requires authentication!")
                     if (!Auth.isLoggedIn()) {
-                        console.log("You're not logged in dude!");
+                        //console.log("You're not logged in dude!");
                         event.preventDefault();
                         $location.path('/login');
                     } else if (next.$$route.permission) {
                         User.getPermission().then(function (data) {
-                            //console.log(data);
+                            ////console.log(data);
                             if (next.$$route.permission[0] != data.data.permission) {
                                 if (next.$$route.permission[1] != data.data.permission) {
 
@@ -263,16 +263,16 @@ console.log("routes.js loaded");
 
                 } else if (next.$$route.authenticated == false) {
 
-                    console.log("Does not require authentication!")
+                    //console.log("Does not require authentication!")
                     if (Auth.isLoggedIn()) {
                         event.preventDefault();
                         $location.path('/profile');
                     }
                 } else {
-                    console.log("Authenticated does not matter");
+                    //console.log("Authenticated does not matter");
                     //$route.reload();
                 }
-                console.log(next.$$route.authenticated);
+                //console.log(next.$$route.authenticated);
             }
 
             //if($routeParams.name == )

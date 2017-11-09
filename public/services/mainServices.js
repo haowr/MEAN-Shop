@@ -1,11 +1,11 @@
-console.log("mainService loaded");
+////console.log("mainService loaded");
 (function(){
 
 var app = angular.module('mainServices',[]);
 
 app.config(function(){
 
-console.log("mainServices injected and initialized");
+////console.log("mainServices injected and initialized");
 
 });
 

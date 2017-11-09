@@ -4,7 +4,7 @@
 
     app.config(function(){
 
-        console.log("usernameController loaded and initialized...");
+        //console.log("usernameController loaded and initialized...");
 
     });
 
@@ -18,7 +18,7 @@
             scope.loading=true;
             scope.disabled = true;
 
-            //console.log(scope.userData.email);
+            ////console.log(scope.userData.email);
              if(valid){
                 User.sendUsername(scope.userData.email).then(function(data){
                     scope.loading = false;

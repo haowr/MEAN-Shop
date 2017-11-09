@@ -262,6 +262,8 @@
                                     } else {
                                         console.log(checkoutData[0].name);
                                         console.log(checkoutData);
+                                        console.log(scope.taxX);
+                                        var tax = $window.localStorage.getItem('tax');
                                         $window.localStorage.setItem('guestName', checkoutData[0].name);
                                         var grndtotal = checkoutData[2].grandTotal / 100;
                                         var d = new Date();
@@ -286,7 +288,8 @@
                                             })
 
                                         })
-                                        User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, checkoutData[6]).then(function (data) {
+                                        
+                                        User.sendEmail(checkoutData[0].email, checkoutData[0].name, grndtotal, tax).then(function (data) {
 
                                             console.log(data.data.message);
 
@@ -561,7 +564,7 @@
 
                                     } else {
 
-                                        User.sendEmail(checkoutData[0].email).then(function (data) {
+                                        User.sendEmail(checkoutData[0].email,checkoutData[0].name,grndtotal, checkoutData[7]).then(function (data) {
                                             console.log(data.data.message);
                                             console.log(checkoutData[0].name);
                                             $window.localStorage('guestName', checkoutData[0].name);

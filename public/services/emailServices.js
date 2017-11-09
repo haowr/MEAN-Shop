@@ -3,7 +3,7 @@
     var app = angular.module('emailServices',[]);
     app.config(function(){
 
-        console.log("Email Services Loaded And Initialized..");
+        //console.log("Email Services Loaded And Initialized..");
 
     });
 

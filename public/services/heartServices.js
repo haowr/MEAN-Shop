@@ -1,10 +1,10 @@
-console.log("heartServices loaded...");
+////console.log("heartServices loaded...");
 (function(){
 
     var app = angular.module('heartServices',[]);
     app.config(function(){
 
-        console.log("heartServices loaded...");
+        ////console.log("heartServices loaded...");
     });
    
 
@@ -16,7 +16,7 @@ console.log("heartServices loaded...");
         //heartFactory.hearts= 0;
         heartFactory.addHeart = function(newHeartValue){
             //scope.hearts++
-           // console.log(newHeartValue);
+           // ////console.log(newHeartValue);
             return $http.put('/api/hearts');
 
 

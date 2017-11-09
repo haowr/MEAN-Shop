@@ -743,6 +743,7 @@ app.put('/api/sendemailemaillist/:email', function(req,res){
 })
 app.put('/api/sendemail/:email/:username/:grandtotal/:tax',function(req,res){
     console.log(req.params.grandtotal);
+    console.log(req.params.tax);
 
     var email = {
 

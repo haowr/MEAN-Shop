@@ -1,11 +1,11 @@
-console.log("userServices loaded");
+//console.log("userServices loaded");
 (function(){
 
 var app = angular.module('userServices',[]);
 
 app.config(function(){
 
-    console.log("testing services module");
+    //console.log("testing services module");
 
 });
 

@@ -1,6 +1,6 @@
 (function(){
 
-console.log("app.js loaded");
+//console.log("app.js loaded");
 
 var app = angular.module('store',['appRoutes','shop-directives',"userControllers","userServices",'ngAnimate',"mainController","authServices",'emailController',"mainServices","productsController","usernameController","passwordController","managementController","checkoutController","shoppingBagController","infinite-scroll","heartServices","profileController","mensController","mensController1","cookieServices","emailServices","orderConfirmationController","faqController"]);
 																																																  
@@ -66,28 +66,28 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	
 
 	function success(response){
-		console.log(response);
-		console.log("hello");
-		console.log(response.data);
+		//console.log(response);
+		//console.log("hello");
+		//console.log(response.data);
 		//$scope.products = response.data;
 		store.products = response.data;
-		//console.log($scope.products);
+		////console.log($scope.products);
 
 	};
 		
 	function success1(response){
-		//console.log(response.data);
+		////console.log(response.data);
 		$scope.products = response.data;
-		console.log($scope.products);
+		//console.log($scope.products);
 
 		
 
 	};
 
 	function success2(response){
-		console.log(response);
+		//console.log(response);
 		//$scope.products = response.data;
-		//console.log(response.data);
+		////console.log(response.data);
 		$http.get('/api/shoes/').then(success4);
 
 		
@@ -95,32 +95,32 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	};
 
 	function success3(response){
-		console.log("hello");
-		console.log(response.data);
-		console.log(response);
+		//console.log("hello");
+		//console.log(response.data);
+		//console.log(response);
 		store.jewels = response.data;
-		console.log("hello");
-		console.log(store.jewels.length);
+		//console.log("hello");
+		//console.log(store.jewels.length);
 
 
 	};
 
 	function success4(response){
-		console.log('hello');
-		console.log(response.data);
+		//console.log('hello');
+		//console.log(response.data);
 		
 		store.shoes = response.data;
 		store.shoes=[];
 		//store.colors = response.data.colors;
-		console.log('hello1');
-		console.log(store.shoes[0]);
-		console.log(store.shoes);
+		//console.log('hello1');
+		//console.log(store.shoes[0]);
+		//console.log(store.shoes);
 		for(var i =0; i < store.shoes.length; i++){
 
 			$scope.ids.push(store.shoes[i]._id)
 		}
 		//store.shango.push(store.shoes);
-		console.log($scope.ids);
+		//console.log($scope.ids);
 		
 	};
 	function success5(response){
@@ -130,38 +130,38 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	};
 	function success6(response){
 
-		console.log(response.data);
-		console.log("joy");
-		console.log(store.shoes);
+		//console.log(response.data);
+		//console.log("joy");
+		//console.log(store.shoes);
 		for(var i=0; i<response.data.length; i++){
 
 		store.shoes[i].hearts= response.data[i].hearts;
 
 	}
-		console.log(store.shoes[0].hearts);
-		console.log(response.data[0].hearts);
+		//console.log(store.shoes[0].hearts);
+		//console.log(response.data[0].hearts);
 	};
 	function success7(response){
 
 		$scope.allData = response.data;
 	store.shoes= $scope.allData[0].page[0];
-		console.log('toy');
-		console.log($scope.allData);
-		console.log($scope.allData[0].page[0]);
-		console.log($scope.allData[0].page[1]);
-		console.log($scope.allData[0].page[2]);
-		console.log($scope.allData[0].page[3]);
+		//console.log('toy');
+		//console.log($scope.allData);
+		//console.log($scope.allData[0].page[0]);
+		//console.log($scope.allData[0].page[1]);
+		//console.log($scope.allData[0].page[2]);
+		//console.log($scope.allData[0].page[3]);
 
 	};
 	$scope.loadMore= function(){
 		_page++;
-		console.log("Page#"+_page);
-	console.log($scope.allData);
+		//console.log("Page#"+_page);
+	//console.log($scope.allData);
 	if ($scope.allData[0].page[_page]){
 	store.shoes = store.shoes.concat($scope.allData[0].page[_page]);
 	}
-	console.log("oy");
-	console.log(store.shoes);
+	//console.log("oy");
+	//console.log(store.shoes);
 
 	};
 
@@ -171,7 +171,7 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 	$http.get('/api/shoes').then(success7);
 	$http.get('/api/shoes').then(function(response){
 
-		console.log(response.data);
+		//console.log(response.data);
 
 	});
 
@@ -205,10 +205,10 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 
 	store.addHeart = function(id,heartNum){
-		console.log("hello");
-         console.log(heartNum);
-		 console.log(id);
-		 console.log(status);
+		//console.log("hello");
+         //console.log(heartNum);
+		 //console.log(id);
+		 //console.log(status);
 
 		 if(status===0 && heartNum !==1){
 				
@@ -230,10 +230,10 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 		
 		//store.hearto++
 		
-		console.log(heartNum);
-		console.log(id);
-		console.log(status);
-		//console.log(params.id);
+		//console.log(heartNum);
+		//console.log(id);
+		//console.log(status);
+		////console.log(params.id);
 			//$http.put('/api/shoes/'+id).then(success5);
 			$http.put('/api/shoes/'+id+'/'+heartNum).then(success5);
 			//$http.put('/api/heartscounts/'+id).then(success2);
@@ -242,20 +242,20 @@ app.controller('StoreController', ['$http','$scope','$filter',  function($http,$
 
 	$scope.createShoe= function(){
 
-		//console.log($scope.formData.text);
+		////console.log($scope.formData.text);
 
 	$http.post('/api/shoes', $scope.formData)
 		 .then(success);
 
 	function success(response){
 			
-			/*console.log($scope.formData);
+			/*//console.log($scope.formData);
 			$scope.formData ={};
 			$scope.gems = response;
-			console.log($scope.formData);
+			//console.log($scope.formData);
 			*/
-			console.log(response);
-			//console.log(response.data.name);
+			//console.log(response);
+			////console.log(response.data.name);
 
 
 		 };
@@ -297,10 +297,10 @@ app.controller("LoginController", function($scope,$http){
 
 	$scope.login = function(user){
 
-		console.log(user);
+		//console.log(user);
 		$http.post('/views/login/login.html',user).then(function(response){
 
-			console.log(response);
+			//console.log(response);
 
 		}); //must let server know about this url in server.js.
 
@@ -314,14 +314,14 @@ app.controller("RegisterController", function($scope,$http){
 
 	$scope.register = function(user){
 
-		console.log(user);
+		//console.log(user);
 		// TODO: verify passwords are the same and notify user.
 		if (user.password == user.password2){
 
 		
 		$http.post('/views/register.html',user).then(function(response){
 
-			console.log(response);
+			//console.log(response);
 
 		}); //must let server know about this url in server.js.
 		}

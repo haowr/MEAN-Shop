@@ -1,4 +1,4 @@
-console.log("testing userCrtl");
+//console.log("testing userCrtl");
 (function(){
 
 var app = angular.module("userControllers",['userServices']);
@@ -9,7 +9,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
 
     this.regUser = function(regData, valid){
 
-        console.log("form submitted");
+        //console.log("form submitted");
        
         scope.errorMsg=false;
         scope.loading= true;
@@ -18,8 +18,8 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
         if(valid){
                     User.create(scope.regData).then(function(data){
 
-            console.log(data.data.success);
-            console.log(data.data.message);
+            //console.log(data.data.success);
+            //console.log(data.data.message);
             
             if(data.data.success){
                 //CREATE SUCCESS MESSAGE
@@ -52,7 +52,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
         }
 
     };
-    //console.log("testing registration controller");
+    ////console.log("testing registration controller");
     this.checkUsername = function(regData){
             scope.checkingUsername = true;
             scope.usernameMsg = false;
@@ -60,7 +60,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
 
         User.checkUsername(scope.regData).then(function(data){
 
-           console.log(data);
+           //console.log(data);
            if (data.data.success){
                scope.checkingUsername = false;
                //scope.usernameInvalid = false;
@@ -69,7 +69,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
                scope.checkingUsername = false;
                scope.usernameInvalid = true;
                scope.usernameMsg = data.data.message;
-               console.log(scope.checkingUsername);
+               //console.log(scope.checkingUsername);
            }
 
         });
@@ -81,7 +81,7 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
             scope.emailInvalid = false;
         User.checkEmail(scope.regData).then(function(data){
 
-           // console.log(data);
+           // //console.log(data);
            if (data.data.success){
                scope.checkingEmail = false;
                scope.emailInvalid = false;
@@ -112,11 +112,11 @@ return {
                 }else{
                     $scope.confirmed = false;
                 }
-                //console.log($scope.confirm);
+                ////console.log($scope.confirm);
         });
 
-            //console.log(values);
-            //console.log($scope.confirm);
+            ////console.log(values);
+            ////console.log($scope.confirm);
         };
     },
     link: function(scope, element, attrs){
@@ -139,7 +139,7 @@ return {
 
 app.config(function(){
 
-    console.log("testing new module");
+    //console.log("testing new module");
     
 });
 

@@ -5,7 +5,7 @@ var app = angular.module('emailController',['userServices']);
                           
 app.config(function(){
 
-    console.log("emailCtrl");
+    //console.log("emailCtrl");
 
 });
 
@@ -13,14 +13,14 @@ app.config(function(){
 
 app.controller('emailCtrl', function($routeParams,User,$timeout, $location){
 
-    console.log("Hello from email ctrl");
+    //console.log("Hello from email ctrl");
 
-    console.log($routeParams.token);
+    //console.log($routeParams.token);
     scope= this;
 
     User.activateAccount($routeParams.token).then(function(data){
-        console.log(data.data.message);
-        console.log(data.data.success);
+        //console.log(data.data.message);
+        //console.log(data.data.success);
 
         scope.successMsg = false;
         scope.errorMsg = false;
@@ -54,11 +54,11 @@ app.controller('resendCtrl',function(User){
     scope.disabled = true;
         User.checkCredentials(scope.loginData).then(function(data){
 
-            console.log(data);
+            //console.log(data);
             if(data.data.success){
 
                 User.resendLink(scope.loginData).then(function(data){
-                    console.log(data);
+                    //console.log(data);
                     if(data.data.success){
 
                         scope.successMsg= data.data.message;

@@ -4,7 +4,7 @@ var app = angular.module('authServices',[]);
 
 app.config(function(){
 
-console.log("Testing Auth Services");
+//console.log("Testing Auth Services");
 
 });
 
