@@ -4,7 +4,10 @@
 
     var express = require('express');
     var app     = express();  // create the app with express.
+
+
     var mongoose= require('mongoose'); // mongoose ODM(object data mapper) for mongodb.
+
     var morgan  = require('morgan'); //logs requests to the console
     var bodyParser = require('body-parser'); // pull information from html POST
     var methodOverride = require('method-override');// Simulate delete and put
