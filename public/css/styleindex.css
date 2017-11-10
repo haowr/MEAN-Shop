@@ -1241,6 +1241,27 @@ transition:0.5s;
 
 @media only screen and (max-width: 991px) {
 
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 600px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+
     #closeicon {
     width: 15.8px;
   }
@@ -1365,6 +1386,8 @@ transition:0.5s;
 }
 
 @media only screen and (max-width: 720px) {
+
+  
   #search {
     display: inline-block;
   }
@@ -1625,7 +1648,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 550px;
+    left: 420px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
@@ -1698,6 +1721,50 @@ transition:0.5s;
     color: black;
   } 
 }
+@media only screen and (max-width: 620px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 435px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 590px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 440px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
 @media only screen and (max-width: 568px) {
    .clothing {
     transition: 0.5s;
@@ -1714,7 +1781,51 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 450px;
+    left: 420px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 540px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 420px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 520px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 400px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
@@ -1738,7 +1849,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 289px;
+    left: 365px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
@@ -1753,35 +1864,96 @@ transition:0.5s;
     ;
   }
 }
-@media only screen and(max-width: 416px){
-
-  .clothing {
+@media only screen and (max-width: 480px) {
+   .clothing {
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 50px;
+    left: 40px;
     font-size: 18px;
     color: black;
     padding-left: 10px;
     /* display:inline-block;*/
   }
+
   .jewels {
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 286px;
+    left: 330px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
-  }
-    #closeicon {
-    width: 17px;
-  }
-
-
-
+  } 
 }
 
+@media only screen and (max-width: 470px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 310px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 430px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 280px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+
+@media only screen and (max-width: 400px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 220px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
 @media only screen and (max-width: 375px) {
   .clothing {
     transition: 0.5s;
@@ -1797,7 +1969,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 230px;
+    left: 208px;
     font-size: 18px;
     padding-right: 20px;
     color: black;
@@ -1832,7 +2004,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 254px;
+    left: 210px;
     font-size: 18px;
     padding-right: 20px;
   }
@@ -1883,7 +2055,7 @@ transition:0.5s;
     transition: 0.5s;
     position: absolute;
     top: 20px;
-    left: 198px;
+    left: 170px;
     font-size: 18px;
     width: 99px;
     padding-right: 20px;
@@ -2022,8 +2194,182 @@ transition:0.5s;
     transition: all linear 0.5s;
   }
 }
+@media only screen and (max-width: 317px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
 
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 170px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 300px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
 
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 140px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 288px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 180px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 281px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 160px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 270px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 150px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 260px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 140px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 250px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 127px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
+@media only screen and (max-width: 240px) {
+   .clothing {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    /* display:inline-block;*/
+  }
+
+  .jewels {
+    transition: 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 117px;
+    font-size: 18px;
+    padding-right: 20px;
+    color: black;
+  } 
+}
 /*
 .clothing{
 
