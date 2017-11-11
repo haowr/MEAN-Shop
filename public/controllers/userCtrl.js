@@ -18,8 +18,8 @@ app.controller('regCtrl',function($http,$location,$timeout,User){
         if(valid){
                     User.create(scope.regData).then(function(data){
 
-            //console.log(data.data.success);
-            //console.log(data.data.message);
+            console.log(data.data.success);
+            console.log(data.data.message);
             
             if(data.data.success){
                 //CREATE SUCCESS MESSAGE
