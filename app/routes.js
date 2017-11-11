@@ -1869,7 +1869,7 @@ app.put('/api/shoes/mensshoes/:name',function(req,res){
                         subject: 'Localhost Username Request',
                         text: 'Hello ' + user.name + ', You recently requested your username. Please save it in your files: ' + user.username,
                         //html: 'Hello<strong> ' + user.name + '</strong>,<br><br>You recently requested your username. Please save it in your files: ' + user.username
-                        html: resetUsername.render({user:user.name})
+                        html: resetUsername.render({user:user.name, username: user.username})
                     };
 
                     // Function to send e-mail to user
