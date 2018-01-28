@@ -77,7 +77,7 @@ browsing all the way through to checkout.'
   <img src="https://github.com/ohrha/MEAN-Shop/blob/master/public/img/DOCUMENTATION%20IMAGES/ORDERCONFIRMATION-BOTTOM.jpg">
   
 ## Order Confirmation Email
-  <img src="https://github.com/ohrha/MEAN-Shop/blob/master/public/img/DOCUMENTATION%20IMAGES/Order Confirmation.jpg">
+  <img src="https://github.com/ohrha/MEAN-Shop/blob/master/public/img/DOCUMENTATION%20IMAGES/Order Confimation.jpg">
   
 ## Add To Email List
   <img src="https://github.com/ohrha/MEAN-Shop/blob/master/public/img/DOCUMENTATION%20IMAGES/Email List.jpg">
