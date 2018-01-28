@@ -2,7 +2,7 @@
 'An E-commerce solution, written in the popular MEAN stack,seeking to provide all of the functionality of a modern online clothing store, from
 browsing all the way through to checkout.'
 # Front End |
-## AngularJs (v1.6.4)
+## AngularJs (v1.6.4), Bootstrap (v3.0)
 # Back End |
 ## NodeJs (v6.10.3)
 ## Express Framework (v4.13.2)
