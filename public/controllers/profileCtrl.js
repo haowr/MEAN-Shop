@@ -50,30 +50,32 @@
             //console.log("singleOrder has run..");
 
         }
+        /*
         User.getGroupedOrdersFromUser($routeParams.username).then(function (data) {
-              User.getStoreOrdersForAdmin("ohrha").then(function(){
+            User.getStoreOrdersForAdmin("ohrha").then(function () {
 
                 //console.log(data.data);
-               
-                $scope.ordersGrouped2= data.data.ordersgrouped.ordersgrouped;
+
+                $scope.ordersGrouped2 = data.data.ordersgrouped.ordersgrouped;
                 //console.log($scope.ordersGrouped2);
 
-              })
-                        //console.log(data.data);
-                        //console.log(data.data.ordersgrouped.ordersgrouped);
-                        //console.log($scope.singleOrder);
-                        for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
+            })
+            //console.log(data.data);
+            //console.log(data.data.ordersgrouped.ordersgrouped);
+            //console.log($scope.singleOrder);
+            for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
 
-                           // $scope.orderData.timestamp = $scope.orders[0].timestamp;
-                           // $scope.orderData.items = data.data.ordersgrouped.ordersgrouped[$scope.orderNumber].length;
-                            //$scope.orderData.number = $scope.orderNumber;
-                           // $scope.orderData.grandTotal = $scope.totals;
-                            $scope.ordersDataArray.push(data.data.ordersgrouped.ordersgrouped[i]);
+                // $scope.orderData.timestamp = $scope.orders[0].timestamp;
+                // $scope.orderData.items = data.data.ordersgrouped.ordersgrouped[$scope.orderNumber].length;
+                //$scope.orderData.number = $scope.orderNumber;
+                // $scope.orderData.grandTotal = $scope.totals;
+                $scope.ordersDataArray.push(data.data.ordersgrouped.ordersgrouped[i]);
 
 
-                        }
-                      //console.log($scope.ordersDataArray);
-                    })
+            }
+            //console.log($scope.ordersDataArray);
+        })
+        */
 
         $scope.openOrder = function () {
 
@@ -153,7 +155,7 @@
 
                             }
                         }
-                      
+
 
                     }
                     var unique = $scope.loveObjectArray.filter(function (elem, index, self) {
@@ -161,15 +163,15 @@
                     })
                     $scope.loveObjectArray = unique;
                     $rootScope.heartss = $scope.loveObjectArray.length;
-                      //console.log($scope.loveObjectArray.length);
+                    //console.log($scope.loveObjectArray.length);
 
-                        if($scope.loveObjectArray.length == 0){
-                            $scope.myLovesReady = false;
-                        }
+                    if ($scope.loveObjectArray.length == 0) {
+                        $scope.myLovesReady = false;
+                    }
 
                 });
-               
-               
+
+
                 //console.log(data.data.user.orders);
                 for (var i = 0; i < data.data.user.orders.length; i++) {
 
@@ -200,26 +202,26 @@
 
                     $scope.totals = data.data.history.totalhistory;
 
-                   /* User.getGroupedOrdersFromUser($scope.whoisthis).then(function (data) {
-
-                        //console.log(data.data);
-                        //console.log(data.data.ordersgrouped.ordersgrouped);
-                        for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
-
-                            $scope.orderData.timestamp = $scope.orders[0].timestamp;
-                            $scope.orderData.items = data.data.ordersgrouped.ordersgrouped[$scope.orderNumber].length;
-                            $scope.orderData.number = $scope.orderNumber;
-                            $scope.orderData.grandTotal = $scope.totals;
-                            $scope.ordersDataArray.push($scope.orderData);
-
-
-                        }
-
-                    })*/
+                    /* User.getGroupedOrdersFromUser($scope.whoisthis).then(function (data) {
+ 
+                         //console.log(data.data);
+                         //console.log(data.data.ordersgrouped.ordersgrouped);
+                         for (var i = 0; i < data.data.ordersgrouped.ordersgrouped.length; i++) {
+ 
+                             $scope.orderData.timestamp = $scope.orders[0].timestamp;
+                             $scope.orderData.items = data.data.ordersgrouped.ordersgrouped[$scope.orderNumber].length;
+                             $scope.orderData.number = $scope.orderNumber;
+                             $scope.orderData.grandTotal = $scope.totals;
+                             $scope.ordersDataArray.push($scope.orderData);
+ 
+ 
+                         }
+ 
+                     })*/
 
                     //console.log($scope.orderData);
                     //console.log($scope.orderData.number);
-    
+
                 })
 
 
@@ -287,21 +289,21 @@
                     $("#myModal").modal({ backdrop: "static" });
 
 
-                }else if (option === 5) {
+                } else if (option === 5) {
 
-                //console.log("option 5");
-                $rootScope.areYouSure = false;
-                //console.log($rootScope.areYouSure);
-                $rootScope.showButtonRemoveLove = false;
-                $rootScope.hideButton = false;
-                $rootScope.showButton = false;
-                $rootScope.areYouSure2 = true;
-                $rootScope.modalHeader = "Are You Sure...";
-                $rootScope.modalBody = "Items Deleted From Your Order History Are Unretrievable!";
+                    //console.log("option 5");
+                    $rootScope.areYouSure = false;
+                    //console.log($rootScope.areYouSure);
+                    $rootScope.showButtonRemoveLove = false;
+                    $rootScope.hideButton = false;
+                    $rootScope.showButton = false;
+                    $rootScope.areYouSure2 = true;
+                    $rootScope.modalHeader = "Are You Sure...";
+                    $rootScope.modalBody = "Items Deleted From Your Order History Are Unretrievable!";
 
-                $("#myModal").modal({ backdrop: "static" });
+                    $("#myModal").modal({ backdrop: "static" });
 
-            }
+                }
 
                 //$timeout(function(){
                 ////   if(!scope.choiceMade){
@@ -419,31 +421,31 @@
 
 
             }
-            $rootScope.removeOrdersGroupedFromUser = function(index){
+            $rootScope.removeOrdersGroupedFromUser = function (index) {
 
-                User.removeOrdersGroupedFromUser($scope.currentUser,$routeParams.number, index).then(function(data){
+                User.removeOrdersGroupedFromUser($scope.currentUser, $routeParams.number, index).then(function (data) {
 
                     //console.log(data.data.user.ordersgrouped);
                     //console.log(data.data.user.ordersgrouped[$routeParams.number].length);
                     $scope.singleOrder.splice(index, 1);
-                    if(data.data.user.ordersgrouped[$routeParams.number].length == 0){
+                    if (data.data.user.ordersgrouped[$routeParams.number].length == 0) {
 
-                User.removeOrderHistoryFromUser($scope.currentUser,$routeParams.number).then(function(data){
+                        User.removeOrderHistoryFromUser($scope.currentUser, $routeParams.number).then(function (data) {
 
-                    //console.log(data.data.user.orderhistory);
-                    
-                   // $scope.orderHistory = data.data.user.orderhistory;
-                })
-                        User.removeOrdersGroupedArrayFromUser($scope.currentUser,index).then(function(data){
+                            //console.log(data.data.user.orderhistory);
+
+                            // $scope.orderHistory = data.data.user.orderhistory;
+                        })
+                        User.removeOrdersGroupedArrayFromUser($scope.currentUser, index).then(function (data) {
 
                             //console.log(data.data);
 
                         });
 
-                            
+
                     }
-                   // User.getUserProfile($scope.whoisthis).then(function(data){
-                     //   //console.log(data.data.user.ordersgrouped);
+                    // User.getUserProfile($scope.whoisthis).then(function(data){
+                    //   //console.log(data.data.user.ordersgrouped);
                     //})
 
                 })
@@ -453,13 +455,13 @@
 
                 //console.log($scope.currentUser);
                 //console.log(index);
-                User.removeOrderHistoryFromUser($scope.currentUser,index).then(function(data){
+                User.removeOrderHistoryFromUser($scope.currentUser, index).then(function (data) {
 
                     //console.log(data.data.user.orderhistory);
                     $scope.orderHistory = data.data.user.orderhistory;
-                    User.removeOrdersGroupedArrayFromUser($scope.currentUser,index).then(function(data){
+                    User.removeOrdersGroupedArrayFromUser($scope.currentUser, index).then(function (data) {
 
-                            //console.log(data.data.user.ordersgrouped)
+                        //console.log(data.data.user.ordersgrouped)
                     })
                 })
                 /*User.removeOneOrder($scope.currentUser, index).then(function (data) {

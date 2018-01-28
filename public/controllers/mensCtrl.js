@@ -21,13 +21,13 @@
     $scope.shippingSelection = 0;
     $scope.hearts =false;
     $scope.fit =0;
-    $rootScope.shipping= "SHIPPING: Receive Free Ground Shipping on orders over $75 by entering promotional code SMCAFREE75 at checkout. \
+    $rootScope.shipping= "SHIPPING: Receive Free Ground Shipping on orders over $75 by entering promotional code 'ping' at checkout. \
     Free Shipping promotion is valid within Canada except for the three territories; Northwest Territories, Nunavut, and Yukon. \
-    Please note this promotion may not be combined with any other offers unless explicitly noted. The SMCAFREE75 code is not valid on Clearance Items. \
+    Please note this promotion may not be combined with any other offers unless explicitly noted. The 'ping' code is not valid on Clearance Items. \
     ";
     
     $rootScope.returns = "RETURNS:\
-    For your convenience, we accept online returns at Steve Madden stores within Canada.\
+    For your convenience, we accept online returns at House Of Jewels stores within Canada.\
     We gladly accept returns of unworn merchandise within 30 days of delivery. \
     If there is no store near you then you may obtain return authorization via phone, Live Chat, e-mail or by signing into your account and going into your order. The authorization requests must be made within 30 days from when your order is delivered. \
     Shipping charges are not refundable and there is a $6.95 per order return fee that covers restocking and postage back to the warehouse. Clearance items and earring purchases cannot be returned or exchanged. \
