@@ -41,16 +41,15 @@ var resetPassword = Hogan.compile(resetpassword);
 
 var options = {
     auth: {
-        api_user: 'ohrha',
-        api_key: 'tchuva2ed'
+/*REDACTED FOR PRIVACY*/
     }
 }
 
 var client = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "trigramthree@gmail.com",
-        pass: "2chuva2ed"
+        user: /*REDACTED FOR PRIVACY*/,
+        pass: /*REDACTED FOR PRIVACY*/
     }
 });
 
