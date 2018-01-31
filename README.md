@@ -26,10 +26,9 @@ browsing all the way through to checkout.'
  # Installation|
  'npm-install --save'
  # Run |
- ## Start Node Server
+
  'nodemon server.js'
- ## Start Angular Development Server
- 'ng serve'
+
  # Screenshots |
  
  ## Home
