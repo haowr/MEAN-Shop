@@ -24,7 +24,7 @@ browsing all the way through to checkout.'
   <br>
  -Node Mailer(v4.0.1)'
  # Installation|
- 'npm-install --save'
+ 'npm-install'
  # Run |
 
  'nodemon server.js'
