@@ -1,7 +1,9 @@
 # MEAN-Shop |
 'A Fully Responsive, E-commerce solution, written in the popular MEAN stack,seeking to provide all of the functionality of a modern online clothing store, from
 browsing all the way through to checkout.
-View @ http://calm-refuge-27221.herokuapp.com'
+View @ http://houseofshoes.herokuapp.com'
+user: moon
+password: 1Dragonball
 # Front End |
 ## AngularJs (v1.6.4), Bootstrap (v3.0)
 # Back End |
